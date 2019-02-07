@@ -1,0 +1,14 @@
+version: '0.0.1'
+services:
+  pie-api-gateway:
+    ports:
+     - "8080:8080"
+    image: "pie-api-gateway:1.0.0"
+  pie-config-server:
+    ports:
+     - "8888:8888"
+    image: "pie-config-server:1.0.0"
+  pie-eureka-server:
+    ports:
+     - "8761:8761"
+    image: "pie-eureka-server:1.0.0"
