@@ -1,7 +1,9 @@
 server:
-  port: 8055 #default port where the service will be started
+  port: 8095    #default port where the service will be started
 
 eureka:         #tells about the Eureka server details and its refresh time
+  registerwithEureka: true
+  fetchRegistry: true
   instance:
     leaseRenewalIntervalInSeconds: 1
     leaseExpirationDurationInSeconds: 2
@@ -12,10 +14,6 @@ eureka:         #tells about the Eureka server details and its refresh time
       enabled: true
     lease:
       duration: 5
-
-spring:
-  application:
-    name: admin #current service name to be used by the eureka server
 
 management:
   security:

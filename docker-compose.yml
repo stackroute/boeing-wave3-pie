@@ -32,6 +32,32 @@ services:
       - 8888:8888
       expose:
       - 8888
+#  searchservice:
+#      image: search-service:latest
+#      build: searchservice/
+#      restart: always
+#      network_mode: host
+#      ports:
+#      - 8095:8095
+#      expose:
+#      - 8095
+#      depends_on: 
+#      - mongodb
+#      - configserver
+#      - eurekaserver
+#  mongodb:
+#      image: mongo:3.4-jessie
+#      container_name: mongodb
+#      volumes:
+#      - ./data/db:/data/db
+#      ports:
+#      - 27017:27017
+#      network_mode: host
+#      hostname: localhost
+#      restart: always
+    
+#	volumes:
+#	 data:
 
   recommendation:
     image: recommendation-service:latest
@@ -61,4 +87,71 @@ services:
 
 
 
+  pie-admin-service:
+      image: pie-admin-service:1.0.0
+      build: admin/
+      ports:
+      - 8055:8055
+      network_mode: host
 
+
+#  insurer:
+#    image: insurer
+#    build: Insurer/
+#    restart: always
+#    network_mode: host
+#    depends_on:
+#      - mysqldb
+#      - configserver
+#      - eurekaserver
+#
+#    ports:
+#      - 8080:8080
+#    expose:
+#      - 8080
+
+
+  insurerregservice:
+    image: insurerregservice
+    build: insurerregservice/
+    restart: always
+    network_mode: host
+    depends_on:
+      - mongo
+      - configserver
+      - eurekaserver
+      - apigateway
+    ports:
+      - 8090:8090
+    expose:
+      - 8090
+
+
+
+  mongo:
+    image: mongo:3.4-jessie
+    ports:
+      - 27017:27017
+    container_name: mongo_docker
+    restart: always
+    network_mode: host
+    hostname: localhost
+    volumes:
+      - ./data/db:/data/db
+
+
+#  mysqldb:
+#    image: mysql
+#    restart: always
+#    environment:
+#      MYSQL_ROOT_PASSWORD: root123
+#    ports:
+#      - 3306:3306
+#    network_mode: host
+#    hostname: localhost
+#    container_name: mysql_docker
+#    volumes:
+#      - data:/var/lib/mysql
+
+volumes:
+  data:
