@@ -9,7 +9,7 @@ services:
     depends_on:
     - eurekaserver
     ports:
-    - "8092:8092"
+    - 8092:8092
     expose:
     - 8092
 
@@ -19,7 +19,7 @@ services:
     restart: always
     network_mode: host
     ports:
-    - "9091:9091"
+    - 9091:9091
     expose:
     - 9091
 
