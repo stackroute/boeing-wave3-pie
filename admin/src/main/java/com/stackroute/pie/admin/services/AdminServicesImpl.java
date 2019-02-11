@@ -41,6 +41,7 @@ public class AdminServicesImpl implements AdminServices{
     @Override
     public FormFormat updateFormFormat(int formId, FormFormat updatedFormFormat) {
         adminRepository.deleteById(formId);
+        updatedFormFormat.setFormId(formId);
         FormFormat newFormFormat = adminRepository.save(updatedFormFormat);
         return newFormFormat;
     }
