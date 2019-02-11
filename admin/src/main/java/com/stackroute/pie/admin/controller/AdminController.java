@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.lang.model.util.Elements;
 import java.text.Normalizer;
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +17,7 @@ import java.util.Optional;
 @Data
 @Controller
 @RequestMapping("/api/v1/")
+@CrossOrigin(origins = "http://localhost:4300")
 public class AdminController {
     private AdminServices adminServices;
     @Autowired
