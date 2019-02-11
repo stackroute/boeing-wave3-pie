@@ -9,7 +9,7 @@ services:
     depends_on:
     - eurekaserver
     ports:
-    - 8092:8092
+    - "8092:8092"
     expose:
     - 8092
 
@@ -19,7 +19,7 @@ services:
     restart: always
     network_mode: host
     ports:
-    - 9091:9091
+    - "9091:9091"
     expose:
     - 9091
 
@@ -32,6 +32,34 @@ services:
       - 8888:8888
       expose:
       - 8888
+  searchservice:
+      image: search-service:latest
+      build: searchservice/
+      restart: always
+      network_mode: host
+      ports:
+      - 8095:8095
+      expose:
+      - 8095
+      depends_on: 
+      - mongodb
+      - configserver
+      - eurekaserver
+  mongodb:
+      image: mongo:3.4-jessie
+      container_name: mongodb
+      volumes:
+      - ./data/db:/data/db
+      ports:
+      - 27017:27017
+      network_mode: host
+      hostname: localhost
+      restart: always
+    
+volumes:
+ data:
+
+
 
 
 

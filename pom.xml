@@ -31,6 +31,7 @@
         <module>config-server</module>
         <module>eventbrite-service</module>
         <module>admin</module>
+        <module>searchservice</module>
     </modules>
     <dependencies>
         <dependency>
