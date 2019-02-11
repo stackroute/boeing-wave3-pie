@@ -63,6 +63,7 @@ services:
 
   pie-admin-service:
       image: pie-admin-service:1.0.0
+      restart: always
       build: admin/
       ports:
       - 8055:8055
