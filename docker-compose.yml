@@ -34,5 +34,63 @@ services:
       - 8888
 
 
+#  insurer:
+#    image: insurer
+#    build: Insurer/
+#    restart: always
+#    network_mode: host
+#    depends_on:
+#      - mysqldb
+#      - configserver
+#      - eurekaserver
+#
+#    ports:
+#      - 8080:8080
+#    expose:
+#      - 8080
 
 
+  insurerregservice:
+    image: insurerregservice
+    build: insurerregservice/
+    restart: always
+    network_mode: host
+    depends_on:
+      - mongo
+      - configserver
+      - eurekaserver
+      - apigateway
+    ports:
+      - 8090:8090
+    expose:
+      - 8090
+
+
+
+  mongo:
+    image: mongo:3.4-jessie
+    ports:
+      - 27017:27017
+    container_name: mongo_docker
+    restart: always
+    network_mode: host
+    hostname: localhost
+    volumes:
+      - ./data/db:/data/db
+
+
+#  mysqldb:
+#    image: mysql
+#    restart: always
+#    environment:
+#      MYSQL_ROOT_PASSWORD: root123
+#    ports:
+#      - 3306:3306
+#    network_mode: host
+#    hostname: localhost
+#    container_name: mysql_docker
+#    volumes:
+#      - data:/var/lib/mysql
+
+volumes:
+  data:
