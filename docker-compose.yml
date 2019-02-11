@@ -33,6 +33,32 @@ services:
       expose:
       - 8888
 
+  recommendation:
+    image: recommendation-service:latest
+    build: recommendation/
+    restart: always
+    network_mode: host
+    depends_on:
+      - eurekaserver
+      - configserver
+      - neo4j
+    ports:
+      - 8084:8084
+    expose:
+      - 8084
+
+  neo4j:
+      image: neo4j:latest
+      ports:
+        - 7474:7474
+        - 7687:7687
+      container_name: neo4j_docker
+      network_mode: host
+      hostname: localhost
+      restart: always
+      volumes:
+        - ./Desktop/neo4j:/data/db
+
 
 
 
