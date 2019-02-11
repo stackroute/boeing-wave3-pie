@@ -6,11 +6,7 @@
 		<groupId>com.stackroute</groupId>
 		<artifactId>pie</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-<<<<<<< HEAD
 		<relativePath>../pom.xml</relativePath><!-- lookup parent from repository -->
-=======
-		<relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
->>>>>>> e0abfcbffa3081c7ada3611482c5e57fdc56e0ed
 	</parent>
 	<groupId>com.stackroute.pie</groupId>
 	<artifactId>admin</artifactId>
