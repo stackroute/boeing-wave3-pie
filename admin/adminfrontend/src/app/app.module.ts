@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormDashboardComponent } from './form-dashboard/form-dashboard.component';
 import { NewFormFormatComponent } from './new-form-format/new-form-format.component';
+import { DisplayFormFormatComponent } from './display-form-format/display-form-format.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormDashboardComponent,
-    NewFormFormatComponent
+    NewFormFormatComponent,
+    DisplayFormFormatComponent
   ],
   imports: [
     BrowserModule,

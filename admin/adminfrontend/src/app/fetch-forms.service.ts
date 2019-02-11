@@ -8,14 +8,22 @@ import { formformat } from './formformat';
 export class FetchFormsService {
 
   // private adminUrl = 'http://localhost:8092/admin/api/v1/formformats';
-  private adminUrl = 'http://13.126.72.190:8092/admin/api/v1/';
+  private adminUrl = 'http://localhost:8092/admin/api/v1/';
   private getAllFormFormatsUrl = 'formformats';
+  private getFormFormatUrl = 'formformat/';
+  private updateFormFormatUrl = 'formformat/';
   private addNewFormFormatUrl = 'formformat';
   private deleteFormFormatUrl = 'formformat/';
   constructor(private http: HttpClient) { }
   getAllFormFormats(): Observable<formformat[]> {
     return this.http.get<formformat[]>(this.adminUrl + this.getAllFormFormatsUrl);
   }
+  getFormFormat(formId): Observable<formformat> {
+    return this.http.get<formformat>(this.adminUrl + this.getFormFormatUrl + formId);
+  }
+  // updateFormFormat(formId, updatedFormFormat): Observable<formformat> {
+  //   return this.http.put<formformat>(this.addNewFormFormat + this.updateFormFormatUrl);
+  // }
   addNewFormFormat(): Observable<formformat> {
     return this.http.get<formformat>(this.adminUrl + this.addNewFormFormatUrl);
   }
