@@ -13,6 +13,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.2.RELEASE</version>
+        <relativePath/>
     </parent>
 
     <properties>
@@ -33,6 +34,9 @@
         <module>admin</module>
         <module>userlogin</module>
         <module>userreg</module>
+        <module>recommendation</module>
+        <module>insurerregservice</module>
+       	<module>searchservice</module>
     </modules>
     <dependencies>
         <dependency>
@@ -182,11 +186,7 @@
     </build>
     <reporting>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>2.22.1</version>
-            </plugin>
+
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>

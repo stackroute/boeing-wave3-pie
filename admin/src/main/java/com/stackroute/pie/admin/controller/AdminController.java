@@ -15,6 +15,7 @@ import java.util.Optional;
 @Data
 @Controller
 @RequestMapping("/api/v1/")
+@CrossOrigin("*")
 public class AdminController {
     private AdminServices adminServices;
     @Autowired
