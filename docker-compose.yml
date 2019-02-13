@@ -104,46 +104,44 @@ services:
   hostname: localhost
   restart: always
   volumes:
-   - ./Desktop/DockerKafka:/data/kafka
+   - /home/ubuntu/deployment/KafkaDocker:/data/kafka
 
-volumes:
- data:
 
-  recommendation:
-    image: recommendation-service:latest
-    build: recommendation/
-    restart: always
-    network_mode: host
-    depends_on:
-      - eurekaserver
-      - configserver
-      - neo4j
-    ports:
-      - 8084:8084
-    expose:
-      - 8084
+ recommendation:
+   image: recommendation-service:latest
+   build: recommendation/
+   restart: always
+   network_mode: host
+   depends_on:
+     - eurekaserver
+     - configserver
+     - neo4j
+   ports:
+     - 8084:8084
+   expose:
+     - 8084
 
-  neo4j:
-      image: neo4j:latest
-      ports:
-        - 7474:7474
-        - 7687:7687
-      container_name: neo4j_docker
-      network_mode: host
-      hostname: localhost
-      restart: always
-      volumes:
-        - ./Desktop/neo4j:/data/db
+ neo4j:
+     image: neo4j:latest
+     ports:
+       - 7474:7474
+       - 7687:7687
+     container_name: neo4j_docker
+     network_mode: host
+     hostname: localhost
+     restart: always
+     volumes:
+       - ./Desktop/neo4j:/data/db
 
 
 
-  pie-admin-service:
-      image: pie-admin-service:1.0.0
-      restart: always
-      build: admin/
-      ports:
-      - 8055:8055
-      network_mode: host
+ pie-admin-service:
+     image: pie-admin-service:1.0.0
+     restart: always
+     build: admin/
+     ports:
+     - 8055:8055
+     network_mode: host
 
 
 #  insurer:
@@ -162,33 +160,33 @@ volumes:
 #      - 8080
 
 
-  insurerregservice:
-    image: insurerregservice
-    build: insurerregservice/
-    restart: always
-    network_mode: host
-    depends_on:
-      - mongo
-      - configserver
-      - eurekaserver
-      - apigateway
-    ports:
-      - 8090:8090
-    expose:
-      - 8090
+ insurerregservice:
+   image: insurerregservice
+   build: insurerregservice/
+   restart: always
+   network_mode: host
+   depends_on:
+     - mongo
+     - configserver
+     - eurekaserver
+     - apigateway
+   ports:
+     - 8090:8090
+   expose:
+     - 8090
 
 
 
-  mongo:
-    image: mongo:3.4-jessie
-    ports:
-      - 27017:27017
-    container_name: mongo_docker
-    restart: always
-    network_mode: host
-    hostname: localhost
-    volumes:
-      - ./data/db:/data/db
+ mongo:
+   image: mongo:3.4-jessie
+   ports:
+     - 27017:27017
+   container_name: mongo_docker
+   restart: always
+   network_mode: host
+   hostname: localhost
+   volumes:
+     - ./data/db:/data/db
 
 
 #  mysqldb:
@@ -203,6 +201,5 @@ volumes:
 #    container_name: mysql_docker
 #    volumes:
 #      - data:/var/lib/mysql
-
 volumes:
-  data:
+ data:
