@@ -10,10 +10,8 @@ public class disease {
     @Id
     @Relationship(type= "SUFFERING_FROM" ,direction=Relationship.INCOMING)
 
+    private Long id;
     public String diseaseName;
-
-
-
 
     public disease(String diseaseName) {
         this.diseaseName = diseaseName;

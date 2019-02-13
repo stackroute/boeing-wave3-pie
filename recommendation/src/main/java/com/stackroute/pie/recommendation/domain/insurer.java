@@ -13,7 +13,8 @@ import javax.validation.GroupSequence;
 public class insurer {
 
     @Relationship(type= "POLICY_OF" ,direction=Relationship.INCOMING)
-@Id
+    @Id
+//    private Long id;
     public  int insurerId;
     public String insurerName;
     public String insurerLicense;
@@ -36,6 +37,14 @@ public class insurer {
     }
 
 
+
+    public int getInsurerId() {
+        return insurerId;
+    }
+
+    public void setInsurerId(int insurerId) {
+        this.insurerId = insurerId;
+    }
 
     public insurer(String insurerName) {
         this.insurerName = insurerName;

@@ -7,6 +7,7 @@ import java.util.List;
 public class insured {
     @Relationship(type= "SUFFERING_FROM" ,direction=Relationship.OUTGOING)
     @Id
+    private Long id;
     private int userId;
     private String userName;
     private String gender;
@@ -17,7 +18,7 @@ public class insured {
     private String address;
 
     private String name;
-    private List<policy> policies;
+//    private List<policy> policies;
     private int age;
     private int remainingWaitingPeriod;
     private int familyMembers;
@@ -55,9 +56,9 @@ public class insured {
         return name;
     }
 
-    public List<policy> getPolicies() {
-        return policies;
-    }
+//    public List<policy> getPolicies() {
+//        return policies;
+//    }
 
     public int getAge() {
         return age;
@@ -69,5 +70,8 @@ public class insured {
 
     public int getFamilyMembers() {
         return familyMembers;
+    }
+
+    public insured() {
     }
 }
