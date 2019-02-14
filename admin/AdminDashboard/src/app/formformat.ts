@@ -1,5 +1,5 @@
 export class FormFormat {
-    formId;
-    formName;
+    formId: number;
+    formName: string;
     fields: string[];
 }

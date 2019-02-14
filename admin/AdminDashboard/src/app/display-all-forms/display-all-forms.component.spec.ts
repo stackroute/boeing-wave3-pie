@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormFormatDisplayComponent } from './form-format-display.component';
+import { DisplayAllFormsComponent } from './display-all-forms.component';
 
-describe('FormFormatDisplayComponent', () => {
-  let component: FormFormatDisplayComponent;
-  let fixture: ComponentFixture<FormFormatDisplayComponent>;
+describe('DisplayAllFormsComponent', () => {
+  let component: DisplayAllFormsComponent;
+  let fixture: ComponentFixture<DisplayAllFormsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormFormatDisplayComponent ]
+      declarations: [ DisplayAllFormsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormFormatDisplayComponent);
+    fixture = TestBed.createComponent(DisplayAllFormsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
