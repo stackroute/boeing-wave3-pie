@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { FormsDashboardComponent } from './forms-dashboard/forms-dashboard.component';
 import { DisplayAllFormsComponent } from './display-all-forms/display-all-forms.component';
 import { DisplayFormComponent } from './display-form/display-form.component';
+import { AddNewFormComponent } from './add-new-form/add-new-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormsDashboardComponent,
     DisplayAllFormsComponent,
-    DisplayFormComponent
+    DisplayFormComponent,
+    AddNewFormComponent
   ],
   imports: [
     BrowserModule,

@@ -13,11 +13,15 @@ export class FormServiceService {
   adminUrl = 'http://localhost:8092/admin/api/v1/';
   getAllFormsUrl = 'formformats/';
   getFormFormatUrl = 'formformat/';
+  deleteFormUrl = 'formformat/';
   constructor(private http: HttpClient) { }
   getAllFormFormats(): Observable<FormFormat[]> {
     return this.http.get<FormFormat[]>(this.adminUrl + this.getAllFormsUrl);
   }
   getFormFormat(formId: number): Observable<FormFormat> {
     return this.http.get<FormFormat>(this.adminUrl + this.getFormFormatUrl + formId);
+  }
+  deleteForm(formId: number): Observable<FormFormat>{
+    return this.http.delete<FormFormat>(this.adminUrl + this.deleteFormUrl + formId);
   }
 }

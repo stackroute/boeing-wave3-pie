@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormFormat } from '../formformat';
 
 @Component({
   selector: 'app-display-form',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DisplayFormComponent implements OnInit {
 
+  @Input() currentFormFormat: FormFormat;
   constructor() { }
 
   ngOnInit() {
