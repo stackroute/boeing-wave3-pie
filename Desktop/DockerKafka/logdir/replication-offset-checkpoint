@@ -52,7 +52,7 @@ connect-offsets 2 0
 coyote-test-binary 0 0
 connect-offsets 18 1
 sea_vessel_position_reports 0 13149
-connect-offsets 23 18
+connect-offsets 23 19
 connect-statuses 0 11
 __consumer_offsets 38 0
 logs_broker 0 1670
