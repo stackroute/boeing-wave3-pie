@@ -1,7 +1,7 @@
 package com.stackroute.pie.recommendation.domain;
 
 
-;
+
 import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
@@ -36,8 +36,6 @@ public class insurer {
         this.securityAnswer = securityAnswer;
     }
 
-
-
     public int getInsurerId() {
         return insurerId;
     }
@@ -46,36 +44,63 @@ public class insurer {
         this.insurerId = insurerId;
     }
 
-    public insurer(String insurerName) {
-        this.insurerName = insurerName;
-    }
-
     public String getInsurerName() {
         return insurerName;
+    }
+
+    public void setInsurerName(String insurerName) {
+        this.insurerName = insurerName;
     }
 
     public String getInsurerLicense() {
         return insurerLicense;
     }
 
+    public void setInsurerLicense(String insurerLicense) {
+        this.insurerLicense = insurerLicense;
+    }
+
     public String getInsurerEmail() {
         return insurerEmail;
+    }
+
+    public void setInsurerEmail(String insurerEmail) {
+        this.insurerEmail = insurerEmail;
     }
 
     public String getPassword() {
         return password;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getInsurerAddress() {
         return insurerAddress;
+    }
+
+    public void setInsurerAddress(String insurerAddress) {
+        this.insurerAddress = insurerAddress;
     }
 
     public String getSecurityQuestion() {
         return securityQuestion;
     }
 
+    public void setSecurityQuestion(String securityQuestion) {
+        this.securityQuestion = securityQuestion;
+    }
+
     public String getSecurityAnswer() {
         return securityAnswer;
+    }
+
+    public void setSecurityAnswer(String securityAnswer) {
+        this.securityAnswer = securityAnswer;
+    }
+
+    public insurer() {
     }
 }
 

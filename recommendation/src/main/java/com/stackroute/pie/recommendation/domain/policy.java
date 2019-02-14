@@ -3,18 +3,17 @@ package com.stackroute.pie.recommendation.domain;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import java.util.Date;
 import java.util.List;
+
 @NodeEntity
 public class policy {
 
     @Id
+//   private int id;
 
-    private Long id;
-    private int policyId;
+    public int policyId;
     public String policyName;
+    List<String> gender;
     public String policyType;
     List<String> diseasesList;
     public int cashlessHospitals;
@@ -28,11 +27,10 @@ public class policy {
 
     public String createdBy;
     public String updatedBy;
-    List<String> gender;
 
 
 
-    public policy(int policyId, String policyName, List<String> gender, String policyType, List<String> diseasesList, int cashlessHospitals, int waitingPeriod, int monthlyPremium, int yearlyPremium, int sumInsured, int minAge, int maxAge, String location, Date createdAt, Date updatedAt, String createdBy, String updatedBy, List<policy> policies) {
+    public policy(int policyId, String policyName, List<String> gender, String policyType, List<String> diseasesList, int cashlessHospitals, int waitingPeriod, int monthlyPremium, int yearlyPremium, int sumInsured, int minAge, int maxAge, String location,   String createdBy, String updatedBy) {
         this.policyId = policyId;
         this.policyName = policyName;
         this.policyType = policyType;
@@ -49,11 +47,14 @@ public class policy {
 
         this.createdBy = createdBy;
         this.updatedBy = updatedBy;
-        this.policies = policies;
+//        this.policies = policies;
     }
 
     public policy() {
+
     }
+
+
 
     @Relationship(type= "HAS_A_POLICY" ,direction=Relationship.INCOMING)
     private List<policy> policies;
@@ -61,9 +62,9 @@ public class policy {
         return policies;
     }
 
-    public policy(int policyId) {
-        this.policyId = policyId;
-    }
+//    public policy(int policyId) {
+//        this.policyId = policyId;
+//    }
 
 
     public int getPolicyId() {
@@ -134,9 +135,73 @@ public class policy {
         return gender;
     }
 
+//    public void setGender(List<String> gender) {
+//        this.gender = gender;
+//    }
+
+
+
+    public void setPolicyId(int policyId) {
+        this.policyId = policyId;
+    }
+
+    public void setPolicyName(String policyName) {
+        this.policyName = policyName;
+    }
+
     public void setGender(List<String> gender) {
         this.gender = gender;
     }
+
+    public void setPolicyType(String policyType) {
+        this.policyType = policyType;
+    }
+
+    public void setDiseasesList(List<String> diseasesList) {
+        this.diseasesList = diseasesList;
+    }
+
+    public void setCashlessHospitals(int cashlessHospitals) {
+        this.cashlessHospitals = cashlessHospitals;
+    }
+
+    public void setWaitingPeriod(int waitingPeriod) {
+        this.waitingPeriod = waitingPeriod;
+    }
+
+    public void setMonthlyPremium(int monthlyPremium) {
+        this.monthlyPremium = monthlyPremium;
+    }
+
+    public void setYearlyPremium(int yearlyPremium) {
+        this.yearlyPremium = yearlyPremium;
+    }
+
+    public void setSumInsured(int sumInsured) {
+        this.sumInsured = sumInsured;
+    }
+
+    public void setMinAge(int minAge) {
+        this.minAge = minAge;
+    }
+
+    public void setMaxAge(int maxAge) {
+        this.maxAge = maxAge;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public void setUpdatedBy(String updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+
+
 
     @Override
     public String toString() {

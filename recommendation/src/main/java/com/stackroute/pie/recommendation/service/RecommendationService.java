@@ -14,6 +14,14 @@ public interface RecommendationService {
     List<policy> getByDisease(List<String> policyDisease);
     public insurer createInsurer(insurer Insurer);
     public policy createPolicy(policy Policy);
-    public insured createInsurer(insured Insured);
+    public insured createInsured(insured Insured);
+    public insurer updateInsurer(insurer Insurer);
+    public policy updatePolicy(policy Policy);
+    public insured updateInsured(insured Insured);
+    public insurer deleteInsurer(insurer Insurer);
+    public policy deletePolicy(policy Policy);
+    public insured deleteInsured(insured Insured);
+    public String link(String insurerLicense,int policyId);
+    public String hasPolicy(int policyId,int userId);
 
 }

@@ -74,4 +74,60 @@ public class insured {
 
     public insured() {
     }
+
+    public insured( int userId, String userName, String gender, String phoneNumber, String emailId, String address, String name, int age, int remainingWaitingPeriod, int familyMembers) {
+        //this.id = id;
+        this.userId = userId;
+        this.userName = userName;
+        this.gender = gender;
+        this.phoneNumber = phoneNumber;
+        this.emailId = emailId;
+        this.address = address;
+        this.name = name;
+        this.age = age;
+        this.remainingWaitingPeriod = remainingWaitingPeriod;
+        this.familyMembers = familyMembers;
+    }
+
+
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setRemainingWaitingPeriod(int remainingWaitingPeriod) {
+        this.remainingWaitingPeriod = remainingWaitingPeriod;
+    }
+
+    public void setFamilyMembers(int familyMembers) {
+        this.familyMembers = familyMembers;
+    }
 }

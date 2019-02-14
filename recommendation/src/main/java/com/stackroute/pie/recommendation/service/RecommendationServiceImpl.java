@@ -7,6 +7,7 @@ import com.stackroute.pie.recommendation.repository.RecommendationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.security.Policy;
 import java.util.List;
 
 @Service
@@ -50,15 +51,61 @@ public class RecommendationServiceImpl implements RecommendationService {
     }
 
     @Override
-    public policy createPolicy(policy Policy) {
-        return recommendationRepo.savePolicy(Policy.getPolicyId(),Policy.getPolicyName(),Policy.getPolicyType(),Policy.getDiseasesList(),Policy.getCashlessHospitals(),Policy.getWaitingPeriod(),Policy.getMonthlyPremium(),Policy.getYearlyPremium(),Policy.getSumInsured(),Policy.getMinAge(),Policy.getMaxAge(),Policy.getLocation(),Policy.getCreatedBy(),Policy.getUpdatedBy(),Policy.getGender());
+    public policy createPolicy(policy policy1) {
+//        policy policy3=recommendationRepo.savePolicy(policy1);
+        policy policy2 =  recommendationRepo.savePolicy(policy1.getPolicyId(),policy1.getPolicyName(),policy1.getGender(),policy1.getPolicyType(),policy1.getDiseasesList(),policy1.getCashlessHospitals(),policy1.getWaitingPeriod(),policy1.getMonthlyPremium(),policy1.getYearlyPremium(),policy1.getSumInsured(),policy1.getMinAge(),policy1.getMaxAge(),policy1.getLocation(),policy1.getCreatedBy(),policy1.getUpdatedBy());
+        return policy2;
+    }
+
+    @Override
+    public insured createInsured(insured Insured) {
+        return recommendationRepo.saveInsured(Insured.getUserId(),Insured.getUserName(),Insured.getGender(),Insured.getPhoneNumber(),Insured.getEmailId(),Insured.getAddress(),Insured.getName(),Insured.getAge(),Insured.getRemainingWaitingPeriod(),Insured.getFamilyMembers());
+    }
+
+    @Override
+    public insurer updateInsurer(insurer Insurer) {
+        return  recommendationRepo.updateInsurer(Insurer.getInsurerId(),Insurer.getInsurerName(),Insurer.getInsurerLicense(),Insurer.getInsurerEmail(),Insurer.getPassword(),Insurer.getInsurerAddress(),Insurer.getSecurityQuestion(),Insurer.getSecurityAnswer());
+    }
+
+    @Override
+    public policy updatePolicy(policy Policy) {
+        return recommendationRepo.updatePolicy(Policy.getPolicyId(),Policy.getPolicyName(),Policy.getGender(),Policy.getPolicyType(),Policy.getDiseasesList(),Policy.getCashlessHospitals(),Policy.getWaitingPeriod(),Policy.getMonthlyPremium(),Policy.getYearlyPremium(),Policy.getSumInsured(),Policy.getMinAge(),Policy.getMaxAge(),Policy.getLocation(),Policy.getCreatedBy(),Policy.getUpdatedBy());
+    }
+
+    @Override
+    public insured updateInsured(insured Insured) {
+        return  recommendationRepo.updateInsured(Insured.getUserId(),Insured.getUserName(),Insured.getGender(),Insured.getPhoneNumber(),Insured.getEmailId(),Insured.getAddress(),Insured.getName(),Insured.getAge(),Insured.getRemainingWaitingPeriod(),Insured.getFamilyMembers());
+    }
+
+    @Override
+    public insurer deleteInsurer(insurer Insurer) {
+        return recommendationRepo.deleteInsurer(Insurer.getInsurerLicense());
+    }
+
+    @Override
+    public policy deletePolicy(policy Policy) {
+        return recommendationRepo.deletePolicy(Policy.getPolicyId());
+    }
+
+    @Override
+    public insured deleteInsured(insured Insured) {
+        return recommendationRepo.deleteInsured(Insured.getUserId());
 
     }
 
     @Override
-    public insured createInsurer(insured Insured) {
-        return recommendationRepo.saveInsured(Insured.getUserId(),Insured.getUserName(),Insured.getGender(),Insured.getPhoneNumber(),Insured.getEmailId(),Insured.getAddress(),Insured.getName(),Insured.getAge(),Insured.getRemainingWaitingPeriod(),Insured.getFamilyMembers());
+    public String link(String insurerLicense, int policyId) {
+        recommendationRepo.link(insurerLicense,policyId);
+        return " ";
     }
+
+    @Override
+    public String hasPolicy(int policyId, int userId) {
+        recommendationRepo.hasPolicy(policyId,userId);
+        return  " ";
+    }
+
+
 }
 
 
