@@ -1,6 +1,7 @@
 version: "2"
+volumes:
+ data:
 services:
-
  mysqldb:
   image: mysql
   restart: always
@@ -201,5 +202,3 @@ services:
 #    container_name: mysql_docker
 #    volumes:
 #      - data:/var/lib/mysql
-volumes:
- data:
