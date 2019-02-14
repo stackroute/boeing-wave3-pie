@@ -1,6 +1,7 @@
 <ul>
   <li *ngFor="let form of allFormFormats">
-    {{form.formName}}
+    <button (click)="showFormDetails(form.formId)">{{form.formName}}</button>
     <button>DELETE</button>
   </li>
 </ul>
+<app-display-form *ngIf="showFormDetailsComponent"></app-display-form>
