@@ -6,7 +6,7 @@
 		<groupId>com.stackroute</groupId>
 		<artifactId>pie</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../pom.xml</relativePath><!-- lookup parent from repository -->
+		<relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.stackroute.pie</groupId>
 	<artifactId>admin</artifactId>
@@ -27,10 +27,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-rest</artifactId>
 		</dependency>
-		<!--<dependency>-->
-			<!--<groupId>org.springframework.boot</groupId>-->
-			<!--<artifactId>spring-boot-starter-web</artifactId>-->
-		<!--</dependency>-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
