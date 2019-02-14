@@ -1,5 +1,5 @@
 0
-102
+103
 __consumer_offsets 22 0
 __consumer_offsets 30 6
 yoyo_json 0 0
@@ -50,6 +50,7 @@ connect-offsets 10 0
 __consumer_offsets 15 5
 __consumer_offsets 24 0
 connect-offsets 2 0
+coyote-test-binary 0 0
 connect-offsets 18 1
 sea_vessel_position_reports 0 11688
 connect-offsets 23 14
