@@ -1,4 +1,4 @@
-package com.stackroute.pie.recommendation;
+package com.stackroute.pie;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

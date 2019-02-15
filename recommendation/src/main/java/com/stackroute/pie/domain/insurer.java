@@ -1,4 +1,4 @@
-package com.stackroute.pie.recommendation.domain;
+package com.stackroute.pie.domain;
 
 
 

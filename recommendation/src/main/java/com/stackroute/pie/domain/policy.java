@@ -1,4 +1,4 @@
-package com.stackroute.pie.recommendation.domain;
+package com.stackroute.pie.domain;
 
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;

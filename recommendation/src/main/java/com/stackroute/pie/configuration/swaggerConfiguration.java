@@ -1,4 +1,4 @@
-package com.stackroute.pie.recommendation.configuration;
+package com.stackroute.pie.configuration;
 
 
 import org.springframework.context.annotation.Bean;
