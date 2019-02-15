@@ -9,8 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.lang.model.util.Elements;
-import java.text.Normalizer;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,8 +36,8 @@ public class AdminController {
     public ResponseEntity<Optional<FormFormat>> getFormFormat(@PathVariable(value = "formId", required = true) int formId) {
         Optional<FormFormat> retreivedFormFormat = adminServices.getFormFormat(formId);
         if(retreivedFormFormat == null)
-            return new ResponseEntity<Optional<FormFormat>>(retreivedFormFormat, HttpStatus.NOT_FOUND);
-        return new ResponseEntity<Optional<FormFormat>>(retreivedFormFormat, HttpStatus.FOUND);
+            return new ResponseEntity<Optional<FormFormat>>(retreivedFormFormat, HttpStatus.OK);
+        return new ResponseEntity<Optional<FormFormat>>(retreivedFormFormat, HttpStatus.OK);
     }
     @DeleteMapping("formformat/{formId}")
     public ResponseEntity<?> deleteFormFormat(@PathVariable(value = "formId", required = true) int formId) {
