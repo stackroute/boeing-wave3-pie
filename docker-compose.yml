@@ -1,60 +1,7 @@
-version: "2"
+version: "3"
+volumes:
+ data:
 services:
-
-  apigateway:
-    image: zuul-service
-    build: zuul-gatewayservice/
-    restart: always
-    network_mode: host
-    depends_on:
-    - eurekaserver
-    ports:
-    - 8092:8092
-    expose:
-    - 8092
-
-  eurekaserver:
-    image: eureka-servcie:latest
-    build: eureka-server/
-    restart: always
-    network_mode: host
-    ports:
-    - 9091:9091
-    expose:
-    - 9091
-
-  configserver:
-      image: config-servcie:latest
-      build: config-server/
-      restart: always
-      network_mode: host
-      ports:
-      - 8888:8888
-      expose:
-      - 8888
-  searchservice:
-      image: search-service:latest
-      build: searchservice/
-      restart: always
-      network_mode: host
-      ports:
-      - 8095:8095
-      expose:
-      - 8095
-      depends_on: 
-      - mongodb
-      - configserver
-      - eurekaserver
-  mongodb:
-      image: mongo:3.4-jessie
-      container_name: mongodb
-      volumes:
-      - ~/data/db:/data/db
-      ports:
-      - 27017:27017
-      network_mode: host
-      hostname: localhost
-      restart: always
  mysqldb:
   image: mysql
   #  restart: always
@@ -124,9 +71,9 @@ services:
    - mysqldb
    - kafka
   ports:
-   - 8098:8098
+   - 8096:8096
   expose:
-   - 8098
+   - 8096
 
  userreg:
   image: userreg-service
@@ -213,104 +160,4 @@ services:
 #    expose:
 #      - 8080
 
- insurerregservice:
-     image: insurerregservice
-     build: insurerregservice/
-     restart: always
-     network_mode: host
-     depends_on:
-       - mongo
-       - configserver
-       - eurekaserver
-       - apigateway
-     ports:
-       - 8090:8090
-     expose:
-       - 8090
-#  mysqldb:
-#      image: mysql
-#      restart: always
-#      environment:
-#        MYSQL_ROOT_PASSWORD: root123
-#      ports:
-#        - 3306:3306
-#      network_mode: host
-#      hostname: localhost
-#      container_name: mysql_docker
-#      volumes:
-#        - data:/var/lib/mysql
 
-
-
-#volumes:
-#  data:
-
-# mongo:
-#   image: mongo:3.4-jessie
-#   ports:
-#     - 27017:27017
-#   container_name: mongo_docker
-#   restart: always
-#   network_mode: host
-#   hostname: localhost
-#   volumes:
-#     - ./data/db:/data/db
-
-
-#  mysqldb:
-#    image: mysql
-#    restart: always
-#    environment:
-#      MYSQL_ROOT_PASSWORD: root123
-#    ports:
-#      - 3306:3306
-#    network_mode: host
-#    hostname: localhost
-#    container_name: mysql_docker
-#    volumes:
-#      - data:/var/lib/mysql
-
-  insurerregservice:
-    image: insurerregservice
-    build: insurerregservice/
-    restart: always
-    network_mode: host
-    depends_on:
-      - mongodb
-      - configserver
-      - eurekaserver
-      - apigateway
-    ports:
-      - 8090:8090
-    expose:
-      - 8090
-
-
-
-  mongo:
-    image: mongo:3.4-jessie
-    ports:
-      - 27017:27017
-    container_name: mongo_docker
-    restart: always
-    network_mode: host
-    hostname: localhost
-    volumes:
-      - ./data/db:/data/db
-
-
-#  mysqldb:
-#    image: mysql
-#    restart: always
-#    environment:
-#      MYSQL_ROOT_PASSWORD: root123
-#    ports:
-#      - 3306:3306
-#    network_mode: host
-#    hostname: localhost
-#    container_name: mysql_docker
-#    volumes:
-#      - data:/var/lib/mysql
-#
-#volumes:
-#  data:
