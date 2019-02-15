@@ -1,13 +1,12 @@
-package com.stackroute.pie.recommendation.service;
+package com.stackroute.pie.service;
 
-import com.stackroute.pie.recommendation.domain.insured;
-import com.stackroute.pie.recommendation.domain.insurer;
-import com.stackroute.pie.recommendation.domain.policy;
-import com.stackroute.pie.recommendation.repository.RecommendationRepo;
+import com.stackroute.pie.domain.insured;
+import com.stackroute.pie.domain.insurer;
+import com.stackroute.pie.domain.policy;
+import com.stackroute.pie.repository.RecommendationRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.security.Policy;
 import java.util.List;
 
 @Service

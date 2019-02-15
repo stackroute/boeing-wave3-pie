@@ -1,8 +1,8 @@
-package com.stackroute.pie.recommendation.service;
+package com.stackroute.pie.service;
 
-import com.stackroute.pie.recommendation.domain.insured;
-import com.stackroute.pie.recommendation.domain.insurer;
-import com.stackroute.pie.recommendation.domain.policy;
+import com.stackroute.pie.domain.insured;
+import com.stackroute.pie.domain.insurer;
+import com.stackroute.pie.domain.policy;
 
 import java.util.List;
 

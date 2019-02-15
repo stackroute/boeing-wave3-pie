@@ -1,4 +1,4 @@
-package com.stackroute.pie.recommendation;
+package com.stackroute.pie;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -145,19 +145,17 @@ services:
      network_mode: host
 
 
- insurer:
-   image: insurer
-   build: Insurer/
-   restart: always
-   network_mode: host
-   depends_on:
-     - mysqldb
-     - configserver
-     - eurekaserver
-
-   ports:
-     - 8080:8080
-   expose:
-     - 8080
-
-
+#  insurer:
+#    image: insurer
+#    build: Insurer/
+#    restart: always
+#    network_mode: host
+#    depends_on:
+#      - mysqldb
+#      - configserver
+#      - eurekaserver
+#
+#    ports:
+#      - 8080:8080
+#    expose:
+#      - 8080
