@@ -36,6 +36,7 @@
         <module>recommendation</module>
         <module>insurerregservice</module>
        	<module>searchservice</module>
+       	<module>insurer</module>
     </modules>
     <dependencies>
         <dependency>
