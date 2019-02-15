@@ -71,9 +71,9 @@ services:
    - mysqldb
    - kafka
   ports:
-   - 8096:8096
+   - 8098:8098
   expose:
-   - 8096
+   - 8098
 
  userreg:
   image: userreg-service
