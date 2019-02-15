@@ -160,4 +160,18 @@ services:
    expose:
      - 8080
 
+ insurerregservice:
+  image: insurerregservice
+  build: insurerregservice/
+  restart: always
+  network_mode: host
+  depends_on:
+    - mongo
+    - configserver
+    - eurekaserver
+
+  ports:
+    - 8090:8090
+  expose:
+    - 8090
 
