@@ -55,7 +55,7 @@
       network_mode: host
       hostname: localhost
       restart: always
-    
+
 #	volumes:
 #	data:
 
@@ -142,7 +142,7 @@ services:
       - 8095:8095
       expose:
       - 8095
-      depends_on: 
+      depends_on:
       - mongodb
       - configserver
       - eurekaserver
@@ -167,7 +167,7 @@ services:
   network_mode: host
   hostname: localhost
   volumes:
-   - data:/var/lib/mysql  
+   - data:/var/lib/mysql
 
  mongo:
   image: mongo:3.4-jessie
@@ -323,7 +323,6 @@ services:
 #     ports:
 #     - 8055:8055
 #     network_mode: host
-=======
  recommendation:
    image: recommendation-service:latest
    build: recommendation/
@@ -359,7 +358,7 @@ services:
      ports:
      - 8055:8055
      network_mode: host
->>>>>>> 707ad378a53d66956a0a1eb5d8962ad33a938ae3
+
 
 
 #  insurer:
@@ -377,7 +376,6 @@ services:
 #    expose:
 #      - 8080
 
-<<<<<<< HEAD
   insurerregservice:
       image: insurerregservice
       build: insurerregservice/
@@ -464,8 +462,7 @@ services:
 #    container_name: mysql_docker
 #    volumes:
 #      - data:/var/lib/mysql
-=======
->>>>>>> 707ad378a53d66956a0a1eb5d8962ad33a938ae3
+
 
   insurerregservice:
     image: insurerregservice

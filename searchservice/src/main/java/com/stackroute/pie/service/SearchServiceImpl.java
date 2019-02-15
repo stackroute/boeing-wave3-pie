@@ -183,39 +183,15 @@ public class SearchServiceImpl implements SearchService {
                                 System.out.println(s.toString());
                             }
                         }
-                    } else if (companyString.contains(tokenList.get(i))) {
-                        policies = searchRepository.findByInsurerName(tokenList.get(i));
-                        for (Policy p : policies) {
-                            addPolicy.add(p);
-                        }
-                    } else if (companyString.contains(tokenList.get(k))) {
-                        policies = searchRepository.findByInsurerName(tokenList.get(k));
-                        for (Policy p : policies) {
-                            addPolicy.add(p);
-                        }
-                    } else if (policyString.contains(tokenList.get(i))) {
-                        policies = searchRepository.findByPolicyName(tokenList.get(i));
-                        for (Policy p : policies) {
-                            addPolicy.add(p);
-                        }
-                    } else if (policyString.contains(tokenList.get(k))) {
-                        policies = searchRepository.findByPolicyName(tokenList.get(k));
-                        for (Policy p : policies) {
-                            addPolicy.add(p);
-                        }
-                    } else if (diseaseString.contains(tokenList.get(i))) {
-                        System.out.println("inside diseaseString");
-                        policies = searchRepository.findByDiseasesListDiseaseName(tokenList.get(i));
-                        for (Policy p : policies) {
-                            addPolicy.add(p);
-                        }
                     }
                 }
             }
         }
             return addPolicy;
+        }
+
     }
-}
+
 
 
 
