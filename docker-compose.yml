@@ -49,7 +49,7 @@ services:
       image: mongo:3.4-jessie
       container_name: mongodb
       volumes:
-      - ./data/db:/data/db
+      - ~/data/db:/data/db
       ports:
       - 27017:27017
       network_mode: host
@@ -91,7 +91,7 @@ volumes:
     restart: always
     network_mode: host
     depends_on:
-      - mongo
+      - mongodb
       - configserver
       - eurekaserver
       - apigateway
@@ -126,6 +126,6 @@ volumes:
 #    container_name: mysql_docker
 #    volumes:
 #      - data:/var/lib/mysql
-
-volumes:
-  data:
+#
+#volumes:
+#  data:
