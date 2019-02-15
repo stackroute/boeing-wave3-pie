@@ -1,6 +1,6 @@
-<<<<<<< HEAD
-version: "2.1"
-services:
+
+ version: "2.2"
+ services:
 
   apigateway:
     image: zuul-service
@@ -99,67 +99,63 @@ services:
       ports:
       - 8055:8055
       network_mode: host
-=======
-version: "2"
-volumes:
- data:
-services:
- mysqldb:
-  image: mysql
-  restart: always
-  environment:
-   MYSQL_ROOT_PASSWORD: root123
-   MYSQL_DATABASE: springbootdb
-  ports:
-   - 3306:3306
-  network_mode: host
-  hostname: localhost
-  volumes:
-   - data:/var/lib/mysql  
 
- mongo:
-  image: mongo:3.4-jessie
-  restart: always
-  ports:
-   - 27017:27017
-  network_mode: host
-  expose:
-   - 27017
-  hostname: localhost
-  volumes:
-   - ./data/db:/data/db
+  mysqldb:
+      image: mysql
+      restart: always
+      environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: springbootdb
+      ports:
+      - 3306:3306
+      network_mode: host
+      hostname: localhost
+      volumes:
+      - data:/var/lib/mysql
 
- apigateway:
-  image: zuul-service
-  build: zuul-gatewayservice/
-  restart: always
-  network_mode: host
-  depends_on:
-   - eurekaserver
-  ports:
-   - 8092:8092
-  expose:
-   - 8092
+  mongo:
+      image: mongo:3.4-jessie
+      restart: always
+      ports:
+        - 27017:27017
+      network_mode: host
+      expose:
+        - 27017
+      hostname: localhost
+      volumes:
+        - ./data/db:/data/db
 
- eurekaserver:
-  image: eureka-servcie:latest
-  build: eureka-server/
-  restart: always
-  network_mode: host
-  ports:
-   - 9091:9091
-  expose:
-   - 9091
+# apigateway:
+#  image: zuul-service
+#  build: zuul-gatewayservice/
+#  restart: always
+#  network_mode: host
+#  depends_on:
+#   - eurekaserver
+#  ports:
+#   - 8092:8092
+#  expose:
+#   - 8092
 
- configserver:
-  image: config-servcie:latest
-  build: config-server/
-  restart: always
-  network_mode: host
-  ports:
-   - 8888:8888
-  expose:
-   - 8888
+# eurekaserver:
+#  image: eureka-servcie:latest
+#  build: eureka-server/
+#  restart: always
+#  network_mode: host
+#  ports:
+#   - 9091:9091
+#  expose:
+#   - 9091
+
+# configserver:
+#  image: config-servcie:latest
+#  build: config-server/
+#  restart: always
+#  network_mode: host
+#  ports:
+#   - 8888:8888
+#  expose:
+#   - 8888
 
  userlogin:
   image: userlogin-service
@@ -210,42 +206,41 @@ services:
    - /home/ubuntu/deployment/KafkaDocker:/data/kafka
 
 
- recommendation:
-   image: recommendation-service:latest
-   build: recommendation/
-   restart: always
-   network_mode: host
-   depends_on:
-     - eurekaserver
-     - configserver
-     - neo4j
-   ports:
-     - 8084:8084
-   expose:
-     - 8084
+# recommendation:
+#   image: recommendation-service:latest
+#   build: recommendation/
+#   restart: always
+#   network_mode: host
+#   depends_on:
+#     - eurekaserver
+#     - configserver
+#     - neo4j
+#   ports:
+#     - 8084:8084
+#   expose:
+#     - 8084
 
- neo4j:
-     image: neo4j:latest
-     ports:
-       - 7474:7474
-       - 7687:7687
-     container_name: neo4j_docker
-     network_mode: host
-     hostname: localhost
-     restart: always
-     volumes:
-       - ./Desktop/neo4j:/data/db
+# neo4j:
+#     image: neo4j:latest
+#     ports:
+#       - 7474:7474
+#       - 7687:7687
+#     container_name: neo4j_docker
+#     network_mode: host
+#     hostname: localhost
+#     restart: always
+#     volumes:
+#       - ./Desktop/neo4j:/data/db
 
 
-
- pie-admin-service:
-     image: pie-admin-service:1.0.0
-     restart: always
-     build: admin/
-     ports:
-     - 8055:8055
-     network_mode: host
->>>>>>> 7291b5d6718eadf48a8821a71e9564e5b7c47c40
+#
+# pie-admin-service:
+#     image: pie-admin-service:1.0.0
+#     restart: always
+#     build: admin/
+#     ports:
+#     - 8055:8055
+#     network_mode: host
 
 
 #  insurer:
@@ -263,8 +258,6 @@ services:
 #    expose:
 #      - 8080
 
-
-<<<<<<< HEAD
   insurerregservice:
       image: insurerregservice
       build: insurerregservice/
@@ -327,24 +320,6 @@ services:
 #volumes:
 #  data:
 
-=======
- insurerregservice:
-   image: insurerregservice
-   build: insurerregservice/
-   restart: always
-   network_mode: host
-   depends_on:
-     - mongo
-     - configserver
-     - eurekaserver
-     - apigateway
-   ports:
-     - 8090:8090
-   expose:
-     - 8090
-
-
-
 # mongo:
 #   image: mongo:3.4-jessie
 #   ports:
@@ -369,4 +344,4 @@ services:
 #    container_name: mysql_docker
 #    volumes:
 #      - data:/var/lib/mysql
->>>>>>> 7291b5d6718eadf48a8821a71e9564e5b7c47c40
+
