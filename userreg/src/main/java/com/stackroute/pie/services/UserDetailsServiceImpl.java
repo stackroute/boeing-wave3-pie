@@ -74,5 +74,31 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 //        User question1 = userRepository.save(question);
 //        return question1;
 //    }
+public User getProfile(String username) throws UserNotFoundException{
+    if(userRepository.existsByUsername(username)){
+//            System.out.println("service" + userRepository.existsByUsername(username));
+        User user1 = userRepository.findByUsername(username).get();
+//            System.out.println(user1);
+        return user1;
+    }
+    else
+        throw new UserNotFoundException();
+}
+    public User updateProfile(String username, User user) throws UserNotFoundException{
+
+        if(userRepository.existsByUsername(username)) {
+            User user1 = userRepository.findByUsername(username).get();
+            user1.setEmail(user.getEmail());
+            user1.setFullName(user.getFullName());
+            user1.setGender(user.getGender());
+            user1.setPassword(user.getPassword());
+            user1.setUsername(user.getUsername());
+            user1.setSecurityAnswer(user.getSecurityAnswer());
+            User user2 = userRepository.save(user);
+            return user1;
+        }
+        else
+            throw new UserNotFoundException();
+    }
 
 }
