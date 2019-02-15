@@ -1,14 +1,13 @@
-package com.stackroute.pie.recommendation.controller;
+package com.stackroute.pie.controller;
 
 
-import com.stackroute.pie.recommendation.domain.insured;
-import com.stackroute.pie.recommendation.domain.insurer;
-import com.stackroute.pie.recommendation.domain.policy;
-import com.stackroute.pie.recommendation.service.RecommendationServiceImpl;
+import com.stackroute.pie.domain.insured;
+import com.stackroute.pie.domain.insurer;
+import com.stackroute.pie.domain.policy;
+import com.stackroute.pie.service.RecommendationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.jmx.export.naming.IdentityNamingStrategy;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 

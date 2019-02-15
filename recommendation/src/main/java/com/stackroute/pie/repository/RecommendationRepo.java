@@ -1,15 +1,13 @@
-package com.stackroute.pie.recommendation.repository;
+package com.stackroute.pie.repository;
 
 
-import com.stackroute.pie.recommendation.domain.disease;
-import com.stackroute.pie.recommendation.domain.insured;
-import com.stackroute.pie.recommendation.domain.insurer;
-import com.stackroute.pie.recommendation.domain.policy;
+import com.stackroute.pie.domain.insured;
+import com.stackroute.pie.domain.insurer;
+import com.stackroute.pie.domain.policy;
 import org.springframework.data.neo4j.annotation.Query;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.data.repository.query.Param;
 
-import java.util.Date;
 import java.util.List;
 
 public interface RecommendationRepo extends Neo4jRepository <policy,Integer>{
@@ -34,13 +32,13 @@ public interface RecommendationRepo extends Neo4jRepository <policy,Integer>{
     List<policy> findByDisease(List<String> policyDisease);
 
    @Query("CREATE (Insurer:insurer{insurerLicense:{insurerLicense},insurerName:{insurerName}})")
-    insurer saveInsurer(@Param("insurerId")int insurerId,@Param("insurerName")String insurerName,@Param("insurerLicense")String insurerLicense,@Param("insurerEmail")String insurerEmail,@Param("password")String password,@Param("insurerAddress")String insurerAddress,@Param("securityQuestion")String securityQuestion,@Param("securityAnswer")String securityAnswer);
+   insurer saveInsurer(@Param("insurerId")int insurerId, @Param("insurerName")String insurerName, @Param("insurerLicense")String insurerLicense, @Param("insurerEmail")String insurerEmail, @Param("password")String password, @Param("insurerAddress")String insurerAddress, @Param("securityQuestion")String securityQuestion, @Param("securityAnswer")String securityAnswer);
 
    @Query("CREATE (Policy:policy{diseasesList:[value in {diseasesList} | toString(value)],gender:[value in {gender} | toString(value)],maxAge:{maxAge},minAge:{minAge},policyId:{policyId},policyName:{policyName},policyType:{policyType}})")
    policy savePolicy(@Param("policyId")int policyId, @Param("policyName")String policyName, @Param("gender")List<String> gender,@Param("policyType")String policyType, @Param("diseasesList")List<String> diseasesList, @Param("cashlessHospitals")int cashlessHospitals, @Param("waitingPeriod")int waitingPeriod, @Param("monthlyPremium")int monthlyPremium, @Param("yearlyPremium")int yearlyPremium, @Param("sumInsured")int sumInsured, @Param("minAge")int minAge, @Param("maxAge")int maxAge, @Param("location")String location,@Param("createdBy")String createdBy,@Param("updatedBy")String updatedBy);
 
    @Query("CREATE (Insured:insured{age:{age},familyMembers:{familyMembers},gender:{gender},userId:{userId},userName:{userName}})")
-   insured saveInsured(@Param("userId")int userId,@Param("userName")String userName,@Param("gender")String gender,@Param("phoneNumber")String phoneNumber,@Param("emailId")String emailId,@Param("address")String address,@Param("name")String name,@Param("age")int age,@Param("remainingWaitingPeriod")int remainingWaitingPeriod,@Param("familyMembers")int familyMembers);
+   insured saveInsured(@Param("userId")int userId, @Param("userName")String userName, @Param("gender")String gender, @Param("phoneNumber")String phoneNumber, @Param("emailId")String emailId, @Param("address")String address, @Param("name")String name, @Param("age")int age, @Param("remainingWaitingPeriod")int remainingWaitingPeriod, @Param("familyMembers")int familyMembers);
 
    @Query("MATCH (n:insurer{insurerLicense:{insurerLicense}}) SET n.insurerName={insurerName}")
    insurer updateInsurer(@Param("insurerId")int insurerId,@Param("insurerName")String insurerName,@Param("insurerLicense")String insurerLicense,@Param("insurerEmail")String insurerEmail,@Param("password")String password,@Param("insurerAddress")String insurerAddress,@Param("securityQuestion")String securityQuestion,@Param("securityAnswer")String securityAnswer);
