@@ -9,13 +9,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.Normalizer;
 import java.util.List;
 import java.util.Optional;
 
 @Data
 @Controller
 @RequestMapping("/api/v1/")
+@CrossOrigin("*")
 public class AdminController {
     private AdminServices adminServices;
     @Autowired
