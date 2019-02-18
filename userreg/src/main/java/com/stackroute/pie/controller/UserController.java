@@ -93,14 +93,39 @@ public class UserController {
         return new ResponseEntity<>(new ResponseMessage("User registered successfully!"), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/requests/{insuredId}", method = RequestMethod.GET)
-    public ResponseEntity User (@PathVariable("insuredId") int insuredId) {
-
+//    @RequestMapping(value = "/requests/{insuredId}", method = RequestMethod.GET)
+//    public ResponseEntity User (@PathVariable("insuredId") int insuredId) {
+//
+//        ResponseEntity responseEntity;
+//
+//        try {
+//
+//            User user1 = userService.getRequests(insuredId);
+//            responseEntity =  new ResponseEntity<User>(user1, HttpStatus.OK);
+//
+//        }
+//        catch (UserNotFoundException ex) {
+//            responseEntity = new ResponseEntity<String>(ex.getMessage(),HttpStatus.CONFLICT);
+//            ex.printStackTrace();
+//        }
+//        return responseEntity;
+//
+//    }
+//    @RequestMapping(value = "/request", method = RequestMethod.POST)
+//    public ResponseEntity User (@RequestBody User user) {
+//        ResponseEntity responseEntity;
+//        User user1 = userService.postRequest(user);
+//        System.out.println("In controller" + user1);
+//        responseEntity = new ResponseEntity<User>(user1,HttpStatus.OK);
+//        return responseEntity;
+//    }
+    @RequestMapping(value = "/profile/{username}", method = RequestMethod.GET)
+    public ResponseEntity User (@PathVariable("username") String username){
         ResponseEntity responseEntity;
 
         try {
 
-            User user1 = userService.getRequests(insuredId);
+            User user1 = userService.getProfile(username);
             responseEntity =  new ResponseEntity<User>(user1, HttpStatus.OK);
 
         }
@@ -111,13 +136,22 @@ public class UserController {
         return responseEntity;
 
     }
-    @RequestMapping(value = "/request", method = RequestMethod.POST)
-    public ResponseEntity User (@RequestBody User user) {
+    @RequestMapping(value = "/profile/{username}", method = RequestMethod.PUT)
+    public ResponseEntity User (@PathVariable("username") String username, @RequestBody User user){
         ResponseEntity responseEntity;
-        User user1 = userService.postRequest(user);
-        System.out.println("In controller" + user1);
-        responseEntity = new ResponseEntity<User>(user1,HttpStatus.OK);
+
+        try {
+
+            User user1 = userService.updateProfile(username, user);
+            responseEntity =  new ResponseEntity<User>(user1, HttpStatus.OK);
+
+        }
+        catch (UserNotFoundException ex) {
+            responseEntity = new ResponseEntity<String>(ex.getMessage(),HttpStatus.CONFLICT);
+            ex.printStackTrace();
+        }
         return responseEntity;
+
     }
 
 }

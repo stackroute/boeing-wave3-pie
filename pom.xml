@@ -13,7 +13,6 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.2.RELEASE</version>
-        <relativePath/>
     </parent>
 
     <properties>
@@ -32,15 +31,12 @@
         <module>config-server</module>
         <module>eventbrite-service</module>
         <module>admin</module>
-<<<<<<< HEAD
-        <module>Insurer</module>
-=======
         <module>userlogin</module>
         <module>userreg</module>
         <module>recommendation</module>
         <module>insurerregservice</module>
        	<module>searchservice</module>
->>>>>>> fff6a28cb298f1d05f761e7f163e4123fdbeb54d
+       	<module>insurer</module>
     </modules>
     <dependencies>
         <dependency>
