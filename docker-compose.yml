@@ -1,6 +1,4 @@
 version: "3"
-volumes:
- data:
 services:
  mysqldb:
   image: mysql
@@ -174,3 +172,18 @@ services:
     - 8090:8090
   expose:
     - 8090
+
+ searchservice:
+   image: searchservice
+   build: searchservice/
+   restart: always
+   network_mode: host
+   depends_on:
+     - eurekaserver
+     - configserver
+     - apigateway
+     - mongo
+   ports:
+     - 8095:8095
+   expose:
+     - 8095
