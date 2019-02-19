@@ -1,33 +1,33 @@
 <mat-tab-group style = "margin-left: 0%;" mat-align-tabs="center">
-    <mat-tab label="First">
+    <mat-tab label="Primary">
         <form [formGroup]="firstForm">
       <mat-form-field  style = "margin-left: 28%;">
-      <input  matInput placeholder="Username" formControlName="username">
+      <input  matInput placeholder="Username" formControlName="username" required/>
     </mat-form-field>
     <br>
     <mat-form-field  style = "margin-left: 28%;">
-      <input matInput placeholder="Email" formControlName="email">
+      <input matInput placeholder="Email" formControlName="email" required/>
     </mat-form-field>
     <br>
      <mat-form-field style = "margin-left: 28%;">
-      <input matInput type = "password" placeholder="Password" formControlName="password">
+      <input matInput type = "password" placeholder="Password" formControlName="password" required/>
     </mat-form-field>
         </form>
     </mat-tab>
-    <mat-tab label="Second">
+    <mat-tab label="Secondary">
         <form [formGroup]="secondForm">
+            <mat-form-field style = "margin-left: 45%;">
+                <input matInput placeholder="Insured Id" formControlName="insuredId" required/>
+              </mat-form-field>
+              <br>
+            <mat-form-field style = "margin-left: 45%;">
+                <input matInput placeholder="Name" formControlName="fullName" required/>
+              </mat-form-field>
+              <br>
       <mat-form-field style = "margin-left: 45%;">
-      <input matInput placeholder="Gender" formControlName="gender">
+      <input matInput placeholder="Gender" formControlName="gender" required/> 
     </mat-form-field>
     <br>
-    <mat-form-field style = "margin-left: 45%;">
-        <input matInput placeholder="Insured Id" formControlName="insuredId">
-      </mat-form-field>
-      <br>
-    <mat-form-field style = "margin-left: 45%;">
-      <input matInput placeholder="Name" formControlName="fullName">
-    </mat-form-field>
- 
     <mat-form-field style = "margin-left: 45%;">
     <mat-select placeholder="Security Question">
         <mat-option value="option">What is your favourite food?</mat-option>
@@ -42,7 +42,5 @@
      <div style = "margin-left: 60%; margin-bottom: 20%;">
         <button class="btn btn-success btn-outline-rounded" (click)="submitForm()"> Submit <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></button>
      </div>
- 
     </mat-tab>
- 
    </mat-tab-group>

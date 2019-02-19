@@ -33,11 +33,11 @@
         <module>admin</module>
         <module>userlogin</module>
         <module>userreg</module>
-        <module>recommendation</module>
         <module>recommendations</module>
         <module>insurerregservice</module>
        	<module>searchservice</module>
        	<module>insurer</module>
+        <module>settlement</module>
     </modules>
     <dependencies>
         <dependency>
