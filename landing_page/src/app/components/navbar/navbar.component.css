@@ -1,0 +1,13 @@
+#form-buscar{
+    width:30rem;
+    /* margin-left:10rem;
+    margin-top: 5rem; */
+    margin:2rem auto auto auto;
+ }
+
+@media only screen and (max-width: 425px){
+    #form-buscar{
+        width: auto;
+        margin: auto;
+    }
+}

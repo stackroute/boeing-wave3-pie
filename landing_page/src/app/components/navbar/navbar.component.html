@@ -1,0 +1,54 @@
+<nav class="nav navbar navbar-expand-sm bg-dark navbar-inverse">
+      <div class="container-fluid">
+          <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+       <img src="./../../assets/img/logo1.png" alt="Logo" class = "img-responsive" width = "70px" height = "90px" >
+     </a>
+          </div>
+<div class="collapse navbar-collapse dropdown show" id="collapsibleNavbar">
+  <ul class="nav navbar-nav">
+    <li><a [routerLink]="['/home']" routerLinkActive="router-link-active" >Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <!-- <form #createForm = "ngForm" (ngSubmit) = "search()" id= "form-buscar">
+    <div class="input-group">
+      <input #searchm type="text" class="form-control" placeholder="Search" name="search" (keyup) = "store(searchm.value)">
+      <div class="input-group-btn">
+        <button class="btn btn-default" type="submit" routerLink = "['/search',searchm.value]" routerLinkActive = "active">
+          <i class="glyphicon glyphicon-search"></i>
+        </button>
+      </div>
+    </div>
+  </form> -->
+  <form  *ngIf ="this.currentRoute!=='insurerDashboard/:insurerLicense'" #createForm="ngForm" (ngSubmit)="search()" id="form-buscar">
+    <!-- <div class="form-group"> -->
+    <div class="input-group">
+        <input type="text" class="form-control" name="message" [(ngModel)]="message" placeholder="Search">  
+            <span class="input-group-btn">
+          <button class="btn btn-success" type="submit" id="button-addon2">
+         <i class="glyphicon glyphicon-search" aria-hidden="true"></i> </button>
+          </span>
+        <!-- </div> -->
+      </div>
+    </form>
+    
+  <ul class="nav navbar-nav navbar-right">
+  <li class = "nav-link dropdown">
+      <a class = "dropdown-toggle" data-toggle = "dropdown" href="#"><span class="glyphicon glyphicon-user"></span> Sign In</a>
+      <ul class = "dropdown-menu">
+        <li><a routerLink = '/admin' routerLinkActive = "active">Admin Login</a></li>
+        <li><a routerLink = '/login' routerLinkActive = "active">User Login</a></li>
+        <li><a routerLink = '/companylogin' routerLinkActive = "active">Company Login</a></li>
+
+      </ul>
+  </li>
+</ul>
+</div>
+<!-- </div> -->
+</div>
+<!-- <app-landing></app-landing> -->
+</nav>
+
+<router-outlet></router-outlet>
+
