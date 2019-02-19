@@ -37,6 +37,7 @@
         <module>insurerregservice</module>
        	<module>searchservice</module>
        	<module>insurer</module>
+        <module>settlement</module>
     </modules>
     <dependencies>
         <dependency>
