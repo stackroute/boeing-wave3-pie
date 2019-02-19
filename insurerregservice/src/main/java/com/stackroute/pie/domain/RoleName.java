@@ -1,4 +1,4 @@
-package com.stackroute.pie.model;
+package com.stackroute.pie.domain;
 
 public enum RoleName {
     ROLE_USER,
