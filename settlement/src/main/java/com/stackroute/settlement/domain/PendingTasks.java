@@ -21,6 +21,8 @@ public class PendingTasks {
 
     private int insuredId;
 
+    private int insurerId;
+
     @NotBlank
     @Size(min=3, max = 50)
     private String fullName;

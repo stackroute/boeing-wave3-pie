@@ -2,19 +2,21 @@ package com.stackroute.pie.domain;
 
 
 //import org.hibernate.annotations.NaturalId;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-//import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+//import javax.persistence.*;
 
 @Document(collection="insurersname")
 @Data

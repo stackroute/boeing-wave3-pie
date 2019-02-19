@@ -1,12 +1,11 @@
 package com.stackroute.pie.services;
 
 import com.stackroute.pie.domain.Insurer;
+import com.stackroute.pie.domain.Policy;
 import com.stackroute.pie.domain.Role;
 import com.stackroute.pie.domain.RoleName;
 import com.stackroute.pie.message.request.SignUpForm;
 import com.stackroute.pie.repository.InsurerRepository;
-import com.stackroute.pie.domain.Policy;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -71,10 +70,16 @@ public class InsurerServiceImpl implements  InsurerService{
     }
 
     @Override
-    public Insurer addInsurer(SignUpForm signUpForm) {
-        Insurer insurer = new Insurer(signUpForm.getInsurerName(), signUpForm.getInsurerLicense(), signUpForm.getInsurerEmail(),
-                passwordEncoder.encode(signUpForm.getPassword()),signUpForm.getInsurerAddress(),signUpForm.getSecurityQuestion(),signUpForm
-                .getSecurityAnswer());
+    public Insurer addInsurer(SignUpForm signUpRequest) {
+        Insurer insurer = new Insurer();
+        insurer.setInsurerName(signUpRequest.getInsurerName());
+        insurer.setInsurerLicense(signUpRequest.getInsurerLicense());
+        insurer.setInsurerEmail(signUpRequest.getInsurerEmail());
+        insurer.setPassword(signUpRequest.getPassword());
+        insurer.setSecurityQuestion(signUpRequest.getSecurityQuestion());
+        insurer.setSecurityAnswer(signUpRequest.getSecurityAnswer());
+        insurer.setInsurerAddress(signUpRequest.getInsurerAddress());
+        System.out.println("service" +insurer);
         Set<Role> roles = new HashSet<>();
         Role userrRole = new Role();
         userrRole.setName(RoleName.ROLE_INSURER);
