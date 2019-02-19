@@ -49,7 +49,7 @@ public class InsurerController {
         }
         //Calling InsurerService to add into the MongoDB
         Insurer insurer = insurerService.addInsurer(signUpRequest);
-        //Kafka producing so login microservice can consume it
+        //Kafka producing the Insurer pojo ,so that login microservice can consume it
         kafkaTemplate.send("company_1_json",insurer);
         return new ResponseEntity<>(new ResponseMessage("Insurer registered successfully!"), HttpStatus.OK);
     }

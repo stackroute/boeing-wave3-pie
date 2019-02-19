@@ -33,30 +33,6 @@ public class SignUpForm {
     @Size(min = 6, max = 40)
     private String password;
 
-    public String getSecurityQuestion() {
-        return securityQuestion;
-    }
-
-    public void setSecurityQuestion(String securityQuestion) {
-        this.securityQuestion = securityQuestion;
-    }
-
-    public String getSecurityAnswer() {
-        return securityAnswer;
-    }
-
-    public void setSecurityAnswer(String securityAnswer) {
-        this.securityAnswer = securityAnswer;
-    }
-
-    public String getInsurerAddress() {
-        return insurerAddress;
-    }
-
-    public void setInsurerAddress(String insurerAddress) {
-        this.insurerAddress = insurerAddress;
-    }
-
     @Size(min = 6, max = 40)
     private String securityQuestion;
 
