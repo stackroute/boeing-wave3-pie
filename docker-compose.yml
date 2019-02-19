@@ -153,6 +153,8 @@ services:
     - mongo
     - configserver
     - eurekaserver
+    - apigateway
+    - kafka
 
   ports:
     - 8090:8090
