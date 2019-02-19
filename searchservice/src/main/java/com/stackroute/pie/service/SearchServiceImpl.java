@@ -35,13 +35,8 @@ public class SearchServiceImpl implements SearchService {
         this.searchRepository = searchRepository;
         this.saveRepository = saveRepository;
     }
-
-    @Autowired
-    private MongoOperations mongoOperations;
-
-    private MongoTemplate mongoTemplate;
-
-    @Override
+//getting policies with search value as diseaseName
+     @Override
     public List<Policy> getAllPolicies(String value) {
         String diseases = "cancer, diabetes, aids, dengue, malaria, tuberculosis, cardiac, heartattack, surgery";
         List<Policy> policy1 = new ArrayList<>();
@@ -76,19 +71,19 @@ public class SearchServiceImpl implements SearchService {
         }
     }
 
+    //To save policy (only for temporary purpose)
+
     @Override
     public Policy savePolicy(Policy policy) {
         Policy policy1 = searchRepository.save(policy);
         return policy1;
     }
 
+    //Method to tokenise search value and then return the policies based on the search
 
     public List<Policy> tokenString(String value) throws Exception {
-        List<String> tokenList = new ArrayList<>();
-        List<Policy> policies = new ArrayList<>();
+        List<String> tokenList = new ArrayList<>(); //This list should contain the tokens
         List<Policy> addPolicy = new ArrayList<>();
-        List<Policy> newpolicy1 = new ArrayList<>();
-        Policy newpolicy;
         String companyString = "MaxBupa,StarHealth,Apollo,Religare";
         String policyString = "JeevanSathi,JeevanAnand,JeevanVima,Healthsecure,JeevanHealth";
         String diseaseString = "cancer, diabetes, aids, dengue, malaria, tuberculosis, cardiac, heartattack, surgery";
@@ -97,7 +92,9 @@ public class SearchServiceImpl implements SearchService {
         POSModel model = new POSModel(inputStream);
         POSTaggerME tagger = new POSTaggerME(model);
         System.out.println("After NameFinderME");
+        //tokenising the search value
         String[] token1 = tokenizer.tokenize(value);
+        //tagging the tokenised search value with suitable POS tags
         String[] tags = tagger.tag(token1);
         String[] policyArr = policyString.split(",");
 
@@ -107,6 +104,7 @@ public class SearchServiceImpl implements SearchService {
         String[] strings = sample.toString().split(" ");
         for (String in : strings) {
             System.out.println(in);
+            //if the tag for searchvalue is number
             if (in.contains("CD")) {
                 j = Integer.parseInt(in.split("_")[0]);
 
@@ -124,6 +122,8 @@ public class SearchServiceImpl implements SearchService {
                 }
 
             }
+
+            //if the tag for search value is proper noun or common noun
             if (in.contains("NN") && !in.contains("policy") && !in.contains("policies")) {
                 tokenList.add(in.split("_")[0]);
             }
@@ -133,6 +133,9 @@ public class SearchServiceImpl implements SearchService {
         for (String t : tokenList) {
             System.out.println(t);
         }
+
+        //if the searchvalue contains only one word search
+
         if (tokenList.size() == 1) {
             if (policyString.contains(tokenList.get(0))) {
                 List<Policy> policies2 = searchRepository.findByPolicyName(tokenList.get(0));
@@ -144,7 +147,9 @@ public class SearchServiceImpl implements SearchService {
                 List<Policy> policies2 = searchRepository.findByDiseasesListDiseaseName(tokenList.get(0));
                 return policies2;
             }
-        } else {
+        }
+        //for multiple words search
+        else {
             System.out.println(tokenList.size());
             for (int i = 0; i < tokenList.size(); i++) {
                 for (int k = i + 1; k < tokenList.size(); k++) {
@@ -162,7 +167,6 @@ public class SearchServiceImpl implements SearchService {
                                 addPolicy.add(s);
                         }
                     } else if (diseaseString.contains(tokenList.get(i)) && companyString.contains(tokenList.get(k))) {
-                        System.out.println("HHHHHHHHHHHHHHHHHH");
                         System.out.println(tokenList.get(i));
                         List<Policy> pol = searchRepository.findByDiseasesListDiseaseName(tokenList.get(i));
                         for (Policy s1 : pol) {
@@ -187,7 +191,7 @@ public class SearchServiceImpl implements SearchService {
                 }
             }
         }
-            return addPolicy;
+            return addPolicy; //returns the policyList
         }
 
     }
