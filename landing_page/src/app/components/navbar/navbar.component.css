@@ -1,8 +1,26 @@
 #form-buscar{
-    width:30rem;
+    width:80rem;
     /* margin-left:10rem;
     margin-top: 5rem; */
     margin:2rem auto auto auto;
+ }
+ #collapsibleNavbar li{
+    margin-top: 5%;
+ }
+ /* .signin{
+     margin-left: 30%;
+ } */
+ 
+ .signin{
+   margin-top: auto;
+   margin-bottom: auto;
+ }
+ /* .nav navbar-nav navbar-right {
+     margin-bottom: 10%;
+ } */
+
+ .nav-link dropdown{
+     margin-left: 30%;
  }
 
 @media only screen and (max-width: 425px){

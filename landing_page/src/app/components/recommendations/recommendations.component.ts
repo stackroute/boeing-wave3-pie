@@ -1,6 +1,6 @@
 import { UserDashboardService } from './../../service/user-dashboard.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-recommendations',
@@ -25,5 +25,10 @@ export class RecommendationsComponent implements OnInit {
 
 
    );
+  
     }
+    ngOnChanges(changes: SimpleChanges) {
+      this.router.navigate(['/dashboard',this.userName]);
+    }
+
 }
