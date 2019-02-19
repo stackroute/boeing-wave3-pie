@@ -1,7 +1,7 @@
 package com.stackroute.pie.services;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.stackroute.pie.Model.User;
+import com.stackroute.pie.domain.Insured;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -45,18 +45,18 @@ public class UserPrinciple implements UserDetails {
         this.authorities = authorities;
     }
 
-    public static UserPrinciple build(User user) {
-        List<GrantedAuthority> authorities = user.getRoles().stream().map(role ->
+    public static UserPrinciple build(Insured insured) {
+        List<GrantedAuthority> authorities = insured.getRoles().stream().map(role ->
                 new SimpleGrantedAuthority(role.getName().name())
         ).collect(Collectors.toList());
 
         return new UserPrinciple(
-                user.getInsuredId(),
-                user.getFullName(),
-                user.getUsername(),
-                user.getEmail(),
-                user.getPassword(),
-                user.getGender(),
+                insured.getInsuredId(),
+                insured.getFullName(),
+                insured.getUsername(),
+                insured.getEmail(),
+                insured.getPassword(),
+                insured.getGender(),
                 authorities
         );
     }

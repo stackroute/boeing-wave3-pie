@@ -1,7 +1,7 @@
 package com.stackroute.pie.message.request;
 
-import com.stackroute.pie.Model.Policy;
-import com.stackroute.pie.Model.Request;
+import com.stackroute.pie.domain.Policy;
+import com.stackroute.pie.domain.Request;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.Email;

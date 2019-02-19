@@ -1,6 +1,6 @@
 package com.stackroute.pie.configuration;
 
-import com.stackroute.pie.Model.User;
+import com.stackroute.pie.domain.Insured;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.context.annotation.Bean;
@@ -16,7 +16,7 @@ import java.util.Map;
 @Configuration
 public class KakfaConfiguration {
     @Bean
-    public ProducerFactory<String, User> producerFactory() {
+    public ProducerFactory<String, Insured> producerFactory() {
         Map<String, Object> config = new HashMap<>();
         config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
@@ -25,7 +25,7 @@ public class KakfaConfiguration {
         return new DefaultKafkaProducerFactory<>(config);
     }
     @Bean
-    public KafkaTemplate<String, User> kafkaTemplate() {
+    public KafkaTemplate<String, Insured> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
 }
