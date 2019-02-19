@@ -90,9 +90,9 @@ services:
    - /home/ubuntu/deployment/KafkaDocker:/data/kafka
 
 
- recommendation:
-   image: recommendation-service:latest
-   build: recommendation/
+ recommendations:
+   image: recommendations-service:latest
+   build: recommendations/
    restart: always
    network_mode: host
    depends_on:
