@@ -11,7 +11,7 @@ services:
   network_mode: host
   hostname: localhost
   volumes:
-   - data:/var/lib/mysql  
+   - ./data:/var/lib/mysql  
 
  mongo:
   image: mongo:3.4-jessie
