@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 @Configuration
 public class KafkaConfiguration {
-    //Giving the kafka config
+    //Giving the kafka configuration
     @Bean
     public ProducerFactory<String, Insurer> producerFactory() {
         Map<String, Object> config = new HashMap<>();
