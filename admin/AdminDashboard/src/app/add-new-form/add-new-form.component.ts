@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormFormat } from 'app/formformat';
 
 @Component({
   selector: 'app-add-new-form',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddNewFormComponent implements OnInit {
 
+  private displayNewForm = false;
+  private newForm: FormFormat;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  createNewForm(): void {
+
+    this.displayNewForm = true;
+  }
 }
