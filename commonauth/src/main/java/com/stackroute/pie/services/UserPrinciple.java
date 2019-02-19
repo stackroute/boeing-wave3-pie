@@ -1,6 +1,7 @@
 package com.stackroute.pie.services;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.stackroute.pie.domain.CommonAuth;
 import com.stackroute.pie.domain.Insured;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -12,69 +13,63 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class UserPrinciple implements UserDetails {
-
     private static final long serialVersionUID = 1L;
 
     private int insuredId;
 
-    private String fullName;
+
+//    private String name;
 
     private String username;
 
     private String email;
 
-    private  String gender;
-
     @JsonIgnore
     private String password;
 
-
-
-
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserPrinciple(int insuredId, String fullName,
-                         String username, String email, String password,String gender,
+    public UserPrinciple(
+                         String username, String email, String password,
                          Collection<? extends GrantedAuthority> authorities) {
-        this.insuredId = insuredId;
-        this.fullName = fullName;
+//        this.insuredId = insuredId;
+//        this.name = name;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.gender=gender;
         this.authorities = authorities;
     }
 
-    public static UserPrinciple build(Insured insured) {
-        List<GrantedAuthority> authorities = insured.getRoles().stream().map(role ->
+    public static UserPrinciple build(CommonAuth commonAuth) {
+        List<GrantedAuthority> authorities = commonAuth.getRoles().stream().map(role ->
                 new SimpleGrantedAuthority(role.getName().name())
         ).collect(Collectors.toList());
 
         return new UserPrinciple(
-                insured.getInsuredId(),
-                insured.getFullName(),
-                insured.getUsername(),
-                insured.getEmail(),
-                insured.getPassword(),
-                insured.getGender(),
+//                commonAuth.getInsuredId(),
+                commonAuth.getUsername(),
+                commonAuth.getEmail(),
+                commonAuth.getPassword(),
                 authorities
         );
     }
+
+
     public int getInsuredId() {
         return insuredId;
     }
-    public String getFullName() {
-        return fullName;
+
+    public void setInsuredId(int insuredId) {
+        this.insuredId = insuredId;
     }
+
+//    public String getName() {
+//        return name;
+//    }
 
     public String getEmail() {
         return email;
     }
-
-    public String getGender() {
-        return gender;
-    }
-
 
     @Override
     public String getUsername() {

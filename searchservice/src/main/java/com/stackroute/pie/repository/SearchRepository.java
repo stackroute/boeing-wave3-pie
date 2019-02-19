@@ -11,15 +11,17 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface SearchRepository extends MongoRepository<Policy, Integer> {
+    //To find the policy by policyname
     List<Policy> findByPolicyName(String policyName);
 
+    //To find policies based on diseaseName
     List<Policy> findByDiseasesListDiseaseName(String diseaseName);
 
+    //To find policies by InsurerName
     List<Policy> findByInsurerName(String insurerName);
 
+    //To find policies by sumInsured
     List<Policy> findBySumInsured(int sumInsured);
 }
-//    @Query("{'age' : { $gte: minAge, $lte: ?maxAge } }")
-//    @Query("{age: ?0}, {minAge:?0, maxAge:?1}")
-//    List<Policy> findByAgeBetween(int age);
+
 

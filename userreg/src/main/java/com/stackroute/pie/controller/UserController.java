@@ -1,7 +1,7 @@
 package com.stackroute.pie.controller;
 
-import com.stackroute.pie.Model.*;
-import com.stackroute.pie.Repository.UserRepository;
+import com.stackroute.pie.domain.*;
+import com.stackroute.pie.repository.UserRepository;
 import com.stackroute.pie.exceptions.UserNotFoundException;
 import com.stackroute.pie.message.request.SignUpForm;
 import com.stackroute.pie.message.response.ResponseMessage;
@@ -25,7 +25,7 @@ public class UserController {
 
 
     @Autowired
-    private KafkaTemplate<String, User> kafkaTemplate;
+    private KafkaTemplate<String, Insured> kafkaTemplate;
 //    @Autowired
 //    AuthenticationManager authenticationManager;
 
@@ -57,8 +57,8 @@ public class UserController {
                     HttpStatus.BAD_REQUEST);
         }
 
-        // Creating user's account
-        User user = new User(signUpRequest.getFullName(), signUpRequest.getUsername(), signUpRequest.getEmail(),
+        // Creating insured's account
+        Insured insured = new Insured(signUpRequest.getFullName(), signUpRequest.getUsername(), signUpRequest.getEmail(),
                 encoder.encode(signUpRequest.getPassword()),signUpRequest.getGender(),signUpRequest.getCreatedDate(),signUpRequest.getSecurityAnswer());
 
 //        Set<String> strRoles = signUpRequest.getRole();
@@ -84,24 +84,24 @@ public class UserController {
 
         roles.add(userrRole);
 
-        user.setRoles(roles);
+        insured.setRoles(roles);
 
-//        user.setPolicies();
+//        insured.setPolicies();
 
-        userRepository.save(user);
-        kafkaTemplate.send("userreg_json",user);
-        return new ResponseEntity<>(new ResponseMessage("User registered successfully!"), HttpStatus.OK);
+        userRepository.save(insured);
+        kafkaTemplate.send("userregg_json", insured);
+        return new ResponseEntity<>(new ResponseMessage("Insured registered successfully!"), HttpStatus.OK);
     }
 
 //    @RequestMapping(value = "/requests/{insuredId}", method = RequestMethod.GET)
-//    public ResponseEntity User (@PathVariable("insuredId") int insuredId) {
+//    public ResponseEntity Insured (@PathVariable("insuredId") int insuredId) {
 //
 //        ResponseEntity responseEntity;
 //
 //        try {
 //
-//            User user1 = userService.getRequests(insuredId);
-//            responseEntity =  new ResponseEntity<User>(user1, HttpStatus.OK);
+//            Insured user1 = userService.getRequests(insuredId);
+//            responseEntity =  new ResponseEntity<Insured>(user1, HttpStatus.OK);
 //
 //        }
 //        catch (UserNotFoundException ex) {
@@ -112,11 +112,11 @@ public class UserController {
 //
 //    }
 //    @RequestMapping(value = "/request", method = RequestMethod.POST)
-//    public ResponseEntity User (@RequestBody User user) {
+//    public ResponseEntity Insured (@RequestBody Insured user) {
 //        ResponseEntity responseEntity;
-//        User user1 = userService.postRequest(user);
+//        Insured user1 = userService.postRequest(user);
 //        System.out.println("In controller" + user1);
-//        responseEntity = new ResponseEntity<User>(user1,HttpStatus.OK);
+//        responseEntity = new ResponseEntity<Insured>(user1,HttpStatus.OK);
 //        return responseEntity;
 //    }
     @RequestMapping(value = "/profile/{username}", method = RequestMethod.GET)
@@ -125,8 +125,8 @@ public class UserController {
 
         try {
 
-            User user1 = userService.getProfile(username);
-            responseEntity =  new ResponseEntity<User>(user1, HttpStatus.OK);
+            Insured insured1 = userService.getProfile(username);
+            responseEntity =  new ResponseEntity<Insured>(insured1, HttpStatus.OK);
 
         }
         catch (UserNotFoundException ex) {
@@ -137,13 +137,13 @@ public class UserController {
 
     }
     @RequestMapping(value = "/profile/{username}", method = RequestMethod.PUT)
-    public ResponseEntity User (@PathVariable("username") String username, @RequestBody User user){
+    public ResponseEntity User (@PathVariable("username") String username, @RequestBody Insured insured){
         ResponseEntity responseEntity;
 
         try {
 
-            User user1 = userService.updateProfile(username, user);
-            responseEntity =  new ResponseEntity<User>(user1, HttpStatus.OK);
+            Insured insured1 = userService.updateProfile(username, insured);
+            responseEntity =  new ResponseEntity<Insured>(insured1, HttpStatus.OK);
 
         }
         catch (UserNotFoundException ex) {
