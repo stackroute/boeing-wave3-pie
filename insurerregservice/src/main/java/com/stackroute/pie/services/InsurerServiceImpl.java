@@ -24,9 +24,9 @@ public class InsurerServiceImpl implements  InsurerService{
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    InsurerServiceImpl(InsurerRepository insurerRepository, PasswordEncoder passwordEncoder) {
+    InsurerServiceImpl(InsurerRepository insurerRepository) {
         this.insurerRepository = insurerRepository;
-        this.passwordEncoder = passwordEncoder;
+//        this.passwordEncoder = passwordEncoder;
     }
 
     public Insurer addNewPolicy(Policy policy) {
