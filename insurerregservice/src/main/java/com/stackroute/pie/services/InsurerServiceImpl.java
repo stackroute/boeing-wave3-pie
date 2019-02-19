@@ -20,13 +20,13 @@ import java.util.Set;
 public class InsurerServiceImpl implements  InsurerService{
 
     private InsurerRepository insurerRepository;
-
+  
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    InsurerServiceImpl(InsurerRepository insurerRepository) {
+    public InsurerServiceImpl(InsurerRepository insurerRepository) {
         this.insurerRepository = insurerRepository;
-//        this.passwordEncoder = passwordEncoder;
+        //this.passwordEncoder = passwordEncoder;
     }
 
     public Insurer addNewPolicy(Policy policy) {

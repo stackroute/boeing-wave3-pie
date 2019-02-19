@@ -23,7 +23,7 @@ import java.util.Set;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("api/v1")
+@RequestMapping("/api/v1")
 public class InsurerController {
 
     @Autowired
