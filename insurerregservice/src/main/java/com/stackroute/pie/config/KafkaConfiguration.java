@@ -1,6 +1,6 @@
-package com.stackroute.pie.configuration;
+package com.stackroute.pie.config;
 
-import com.stackroute.pie.model.Insurer;
+import com.stackroute.pie.domain.Insurer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 @Configuration
 public class KafkaConfiguration {
+    //Giving the kafka config
     @Bean
     public ProducerFactory<String, Insurer> producerFactory() {
         Map<String, Object> config = new HashMap<>();
@@ -22,6 +23,7 @@ public class KafkaConfiguration {
         System.out.println("inside producer factory*************************");
         return new DefaultKafkaProducerFactory<>(config);
     }
+    //Giving the Kafkatemplate to be produced
     @Bean
     public KafkaTemplate<String, Insurer> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
