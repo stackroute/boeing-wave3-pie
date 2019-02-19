@@ -177,6 +177,7 @@ public ResponseEntity<?> linkpolicy(@PathVariable String insurerLicense,@PathVar
 
 @PostMapping(value = "relation/{policyId}/{userId}")
     public ResponseEntity<?> hasPolicy(@PathVariable int policyId, @PathVariable int userId){
+
         ResponseEntity responseEntity;
         responseEntity=new ResponseEntity<String>(recommendationService.hasPolicy(policyId,userId),HttpStatus.OK);
         return responseEntity;

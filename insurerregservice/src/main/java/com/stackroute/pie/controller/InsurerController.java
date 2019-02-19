@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -99,10 +100,24 @@ public class InsurerController {
         return new ResponseEntity<>(new ResponseMessage("Insurer registered successfully!"), HttpStatus.OK);
     }
 
-    @PutMapping("/newpolicy")
+    @PutMapping("/policy/newpolicy")
     public ResponseEntity<?> addNewPolicy(@RequestBody Policy insurerPolicy){
         Insurer insurer = userDetailsService.addNewPolicy(insurerPolicy);
-        kafkaTemplate.send("company_policy_json",insurer);
+        kafkaTemplate.send("insurer_policy_json",insurer);
+        return new ResponseEntity<Insurer>(insurer, HttpStatus.OK);
+    }
+    @GetMapping("/policy/display/{insurerLicense}")
+    public ResponseEntity<?> getPolicies(@PathVariable(value = "insurerLicense") String insurerLicense){
+        List<Policy> policies = userDetailsService.getPolicies(insurerLicense);
+        return new ResponseEntity<List<Policy>>(policies, HttpStatus.OK);
+    }
+
+    @PutMapping("/policy/delete/{insurerName}/{policyId}")
+    public ResponseEntity<?> deletePolicy(@PathVariable(value = "insurerName") String insurerName,@PathVariable(value = "policyId") long policyId){
+        System.out.println("InsurerLicence : "+insurerName + " " +"policyId : "+policyId);
+        Insurer insurer = userDetailsService.deletePolicy(insurerName,policyId);
+//        System.out.println("InsurerLicence : "+policy.getInsurerName() + " " +"policyId : "+policy.getPolicyId());
+
         return new ResponseEntity<Insurer>(insurer, HttpStatus.OK);
     }
 }
