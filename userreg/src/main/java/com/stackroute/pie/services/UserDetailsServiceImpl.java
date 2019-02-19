@@ -1,11 +1,7 @@
 package com.stackroute.pie.services;
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.client.MongoClient;
-import com.stackroute.pie.Model.User;
-import com.stackroute.pie.Repository.UserRepository;
+import com.stackroute.pie.domain.Insured;
+import com.stackroute.pie.repository.UserRepository;
 import com.stackroute.pie.exceptions.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -34,30 +30,30 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username).orElseThrow(
-                () -> new UsernameNotFoundException("User Not Found with -> username or email : " + username));
+        Insured insured = userRepository.findByUsername(username).orElseThrow(
+                () -> new UsernameNotFoundException("Insured Not Found with -> username or email : " + username));
 
-        return UserPrinciple.build(user);
+        return UserPrinciple.build(insured);
     }
 
-    public User getRequests(int insuredId) throws UserNotFoundException {
+    public Insured getRequests(int insuredId) throws UserNotFoundException {
         if(userRepository.existsByInsuredId(insuredId)) {
 
-            User user1 = userRepository.findByInsuredId(insuredId).get();
-            return user1;
+            Insured insured1 = userRepository.findByInsuredId(insuredId).get();
+            return insured1;
         }
         else
             throw new UserNotFoundException();
     }
 
     //to post the dummy requests to the database
-    public User postRequest(User user){
-        User user1 = userRepository.save(user);
-        return user1;
+    public Insured postRequest(Insured insured){
+        Insured insured1 = userRepository.save(insured);
+        return insured1;
     }
 
 
-//    public User saveQuestion(User question){
+//    public Insured saveQuestion(Insured question){
 //        System.out.println(question);
 //        MongoClient mongoClient = new MongoClient( "localhost" , 27017 );
 //        DB db = mongoClient.getDB("admin");
@@ -71,31 +67,31 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 //        if(userRepository.existsById((int)(question.getInsuredId()()))) {
 //            throw new QuestionAlreadyExistsException("This Question already exists");
 //        }
-//        User question1 = userRepository.save(question);
+//        Insured question1 = userRepository.save(question);
 //        return question1;
 //    }
-public User getProfile(String username) throws UserNotFoundException{
+public Insured getProfile(String username) throws UserNotFoundException{
     if(userRepository.existsByUsername(username)){
 //            System.out.println("service" + userRepository.existsByUsername(username));
-        User user1 = userRepository.findByUsername(username).get();
-//            System.out.println(user1);
-        return user1;
+        Insured insured1 = userRepository.findByUsername(username).get();
+//            System.out.println(insured1);
+        return insured1;
     }
     else
         throw new UserNotFoundException();
 }
-    public User updateProfile(String username, User user) throws UserNotFoundException{
+    public Insured updateProfile(String username, Insured insured) throws UserNotFoundException{
 
         if(userRepository.existsByUsername(username)) {
-            User user1 = userRepository.findByUsername(username).get();
-            user1.setEmail(user.getEmail());
-            user1.setFullName(user.getFullName());
-            user1.setGender(user.getGender());
-            user1.setPassword(user.getPassword());
-            user1.setUsername(user.getUsername());
-            user1.setSecurityAnswer(user.getSecurityAnswer());
-            User user2 = userRepository.save(user);
-            return user1;
+            Insured insured1 = userRepository.findByUsername(username).get();
+            insured1.setEmail(insured.getEmail());
+            insured1.setFullName(insured.getFullName());
+            insured1.setGender(insured.getGender());
+            insured1.setPassword(insured.getPassword());
+            insured1.setUsername(insured.getUsername());
+            insured1.setSecurityAnswer(insured.getSecurityAnswer());
+            Insured insured2 = userRepository.save(insured);
+            return insured1;
         }
         else
             throw new UserNotFoundException();

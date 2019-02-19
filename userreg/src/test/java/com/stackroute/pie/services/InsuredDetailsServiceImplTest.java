@@ -2,7 +2,7 @@ package com.stackroute.pie.services;
 
 import com.stackroute.pie.domain.Request;
 import com.stackroute.pie.domain.Insured;
-import com.stackroute.pie.Repository.UserRepository;
+import com.stackroute.pie.repository.UserRepository;
 import com.stackroute.pie.exceptions.UserNotFoundException;
 import org.junit.Before;
 import org.junit.Test;

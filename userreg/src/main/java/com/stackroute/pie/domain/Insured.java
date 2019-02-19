@@ -2,6 +2,9 @@ package com.stackroute.pie.domain;
 
 
 //import org.hibernate.annotations.NaturalId;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -13,7 +16,9 @@ import javax.validation.constraints.Size;
 import java.util.*;
 
 @Document(collection="usersname")
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Insured {
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
@@ -67,8 +72,6 @@ public class Insured {
         this.requests = requests;
     }
 
-    public Insured() {
-    }
 
     @NotBlank
     private String securityAnswer;
@@ -86,93 +89,6 @@ public class Insured {
     }
 
 
-    public int getInsuredId() {
-        return insuredId;
-    }
-
-    public void setInsuredId(int insuredId) {
-        this.insuredId = insuredId;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
-
-    public Set<Policy> getPolicies() {
-        return policies;
-    }
-
-    public void setPolicies(Set<Policy> policies) {
-        this.policies = policies;
-    }
-
-    public String getSecurityAnswer() {
-        return securityAnswer;
-    }
-
-    public void setSecurityAnswer(String securityAnswer) {
-        this.securityAnswer = securityAnswer;
-    }
-
-
-    public List<Request> getRequests() {
-        return requests;
-    }
-
-    public void setRequests(List<Request> requests) {
-        this.requests = requests;
-    }
 
 
 

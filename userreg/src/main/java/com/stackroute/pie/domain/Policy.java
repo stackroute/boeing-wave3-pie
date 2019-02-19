@@ -1,6 +1,12 @@
 package com.stackroute.pie.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Policy {
 
 
@@ -16,60 +22,5 @@ public class Policy {
     private int yearlyPremium;
 
 
-    public int getPolicyid() {
-        return policyid;
-    }
-
-    public void setPolicyid(int policyid) {
-        this.policyid = policyid;
-    }
-
-    public String getInsurerName() {
-        return insurerName;
-    }
-
-    public void setInsurerName(String insurerName) {
-        this.insurerName = insurerName;
-    }
-
-    public String[] getDiseases() {
-        return diseases;
-    }
-
-    public void setDiseases(String[] diseases) {
-        this.diseases = diseases;
-    }
-
-    public int getSumInsured() {
-        return sumInsured;
-    }
-
-    public void setSumInsured(int sumInsured) {
-        this.sumInsured = sumInsured;
-    }
-
-    public int getWaitingPeriod() {
-        return waitingPeriod;
-    }
-
-    public void setWaitingPeriod(int waitingPeriod) {
-        this.waitingPeriod = waitingPeriod;
-    }
-
-    public int getMonthlyPremium() {
-        return monthlyPremium;
-    }
-
-    public void setMonthlyPremium(int monthlyPremium) {
-        this.monthlyPremium = monthlyPremium;
-    }
-
-    public int getYearlyPremium() {
-        return yearlyPremium;
-    }
-
-    public void setYearlyPremium(int yearlyPremium) {
-        this.yearlyPremium = yearlyPremium;
-    }
 
 }

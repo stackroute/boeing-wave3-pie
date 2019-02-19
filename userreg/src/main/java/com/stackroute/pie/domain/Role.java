@@ -1,6 +1,9 @@
 package com.stackroute.pie.domain;
 
 //import org.hibernate.annotations.NaturalId;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 
 //import javax.persistence.*;

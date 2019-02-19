@@ -2,8 +2,8 @@
 //
 //import com.fasterxml.jackson.core.JsonProcessingException;
 //import com.fasterxml.jackson.databind.ObjectMapper;
-//import com.stackroute.pie.Model.Request;
-//import com.stackroute.pie.Model.User;
+//import com.stackroute.pie.domain.Request;
+//import com.stackroute.pie.domain.Insured;
 //import com.stackroute.pie.services.UserDetailsServiceImpl;
 //import org.junit.Before;
 //import org.junit.Test;
@@ -36,7 +36,7 @@
 //        @InjectMocks
 //        private UserControllerTest userController;
 //        private int insuredId;
-//        private User user;
+//        private Insured user;
 //        private List<Request> requestList = new ArrayList<>();
 //        //    private int trackId=2;
 ////    private String name="Pal";
@@ -47,7 +47,7 @@
 ////        track = new Track("Kal ho na ho", "SonuNigam");
 ////        trackList.add(track);
 //            requestList.add(0,new Request(2,"acc","xyz","abc"));
-//            user = new User(1,requestList);
+//            user = new Insured(1,requestList);
 //        }
 //        @Test
 //        public void getRequestsSuccess() throws Exception {
