@@ -1,4 +1,4 @@
-package com.stackroute.pie.model;
+package com.stackroute.pie.domain;
 
 //import org.hibernate.annotations.NaturalId;
 import org.springframework.data.annotation.Id;

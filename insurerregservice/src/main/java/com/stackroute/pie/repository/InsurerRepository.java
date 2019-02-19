@@ -1,6 +1,6 @@
-package com.stackroute.pie.Repository;
+package com.stackroute.pie.repository;
 
-import com.stackroute.pie.model.Insurer;
+import com.stackroute.pie.domain.Insurer;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
@@ -14,7 +14,4 @@ public interface InsurerRepository extends MongoRepository<Insurer,Long> {
     Boolean existsByInsurerEmail(String insurerEmail);
     Optional<Insurer> findByInsurerName(String insurerName);
     void deleteByInsurerName(String insurerName);
-    void deleteByPoliciesPolicyId(long policyId);
-    void deletePolicyByInsurerLicense(String insurerName);
-
 }
