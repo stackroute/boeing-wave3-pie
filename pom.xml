@@ -37,6 +37,7 @@
        	<module>searchservice</module>
         <module>commonauth</module>
         <module>settlement</module>
+        <module>porting</module>
     </modules>
     <dependencies>
         <dependency>
