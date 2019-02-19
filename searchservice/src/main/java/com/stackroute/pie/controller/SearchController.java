@@ -19,7 +19,7 @@ public class SearchController {
     public  SearchController(SearchServiceImpl searchService){
         this.searchService = searchService;
     }
-
+    //save method (temporary purpose)
     @PostMapping(value = "policy")
     public ResponseEntity<?> savePolicy(@RequestBody Policy policy)
     {
@@ -28,7 +28,7 @@ public class SearchController {
         responseEntity = new ResponseEntity<Policy>(policy1, HttpStatus.CREATED);
         return responseEntity;
     }
-
+    //to get policyList based on searchvalue
     @GetMapping(value="policies/{value}")
     public ResponseEntity<?> tokeniseString(@PathVariable(value = "value")String value)
     { ResponseEntity responseEntity;

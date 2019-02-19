@@ -1,4 +1,4 @@
-<nav class="nav navbar navbar-expand-sm bg-dark navbar-inverse">
+<nav class="navbar navbar-light" style="background-color:  #ffe6e6; height:85px;">
       <div class="container-fluid">
           <div class="navbar-header">
       <a class="navbar-brand" href="#">
@@ -21,29 +21,40 @@
       </div>
     </div>
   </form> -->
-  <form  *ngIf ="this.currentRoute!=='insurerDashboard/:insurerLicense'" #createForm="ngForm" (ngSubmit)="search()" id="form-buscar">
+  <!-- <form  *ngIf ="this.currentRoute!=='insurerDashboard/:insurerLicense'" #createForm="ngForm" (ngSubmit)="search()" id="form-buscar"> -->
     <!-- <div class="form-group"> -->
-    <div class="input-group">
+    <!-- <div class="input-group" style="width: 40%;margin-left: 5%;">
         <input type="text" class="form-control" name="message" [(ngModel)]="message" placeholder="Search">  
             <span class="input-group-btn">
           <button class="btn btn-success" type="submit" id="button-addon2">
          <i class="glyphicon glyphicon-search" aria-hidden="true"></i> </button>
-          </span>
+          </span> -->
         <!-- </div> -->
-      </div>
-    </form>
+      <!-- </div> -->
+      <form class="navbar-form navbar-left" (ngSubmit) = "search()" style="margin-left:15%;margin-top: 2%;">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search">
+          <div class="input-group-btn">
+            <button class="btn btn-success" type="submit">
+              <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+   
+    <div class="signin" style=" margin-top: 1%;">
+      <ul class="nav navbar-nav navbar-right">
+      <li class = "nav-link dropdown"  >
+          <a class = "dropdown-toggle" data-toggle = "dropdown" href="#"><span class="glyphicon glyphicon-user" ></span> Sign In</a>
+          <ul class = "dropdown-menu">
+            <li><a routerLink = '/admin' routerLinkActive = "active">Admin Login</a></li>
+            <li><a routerLink = '/login' routerLinkActive = "active">User Login</a></li>
+            <li><a routerLink = '/companylogin' routerLinkActive = "active">Company Login</a></li>
     
-  <ul class="nav navbar-nav navbar-right">
-  <li class = "nav-link dropdown">
-      <a class = "dropdown-toggle" data-toggle = "dropdown" href="#"><span class="glyphicon glyphicon-user"></span> Sign In</a>
-      <ul class = "dropdown-menu">
-        <li><a routerLink = '/admin' routerLinkActive = "active">Admin Login</a></li>
-        <li><a routerLink = '/login' routerLinkActive = "active">User Login</a></li>
-        <li><a routerLink = '/companylogin' routerLinkActive = "active">Company Login</a></li>
-
-      </ul>
-  </li>
-</ul>
+          </ul>
+      </li>
+    </ul>
+    </div>
 </div>
 <!-- </div> -->
 </div>

@@ -18,7 +18,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import {CarouselModule} from 'ngx-bootstrap/carousel';
 import { HttpClientModule } from '@angular/common/http';
-
+import {MatSidenavModule} from '@angular/material/sidenav';
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -44,7 +44,6 @@ import {
   MatRadioModule,
   MatRippleModule,
   MatSelectModule,
-  MatSidenavModule,
   MatSliderModule,
   MatSlideToggleModule,
   MatSnackBarModule,
@@ -81,31 +80,7 @@ import { GetCompanyPolicyComponent } from './components/get-company-policy/get-c
 import { CompanyregisterComponent } from './components/companyregister/companyregister.component';
 import { InsurerDashboardComponent } from './components/insurer-dashboard/insurer-dashboard.component';
 
-const routes: Routes = [
-  {path: 'search/:value', component: SearchComponent},
-  {path: 'login', component: LoginComponent },
-  {path: 'home', component: HomeComponent},
-  {path:'register', component:RegisterComponent},
-  { path: 'dashboard/:username', component: DashboardComponent},
-  {path: 'recommendations/:username', component: RecommendationsComponent},
-  {path: 'mypolicies', component: MyPoliciesComponent},
-  {path:'companylogin', component: LoginInsurerComponent},
-  {path: 'newPolicyForm', component: AddNewPolicyComponent},
-  {path: 'incomingPortingRequest/:insurerLicense', component: IncomingPortingRequestsComponent},
- {path:'outgoingPortingRequest/:insurerLicense', component: OutgoingPortingRequestsComponent},
-  {path: 'admin', component:FormDashboardComponent},
-    {path: 'porting', component:PortingRequestComponent},
-   {path: 'deleteRequest/:requestId', component:DeleteRequestComponent},
-   {path: 'updateRequest/:requestId', component:UpdateRequestComponent},
-   {path: 'myprofile/:username', component:UserProfileComponent},
-   {path: 'updateProfile/:username', component:UpdateProfileComponent},
-   {path:'newPolicyForm', component:AddNewPolicyComponent},
-   {path:'myCompanyPolicy/:insurerLicense',component:GetCompanyPolicyComponent},
-   {path:'deletePolicy/:insurerName/:policyId',component:CompanyPolicyDeleteComponent},
-   {path: 'companyregister', component: CompanyregisterComponent},
-   {path: 'myrequests/:username',component: DisplayRequestsComponent},
-   {path: 'insurerDashboard/:insurerLicense',component:InsurerDashboardComponent}
-];
+const routes: Routes = [];
 @NgModule({
   declarations: [
     AppComponent,
