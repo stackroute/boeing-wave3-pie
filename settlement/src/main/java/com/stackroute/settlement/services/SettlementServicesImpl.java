@@ -10,10 +10,11 @@ import java.util.List;
 public class SettlementServicesImpl implements SettlementServices {
     private SettlementRepository settlementRepository;
     @Autowired
-    public SettlementServicesImpl(SettlementRepository settlementRepository) {this.settlementRepository = settlementRepository}
+    public SettlementServicesImpl(SettlementRepository settlementRepository) {this.settlementRepository = settlementRepository;}
     @Override
     public List<PendingTasks> getAllPendingTasksForInsurer(Long insurerId) {
         List<PendingTasks> pendingTasksList = settlementRepository.findAll();
+        List<PendingTasks> pendingTasksList = settlementRepository.
         return pendingTasksList;
     }
 
