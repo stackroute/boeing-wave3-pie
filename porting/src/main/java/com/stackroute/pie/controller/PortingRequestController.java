@@ -23,16 +23,19 @@ public class PortingRequestController {
     public PortingRequestController(PortingRequestServiceImpl requestService) {
         this.requestService = requestService;
     }
-    @RequestMapping(value = "request", method = RequestMethod.POST)
+
+    //Method to store porting request details
+    @PostMapping("request")
     public ResponseEntity PortingRequest (@RequestBody PortingRequest request) {
-        System.out.println("In controller");
         ResponseEntity responseEntity;
         PortingRequest request1 = requestService.postRequest(request);
 
         responseEntity = new ResponseEntity<PortingRequest>(request1, HttpStatus.OK);
         return responseEntity;
     }
-    @RequestMapping(value = "request/{requestId}", method = RequestMethod.PUT)
+
+    //Method to update the request details
+    @PutMapping("request/{requestId}")
     public ResponseEntity PortingRequest (@PathVariable("requestId") int requestId, @RequestBody PortingRequest request){
         ResponseEntity responseEntity;
 
@@ -49,7 +52,9 @@ public class PortingRequestController {
         return responseEntity;
 
     }
-    @RequestMapping(value = "request/{requestId}", method = RequestMethod.DELETE)
+
+    //Method to delete porting request
+    @DeleteMapping("request/{requestId}")
     public ResponseEntity PortingRequest (@PathVariable("requestId") int requestId){
         System.out.println("hi");
         ResponseEntity responseEntity;
@@ -67,7 +72,9 @@ public class PortingRequestController {
         return responseEntity;
 
     }
-    @GetMapping(value = "request/{username}")
+
+    //Method to display requests
+    @GetMapping("request/{username}")
     public ResponseEntity<List<PortingRequest>> requestLists(@PathVariable("username") String insuredName) {
         ResponseEntity responseEntity;
         try {
@@ -80,6 +87,8 @@ public class PortingRequestController {
         }
         return responseEntity;
     }
+
+    //Method to display incoming porting requests
     @GetMapping("/incomingportingrequest/{newInsurerName}")
     public ResponseEntity<?> incomingPortingRequest( @PathVariable("newInsurerName") String newInsurerName) {
         List<PortingRequest> incomingPortingRequests = requestService.getIncomingPortingRequest(newInsurerName);
@@ -93,6 +102,7 @@ public class PortingRequestController {
         return new ResponseEntity<List<PortingRequest>>(incomingPortingRequests1, HttpStatus.OK);
     }
 
+    //Method to display outgoing porting requests
     @GetMapping("/outgoingportingrequest/{insurerName}")
     public ResponseEntity<?> outgoingPortingRequest(@PathVariable("insurerName") String insurerName) {
         List<PortingRequest> outgoingPortingRequests = requestService.getOutgoingPortingRequest(insurerName);
@@ -104,6 +114,8 @@ public class PortingRequestController {
         }
         return new ResponseEntity<List<PortingRequest>>(outgoingPortingRequests1, HttpStatus.OK);
     }
+
+    //Method to accept outgoing requests
     @PutMapping("/acceptoutgoingportingrequest")
     public ResponseEntity<?> acceptOutgoingPortingRequest(@RequestBody PortingRequest portingRequest) {
         PortingRequest acceptOutgoingPortingRequest = requestService.acceptOutgoingPortingRequest(portingRequest);
@@ -111,34 +123,30 @@ public class PortingRequestController {
         acceptOutgoingPortingRequest.setFromApproval(1);
         Date d = new Date();
         acceptOutgoingPortingRequest.setAcceptedDateofPreviousInsurer(d);
-        PortingRequest portingRequest1 = requestService.savePortingRequest(acceptOutgoingPortingRequest);
+        PortingRequest portingRequest1 = requestService.postRequest(acceptOutgoingPortingRequest);
         return new ResponseEntity<PortingRequest>(portingRequest1, HttpStatus.OK);
     }
 
+    //Method to accept outgoing requests
     @PutMapping("/acceptincomingportingrequest")
     public ResponseEntity<?> acceptIncomingPortingRequest(@RequestBody PortingRequest portingRequest) {
         PortingRequest acceptIncomingPortingRequest = requestService.acceptIncomingPortingRequest(portingRequest);
         requestService.deletePortingRequest(portingRequest);
         acceptIncomingPortingRequest.setFromApproval(1);
         acceptIncomingPortingRequest.setToApproval(1);
-        PortingRequest portingRequest1 = requestService.savePortingRequest(acceptIncomingPortingRequest);
+        PortingRequest portingRequest1 = requestService.postRequest(acceptIncomingPortingRequest);
         return new ResponseEntity<PortingRequest>(portingRequest1, HttpStatus.OK);
     }
+
+    //Method to reject incoming requests
     @PutMapping("/rejectincomingportingrequest")
     public ResponseEntity<?> rejectIncomingPortingRequest(@RequestBody PortingRequest portingRequest) {
         PortingRequest rejectIncomingPortingRequest = requestService.rejectIncomingPortingRequest(portingRequest);
         requestService.deletePortingRequest(portingRequest);
         rejectIncomingPortingRequest.setFromApproval(1);
         rejectIncomingPortingRequest.setToApproval(2);
-        PortingRequest portingRequest1 = requestService.savePortingRequest(rejectIncomingPortingRequest);
+        PortingRequest portingRequest1 = requestService.postRequest(rejectIncomingPortingRequest);
         return new ResponseEntity<PortingRequest>(portingRequest1, HttpStatus.OK);
-    }
-
-
-    @PostMapping("/addportingrequest")
-    public ResponseEntity<?> insertPortingRequest(@RequestBody PortingRequest portingRequest) {
-        PortingRequest portingRequest1 = requestService.savePortingRequest(portingRequest);
-        return new ResponseEntity<PortingRequest>(portingRequest,HttpStatus.OK);
     }
 
 }
