@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 
@@ -83,19 +84,20 @@ public class RecommendationsController {
         return responseEntity;
     }
 //
-    @PostMapping(value = "relation/{policyId}/{insuredId}")
-    public ResponseEntity<?> linkinsured(@PathVariable int policyId,@PathVariable int insuredId){
+    @PostMapping(value = "relation/{policyId}/{username}")
+    public ResponseEntity<?> linkinsured(@PathVariable int policyId,@PathVariable String username){
         ResponseEntity responseEntity;
-        responseEntity= new ResponseEntity<String>(recommendationsServ.insuredPolicy(policyId,insuredId),HttpStatus.OK);
+        responseEntity= new ResponseEntity<String>(recommendationsServ.insuredPolicy(policyId,username),HttpStatus.OK);
         return responseEntity;
     }
 //
-    @PostMapping(value = "view/{policyId}/{insuredId}")
-    public ResponseEntity<?> viewPolicy(@PathVariable int policyId,@PathVariable int insuredId){
+    @PostMapping(value = "view/{policyId}/{username}")
+    public ResponseEntity<?> viewPolicy(@PathVariable int policyId,@PathVariable String username){
         ResponseEntity responseEntity;
-        responseEntity= new ResponseEntity<String>(recommendationsServ.insuredPolicy(policyId,insuredId),HttpStatus.CREATED);
+        responseEntity= new ResponseEntity<String>(recommendationsServ.viewPolicy(policyId,username),HttpStatus.CREATED);
         return responseEntity;
     }
+
     @GetMapping("policies")
     public List<Policy> getAll(){
         List<Policy> policyList=recommendationsServ.displayPolicy();
@@ -103,10 +105,10 @@ public class RecommendationsController {
 
     }
 
-    @GetMapping("policyByuserName/{userName}")
-    public  List<Policy> getByname(@PathVariable("userName") String userName){
+    @GetMapping("policyByuserName/{username}")
+    public  List<Policy> getByname(@PathVariable("username") String username){
         System.out.println("in controller");
-        List<Policy> policiyy=recommendationsServ.getByUserName(userName);
+        List<Policy> policiyy=recommendationsServ.getByUserName(username);
         System.out.println(policiyy);
         return policiyy;
     }
@@ -115,6 +117,7 @@ public class RecommendationsController {
     @GetMapping("policyByuserAge/{age}")
     public  List<Policy> getByAge(@PathVariable("age") Integer age){
         System.out.println("in controller");
+        System.out.println("age=: "+ age);
         List<Policy> policiyy=recommendationsServ.getByAge(age);
         System.out.println(policiyy);
         return policiyy;
@@ -159,7 +162,37 @@ public class RecommendationsController {
         return policiyy;
     }
 
+    @GetMapping("policyByAgeGender/{age}/{userGender}")
+    public  List<Policy> getByAgeGender(@PathVariable("age")int age,@PathVariable("userGender")String usergender){
+        System.out.println("in controller");
+
+        List<String> genderList= Arrays.asList(usergender);
+        List<Policy> policiyy=recommendationsServ.getByAgeGender(age,genderList);
+        System.out.println(policiyy);
+        return policiyy;
+    }
 
 
+    @GetMapping("policyByAgeDisease/{age}/{policyDisease}")
+    public  List<Policy> getByAgeDisease(@PathVariable("age")int age,@PathVariable("policyDisease")String policyDisease){
+        System.out.println("in controller");
+
+        List<String> diseaseList= Arrays.asList(policyDisease);
+        List<Policy> policiyy=recommendationsServ.getByAgeDisease(age,diseaseList);
+        System.out.println(policiyy);
+        return policiyy;
+    }
+
+
+    @GetMapping("policyByAGenderDisease/{usergender}/{policyDisease}")
+    public  List<Policy> getByAgeDisease(@PathVariable("usergender")String usergender,@PathVariable("policyDisease")String policyDisease){
+        System.out.println("in controller");
+        List<String> genderList= Arrays.asList(usergender);
+
+        List<String> diseaseList= Arrays.asList(policyDisease);
+        List<Policy> policiyy=recommendationsServ.getByGenderDisease(genderList,diseaseList);
+        System.out.println(policiyy);
+        return policiyy;
+    }
 
 }
