@@ -20,7 +20,7 @@ public class Policy {
     private int policyId;
 
     private String policyInsurerName;
-    @Relationship(type="IS_POLICY_OF")
+
     private String policyName;
     List<String> policyType;
     private long minSumInsured;

@@ -3,6 +3,9 @@ package com.stackroute.pie.services;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.stackroute.pie.domain.CommonAuth;
 import com.stackroute.pie.domain.Insured;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,7 +14,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserPrinciple implements UserDetails {
     private static final long serialVersionUID = 1L;
 
@@ -55,21 +60,11 @@ public class UserPrinciple implements UserDetails {
     }
 
 
-    public int getInsuredId() {
-        return insuredId;
-    }
 
-    public void setInsuredId(int insuredId) {
-        this.insuredId = insuredId;
-    }
 
-//    public String getName() {
-//        return name;
-//    }
 
-    public String getEmail() {
-        return email;
-    }
+
+
 
     @Override
     public String getUsername() {

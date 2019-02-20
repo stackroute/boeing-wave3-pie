@@ -19,8 +19,8 @@ public interface RecommendationsRepo extends Neo4jRepository<Insured,Long> {
     @Query("CREATE (insurer:Insurer{insurerLicense:{insurerLicense},insurerName:{insurerName}})")
     Insurer newInsurer(@Param("insurerId")Long insurerId, @Param("insurerName")String insurerName, @Param("insurerLicense")String insurerLicense);
 
-    @Query("CREATE (policy:Policy{maxAge:{maxAge},minAge:{minAge},policyId:{policyId},policyName:{policyName},insurerName:{insurerName},gender:[value in {gender} | toString(value)] as list,diseasesCovered:[value in {diseasesCovered} | toString(value)] as list,policyType:[value in {policyType} | toString(value)] as list})")
-    Policy newPolicy(@Param("policyId")int policyId, @Param("insurerName")String insurerName, @Param("policyName")String policyName, @Param("minAge")int minAge, @Param("maxAge")int maxAge, @Param("gender")List<String> gender, @Param("diseasesCovered")List<String> diseasesCovered, @Param("policyType")List<String> policyType);
+    @Query("CREATE (policy:Policy{maxAge:{maxAge},minAge:{minAge},policyId:{policyId},policyName:{policyName},policyInsurerName:{policyInsurerName},gender:[value in {gender} | toString(value)],diseasesCovered:[value in {diseasesCovered} | toString(value)],policyType:[value in {policyType} | toString(value)]})")
+    Policy newPolicy(@Param("policyId")int policyId, @Param("policyInsurerName")String insurerName, @Param("policyName")String policyName, @Param("minAge")int minAge, @Param("maxAge")int maxAge, @Param("gender")List<String> gender, @Param("diseasesCovered")List<String> diseasesCovered, @Param("policyType")List<String> policyType);
 
     @Query("CREATE (insured:Insured{insuredId:{insuredId},username:{username},gender:{gender}})")
     Insured newInsured(@Param("insuredId")int insuredId,@Param("username")String username, @Param("gender")String gender,@Param("age")int age);
@@ -35,8 +35,9 @@ public interface RecommendationsRepo extends Neo4jRepository<Insured,Long> {
 //    @Query("MATCH (u:insured1{insuredId:{insuredId}}) SET u.username={username}")
 //    Insured updateInsured(@Param("insuredId") int insuredId, @Param("username")String username, @Param("gender")String gender);
 
-    @Query("MATCH (insurer:Insurer{insurerName:{insurerName}}),(policy:Policy{policyId:{policyId}})  CREATE (policy)-[:IS_POLICY_OF]->(insurer)")
-    void insurerPolicy(@Param("insurerName") String insurerName,@Param("policyId") int policyId);
+    //@Query("MATCH (insurer:Insurer{insurerName:{insurerName}}),(policy:Policy{policyId:{policyId}})  CREATE (policy)-[:IS_POLICY_OF]->(insurer)")
+    @Query("MATCH (policy:Policy) WHERE NOT ((policy)-[:IS_POLICY_OF]->()) WITH (policy) MATCH(insurer:Insurer) WHERE policy.policyInsurerName = insurer.insurerName CREATE (policy)-[:IS_POLICY_OF]->(insurer)")
+            void insurerPolicy(@Param("insurerName") String insurerName,@Param("policyId") int policyId);
 
     @Query("MATCH (policy:Policy{policyId:{policyId}}),(insured:Insured{username:{username}}) CREATE (insured)-[:HAS_A_POLICY_IN]->(policy)")
     void insuredPolicy(@Param("policyId") int policyId,@Param("username")String username);

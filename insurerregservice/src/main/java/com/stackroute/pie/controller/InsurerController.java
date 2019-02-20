@@ -12,13 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -30,6 +28,9 @@ public class InsurerController {
 
     @Autowired
     InsurerServiceImpl insurerService;
+
+    BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+
 
     @Autowired
     private KafkaTemplate<String, Insurer> kafkaTemplate;
@@ -47,6 +48,7 @@ public class InsurerController {
                     HttpStatus.CONFLICT);
         }
         System.out.println("Incoming");
+        signUpRequest.setPassword(bCryptPasswordEncoder.encode(signUpRequest.getPassword()));
         System.out.println(signUpRequest);
         //Calling InsurerService to add into the MongoDB
         Insurer insurer = insurerService.addInsurer(signUpRequest);

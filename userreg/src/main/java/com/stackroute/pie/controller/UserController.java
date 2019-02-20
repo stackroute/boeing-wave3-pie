@@ -26,20 +26,17 @@ public class UserController {
 
     @Autowired
     private KafkaTemplate<String, Insured> kafkaTemplate;
-//    @Autowired
-//    AuthenticationManager authenticationManager;
+
 
     @Autowired
     UserRepository userRepository;
 
-//    @Autowired
-//    RoleRepository roleRepository;
+
 
     @Autowired
     PasswordEncoder encoder;
 
-//    @Autowired
-//    JwtProvider jwtProvider;
+
     @Autowired
     private UserDetailsServiceImpl userService;
 
@@ -59,9 +56,8 @@ public class UserController {
 
         // Creating insured's account
         Insured insured = new Insured(signUpRequest.getFullName(), signUpRequest.getUsername(), signUpRequest.getEmail(),
-                encoder.encode(signUpRequest.getPassword()),signUpRequest.getGender(),signUpRequest.getCreatedDate(),signUpRequest.getSecurityAnswer());
+                encoder.encode(signUpRequest.getPassword()),signUpRequest.getGender(),signUpRequest.getCreatedDate(),signUpRequest.getSecurityAnswer(),signUpRequest.getAge());
 
-//        Set<String> strRoles = signUpRequest.getRole();
 
         Set<Policy> policySet=signUpRequest.getPolicees();
 
@@ -74,52 +70,24 @@ public class UserController {
 
         Set<Request> requests =new HashSet<>();
 
-//        Request request = new Request();
 
 
 
         userrRole.setName(RoleName.ROLE_USER);
 
-//        requests.add(request);
 
         roles.add(userrRole);
 
         insured.setRoles(roles);
 
-//        insured.setPolicies();
 
         userRepository.save(insured);
         kafkaTemplate.send("userregg_json", insured);
         return new ResponseEntity<>(new ResponseMessage("Insured registered successfully!"), HttpStatus.OK);
     }
 
-//    @RequestMapping(value = "/requests/{insuredId}", method = RequestMethod.GET)
-//    public ResponseEntity Insured (@PathVariable("insuredId") int insuredId) {
 //
-//        ResponseEntity responseEntity;
-//
-//        try {
-//
-//            Insured user1 = userService.getRequests(insuredId);
-//            responseEntity =  new ResponseEntity<Insured>(user1, HttpStatus.OK);
-//
-//        }
-//        catch (UserNotFoundException ex) {
-//            responseEntity = new ResponseEntity<String>(ex.getMessage(),HttpStatus.CONFLICT);
-//            ex.printStackTrace();
-//        }
-//        return responseEntity;
-//
-//    }
-//    @RequestMapping(value = "/request", method = RequestMethod.POST)
-//    public ResponseEntity Insured (@RequestBody Insured user) {
-//        ResponseEntity responseEntity;
-//        Insured user1 = userService.postRequest(user);
-//        System.out.println("In controller" + user1);
-//        responseEntity = new ResponseEntity<Insured>(user1,HttpStatus.OK);
-//        return responseEntity;
-//    }
-    @RequestMapping(value = "/profile/{username}", method = RequestMethod.GET)
+    @GetMapping("/profile/{username}")
     public ResponseEntity User (@PathVariable("username") String username){
         ResponseEntity responseEntity;
 
@@ -136,7 +104,7 @@ public class UserController {
         return responseEntity;
 
     }
-    @RequestMapping(value = "/profile/{username}", method = RequestMethod.PUT)
+    @PutMapping("/profile/{username}")
     public ResponseEntity User (@PathVariable("username") String username, @RequestBody Insured insured){
         ResponseEntity responseEntity;
 
