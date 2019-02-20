@@ -20,7 +20,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-//@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/v1")
 public class InsurerController {
@@ -28,8 +28,6 @@ public class InsurerController {
     @Autowired
     InsurerRepository insurerRepository;
 
-
-    PasswordEncoder passwordEncoder;
     @Autowired
     InsurerServiceImpl insurerService;
 
@@ -54,7 +52,7 @@ public class InsurerController {
         Insurer insurer = insurerService.addInsurer(signUpRequest);
         //Kafka producing the Insurer pojo ,so that login microservice can consume it
         kafkaTemplate.send("company_1_json",insurer);
-        return new ResponseEntity<>(new ResponseMessage("Insurer registered successfully!"), HttpStatus.OK);
+        return new ResponseEntity<>(new ResponseMessage("Insurer registered successfully!"), HttpStatus.CREATED);
     }
 
     //Method for adding a new policy for existing insurer
@@ -62,7 +60,7 @@ public class InsurerController {
     public ResponseEntity<?> addNewPolicy(@RequestBody Policy insurerPolicy){
         Insurer insurer = insurerService.addNewPolicy(insurerPolicy);
         kafkaTemplate.send("insurer_policy_json",insurer);
-        return new ResponseEntity<Insurer>(insurer, HttpStatus.OK);
+        return new ResponseEntity<Insurer>(insurer, HttpStatus.CREATED);
     }
 
     //Method for displaying the exiting policy

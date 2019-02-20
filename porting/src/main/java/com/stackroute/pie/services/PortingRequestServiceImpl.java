@@ -17,11 +17,13 @@ public class PortingRequestServiceImpl implements PortingRequestService{
     public PortingRequestServiceImpl(PortingRequestRepository requestRepository) {
         this.requestRepository = requestRepository;
     }
-
+    //To post a request
     public PortingRequest postRequest(PortingRequest request){
         PortingRequest request1 = requestRepository.save(request);
         return request1;
     }
+
+    //To edit the request details
     public PortingRequest updateRequest(PortingRequest request,int requestId) throws RequestNotFoundException{
         PortingRequest request1;
         if(requestRepository.existsByPortingRequestId(requestId) ){
@@ -49,6 +51,8 @@ public class PortingRequestServiceImpl implements PortingRequestService{
         else
             throw new RequestNotFoundException();
     }
+
+    //To delete a request
     public PortingRequest deleteRequest(int requestId) throws RequestNotFoundException{
         Optional<PortingRequest> request1 = requestRepository.findByPortingRequestId(requestId);
         if(requestRepository.existsByPortingRequestId(requestId)){
@@ -58,6 +62,8 @@ public class PortingRequestServiceImpl implements PortingRequestService{
             throw new RequestNotFoundException();
         return request1.get();
     }
+
+    //To display requests
     public List<PortingRequest> getRequests(String insuredName) throws RequestNotFoundException {
         if(requestRepository.existsByInsuredName(insuredName)) {
 
@@ -68,39 +74,38 @@ public class PortingRequestServiceImpl implements PortingRequestService{
             throw new RequestNotFoundException();
     }
 
-    public PortingRequest savePortingRequest(PortingRequest portingRequest) {
-        PortingRequest portingRequest1 = requestRepository.save(portingRequest);
-        return portingRequest1;
-    }
-
+    //To get incoming porting requests
     public List<PortingRequest> getIncomingPortingRequest(String newInsurerName) {
         List<PortingRequest>portingRequest1 = requestRepository.findByNewInsurerName(newInsurerName).get();
         return portingRequest1;
     }
 
-
+    //To get outgoing requests
     public List<PortingRequest> getOutgoingPortingRequest(String insurerName) {
         List<PortingRequest>portingRequest1 = requestRepository.findByInsurerName(insurerName).get();
         return portingRequest1;
     }
 
+    //To accept outgoing requests
     public PortingRequest acceptOutgoingPortingRequest(PortingRequest portingRequest) {
         PortingRequest portingRequest1 = requestRepository.findByInsuredNameAndCreateDate(portingRequest.getInsuredName(),portingRequest.getCreateDate()).get();
         return portingRequest1;
     }
 
+    //To accept incoming requests
     public PortingRequest acceptIncomingPortingRequest(PortingRequest portingRequest) {
         PortingRequest portingRequest1 = requestRepository.findByInsuredNameAndCreateDate(portingRequest.getInsuredName(),portingRequest.getCreateDate()).get();
         return portingRequest1;
     }
 
+    //To delete a request
     public void deletePortingRequest(PortingRequest portingRequest) {
         requestRepository.deleteByInsuredNameAndCreateDate(portingRequest.getInsuredName(),portingRequest.getCreateDate());
     }
 
+    //To reject incoming request
     public PortingRequest rejectIncomingPortingRequest(PortingRequest portingRequest) {
         PortingRequest portingRequest1 = requestRepository.findByInsuredNameAndCreateDate(portingRequest.getInsuredName(),portingRequest.getCreateDate()).get();
         return portingRequest1;
     }
 }
-

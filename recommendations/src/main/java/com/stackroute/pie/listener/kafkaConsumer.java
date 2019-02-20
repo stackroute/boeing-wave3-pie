@@ -35,7 +35,7 @@
 //       public void consumeJson(Insured insured) {
 //        System.out.println("yoyoyoyoyo");
 //        System.out.println("Consumed JSON Message: " + insured);
-//        recommendationsRepo.newInsured(insured.getInsuredId(),insured.getUsername(),insured.getGender());
+//        recommendationsRepo.newInsured(insured.getInsuredId(),insured.getUsername(),insured.getGender(),insured.getAge());
 //    }
 //
 //
@@ -44,11 +44,9 @@
 //        System.out.println("yoyoyoyoyo");
 //        System.out.println("Consumed JSON Message: " + insurer);
 //        for(Policy policy: insurer.getPolicies()) {
-//            recommendationsRepo.newPolicy(policy.getPolicyId(),policy.getInsurerName(),policy.getPolicyName(),policy.getMinAge(),policy.getMaxAge());
-////           recommendationsRepo.insurerPolicy(insurer.getInsurerName(),policy.getPolicyId());
+//            recommendationsRepo.newPolicy(policy.getPolicyId(),policy.getPolicyInsurerName(),policy.getPolicyName(),policy.getMinAge(),policy.getMaxAge(),policy.getGender(),policy.getDiseasesCovered(),policy.getPolicyType());
+//           recommendationsRepo.insurerPolicy(insurer.getInsurerName(),policy.getPolicyId());
 ////            System.out.println(insurer.getInsurerName());
 //        }
 //    }
-//
-//
 //}

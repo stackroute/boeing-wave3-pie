@@ -128,6 +128,7 @@ const routes: Routes = [];
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatAutocompleteModule,
+    MatSidenavModule,
   MatBadgeModule,
   MatBottomSheetModule,
   MatButtonModule,

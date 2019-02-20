@@ -1,5 +1,6 @@
 package com.stackroute.pie.service;
 
+import com.stackroute.pie.domain.Disease;
 import com.stackroute.pie.domain.Insured;
 import com.stackroute.pie.domain.Insurer;
 import com.stackroute.pie.domain.Policy;
@@ -28,26 +29,25 @@ public class RecommendationsServImpl implements RecommendationServ {
     public Policy createPolicy(Policy policy) {
        // String license = policy.getInsurerName();
         //Insurer insurer1 = recommendationsRepo.findByInsurerLicense(license).get();
-        return recommendationsRepo.newPolicy(policy.getPolicyId(),policy.getInsurerName(), policy.getPolicyName(), policy.getMinAge(), policy.getMaxAge());
-
-
+        return recommendationsRepo.newPolicy(policy.getPolicyId(),policy.getPolicyInsurerName(),policy.getPolicyName(),policy.getMinAge(),policy.getMaxAge(),policy.getGender(),policy.getDiseasesCovered(),policy.getPolicyType());
     }
 
     @Override
     public Insured createInsured(Insured insured) {
-        return recommendationsRepo.newInsured(insured.getInsuredId(),insured.getUsername(),insured.getGender());
+        return recommendationsRepo.newInsured(insured.getInsuredId(),insured.getUsername(),insured.getGender(),insured.getAge());
     }
-
 
     @Override
     public Insurer updateInsurer(Insurer insurer) {
-        return recommendationsRepo.updateInsurer(insurer.getInsurerId(),insurer.getInsurerName(),insurer.getInsurerLicense());
+        return null;
     }
 
     @Override
     public Policy updatePolicy(Policy policy) {
-        return recommendationsRepo.updatePolicy(policy.getPolicyId(),policy.getPolicyName(),policy.getMinAge(),policy.getMaxAge());
+        return null;
     }
+
+
 
     @Override
     public Insured updateInsured(Insured insured) {
@@ -57,24 +57,26 @@ public class RecommendationsServImpl implements RecommendationServ {
 
     @Override
     public String insurerPolicy(String insurerName, int policyId) {
-        recommendationsRepo.insurerPolicy(insurerName,policyId);
+        recommendationsRepo.insurerPolicy(insurerName, policyId);
         return " ";
     }
 
     @Override
-    public String insuredPolicy(int policyId, int insuredId) {
-        recommendationsRepo.insuredPolicy(policyId,insuredId);
+    public String insuredPolicy(int policyId, String username) {
+        recommendationsRepo.insuredPolicy(policyId,username);
         return " ";
     }
 
     @Override
-    public String viewPolicy(int policyId, int insurerId) {
-        recommendationsRepo.viewedPolicy(policyId,insurerId);
+    public String viewPolicy(int policyId, String username) {
+        recommendationsRepo.viewedPolicy(policyId,username);
         return " ";
     }
 
-
-
+    @Override
+    public Disease createDisease(Disease disease) {
+        return null;
+    }
 
 
     @Override
@@ -83,8 +85,8 @@ public class RecommendationsServImpl implements RecommendationServ {
     }
 
     @Override
-    public List<Policy> getByUserName(String userName) {
-        return recommendationsRepo.findByuserName(userName);
+    public List<Policy> getByUserName(String username) {
+        return recommendationsRepo.findByuserName(username);
     }
 
 
@@ -101,6 +103,23 @@ public class RecommendationsServImpl implements RecommendationServ {
     @Override
     public List<Policy> getByDisease(List<String> policyDisease) {
         return recommendationsRepo.findByDisease(policyDisease);
+    }
+
+    @Override
+    public List<Policy> getByAgeGender(int age, List<String> userGender) {
+        return recommendationsRepo.findByAgeGender(age,userGender);
+    }
+
+
+//
+    @Override
+    public List<Policy> getByAgeDisease(int age, List<String> policyDisease) {
+        return recommendationsRepo.findByAgeDisease(age,policyDisease);
+    }
+
+    @Override
+    public List<Policy> getByGenderDisease(List<String> userGender, List<String> policyDisease) {
+        return recommendationsRepo.findByGenderDisease(userGender,policyDisease);
     }
 
 
