@@ -1,5 +1,5 @@
 server:
-  port: 8091 #default port where the service will be started
+  port: 8084 #default port where the service will be started
 
 eureka:         #tells about the Eureka server details and its refresh time
   instance:
@@ -15,7 +15,7 @@ eureka:         #tells about the Eureka server details and its refresh time
 
 spring:
   application:
-    name: porting #current service name to be used by the eureka server
+    name: recommendations #current service name to be used by the eureka server
 
 management:
   security:
@@ -24,3 +24,4 @@ management:
 logging:
   level:
     com.example.howtodoinjava: DEBUG
+
