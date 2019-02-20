@@ -1,37 +1,31 @@
 package com.stackroute.pie.services;
 
-import com.stackroute.pie.model.Insurer;
-import com.stackroute.pie.Repository.InsurerRepository;
-import com.stackroute.pie.model.Policy;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import com.stackroute.pie.domain.Insurer;
+import com.stackroute.pie.domain.Policy;
+import com.stackroute.pie.domain.Role;
+import com.stackroute.pie.domain.RoleName;
+import com.stackroute.pie.message.request.SignUpForm;
+import com.stackroute.pie.repository.InsurerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-
-//import javax.transaction.Transactional;
+import java.util.Set;
 
 @Service
-public class InsurerDetailsServiceImpl implements UserDetailsService {
-
+public class InsurerServiceImpl implements  InsurerService{
 
     private InsurerRepository insurerRepository;
+  
+    private PasswordEncoder passwordEncoder;
 
-    InsurerDetailsServiceImpl(InsurerRepository insurerRepository) {
+    @Autowired
+    public InsurerServiceImpl(InsurerRepository insurerRepository) {
         this.insurerRepository = insurerRepository;
-    }
-
-
-    @Override
-    @Transactional
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Insurer insurer = insurerRepository.findByInsurerLicense(username).orElseThrow(
-                () -> new UsernameNotFoundException("Insurer Not Found with -> username or email : " + username));
-
-        return InsurerPrinciple.build(insurer);
+        //this.passwordEncoder = passwordEncoder;
     }
 
     public Insurer addNewPolicy(Policy policy) {
@@ -58,15 +52,6 @@ public class InsurerDetailsServiceImpl implements UserDetailsService {
 
 
     public Insurer deletePolicy(String insurerName,long policyId) {
-//        Insurer insurer1 = insurerRepository.findByInsurerLicense(insurerLicense).get();
-//        System.out.println("Insurer data is "+insurer1.toString());
-        // Policy policy1 = insurerRepository.findByPoliciesPolicyId(policyId);
-//        System.out.println("Policy Id:"+policy1.getPolicyId());
-//        System.out.println("policy1 is "+policy1);
-//        return policy1;
-//
-//  insurerRepository.deleteByPoliciesPolicyId(policyId);
-//
         Insurer insurer1 = insurerRepository.findByInsurerName(insurerName).get();
         List<Policy> policies = insurer1.getPolicies();
         List<Policy> newPolicy  = new ArrayList<>();
@@ -74,18 +59,33 @@ public class InsurerDetailsServiceImpl implements UserDetailsService {
         {
             if(p.getPolicyId() != policyId){
                 newPolicy.add(p);
-
-//                System.out.println(p);
-//                System.out.println( "after"+insurerRepository.findByPoliciesPolicyId(policyId).toString());
-//                break;
             }
         }
-
         insurer1.setPolicies(newPolicy);
         insurerRepository.deleteByInsurerName(insurer1.getInsurerName());
         insurerRepository.save(insurer1);
 
         return insurer1;
 
+    }
+
+    @Override
+    public Insurer addInsurer(SignUpForm signUpRequest) {
+        Insurer insurer = new Insurer();
+        insurer.setInsurerName(signUpRequest.getInsurerName());
+        insurer.setInsurerLicense(signUpRequest.getInsurerLicense());
+        insurer.setInsurerEmail(signUpRequest.getInsurerEmail());
+        insurer.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
+        insurer.setSecurityQuestion(signUpRequest.getSecurityQuestion());
+        insurer.setSecurityAnswer(signUpRequest.getSecurityAnswer());
+        insurer.setInsurerAddress(signUpRequest.getInsurerAddress());
+        System.out.println("service" +insurer);
+        Set<Role> roles = new HashSet<>();
+        Role userrRole = new Role();
+        userrRole.setName(RoleName.ROLE_INSURER);
+        roles.add(userrRole);
+        insurer.setRoles(roles);
+        Insurer insurer1 = insurerRepository.save(insurer);
+        return insurer1;
     }
 }

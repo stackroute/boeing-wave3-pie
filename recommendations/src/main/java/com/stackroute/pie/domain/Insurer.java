@@ -3,6 +3,7 @@ package com.stackroute.pie.domain;
 import org.hibernate.validator.constraints.UniqueElements;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Relationship;
 
 
 import javax.validation.constraints.Email;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Set;
 @NodeEntity
 public class Insurer {
+    @Relationship(type= "IS_POLICY_OF" ,direction=Relationship.INCOMING)
     @Id
     private Long insurerId;
 

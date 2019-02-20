@@ -2,6 +2,7 @@ package com.stackroute.pie.domain;
 
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Relationship;
 
 //import javax.management.relation.Role;
 import java.util.Date;
@@ -10,11 +11,12 @@ import java.util.Set;
 
 @NodeEntity
 public class Insured {
+    @Relationship(type= "HAS_A_POLICY_IN" ,direction= Relationship.INCOMING)
     @Id
     private int insuredId;
     private String fullName;
     private String username;
-
+    private int age;
 
     private String email;
     private String password;
@@ -28,21 +30,22 @@ public class Insured {
 
     public Insured() {}
 
-    public Insured(int insuredId, String fullName, String username, String email, String password, String gender, Date createdDate, String securityAnswer, Set<Role> roles, Set<Policy> policies) {
+    public Insured(int insuredId, String fullName, String username, int age,String email, String password, String gender, Date createdDate, String securityAnswer, Set<Role> roles, Set<Policy> policies) {
         this.insuredId = insuredId;
         this.fullName = fullName;
         this.username = username;
+        this.age=age;
         this.email = email;
         this.password = password;
         this.gender = gender;
         this.createdDate = createdDate;
         this.securityAnswer = securityAnswer;
-        this.roles = roles;
-        this.policies = policies;
+      this.roles = roles;
+      this.policies = policies;
     }
 
 
-    public int getInsuredId() {
+   public int getInsuredId() {
         return insuredId;
     }
 
@@ -122,12 +125,37 @@ public class Insured {
         this.policies = policies;
     }
 
+//    @Override
+//    public String toString() {
+//        return "User1{" +
+//                "insuredId=" + insuredId +
+//
+//                ", fullName='" + fullName + '\'' +
+//                ", username='" + username + '\'' +
+//                ", email='" + email + '\'' +
+//                ", password='" + password + '\'' +
+//                ", gender='" + gender + '\'' +
+//              ", createdDate=" + createdDate +
+//                ", roles=" + roles +
+//                ", policies=" + policies +
+//                ", securityAnswer='" + securityAnswer + '\'' +
+//                '}';
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     @Override
     public String toString() {
-        return "User1{" +
+        return "Insured{" +
                 "insuredId=" + insuredId +
                 ", fullName='" + fullName + '\'' +
                 ", username='" + username + '\'' +
+                ", age=" + age +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", gender='" + gender + '\'' +
@@ -138,3 +166,4 @@ public class Insured {
                 '}';
     }
 }
+

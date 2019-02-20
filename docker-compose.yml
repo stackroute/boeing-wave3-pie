@@ -11,7 +11,7 @@ services:
   network_mode: host
   hostname: localhost
   volumes:
-   - data:/var/lib/mysql  
+   - ./data:/var/lib/mysql  
 
  mongo:
   image: mongo:3.4-jessie
@@ -57,22 +57,6 @@ services:
   expose:
    - 8888
 
- userlogin:
-  image: userlogin-service
-  build: userlogin/
-  restart: always
-  network_mode: host
-  depends_on:
-   - eurekaserver
-   - apigateway
-   - configserver
-   - mysqldb
-   - kafka
-  ports:
-   - 8096:8096
-  expose:
-   - 8096
-
  userreg:
   image: userreg-service
   build: userreg/
@@ -106,9 +90,9 @@ services:
    - /home/ubuntu/deployment/KafkaDocker:/data/kafka
 
 
- recommendation:
-   image: recommendation-service:latest
-   build: recommendation/
+ recommendations:
+   image: recommendations-service:latest
+   build: recommendations/
    restart: always
    network_mode: host
    depends_on:
@@ -143,15 +127,17 @@ services:
      network_mode: host
 
 
- insurer:
-   image: insurer
-   build: Insurer/
+ commonauth:
+   image: commonauth
+   build: commonauth/
    restart: always
    network_mode: host
    depends_on:
      - mysqldb
      - configserver
      - eurekaserver
+     - apigateway
+     - kafka
 
    ports:
      - 8080:8080
@@ -167,6 +153,8 @@ services:
     - mongo
     - configserver
     - eurekaserver
+    - apigateway
+    - kafka
 
   ports:
     - 8090:8090

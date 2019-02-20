@@ -34,10 +34,8 @@
         <module>userreg</module>
         <module>recommendations</module>
         <module>insurerregservice</module>
-       	<module>searchservice</module>
+       	<module>search-service</module>
         <module>commonauth</module>
-       	<module>insurer</module>
-        <module>settlement</module>
     </modules>
     <dependencies>
         <dependency>
