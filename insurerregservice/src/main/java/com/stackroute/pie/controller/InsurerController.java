@@ -52,7 +52,7 @@ public class InsurerController {
         Insurer insurer = insurerService.addInsurer(signUpRequest);
         //Kafka producing the Insurer pojo ,so that login microservice can consume it
         kafkaTemplate.send("company_1_json",insurer);
-        return new ResponseEntity<>(new ResponseMessage("Insurer registered successfully!"), HttpStatus.OK);
+        return new ResponseEntity<>(new ResponseMessage("Insurer registered successfully!"), HttpStatus.CREATED);
     }
 
     //Method for adding a new policy for existing insurer
@@ -60,7 +60,7 @@ public class InsurerController {
     public ResponseEntity<?> addNewPolicy(@RequestBody Policy insurerPolicy){
         Insurer insurer = insurerService.addNewPolicy(insurerPolicy);
         kafkaTemplate.send("insurer_policy_json",insurer);
-        return new ResponseEntity<Insurer>(insurer, HttpStatus.OK);
+        return new ResponseEntity<Insurer>(insurer, HttpStatus.CREATED);
     }
 
     //Method for displaying the exiting policy
@@ -75,6 +75,6 @@ public class InsurerController {
     public ResponseEntity<?> deletePolicy(@PathVariable(value = "insurerName") String insurerName, @PathVariable(value = "policyId") long policyId){
         System.out.println("InsurerLicence : "+insurerName + " " +"policyId : "+policyId);
         Insurer insurer = insurerService.deletePolicy(insurerName,policyId);
-        return new ResponseEntity<Insurer>(insurer, HttpStatus.OK);
+        return new ResponseEntity<Insurer>(insurer, HttpStatus.GONE);
     }
 }
