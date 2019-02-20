@@ -21,6 +21,8 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.query.Query;
+import springfox.documentation.annotations.Cacheable;
+
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -77,6 +79,11 @@ public class SearchServiceImpl implements SearchService {
     public Policy savePolicy(Policy policy) {
         Policy policy1 = searchRepository.save(policy);
         return policy1;
+    }
+
+    @Cacheable(value = "policies")
+    public List<Policy> getByDisease(String disease){
+        return searchRepository.findByDiseasesListDiseaseName(disease);
     }
 
     //Method to tokenise search value and then return the policies based on the search
