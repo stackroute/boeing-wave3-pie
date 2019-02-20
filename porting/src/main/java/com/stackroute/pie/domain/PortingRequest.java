@@ -12,75 +12,40 @@ import java.util.Date;
 @NoArgsConstructor
 @Document(collection = "portingrequest")
 public class PortingRequest {
-
-//    private int portingRequestId;
-//    @NotBlank
-//    private String insuredName;
-//    @NotBlank
-//    private Date dateOfBirth;
-//    @NotBlank
-//    private String insuredAddress;
-//    @NotBlank
-//    private String insurerProduct;
-//    @NotBlank
-//    private int sumInsured;
-//    @NotBlank
-//    private int cumulativeBonus;
-//    @NotBlank
-//    private String addOns;
-//    @NotBlank
-//    private int policyNumber;
-//    @NotBlank
-//    private String newInsurerProduct;
-//    @NotBlank
-//    private int newSumInsured;
-//    @NotBlank
-//    private int newCumulativeBonus;
-//    @NotBlank
-//    private String reasonForPortability;
-//    private int familyMembers;
-//    private Date createDate = new Date();
-//    @NotBlank
-//    private boolean exclusionPeriod;
-//    private int fromApproval=1;
-//    private int toApproval=1;
-//    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-//    private Date acceptedDateofPreviousInsurer;
-////    private Date acceptedDateofPreviousInsurer;
 private int portingRequestId;
     @NotBlank
     private String insuredName;
     @NotBlank
     private String insurerName;
-    //    @NotBlank
+    @NotBlank
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date dateOfBirth;
-    //    @NotBlank
+    @NotBlank
     private String insuredAddress;
-    //    @NotBlank
+    @NotBlank
     private String insurerProduct;
-    //    @NotBlank
+    @NotBlank
     private int sumInsured;
-    //    @NotBlank
+    @NotBlank
     private int cumulativeBonus;
-    //    @NotBlank
+    @NotBlank
     private String[] addOns;
-    //    @NotBlank
+    @NotBlank
     private int policyNumber;
     @NotBlank
     private String newInsurerName;
-    //    @NotBlank
+    @NotBlank
     private String newInsurerProduct;
-    //    @NotBlank
+    @NotBlank
     private int newSumInsured;
-    //    @NotBlank
+    @NotBlank
     private int newCumulativeBonus;
-    //    @NotBlank
+    @NotBlank
     private String reasonForPortability;
     private int familyMembers;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date createDate = new Date();
-    //    @NotBlank
+    @NotBlank
     private boolean exclusionPeriod;
     private int fromApproval;
     private int toApproval;

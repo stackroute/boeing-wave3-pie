@@ -71,14 +71,7 @@ public class InsurerServiceImpl implements  InsurerService{
 
     @Override
     public Insurer addInsurer(SignUpForm signUpRequest) {
-        Insurer insurer = new Insurer();
-        insurer.setInsurerName(signUpRequest.getInsurerName());
-        insurer.setInsurerLicense(signUpRequest.getInsurerLicense());
-        insurer.setInsurerEmail(signUpRequest.getInsurerEmail());
-        insurer.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
-        insurer.setSecurityQuestion(signUpRequest.getSecurityQuestion());
-        insurer.setSecurityAnswer(signUpRequest.getSecurityAnswer());
-        insurer.setInsurerAddress(signUpRequest.getInsurerAddress());
+        Insurer insurer = new Insurer(signUpRequest.getInsurerName(),signUpRequest.getInsurerLicense(),signUpRequest.getInsurerEmail(),signUpRequest.getPassword(),signUpRequest.getInsurerAddress(),signUpRequest.getSecurityQuestion(),signUpRequest.getSecurityAnswer());
         System.out.println("service" +insurer);
         Set<Role> roles = new HashSet<>();
         Role userrRole = new Role();
