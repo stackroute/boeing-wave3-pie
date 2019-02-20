@@ -26,7 +26,7 @@ public class PortingRequestController {
 
     //Method to store porting request details
     @PostMapping("request")
-    public ResponseEntity PortingRequest (@RequestBody PortingRequest request) {
+    public ResponseEntity postRequest (@RequestBody PortingRequest request) {
         ResponseEntity responseEntity;
         PortingRequest request1 = requestService.postRequest(request);
 
@@ -35,13 +35,13 @@ public class PortingRequestController {
     }
 
     //Method to update the request details
-    @PutMapping("request/{requestId}")
-    public ResponseEntity PortingRequest (@PathVariable("requestId") int requestId, @RequestBody PortingRequest request){
+    @PutMapping("request")
+    public ResponseEntity updateRequest (@RequestBody PortingRequest request){
         ResponseEntity responseEntity;
 
         try {
 
-            PortingRequest request1 = requestService.updateRequest(request,requestId);
+            PortingRequest request1 = requestService.updateRequest(request);
             responseEntity =  new ResponseEntity<PortingRequest>(request1, HttpStatus.OK);
 
         }
@@ -55,7 +55,7 @@ public class PortingRequestController {
 
     //Method to delete porting request
     @DeleteMapping("request/{requestId}")
-    public ResponseEntity PortingRequest (@PathVariable("requestId") int requestId){
+    public ResponseEntity deleteRequest (@PathVariable("requestId") int requestId){
         System.out.println("hi");
         ResponseEntity responseEntity;
 
