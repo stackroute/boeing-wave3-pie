@@ -20,7 +20,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-//@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/v1")
 public class InsurerController {
@@ -28,8 +28,6 @@ public class InsurerController {
     @Autowired
     InsurerRepository insurerRepository;
 
-
-    PasswordEncoder passwordEncoder;
     @Autowired
     InsurerServiceImpl insurerService;
 
