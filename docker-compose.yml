@@ -161,9 +161,9 @@ services:
   expose:
     - 8090
 
- searchservice:
-   image: searchservice
-   build: searchservice/
+ search-service:
+   image: search-service
+   build: search-service/
    restart: always
    network_mode: host
    depends_on:
