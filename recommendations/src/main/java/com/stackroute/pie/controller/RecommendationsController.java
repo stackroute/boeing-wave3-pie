@@ -7,6 +7,7 @@ import com.stackroute.pie.service.RecommendationsServImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Array;
@@ -20,6 +21,10 @@ import static java.util.Arrays.asList;
 @CrossOrigin("*")
 public class RecommendationsController {
 
+
+    @Autowired
+    private KafkaTemplate<String, List<Policy>> kafkaTemplate;
+
     @Autowired
     RecommendationsServImpl recommendationsServ;
     @PostMapping("insurer")
@@ -30,6 +35,8 @@ public class RecommendationsController {
         System.out.println((Insurer1));
         return responseEntity;
     }
+
+
 
     @PostMapping("policy")
     public ResponseEntity<?> savePolicy(@RequestBody Policy policy){
@@ -168,6 +175,7 @@ public class RecommendationsController {
 
         List<String> genderList= Arrays.asList(usergender);
         List<Policy> policiyy=recommendationsServ.getByAgeGender(age,genderList);
+        kafkaTemplate.send("ageGenderPolicy", policiyy);
         System.out.println(policiyy);
         return policiyy;
     }

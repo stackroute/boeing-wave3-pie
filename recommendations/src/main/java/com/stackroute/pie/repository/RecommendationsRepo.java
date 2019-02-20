@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public interface RecommendationsRepo extends Neo4jRepository<Recommendation,Long> {
+public interface RecommendationsRepo extends Neo4jRepository<Insured,Long> {
    // public Insurer findByInsurerName(String insurerName);
 
 
@@ -65,6 +65,7 @@ public interface RecommendationsRepo extends Neo4jRepository<Recommendation,Long
 
     @Query("MATCH  p = (policy:Policy) WHERE (policy.maxAge>$age AND policy.minAge<$age) AND (policy.gender=$userGender) RETURN policy")
     List<Policy> findByAgeGender(Integer age,List<String> userGender);
+
 
     @Query("MATCH  p = (policy:Policy) WHERE (policy.maxAge>$age AND policy.minAge<$age) AND (policy.diseasesCovered=$policyDisease) RETURN policy")
     List<Policy> findByAgeDisease(Integer age,List<String> policyDisease);

@@ -15,9 +15,12 @@ import java.util.List;
 @AllArgsConstructor
 public class Policy {
     @Relationship(type= "HAS_A_POLICY_IN" ,direction=Relationship.INCOMING)
+
     @Id
     private int policyId;
+
     private String policyInsurerName;
+    @Relationship(type="IS_POLICY_OF")
     private String policyName;
     List<String> policyType;
     private long minSumInsured;
