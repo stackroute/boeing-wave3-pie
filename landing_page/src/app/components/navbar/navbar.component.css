@@ -29,3 +29,9 @@
         margin: auto;
     }
 }
+.example-container {
+    height: 30%;
+    margin: 10px;
+    z-index: 1;
+    width: 17%;
+  }

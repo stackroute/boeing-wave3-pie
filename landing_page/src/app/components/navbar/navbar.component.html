@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light" style="background-color:  #ffe6e6; height:85px;">
+<!-- <nav class="navbar navbar-light" style="background-color:  #ffe6e6; height:85px;">
       <div class="container-fluid">
           <div class="navbar-header">
       <a class="navbar-brand" href="#">
@@ -7,30 +7,11 @@
           </div>
 <div class="collapse navbar-collapse dropdown show" id="collapsibleNavbar">
   <ul class="nav navbar-nav">
+      <li></li>
     <li><a [routerLink]="['/home']" routerLinkActive="router-link-active" >Home</a></li>
     <li><a href="#">About</a></li>
     <li><a href="#">Contact</a></li>
   </ul>
-  <!-- <form #createForm = "ngForm" (ngSubmit) = "search()" id= "form-buscar">
-    <div class="input-group">
-      <input #searchm type="text" class="form-control" placeholder="Search" name="search" (keyup) = "store(searchm.value)">
-      <div class="input-group-btn">
-        <button class="btn btn-default" type="submit" routerLink = "['/search',searchm.value]" routerLinkActive = "active">
-          <i class="glyphicon glyphicon-search"></i>
-        </button>
-      </div>
-    </div>
-  </form> -->
-  <!-- <form  *ngIf ="this.currentRoute!=='insurerDashboard/:insurerLicense'" #createForm="ngForm" (ngSubmit)="search()" id="form-buscar"> -->
-    <!-- <div class="form-group"> -->
-    <!-- <div class="input-group" style="width: 40%;margin-left: 5%;">
-        <input type="text" class="form-control" name="message" [(ngModel)]="message" placeholder="Search">  
-            <span class="input-group-btn">
-          <button class="btn btn-success" type="submit" id="button-addon2">
-         <i class="glyphicon glyphicon-search" aria-hidden="true"></i> </button>
-          </span> -->
-        <!-- </div> -->
-      <!-- </div> -->
       <form class="navbar-form navbar-left" (ngSubmit) = "search()" style="margin-left:15%;margin-top: 2%;">
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Search">
@@ -56,10 +37,109 @@
     </ul>
     </div>
 </div>
-<!-- </div> -->
 </div>
-<!-- <app-landing></app-landing> -->
-</nav>
+
+</nav> -->
+<mat-toolbar color="warn" style="opacity:0.5;">
+  <mat-toolbar-row>
+    <button
+      type="button"
+      aria-label="Toggle sidenav"
+      mat-icon-button
+      (click)="drawer.toggle()"
+      color="primary"
+    >
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+    
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#" style="margin-bottom: 3.8rem;">
+          <img
+            src="./../../assets/img/logo1.png"
+            alt="Logo"
+            class="img-responsive"
+            width="70px"
+            height="80px"
+          />
+        </a>
+      </div>
+      <div
+        class="collapse navbar-collapse dropdown show"
+        id="collapsibleNavbar"
+      >
+        <ul class="nav navbar-nav">
+          <li></li>
+          <li>
+            <a [routerLink]="['/home']" routerLinkActive="router-link-active"
+              >Home</a
+            >
+          </li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <form
+          class="navbar-form navbar-left"
+          (ngSubmit)="search()"
+          style="margin-left:30%;margin-bottom: 1%;"
+        >
+          <div class="input-group" style="margin-bottom:1%;">
+            <input type="text" class="form-control" placeholder="Search" />
+            <div class="input-group-btn" >
+              <button class="btn btn-success" type="submit">
+                <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+        
+      </div>
+      <div class="signin" style=" margin-top: 1%;margin-left: 30%;">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="nav-link dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#"
+              ><span class="glyphicon glyphicon-user"></span> Sign In</a
+            >
+            <ul class="dropdown-menu">
+              <li>
+                <a routerLink="/admin" routerLinkActive="active">Admin Login</a>
+              </li>
+              <li>
+                <a routerLink="/login" routerLinkActive="active">User Login</a>
+              </li>
+              <li>
+                <a routerLink="/companylogin" routerLinkActive="active"
+                  >Company Login</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container class="example-container" style="width:20%;">
+  <mat-sidenav #drawer mode="side" opened role="navigation">
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['/mypolicies']" routerLinkActive="active"
+        >My Policies</a
+      >
+      <a
+        mat-list-item
+        [routerLink]="['/myrequests', username]"
+        routerLinkActive="active"
+        >My Requests</a
+      >
+      <a mat-list-item [routerLink]="['/porting']" routerLinkActive="active"
+        >Porting Request</a
+      >
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 
 <router-outlet></router-outlet>
-
