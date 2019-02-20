@@ -75,6 +75,6 @@ public class InsurerController {
     public ResponseEntity<?> deletePolicy(@PathVariable(value = "insurerName") String insurerName, @PathVariable(value = "policyId") long policyId){
         System.out.println("InsurerLicence : "+insurerName + " " +"policyId : "+policyId);
         Insurer insurer = insurerService.deletePolicy(insurerName,policyId);
-        return new ResponseEntity<Insurer>(insurer, HttpStatus.GONE);
+        return new ResponseEntity<Insurer>(insurer, HttpStatus.OK);
     }
 }
