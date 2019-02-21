@@ -19,13 +19,30 @@ public class SettlementServicesImpl implements SettlementServices {
         return allPendingTasks;
     }
     @Override
-    public PendingTasks addTask(int pendingTasksId, Task task) {
-        return null;
+    public PendingTasks appendTask(int pendingTasksId, Task task) {
+        PendingTasks pendingTasks = settlementRepository.findByPendingTasksId(pendingTasksId);
+        settlementRepository.deleteById(pendingTasksId);
+        List<Task> currentListOfTasks = pendingTasks.getTaskList();
+        currentListOfTasks.add(task);
+        pendingTasks.setTaskList(currentListOfTasks);
+        settlementRepository.save(pendingTasks);
+        return pendingTasks;
     }
 
     @Override
-    public PendingTasks modifyTask(int pendingTasksId, Task taskOldId, Task taskNewId) {
-        return null;
+    public PendingTasks modifyTask(int pendingTasksId, Task oldTask, Task newTask) {
+        PendingTasks pendingTasks = settlementRepository.findByPendingTasksId(pendingTasksId);
+        settlementRepository.deleteById(pendingTasksId);
+        List<Task> currentListOfTasks = pendingTasks.getTaskList();
+        for(Task task : currentListOfTasks) {
+            if(task.equals(oldTask)) {
+                task = newTask;
+                break;
+            }
+        }
+        pendingTasks.setTaskList(currentListOfTasks);
+        settlementRepository.save(pendingTasks);
+        return pendingTasks;
     }
 
     @Override
@@ -35,7 +52,13 @@ public class SettlementServicesImpl implements SettlementServices {
 
     @Override
     public PendingTasks getAllPendingTasksForInsured(String insurerName, String insuredName) {
-        PendingTasks allPendingTasksForInsured = settlementRepository.findAllByInsuredName();
+        PendingTasks allPendingTasksForInsured = settlementRepository.findAllByInsurerNameAndInsuredName(insurerName, insuredName);
         return allPendingTasksForInsured;
+    }
+
+    @Override
+    public PendingTasks putPendingTasks(PendingTasks pendingTasks) {
+        settlementRepository.save(pendingTasks);
+        return pendingTasks;
     }
 }

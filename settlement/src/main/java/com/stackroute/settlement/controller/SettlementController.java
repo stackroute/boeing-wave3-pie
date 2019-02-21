@@ -1,6 +1,7 @@
 package com.stackroute.settlement.controller;
 
 import com.stackroute.settlement.domain.PendingTasks;
+import com.stackroute.settlement.domain.Task;
 import com.stackroute.settlement.services.SettlementServices;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +25,17 @@ public class SettlementController {
 //        return (ResponseEntity<List<PendingTasks>>) settlementServices.getAllPendingTasksForInsurer(insurerName);
         return new ResponseEntity<List<PendingTasks>>(settlementServices.getAllPendingTasksForInsurer(insurerName), HttpStatus.OK);
     }
-    @PostMapping
+    @GetMapping
     public ResponseEntity<PendingTasks> getAllPendingTasksForAInsured(@PathVariable String insurerName, @PathVariable String insuredName) {
         return new ResponseEntity<PendingTasks>(settlementServices.getAllPendingTasksForInsured(insurerName, insuredName), HttpStatus.OK);
     }
-    @PostMapping("pendingtasks/{insurerName}/{pendingTasksId}")
-    public ResponseEntity<PendingTasks> putAPendingTask(@PathVariable int insurerId, @PathVariable String pendingTasksId) {
-        return null;
+    @PostMapping("pendingtask")
+    public ResponseEntity<PendingTasks> putAPendingTasks(@RequestBody PendingTasks pendingTasks) {
+        return new ResponseEntity<PendingTasks>(settlementServices.putPendingTasks(pendingTasks), HttpStatus.OK);
     }
+    @PutMapping("pendingtask/{pendingTasksId}")
+    public ResponseEntity<PendingTasks> appendAPendingTask(@RequestBody Task task, @PathVariable int pendingTasksId) {
+        return new ResponseEntity<PendingTasks>(settlementServices.appendTask(pendingTasksId, task), HttpStatus.OK);
+    }
+    
 }

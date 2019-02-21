@@ -13,5 +13,8 @@ public interface SettlementRepository extends MongoRepository<PendingTasks, Inte
     public List<PendingTasks> findAllByInsurerName(String insurerName);
 
     @Query
-    public PendingTasks findAllByInsuredName();
+    public PendingTasks findAllByInsurerNameAndInsuredName(String insurerName, String insuredName);
+
+    @Query
+    public PendingTasks findByPendingTasksId(int pendingTasksId);
 }
