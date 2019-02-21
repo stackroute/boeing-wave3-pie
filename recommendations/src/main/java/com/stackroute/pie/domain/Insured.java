@@ -11,10 +11,11 @@ import java.util.Set;
 
 @NodeEntity
 public class Insured {
-    @Relationship(type= "HAS_A_POLICY_IN" ,direction= Relationship.INCOMING)
+@Relationship(type="VIEWED_POLICY")
     @Id
     private int insuredId;
     private String fullName;
+    @Relationship(type= "HAS_A_POLICY_IN")
     private String username;
     private int age;
 

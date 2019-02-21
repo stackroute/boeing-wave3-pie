@@ -7,6 +7,7 @@ import com.stackroute.pie.service.RecommendationsServImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Array;
@@ -20,6 +21,10 @@ import static java.util.Arrays.asList;
 @CrossOrigin("*")
 public class RecommendationsController {
 
+
+    @Autowired
+    private KafkaTemplate<String, List<Policy>> kafkaTemplate;
+
     @Autowired
     RecommendationsServImpl recommendationsServ;
     @PostMapping("insurer")
@@ -30,6 +35,8 @@ public class RecommendationsController {
         System.out.println((Insurer1));
         return responseEntity;
     }
+
+
 
     @PostMapping("policy")
     public ResponseEntity<?> savePolicy(@RequestBody Policy policy){
@@ -162,12 +169,13 @@ public class RecommendationsController {
         return policiyy;
     }
 
-    @GetMapping("policyByAgeGender/{age}/{userGender}")
-    public  List<Policy> getByAgeGender(@PathVariable("age")int age,@PathVariable("userGender")String usergender){
+    @GetMapping("policyByAgeGender/{age}/{usergender}")
+    public  List<Policy> getByAgeGender(@PathVariable("age")int age,@PathVariable("usergender")String usergender){
         System.out.println("in controller");
 
         List<String> genderList= Arrays.asList(usergender);
         List<Policy> policiyy=recommendationsServ.getByAgeGender(age,genderList);
+//        kafkaTemplate.send("ageGenderPolicy", policiyy);
         System.out.println(policiyy);
         return policiyy;
     }
@@ -184,7 +192,7 @@ public class RecommendationsController {
     }
 
 
-    @GetMapping("policyByAGenderDisease/{usergender}/{policyDisease}")
+    @GetMapping("policyByGenderDisease/{usergender}/{policyDisease}")
     public  List<Policy> getByAgeDisease(@PathVariable("usergender")String usergender,@PathVariable("policyDisease")String policyDisease){
         System.out.println("in controller");
         List<String> genderList= Arrays.asList(usergender);
