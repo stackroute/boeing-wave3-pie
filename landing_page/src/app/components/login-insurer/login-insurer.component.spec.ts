@@ -1,25 +1,25 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoginInsurerComponent } from './login-insurer.component';
+// import { LoginInsurerComponent } from './login-insurer.component';
 
-describe('LoginInsurerComponent', () => {
-  let component: LoginInsurerComponent;
-  let fixture: ComponentFixture<LoginInsurerComponent>;
+// describe('LoginInsurerComponent', () => {
+//   let component: LoginInsurerComponent;
+//   let fixture: ComponentFixture<LoginInsurerComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ LoginInsurerComponent ]
-    })
-    .compileComponents();
-  }));
+//   beforeEach(async(() => {
+//     TestBed.configureTestingModule({
+//       declarations: [ LoginInsurerComponent ]
+//     })
+//     .compileComponents();
+//   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(LoginInsurerComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+//   beforeEach(() => {
+//     fixture = TestBed.createComponent(LoginInsurerComponent);
+//     component = fixture.componentInstance;
+//     fixture.detectChanges();
+//   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
+// });
