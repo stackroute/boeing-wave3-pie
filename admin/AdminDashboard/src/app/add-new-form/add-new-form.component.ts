@@ -8,7 +8,7 @@ import { FormFormat } from 'app/formformat';
 })
 export class AddNewFormComponent implements OnInit {
 
-  private displayNewForm = false;
+  private displayNewFormClicked = false;
   private newForm: FormFormat;
 
   constructor() { }
@@ -18,6 +18,6 @@ export class AddNewFormComponent implements OnInit {
 
   createNewForm(): void {
 
-    this.displayNewForm = true;
+    this.displayNewFormClicked = true;
   }
 }
