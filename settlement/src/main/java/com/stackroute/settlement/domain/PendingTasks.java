@@ -6,10 +6,13 @@ import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.Date;
+import java.util.List;
 
 @Document(collection = "pending_tasks")
 @Data
@@ -18,26 +21,43 @@ import javax.validation.constraints.Size;
 public class PendingTasks {
     @Id
     private int pendingTasksId;
-
-    private int insuredId;
-
-    private int insurerId;
-
+    private List<Task> taskList;
     @NotBlank
-    @Size(min=3, max = 50)
-    private String fullName;
-
+    private String insuredName;
     @NotBlank
-    @UniqueElements
-    @Size(min=3, max = 50)
-    private String username;
-
-    //    @NaturalId
-    @UniqueElements
+    private String insurerName;
     @NotBlank
-    @Size(max = 50)
-    @Email
-    private String email;
-
-    private Tasks pendingTasks[];
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private Date dateOfBirth;
+    @NotBlank
+    private String insuredAddress;
+    @NotBlank
+    private String insurerProduct;
+    @NotBlank
+    private int sumInsured;
+    @NotBlank
+    private int cumulativeBonus;
+    @NotBlank
+    private String[] addOns;
+    @NotBlank
+    private int policyNumber;
+    @NotBlank
+    private String newInsurerName;
+    @NotBlank
+    private String newInsurerProduct;
+    @NotBlank
+    private int newSumInsured;
+    @NotBlank
+    private int newCumulativeBonus;
+    @NotBlank
+    private String reasonForPortability;
+    private int familyMembers;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private Date createDate = new Date();
+    @NotBlank
+    private boolean exclusionPeriod;
+    private int fromApproval;
+    private int toApproval;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private Date acceptedDateofPreviousInsurer;
 }

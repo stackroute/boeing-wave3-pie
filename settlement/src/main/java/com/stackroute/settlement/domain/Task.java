@@ -10,7 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Tasks {
+public class Task {
     private String taskName;
     private String taskDescription;
     private Boolean taskStatus;
