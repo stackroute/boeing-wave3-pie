@@ -10,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class InsurerServiceImpl implements  InsurerService{
@@ -31,17 +28,13 @@ public class InsurerServiceImpl implements  InsurerService{
     public Insurer addNewPolicy(Policy policy) {
         String name = policy.getInsurerName();
         Insurer insurer1 = insurerRepository.findByInsurerName(name).get();
-//        Insurer insurer = new Insurer();
-        List<Policy> policies;
-        policies = insurer1.getPolicies();
+        List<Policy> policies = new ArrayList<>();
+        policies = insurerRepository.findByInsurerName(name).get().getPolicies();
         policies.add(policy);
         insurer1.setPolicies(policies);
-        for(int i = 0; i < policies.size(); i++) {
-            System.out.println(policies.get(i));
-        }
         insurerRepository.deleteByInsurerName(name);
         insurerRepository.save(insurer1);
-        return insurer1;
+        return insurerRepository.findByInsurerName(name).get();
     }
 
 
@@ -71,7 +64,9 @@ public class InsurerServiceImpl implements  InsurerService{
 
     @Override
     public Insurer addInsurer(SignUpForm signUpRequest) {
-        Insurer insurer = new Insurer(signUpRequest.getInsurerName(),signUpRequest.getInsurerLicense(),signUpRequest.getInsurerEmail(),signUpRequest.getPassword(),signUpRequest.getInsurerAddress(),signUpRequest.getSecurityQuestion(),signUpRequest.getSecurityAnswer());
+        List<Policy> policies = new ArrayList<>();
+        Insurer insurer = new Insurer(signUpRequest.getInsurerName(),signUpRequest.getInsurerLicense(),signUpRequest.getInsurerEmail(),signUpRequest.getPassword(),signUpRequest.getInsurerAddress(),signUpRequest.getSecurityQuestion(),signUpRequest.getSecurityAnswer(),policies);
+        insurer.setPolicies(policies);
         System.out.println("service" +insurer);
         Set<Role> roles = new HashSet<>();
         Role userrRole = new Role();

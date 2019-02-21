@@ -41,7 +41,7 @@
 
 </nav> -->
 <mat-toolbar color="warn" style="opacity:0.5;">
-  <mat-toolbar-row>
+  <mat-toolbar-row >
     <button
       type="button"
       aria-label="Toggle sidenav"
@@ -102,17 +102,11 @@
               ><span class="glyphicon glyphicon-user"></span> Sign In</a
             >
             <ul class="dropdown-menu">
-              <li>
-                <a routerLink="/admin" routerLinkActive="active">Admin Login</a>
-              </li>
+              
               <li>
                 <a routerLink="/login" routerLinkActive="active">User Login</a>
               </li>
-              <li>
-                <a routerLink="/companylogin" routerLinkActive="active"
-                  >Company Login</a
-                >
-              </li>
+              
             </ul>
           </li>
         </ul>
@@ -120,7 +114,7 @@
 
   </mat-toolbar-row>
 </mat-toolbar>
-<mat-sidenav-container class="example-container" style="width:20%;">
+<mat-sidenav-container class="example-container" >
   <mat-sidenav #drawer mode="side" opened role="navigation">
     <mat-nav-list>
       <a mat-list-item [routerLink]="['/mypolicies']" routerLinkActive="active"
@@ -135,6 +129,7 @@
       <a mat-list-item [routerLink]="['/porting']" routerLinkActive="active"
         >Porting Request</a
       >
+      <a mat-list-item [routerLink]="['/myprofile',username]" routerLinkActive = "active">My profile</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -142,4 +137,4 @@
   </mat-sidenav-content>
 </mat-sidenav-container>
 
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->
