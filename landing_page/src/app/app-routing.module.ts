@@ -12,7 +12,7 @@ import { FormDashboardComponent } from './components/form-dashboard/form-dashboa
 import { OutgoingPortingRequestsComponent } from './components/outgoing-porting-requests/outgoing-porting-requests.component';
 import { IncomingPortingRequestsComponent } from './components/incoming-porting-requests/incoming-porting-requests.component';
 import { AddNewPolicyComponent } from './components/add-new-policy/add-new-policy.component';
-import { LoginInsurerComponent } from './components/login-insurer/login-insurer.component';
+// import { LoginInsurerComponent } from './components/login-insurer/login-insurer.component';
 import { MyPoliciesComponent } from './my-policies/my-policies.component';
 import { RecommendationsComponent } from './components/recommendations/recommendations.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: 'dashboard/:username', component: DashboardComponent},
   {path: 'recommendations/:username', component: RecommendationsComponent},
   {path: 'mypolicies', component: MyPoliciesComponent},
-  {path:'companylogin', component: LoginInsurerComponent},
+  // {path:'companylogin', component: LoginInsurerComponent},
   {path: 'newPolicyForm', component: AddNewPolicyComponent},
   {path: 'incomingPortingRequest/:insurerLicense', component: IncomingPortingRequestsComponent},
  {path:'outgoingPortingRequest/:insurerLicense', component: OutgoingPortingRequestsComponent},
