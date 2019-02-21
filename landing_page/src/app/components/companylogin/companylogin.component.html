@@ -1,13 +1,12 @@
-<br/>
+<!-- <br/>
 <br/>
 
 <div *ngIf="isLoggedIn; else loggedOut">
   <app-insurer-dashboard></app-insurer-dashboard>
-  <!-- Logged in as {{roles}}. -->
+
 </div>
 <ng-template #loggedOut>
 
-<!-- <div class="container"> -->
   <br>
   <div class="row col-sm-6" style="max-width:350px;">
     <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
@@ -37,9 +36,9 @@
     </form>
     <hr />
 
-  <!-- <div class="row col-sm-6" style="max-width:350px;"> -->
+
     <p>Don't have an account?</p>
     <a [routerLink]="['/companyregister']" routerLinkActive="router-link-active"  class="btn btn-success">Sign Up</a>
-  <!-- </div> -->
+
 </div>
-</ng-template>
+</ng-template> -->
