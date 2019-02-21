@@ -47,9 +47,7 @@ public class InsurerController {
             return new ResponseEntity<>(new ResponseMessage("Fail -> Email is already in use!"),
                     HttpStatus.CONFLICT);
         }
-        System.out.println("Incoming");
         signUpRequest.setPassword(bCryptPasswordEncoder.encode(signUpRequest.getPassword()));
-        System.out.println(signUpRequest);
         //Calling InsurerService to add into the MongoDB
         Insurer insurer = insurerService.addInsurer(signUpRequest);
         //Kafka producing the Insurer pojo ,so that login microservice can consume it
