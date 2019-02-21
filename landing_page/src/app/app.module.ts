@@ -3,10 +3,10 @@ import { UserComponent } from './components/user/user.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { NewFormFormatComponent } from './components/new-form-format/new-form-format.component';
 import { LoginComponent } from './components/login/login.component';
-import { CompanyLoginComponent } from './components/companylogin/companylogin.component';
+// import { CompanyLoginComponent } from './components/companylogin/companylogin.component';
 import { FormDashboardComponent } from './components/form-dashboard/form-dashboard.component';
 import { AddNewPolicyComponent } from './components/add-new-policy/add-new-policy.component';
-import { LoginInsurerComponent } from './components/login-insurer/login-insurer.component';
+// import { LoginInsurerComponent } from './components/login-insurer/login-insurer.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MyRequestsComponent } from './components/my-requests/my-requests.component';
 import { HomeComponent } from './components/home/home.component';
@@ -94,13 +94,13 @@ const routes: Routes = [];
     DashboardComponent,
     RecommendationsComponent,
     MyPoliciesComponent,
-    LoginInsurerComponent,
+    // LoginInsurerComponent,
     AddNewPolicyComponent,
     IncomingPortingRequestsComponent,
     OutgoingPortingRequestsComponent,
     FormDashboardComponent,
     RegisterComponent,
-    CompanyLoginComponent,
+    // CompanyLoginComponent,
     NewFormFormatComponent,
     SideBarComponent,
     Insurer1Component,
