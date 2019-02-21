@@ -14,7 +14,7 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CommonAuth {
+public class   CommonAuth {
 
 @Id
  @GeneratedValue(strategy=GenerationType.AUTO)

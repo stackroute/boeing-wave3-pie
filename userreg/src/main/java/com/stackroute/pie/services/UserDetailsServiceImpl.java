@@ -53,23 +53,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
 
-//    public Insured saveQuestion(Insured question){
-//        System.out.println(question);
-//        MongoClient mongoClient = new MongoClient( "localhost" , 27017 );
-//        DB db = mongoClient.getDB("admin");
-//        DBCollection collection = db.getCollection("counters");
-//        BasicDBObject document = new BasicDBObject();
-//        document.put("_id", getNextSequence("questionId"));
-//        collection.insert(document);
-//        question.setInsuredId((int) ((int) document.get("_id")+1.0)));
-//        System.out.println("pratima hghjsgfjhdgsfjgdj"+(int)question.getInsuredId());
-//
-//        if(userRepository.existsById((int)(question.getInsuredId()()))) {
-//            throw new QuestionAlreadyExistsException("This Question already exists");
-//        }
-//        Insured question1 = userRepository.save(question);
-//        return question1;
-//    }
+
 public Insured getProfile(String username) throws UserNotFoundException{
     if(userRepository.existsByUsername(username)){
 //            System.out.println("service" + userRepository.existsByUsername(username));

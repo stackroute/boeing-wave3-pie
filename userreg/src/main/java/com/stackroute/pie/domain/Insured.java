@@ -48,6 +48,8 @@ public class Insured {
     @Size(min=6, max = 100)
     private String password;
 
+    private int age;
+
 
     @NotBlank
     private  String gender;
@@ -67,6 +69,7 @@ public class Insured {
     private List<Request> requests= new ArrayList<>();
 
 
+
     public Insured(int insuredId, List<Request> requests) {
         this.insuredId = insuredId;
         this.requests = requests;
@@ -78,7 +81,7 @@ public class Insured {
 
 
 
-    public Insured(String fullName, String username, String email, String password, String gender, Date createdDate, String securityAnswer) {
+    public Insured(String fullName, String username, String email, String password, String gender, Date createdDate, String securityAnswer,int age) {
         this.fullName = fullName;
         this.username = username;
         this.email = email;
@@ -86,6 +89,7 @@ public class Insured {
         this.gender= gender;
         this.createdDate=createdDate;
         this.securityAnswer=securityAnswer;
+        this.age=age;
     }
 
 

@@ -88,35 +88,39 @@ services:
   restart: always
   volumes:
    - /home/ubuntu/deployment/KafkaDocker:/data/kafka
-
-
+  
  recommendations:
-   image: recommendations-service:latest
-   build: recommendations/
-   restart: always
-   network_mode: host
-   depends_on:
-     - eurekaserver
-     - configserver
-     - neo4j
-   ports:
-     - 8084:8084
-   expose:
-     - 8084
+  image: recommendation-service:latest
+  build: recommendations/
+  restart: always
+  network_mode: host
+  hostname: localhost
+  depends_on:
+   - eurekaserver
+   - configserver
+   - apigateway
+   - neo4j
+   - kafka
+  ports:
+   - 8084:8084
+  expose:
+   - 8084
+  healthcheck:
+   test: "exit 0"
 
  neo4j:
-     image: neo4j:latest
-     ports:
-       - 7474:7474
-       - 7687:7687
-     container_name: neo4j_docker
-     network_mode: host
-     hostname: localhost
-     restart: always
-     volumes:
-       - ./Desktop/neo4j:/data/db
-
-
+  image: neo4j:latest
+  ports:
+   - 7474:7474
+   - 7687:7687
+  container_name: neo4j_docker
+  network_mode: host
+  hostname: localhost
+  restart: always
+  volumes:
+   - $HOME/neo4j/data:/data
+  environment:
+   - NEO4J_AUTH=neo4j/pass
 
  pie-admin-service:
      image: pie-admin-service:1.0.0
@@ -128,21 +132,21 @@ services:
 
 
  commonauth:
-   image: commonauth
-   build: commonauth/
-   restart: always
-   network_mode: host
-   depends_on:
-     - mysqldb
-     - configserver
-     - eurekaserver
-     - apigateway
-     - kafka
+  image: commonauth
+  build: commonauth/
+  restart: always
+  network_mode: host
+  depends_on:
+   - mysqldb
+   - configserver
+   - eurekaserver
+   - apigateway
+   - kafka
 
-   ports:
-     - 8080:8080
-   expose:
-     - 8080
+  ports:
+   - 8080:8080
+  expose:
+   - 8080
 
  insurerregservice:
   image: insurerregservice
@@ -162,16 +166,34 @@ services:
     - 8090
 
  search-service:
-   image: search-service
-   build: search-service/
-   restart: always
-   network_mode: host
-   depends_on:
-     - eurekaserver
-     - configserver
-     - apigateway
-     - mongo
-   ports:
-     - 8095:8095
-   expose:
-     - 8095
+  image: search-service
+  build: search-service/
+  restart: always
+  network_mode: host
+  depends_on:
+   - eurekaserver
+   - configserver
+   - apigateway
+   - mongo
+  ports:
+   - 8095:8095
+  expose:
+   - 8095
+
+ porting:
+  image: porting
+  build: porting/
+  restart: always
+  network_mode: host
+  depends_on:
+   - mongo
+   - configserver
+   - eurekaserver
+   - apigateway
+   - kafka
+
+  ports:
+   - 8091:8091
+  expose:
+   - 8091
+

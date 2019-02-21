@@ -24,11 +24,6 @@ import javax.validation.Valid;
         AuthenticationManager authenticationManager;
 
 
-
-
-
-
-
         @Autowired
         JwtProvider jwtProvider;
 
@@ -44,52 +39,9 @@ import javax.validation.Valid;
             UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 
             return ResponseEntity.ok(new JwtResponse(jwt, userDetails.getUsername(), userDetails.getAuthorities()));
+
         }
 
-//        @PostMapping("/signup")
-//        public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpForm signUpRequest) {
-//            if (insuredRepository.existsByUsername(signUpRequest.getUsername())) {
-//                return new ResponseEntity<>(new ResponseMessage("Fail -> Username is already taken!"),
-//                        HttpStatus.BAD_REQUEST);
-//            }
-//
-//            if (insuredRepository.existsByEmail(signUpRequest.getEmail())) {
-//                return new ResponseEntity<>(new ResponseMessage("Fail -> Email is already in use!"),
-//                        HttpStatus.BAD_REQUEST);
-//            }
-//
-//            // Creating user's account
-//            Insured user = new Insured(signUpRequest.getName(), signUpRequest.getUsername(), signUpRequest.getEmail(),
-//                    encoder.encode(signUpRequest.getPassword()));
-//
-//            Set<String> strRoles = signUpRequest.getRole();
-//            Set<Role> roles = new HashSet<>();
-//
-//            strRoles.forEach(role -> {
-//                switch (role) {
-//                    case "admin":
-//                        Role adminRole = roleRepository.findByName(RoleName.ROLE_ADMIN)
-//                                .orElseThrow(() -> new RuntimeException("Fail! -> Cause: Insured Role not find."));
-//                        roles.add(adminRole);
-//
-//                        break;
-//                    case "pm":
-//                        Role pmRole = roleRepository.findByName(RoleName.ROLE_PM)
-//                                .orElseThrow(() -> new RuntimeException("Fail! -> Cause: Insured Role not find."));
-//                        roles.add(pmRole);
-//
-//                        break;
-//                    default:
-//                        Role userRole = roleRepository.findByName(RoleName.ROLE_USER)
-//                                .orElseThrow(() -> new RuntimeException("Fail! -> Cause: Insured Role not find."));
-//                        roles.add(userRole);
-//                }
-//            });
-//
-//            user.setRoles(roles);
-//            insuredRepository.save(user);
-//
-//            return new ResponseEntity<>(new ResponseMessage("Insured registered successfully!"), HttpStatus.OK);
-//        }
+
     }
 

@@ -28,6 +28,14 @@ public class SearchController {
         responseEntity = new ResponseEntity<Policy>(policy1, HttpStatus.CREATED);
         return responseEntity;
     }
+
+    @GetMapping(value = "polici/{value}")
+    public ResponseEntity<?> getDiseases(@PathVariable(value = "value") String value)
+    {
+        List<Policy> allPolicies = searchService.getByDisease(value);
+
+        return new ResponseEntity<List<Policy>>(allPolicies, HttpStatus.OK);
+    }
     //to get policyList based on searchvalue
     @GetMapping(value="policies/{value}")
     public ResponseEntity<?> tokeniseString(@PathVariable(value = "value")String value)
