@@ -1,0 +1,1000 @@
+  954  cd userlogin/
+  955  ls
+  956  cd src
+  957  ls
+  958  cd main/
+  959  ls
+  960  cd resources/
+  961  ls
+  962  vi application.properties 
+  963  vi application.yml 
+  964  cd ~/boeing-wave3-pie/
+  965  git add *
+  966  git status
+  967  git commit -m "Changed the port for userlogin from 8096 to 8098 in application.yml."
+  968  git pull origin v1.0.0 
+  969  git push origin v1.0.0 
+  970  sudo docker-compose up
+  971  vi docker-compose.yml 
+  972  git log
+  973  vi docker-compose.yml 
+  974  sudo docker-compose down
+  975  vi docker-compose.yml 
+  976  sudo docker-compose down
+  977  vi docker-compose.yml 
+  978  sudo docker-compose down
+  979  vi docker-compose.yml 
+  980  sudo docker-compose down
+  981  vi docker-compose.yml 
+  982  sudo docker-compose down
+  983  vi docker-compose.yml 
+  984  git log
+  985  git pull origin v1.0.0 
+  986  git log
+  987  git reset --HARD f4abeb75275bb25062cbfa737863fe824307516d 
+  988  git reset --hard f4abeb75275bb25062cbfa737863fe824307516d 
+  989  git log
+  990  vi docker-compose.yml 
+  991  sudo docker-compose down
+  992  vi docker-compose.yml 
+  993  sudo docker-compose down
+  994  vi docker-compose.yml 
+  995  sudo docker-compose down
+  996  du -h
+  997  df -h
+  998  sudo docker image ls
+  999  git reset --hard f4abeb75275bb25062cbfa737863fe824307516d 
+ 1000  vi docker-compose.yml 
+ 1001  sudo docker-compose down
+ 1002  vi docker-compose.yml 
+ 1003  sudo docker-compose down
+ 1004  vi docker-compose.yml 
+ 1005  sudo docker-compose down
+ 1006  sudo docker-compose up
+ 1007  sudo docker ps
+ 1008  sudo docker logs 1d59b5fd9e09
+ 1009  ifconfig
+ 1010  vi docker-compose.yml 
+ 1011  sudo docker kill $(sudo docker ps -q)
+ 1012  sudo docker ps
+ 1013  vi docker-compose.yml 
+ 1014  sudo docker-compose down
+ 1015  sudo docker ps
+ 1016  sudo docker-compose up
+ 1017  sudo docker ps
+ 1018  sudo docker logs f1277a45708d
+ 1019  sudo docker ps
+ 1020  sudo docker logs 7f8808c40016
+ 1021  sudo docker images
+ 1022  df -h
+ 1023  sudo dockder ps
+ 1024  sudo docker ps
+ 1025  sudo docker logs 7f8808c40016
+ 1026  sudo docker logs7f8808c40016
+ 1027  sudo docker logs f1277a45708d 
+ 1028  sudo docker ps
+ 1029  sudo docker logs 99d840147fda
+ 1030  sudo docker logs f1277a45708d 
+ 1031  git log
+ 1032  cd userlogin/
+ 1033  ls
+ 1034  cd src/
+ 1035  ls
+ 1036  cd main/
+ 1037  ls
+ 1038  cd resources/
+ 1039  ls
+ 1040  vi application.
+ 1041  vi application.yml 
+ 1042  cd ~/boeing-wave3-pie/
+ 1043  vi docker-compose.yml 
+ 1044  cd recommendation/
+ 1045  ls
+ 1046  cd src/
+ 1047  ls
+ 1048  cd main/
+ 1049  ls
+ 1050  cd resources/
+ 1051  vi application.yml 
+ 1052  ls
+ 1053  vi application.properties 
+ 1054  cd ~/boeing-wave3-pie/
+ 1055  vi docker-compose.yml 
+ 1056  cd -
+ 1057  vi application.yml 
+ 1058  vi application.properties 
+ 1059  cd -
+ 1060  git add *
+ 1061  git status
+ 1062  git commit -m "Fixed wrong port in recommendation service."
+ 1063  git pull origin v1.0.0 
+ 1064  git rm -rf data/*
+ 1065  ls
+ 1066  rm -rf data/
+ 1067  sudo rm -rf data/
+ 1068  ls
+ 1069  git pull origin v1.0.0 
+ 1070  git log 
+ 1071  git pull origin v1.0.0 
+ 1072  vi docker-compose.yml 
+ 1073  git push origin v1.0.0 
+ 1074  sudo docker-compose down
+ 1075  vi docker-compose.yml 
+ 1076  sudo docker-compose down
+ 1077  vi docker-compose.yml 
+ 1078  sudo docker-compose down
+ 1079  vi docker-compose.yml 
+ 1080  sudo docker-compose down
+ 1081  vi docker-compose.yml 
+ 1082  sudo docker-compose down
+ 1083  cd userlogin/
+ 1084  ls
+ 1085  cd src/
+ 1086  ls
+ 1087  cd main/
+ 1088  ls
+ 1089  cd resources/
+ 1090  ls
+ 1091  vi application.yml 
+ 1092  cd ~/boeing-wave3-pie/
+ 1093  sudo docker ps
+ 1094  vi docker-compose.yml 
+ 1095  cd boeing-wave3-pie/
+ 1096  vi docker-compose.yml 
+ 1097  git log
+ 1098  git pull origin v1.0.0 
+ 1099  git add *
+ 1100  git status
+ 1101  cd boeing-wave3-pie/
+ 1102  vi docker-compose.yml 
+ 1103  sudo docker-compose down
+ 1104  sudo docker-compose up
+ 1105  git log
+ 1106  cd userlogin/src/
+ 1107  ls
+ 1108  cd main
+ 1109  ls
+ 1110  cd resources/
+ 1111  vi application.yml 
+ 1112  cd ~/boeing-wave3-pie/
+ 1113  ls
+ 1114  git add *
+ 1115  git status
+ 1116  git commit -m "Changed port of user login to 8096."
+ 1117  git pull origin v1.0.0 
+ 1118  git push origin v1.0.0 
+ 1119  mvn clean compile package
+ 1120  git pull origin v1.0.0 
+ 1121  git status
+ 1122  clear
+ 1123  sudo docker image ls
+ 1124  sudo docker image rm $(sudo docker image ls -q)
+ 1125  sudo docker image rm -f $(sudo docker image ls -q)
+ 1126  sudo docker-compose up
+ 1127  mvn clean compile package
+ 1128  sudo docker-compose up
+ 1129  cd boeing-wave3-pie/
+ 1130  git pull origin v1.0.0 
+ 1131  vi docker-compose.yml 
+ 1132  mvn clean compile package
+ 1133  vi pom.xml 
+ 1134  mvn clean compile package
+ 1135  sudo docker-compose up
+ 1136  vi docker-compose.yml 
+ 1137  sudo docker-compose up
+ 1138  cd insurer
+ 1139  ls
+ 1140  sudo docker ps
+ 1141  clear
+ 1142  which bash
+ 1143  sudo apt-get install cmatrix
+ 1144  cmatrix
+ 1145  man cmatrix 
+ 1146  cmatrix -a
+ 1147  ls
+ 1148  cd src/
+ 1149  ls
+ 1150  cd main/
+ 1151  ls
+ 1152  cd java/
+ 1153  tree
+ 1154  cd  com/stackroute/pie/config/
+ 1155  ls
+ 1156  vi KafkaConfiguration.java 
+ 1157  cd ~/boeing-wave3-pie/
+ 1158  ls
+ 1159  git add *
+ 1160  git status
+ 1161  git commit -m "Changed IP to localhost"
+ 1162  git pull origin v1.0.0 
+ 1163  git push origin v1.0.0 
+ 1164  mvn clean compile package
+ 1165  sudo docker ps
+ 1166  sudo docker logs 44ec6ad3c1f9
+ 1167  sudo docker ps
+ 1168  sudo docker logs b9c97d111fd3
+ 1169  sudo docker ps
+ 1170  sudo docker logs 11d3926374ee 
+ 1171  sudo docker ps
+ 1172  mvn clean compile package
+ 1173  cd boeing-wave3-pie/
+ 1174  mvn clean compile package
+ 1175  cd boeing-wave3-pie/
+ 1176  ls
+ 1177  vi docker-compose.yml 
+ 1178  git add *
+ 1179  ls
+ 1180  git status
+ 1181  rm .docker-compose.yml.sw
+ 1182  rm .docker-compose.yml.swo
+ 1183  git status
+ 1184  git commit -m "Added insurerreg to docker compose."
+ 1185  git pull origin v1.0.0 
+ 1186  vi docker-compose.yml 
+ 1187  git add *
+ 1188  git status
+ 1189  git commit -m "Resolved merge conflict in docker compose."
+ 1190  git pull origin v1.0.0 
+ 1191  git push origin v1.0.0 
+ 1192  sudo docker-compose up
+ 1193  vi docker-compose.yml 
+ 1194  clear
+ 1195  sudo docker-compose up
+ 1196  sudo docker ps
+ 1197  sudo docker logs b9c97d111fd3
+ 1198  sudo docker ps
+ 1199  sudo docker logs 11d3926374ee
+ 1200  sudo docker logs b9c97d111fd3
+ 1201  cd boeing-wave3-pie/
+ 1202  ls
+ 1203  cd insurerregservice/
+ 1204  ls
+ 1205  cd src
+ 1206  ls
+ 1207  cd main
+ 1208  ls
+ 1209  cd resources/
+ 1210  ls
+ 1211  vi application.yml 
+ 1212  vi application.properties 
+ 1213  mongo
+ 1214  clear
+ 1215  sudo docker ps
+ 1216  sudo docker logs e77473e8a113
+ 1217  htop
+ 1218  jobs
+ 1219  ls
+ 1220  clear
+ 1221  cd boeing-wave3-pie/
+ 1222  mvn clean
+ 1223  mvn compile
+ 1224  mvn package
+ 1225  cd insurer
+ 1226  ls
+ 1227  cd src/
+ 1228  ls
+ 1229  cd main/
+ 1230  ls
+ 1231  cd resources/
+ 1232  vi application.properties 
+ 1233  cd ~/boeing-wave3-pie/
+ 1234  git add *
+ 1235  git status
+ 1236  git pull origin v1.0.0 
+ 1237  git push origin v1.0.0 
+ 1238  git commit -m "Changed credentials for mysql in insurer service."
+ 1239  git pull origin v1.0.0 
+ 1240  git push origin v1.0.0 
+ 1241  vi docker-compose.yml 
+ 1242  mvn package
+ 1243  vi docker-compose.yml 
+ 1244  exit
+ 1245  man yarn
+ 1246  exit
+ 1247  cd .ssh/
+ 1248  vim authorized_keys 
+ 1249  exit
+ 1250  ls
+ 1251  cd .ssh/
+ 1252  ls
+ 1253  vim authorized_keys 
+ 1254  ifconfig
+ 1255  exit
+ 1256  ls
+ 1257  cd boeing-wave-3
+ 1258  cd boeing-wave-3-pie
+ 1259  cd boeing-wave3-pie
+ 1260  ls
+ 1261  sudo docker ps
+ 1262  sudo docker-compose up
+ 1263  ls
+ 1264  cd 
+ 1265  exit
+ 1266  ls
+ 1267  cd boeing-wave3-pie
+ 1268  ls
+ 1269  git pull origin v1.0.0
+ 1270  ls
+ 1271  vi docker-compose.yml
+ 1272  cd 
+ 1273  ls
+ 1274  sudo docker ps
+ 1275  sudo docker stop be8fc40350f7
+ 1276  sudo docker ps
+ 1277  cd boeing-wave3-pie/
+ 1278  ls
+ 1279  sudo docker ps
+ 1280  sudo docker-compose up
+ 1281  sudo docker-compose down
+ 1282  sudo docker rmi $(sudo docker image ls -q)
+ 1283  sudo docker-compose up
+ 1284  mysql
+ 1285  mysql -u user -p
+ 1286  clear
+ 1287  sudo docker ps
+ 1288  sudo docker logs 57939ee06ee3
+ 1289  ls
+ 1290  cd boeing-wave3-pie/
+ 1291  git pull origin v1.0.0
+ 1292  git add .
+ 1293  git commit -m "updating"
+ 1294  git pull origin v1.0.0
+ 1295  sudo docker-compose down
+ 1296  vi docker-compose.yml
+ 1297  sudo docker-compose down
+ 1298  sudo docker-compose up
+ 1299  sudo docker-compose down
+ 1300  sudo docker ps
+ 1301  sudo docker stop be8fc40350f7
+ 1302  sudo docker ps
+ 1303  sudo docker-compose up
+ 1304  sudo docker-compose down
+ 1305  sudo docker-compose ps
+ 1306  sudo docker ps
+ 1307  sudo docker-compose up
+ 1308  sudo docker ps
+ 1309  sudo docker logs b672b5ebeae2
+ 1310  clear
+ 1311  ls
+ 1312  sudo docker ps
+ 1313  clear
+ 1314  sudo docker ps
+ 1315  sudo docker logs a3aa5dba455b
+ 1316  mysql -u user -p
+ 1317  sudo docker ps
+ 1318  sudo docker logs a3aa5dba455b
+ 1319  sudo docker ps
+ 1320  mysql -u user -p
+ 1321  mysql -u user -p
+ 1322  ls
+ 1323  cd boeing-wave3-pie/
+ 1324  ls
+ 1325  cd insurer
+ 1326  ls
+ 1327  cd src
+ 1328  ls
+ 1329  cd main
+ 1330  cd resources/
+ 1331  ls
+ 1332  vi application.yml
+ 1333  cd ..
+ 1334  mysql -u user -p
+ 1335  cd boeing-wave3-pie/
+ 1336  cd insurer
+ 1337  cd src
+ 1338  cd main
+ 1339  cd resources/
+ 1340  vi application.yml
+ 1341  cd ..
+ 1342  vi docker-compose.yml 
+ 1343  sudo docker ps
+ 1344  sudo docker logs 8a4a060caec1
+ 1345  cd boeing-wave3-pie/
+ 1346  sudo docker ps
+ 1347  sudo docker-compose up
+ 1348  sudo docker ps
+ 1349  sudo docker-compose down
+ 1350  sudo docker ps
+ 1351  sudo docker ps -a
+ 1352  sudo docker-compose up --build
+ 1353  sudo docker ps
+ 1354  ls
+ 1355  exit
+ 1356  sudo docker ps
+ 1357  sudo docker logs a53cd2ba6db1
+ 1358  mysql -u user -p
+ 1359  sudo docker logs a53cd2ba6db1
+ 1360  exit
+ 1361  cd boeing-wave3-pie/
+ 1362  mvn clean package
+ 1363  sudo docker ps
+ 1364  sudo docker-compose up
+ 1365  sudo docker-compose down
+ 1366  cd boeing-wave3-pie/
+ 1367  sudo docker-compose down
+ 1368  ls
+ 1369  cd insurerregservice/
+ 1370  cd src
+ 1371  cd ..
+ 1372  ls
+ 1373  cd ..
+ 1374  l
+ 1375  ls
+ 1376  sudo docker ps
+ 1377  mysql -u user -p
+ 1378  sudo docker ps
+ 1379  sudo docker-compose up
+ 1380  cd bo
+ 1381  cd boeing-wave3-pie/
+ 1382  ls
+ 1383  sudo docker ps
+ 1384  sudo docker-compose up
+ 1385  sudo docker-compose down
+ 1386  sudo docker 
+ 1387  git pull origin v1.0.0
+ 1388  git add .
+ 1389  git commit -m "updating"
+ 1390  git pull origin v1.0.0
+ 1391  git push origin v1.0.0
+ 1392  git pull origin v1.0.0
+ 1393  git add .
+ 1394  git status
+ 1395  ls
+ 1396  rm insurer
+ 1397  rm -rf insurer
+ 1398  ls
+ 1399  cd .
+ 1400  cd ..
+ 1401  ls
+ 1402  rm -rf boeing-wave3-pie/
+ 1403  sudo rm -rf boeing-wave3-pie/
+ 1404  ls
+ 1405  git clone -b v1.0.0 https://github.com/stackroute/boeing-wave3-pie.git
+ 1406  ls
+ 1407  cd boeing-wave3-pie/
+ 1408  ls
+ 1409  cd .ssh/
+ 1410  vim authorized_keys 
+ 1411  exit
+ 1412  ls
+ 1413  cd deployment/
+ 1414  ls
+ 1415  pwd
+ 1416  cd boeing-wave3-pie/
+ 1417  pwd
+ 1418  cd
+ 1419  ls
+ 1420  rm -rf boeing-wave3-pie/
+ 1421  ls
+ 1422  exit
+ 1423  ssh ubuntu@10.20.1.136
+ 1424  exit
+ 1425  pwd
+ 1426  ssh ubuntu@10.20.1.179
+ 1427  exit
+ 1428  cd boeing-wave3-pie/
+ 1429  ls
+ 1430  vi docker-compose.yml 
+ 1431  git add .
+ 1432  git commit -m "updating docker-compose"
+ 1433  git push origin v1.0.0
+ 1434  git pull origin v1.0.0
+ 1435  git push origin v1.0.0
+ 1436  mysql -u user -p
+ 1437  sudo docker ps
+ 1438  sudo docker logs 79c772c2da45
+ 1439  sudo docker clear
+ 1440  clear
+ 1441  sudo docker ps
+ 1442  sudo docker logs 79c772c2da45
+ 1443  ls
+ 1444  sudo docker ps
+ 1445  sudo docker logs 40202270ca5e 
+ 1446  sudo docker ps
+ 1447  sudo docker logs 98e64f6ea53e
+ 1448  mysql -u user -p
+ 1449  mongo
+ 1450  mysql -u user -p
+ 1451  sudo docker ps
+ 1452  sudo docker logs bf179de7cf8e
+ 1453  mongo
+ 1454  ls
+ 1455  cd boeing-wave3-pie/insurerregservice/src/main/java/com/stackroute/pie/controller/
+ 1456  ls
+ 1457  vi InsurerController.java 
+ 1458  cd
+ 1459  cd boeing-wave3-pie/
+ 1460  sudo docker ps
+ 1461  sudo docker logs e9d6d391e374
+ 1462  mysql -u user -p
+ 1463  mongo
+ 1464  cd insurerregservice/
+ 1465  ls
+ 1466  cd src/
+ 1467  ls
+ 1468  cd main/
+ 1469  ls
+ 1470  cd resources/
+ 1471  ls
+ 1472  vi application.properties 
+ 1473  cd boeing-wave3-pie/
+ 1474  git pull origin v1.0.0
+ 1475  ls
+ 1476  vi pom.xml
+ 1477  sudo docker ps
+ 1478  cd insurerregservice/
+ 1479  ls
+ 1480  cd src
+ 1481  ls
+ 1482  cd mai
+ 1483  cd main
+ 1484  ls
+ 1485  cd java
+ 1486  ls
+ 1487  cd com
+ 1488  cd stackroute
+ 1489  cd pie
+ 1490  ls
+ 1491  cd controller
+ 1492  ls
+ 1493  vi InsurerController.java 
+ 1494  cd ..
+ 1495  ls
+ 1496  vi pom.xml
+ 1497  cd ..
+ 1498  sudo docker ps
+ 1499  git pull origin v1.0.0
+ 1500  sudo docker-compose up
+ 1501  ls
+ 1502  sudo docker-compose down
+ 1503  ls
+ 1504  vi docker-compose.yml
+ 1505  git add docker-compose.yml 
+ 1506  git commit -m "added recommendations"
+ 1507  git push origin v1.0.0
+ 1508  sudo docker-compose down
+ 1509  git pull origin v1.0.0
+ 1510  ls
+ 1511  git clone -b v1.0.0 https://github.com/stackroute/boeing-wave3-pie.git
+ 1512  cd ..
+ 1513  git clone -b v1.0.0 https://github.com/stackroute/boeing-wave3-pie.git
+ 1514  cd boeing-wave3-pie/
+ 1515  ls
+ 1516  vi docker-compose.yml
+ 1517  sudo docker ps
+ 1518  sudo docker-compose down
+ 1519  vi docker-compose.yml
+ 1520  sudo docker-compose down
+ 1521  git add docker-compose.yml 
+ 1522  git commit -m "added path in mysql"
+ 1523  git push origin v1.0.0
+ 1524  git pull origin v1.0.0
+ 1525  git push origin v1.0.0
+ 1526  sudo docker ps
+ 1527  sudo docker-compose down
+ 1528  sudo docker-compose --build
+ 1529  sudo docker-compose -build
+ 1530  sudo docker-compose --build
+ 1531  sudo docker-compose build
+ 1532  git pull origin v1.0.0
+ 1533  sudo docker-compose --build
+ 1534  sudo docker-compose build
+ 1535  ls
+ 1536  cd eureka-server/
+ 1537  ls
+ 1538  vi Dockerfile 
+ 1539  cd ..
+ 1540  ls
+ 1541  git pull origin v1.0.0
+ 1542  sudo docker ps
+ 1543  sudo docker-compose down
+ 1544  sudo docker-compose --build
+ 1545  mvn clean compile package
+ 1546  sudo docker-compose up --build
+ 1547  sudo dockere-compose down
+ 1548  sudo docker-compose down
+ 1549  sudo docker ps
+ 1550  ls
+ 1551  vi docker-compose.yml 
+ 1552  sudo docker-compose up --build
+ 1553  sudo docker-compose down
+ 1554  sudo docker ps
+ 1555  git pull origin v1.0.0
+ 1556  sudo docker-compose up --build
+ 1557  sudo docker-compose down
+ 1558  ls
+ 1559  cd insurerregservice/
+ 1560  ls
+ 1561  cd src
+ 1562  ls
+ 1563  cd main/java/com/stackroute/pie/services/
+ 1564  ls
+ 1565  vi InsurerServiceImpl.java 
+ 1566  cd ..
+ 1567  ls
+ 1568  sudo docker-compose up --build
+ 1569  sudo docker-compose down
+ 1570  sudo docker ps
+ 1571  mvn clean compile package
+ 1572  cd insurerregservice/src/main/java/com/stackroute/pie/services/
+ 1573  ls
+ 1574  vi InsurerServiceImpl.java 
+ 1575  cd ..
+ 1576  ls
+ 1577  sudo docker-compose up --build
+ 1578  mvn clean compile package
+ 1579  cd insurerregservice/src/main/java/com/stackroute/pie/services/
+ 1580  ls
+ 1581  vi InsurerServiceImpl.java 
+ 1582  cd ..
+ 1583  mvn clean compile package
+ 1584  sudo docker-compose --build
+ 1585  sudo docker-compose up --build
+ 1586  sudo docker-compose down
+ 1587  sudo docker ps
+ 1588  mvn clean compile package
+ 1589  sudo docker-compose up --build
+ 1590  sudo docker-compose down
+ 1591  sudo docker ps
+ 1592  exit
+ 1593  sudo docker images
+ 1594  sudo docker rmi 266b14cf356c
+ 1595  sudo docker images
+ 1596  sudo docker rmi 5ab029c98d65 46a57f9e059e
+ 1597  sudo docker rmi 06edc3e388dd 033b9c9dc376 e62aa1fe2c11 4659b1a3b11f
+ 1598  sudo docker images
+ 1599  sudo docker rmi f1096f888493 761e901d0e8a
+ 1600  sudo docker images
+ 1601  sudo docker rmi 51fa529f1bf4
+ 1602  sudo docker images
+ 1603  sudo docker rmi $(sudo docker images -q)
+ 1604  sudo docker images
+ 1605  cd boeing-wave3-pie/
+ 1606  ls
+ 1607  sudo docker-compose up --build
+ 1608  ls
+ 1609  cd searchservice
+ 1610  ls
+ 1611  cd ..
+ 1612  sudo rm -rf searchservice/
+ 1613  ls
+ 1614  sudo docker-compose up --build
+ 1615  vi pom.xml 
+ 1616  vi docker-compose.yml 
+ 1617  sudo docker-compose up --build
+ 1618  ls
+ 1619  sudo rm -rf search-service/
+ 1620  sudo docker-compose up --build
+ 1621  ls
+ 1622  git pull origin v1.0.0
+ 1623  cd ..
+ 1624  rm -rf boeing-wave3-pie/
+ 1625  sudo rm -rf boeing-wave3-pie/
+ 1626  git clone -b v1.0.0 https://github.com/stackroute/boeing-wave3-pie.git
+ 1627  cd boeing-wave3-pie/
+ 1628  ls
+ 1629  mvn clean compile package
+ 1630  ls
+ 1631  vi pom.xml 
+ 1632  git add pom.xml
+ 1633  git commit -m "updating pom"
+ 1634  git push origin v1.0.0
+ 1635  cd boeing-wave3-pie/
+ 1636  git pull origin v1.0.0
+ 1637  git add .
+ 1638  git commit -m "adding"
+ 1639  git pull origin v1.0.0
+ 1640  git push origin v1.0.0
+ 1641  mvn clean compile package
+ 1642  vi pom.xml
+ 1643  mvn clean compile package
+ 1644  vi pom.xml
+ 1645  mvn clean compile package
+ 1646  vi pom.xml
+ 1647  mvn clean compile package
+ 1648  sudo docker-compose up --build
+ 1649  sudo docker ps
+ 1650  sudo docker ps -a
+ 1651  df -h
+ 1652  sudo docker images
+ 1653  sudo docker ps
+ 1654  sudo docker images
+ 1655  sudo docker rmi $(sudo docker images -q)
+ 1656  cd boeing-wave3-pie/
+ 1657  sudo docker-compose up --build
+ 1658  ls
+ 1659  vi
+ 1660  sudo docker-compose down
+ 1661  exit
+ 1662  sudo docker images
+ 1663  cd boeing-wave3-pie/
+ 1664  vi pom.xml 
+ 1665  sudo docker ps
+ 1666  sudo docker stop be8fc40350f7
+ 1667  sudo docker ps
+ 1668  df -h
+ 1669  sudo docker-compose up --build
+ 1670  sudo docker ps
+ 1671  clear
+ 1672  sudo docker logs fe216aff57a1
+ 1673  cd boeing-wave3-pie/
+ 1674  ls
+ 1675  cd insurerregservice
+ 1676  ls
+ 1677  vi pom.xml
+ 1678  cd ..
+ 1679  df -h
+ 1680  sudo docker ps
+ 1681  mysql -u user -p
+ 1682  sudo docker ps
+ 1683  sudo docker logs 14ce3d0d83e0
+ 1684  mysql -u user -p
+ 1685  mongo
+ 1686  sudo docker ps
+ 1687  ls
+ 1688  vi docker-compose.yml 
+ 1689  ls
+ 1690  sudo rm -rf boeing-wave3-pie/
+ 1691  git clone -b v1.0.0 https://github.com/stackroute/boeing-wave3-pie.git
+ 1692  ls
+ 1693  cd boeing-wave3-pie/
+ 1694  ls
+ 1695  df -h
+ 1696  sudo docker images
+ 1697  sudo docker ps
+ 1698  sudo docker-compose up --build
+ 1699  ls
+ 1700  sudo rm -rf search-service/
+ 1701  vi pom.xml 
+ 1702  sudo docker-compose up --build
+ 1703  vi docker-compose.yml 
+ 1704  git pull orgin v1.0.0
+ 1705  git pull ori\gin v1.0.0
+ 1706  git pull origin 
+ 1707  cd ..
+ 1708  sudo rm -rf boeing-wave3-pie/
+ 1709  git clone -b v1.0.0 https://github.com/stackroute/boeing-wave3-pie.git
+ 1710  cd boeing-wave3-pie/
+ 1711  ls
+ 1712  vi docker-compose.yml 
+ 1713  vi pom.xml 
+ 1714  sudo docker-compose up --build
+ 1715  vi docker-compose.yml
+ 1716  vi pom.xml 
+ 1717  sudo docker-compose up --build
+ 1718  vi docker-compose.yml 
+ 1719  sudo docker-compose up --build
+ 1720  vi docker-compose.yml 
+ 1721  sudo docker-compose up --build
+ 1722  cd eureka-server/
+ 1723  cd src/
+ 1724  ls
+ 1725  cd main/
+ 1726  ls
+ 1727  cd java/com/stackroute/eurekaserver/
+ 1728  ls
+ 1729  cd ..
+ 1730  ls
+ 1731  cd ..
+ 1732  ls
+ 1733  cd ..
+ 1734  mvn clean compile package
+ 1735  vi pom.xml 
+ 1736  mvn clean compile package
+ 1737  sudo rm -rf settlement/
+ 1738  ls
+ 1739  vi pom.xml
+ 1740  vi docker-compose.yml 
+ 1741  mvn clean compile package
+ 1742  vi pom.xml
+ 1743  mvn clean compile package
+ 1744  sudo docker-compose up --build
+ 1745  ls
+ 1746  cd ..
+ 1747  df -h
+ 1748  sudo rm -rf boeing-wave3-pie/
+ 1749  df -h
+ 1750  ls
+ 1751  git clone -b v1.0.0 https://github.com/stackroute/boeing-wave3-pie.git
+ 1752  cd boeing-wave3-pie/
+ 1753  ls
+ 1754  sudo docker-compose up --build
+ 1755  cd search-service/
+ 1756  cd src/
+ 1757  cd main/
+ 1758  cd java/
+ 1759  ls
+ 1760  cd com/stackroute/pie/
+ 1761  ls
+ 1762  cd ..
+ 1763  ls
+ 1764  cd ..
+ 1765  ls
+ 1766  cd ..
+ 1767  cd search-service/
+ 1768  ls
+ 1769  mvn package
+ 1770  ls
+ 1771  cd target/
+ 1772  ls
+ 1773  cd ..
+ 1774  sudo docker-compose up --build
+ 1775  vi pom.xml 
+ 1776  vi docker-compose.yml 
+ 1777  sudo docker-compose up --build
+ 1778  cd search-service/
+ 1779  ls
+ 1780  vi D
+ 1781  vi Dockerfile 
+ 1782  cd ..
+ 1783  ls
+ 1784  vi docker-compose.yml 
+ 1785  sudo docker-compose up --build
+ 1786  mvn compile package
+ 1787  sudo docker-compose up --build
+ 1788  sudo docker-compose down
+ 1789  sudo docker ps
+ 1790  mvn clean
+ 1791  mvn compile
+ 1792  mvn package
+ 1793  sudo docker images
+ 1794  sudo docker rmi $(sudo docker images -q)
+ 1795  sudo docker images
+ 1796  sudo docker-compose up --build
+ 1797  sudo docker ps
+ 1798  sudo docker logs 42f65ed2bf62
+ 1799  cd boeing-wave3-pie/
+ 1800  ls
+ 1801  cd recommendations/
+ 1802  ls
+ 1803  cd src
+ 1804  cd main/
+ 1805  ls
+ 1806  cd resources/
+ 1807  vi application.yml
+ 1808  cd ..
+ 1809  ls
+ 1810  vi docker-compose.yml 
+ 1811  cd recommendations/
+ 1812  cd src/
+ 1813  ls
+ 1814  cd main/
+ 1815  ls
+ 1816  cd resources/
+ 1817  vi application.
+ 1818  vi application.yml 
+ 1819  cd ..
+ 1820  ls
+ 1821  vi docker-compose.yml 
+ 1822  sudo docker ps
+ 1823  cd boeing-wave3-pie/
+ 1824  vi docker-compose.yml 
+ 1825  sudo docker logs 2007e9927368
+ 1826  sudo docker-compose down
+ 1827  cd boeing-wave3-pie/
+ 1828  sudo docker-compose down
+ 1829  sudo docker images
+ 1830  sudo docker rmi $(sudo docker images -q)
+ 1831  sudo docker images
+ 1832  git pull origin v1.0.0
+ 1833  git add .
+ 1834  git commit -m "changed pom in insurerreg and docker-compose yml"
+ 1835  git pull origin v1.0.0
+ 1836  git push origin v1.0.0
+ 1837  ls
+ 1838  sudo docker ps
+ 1839  sudo docker images
+ 1840  mvn clean compile package
+ 1841  sudo docker-compose up --build
+ 1842  sudo docker-compose down
+ 1843  sudo docker ps
+ 1844  sudo docker images
+ 1845  sudo docker rmi $(sudo docker images -q)
+ 1846  ls
+ 1847  sudo recommendations/
+ 1848  ls
+ 1849  cd recommendations/
+ 1850  ls
+ 1851  cd src/
+ 1852  ls
+ 1853  cd main/
+ 1854  ls
+ 1855  cd resources/
+ 1856  ls
+ 1857  vi application.
+ 1858  vi application.yml 
+ 1859  cd ..
+ 1860  mvn clean compile package
+ 1861  sudo docker-compose up --build
+ 1862  sudo docker-compose down
+ 1863  sudo docker ps
+ 1864  sudo docker images
+ 1865  sudo docker rmi $(sudo docker images -q)
+ 1866  mysql -u user -p
+ 1867  mongo
+ 1868  mysql -u user -p
+ 1869  sudo docker images
+ 1870  df -h
+ 1871  sudo docker-compose up --build
+ 1872  cd boeing-wave3-pie/
+ 1873  cd recommendations/
+ 1874  cd src/
+ 1875  cd main/
+ 1876  cd resources/
+ 1877  ls
+ 1878  vi application.yml
+ 1879  mongo
+ 1880  sudo docker ps
+ 1881  cd boeing-wave3-pie/
+ 1882  sudo docker-compose up
+ 1883  sudo docker-compose down
+ 1884  ls
+ 1885  sudo docker images
+ 1886  sudo docker rmi $(sudo docker images -q)
+ 1887  ls
+ 1888  mvn clean compile package
+ 1889  sudo docker-compose --build -d
+ 1890  sudo docker-compose up --build -d
+ 1891  sudo docker ps
+ 1892  cd boeing-wave3-pie/
+ 1893  ls
+ 1894  cd porting/
+ 1895  cd src/
+ 1896  cd main/
+ 1897  cd resources/
+ 1898  ls
+ 1899  vi application.yml 
+ 1900  mongo
+ 1901  mysql -u user -p
+ 1902  cd boeing-wave3-pie/
+ 1903  cd porting/
+ 1904  ls
+ 1905  cd src/
+ 1906  cd main/
+ 1907  ls
+ 1908  cd resources/
+ 1909  ls
+ 1910  vi application.yml
+ 1911  cd ..
+ 1912  mongo
+ 1913  ls
+ 1914  vi docker-compose.yml 
+ 1915  git add .
+ 1916  git commit -m "adding porting"
+ 1917  git pull origin v1.0.0
+ 1918  git push origin v1.0.0
+ 1919  ls
+ 1920  cd insurerregservice/
+ 1921  cd src/
+ 1922  cd main/java/com/stackroute/pie/
+ 1923  ls
+ 1924  cd services/
+ 1925  ls
+ 1926  vi InsurerServiceIml.java
+ 1927  vi InsurerServiceImpl.java
+ 1928  cd ..
+ 1929  cd controller/
+ 1930  ls
+ 1931  vi InsurerController.java 
+ 1932  cd ..
+ 1933  mongo
+ 1934  mysql -u user -p
+ 1935  mongo
+ 1936  mongo
+ 1937  sudo docker ps
+ 1938  sudo docker logs 285ca26091ba
+ 1939  df -h
+ 1940  sudo docker images
+ 1941  cd boeing-wave3-pie/
+ 1942  df -h
+ 1943  sudo docker system df
+ 1944  sudo docker images
+ 1945  sudo docker images -a
+ 1946  sudo docker image prune 
+ 1947  df -h
+ 1948  sudo docker system prune -a
+ 1949  sudo docker ps
+ 1950  sudo docker ps -a
+ 1951  df -h
+ 1952  history 
+ 1953  history > history-commands
