@@ -22,7 +22,7 @@ public interface RecommendationsRepo extends Neo4jRepository<Insured,Long> {
     @Query("CREATE (policy:Policy{maxAge:{maxAge},minAge:{minAge},policyId:{policyId},policyName:{policyName},policyInsurerName:{policyInsurerName},gender:[value in {gender} | toString(value)],diseasesCovered:[value in {diseasesCovered} | toString(value)],policyType:[value in {policyType} | toString(value)]})")
     Policy newPolicy(@Param("policyId")int policyId, @Param("policyInsurerName")String insurerName, @Param("policyName")String policyName, @Param("minAge")int minAge, @Param("maxAge")int maxAge, @Param("gender")List<String> gender, @Param("diseasesCovered")List<String> diseasesCovered, @Param("policyType")List<String> policyType);
 
-    @Query("CREATE (insured:Insured{insuredId:{insuredId},username:{username},gender:{gender}})")
+    @Query("CREATE (insured:Insured{insuredId:{insuredId},username:{username},gender:{gender},age:{age}})")
     Insured newInsured(@Param("insuredId")int insuredId,@Param("username")String username, @Param("gender")String gender,@Param("age")int age);
 
 //    @Query("MATCH (n:insurer{insurerLicense:{insurerLicense}}) SET n.insurerName={insurerName} ")
@@ -64,7 +64,7 @@ public interface RecommendationsRepo extends Neo4jRepository<Insured,Long> {
     @Query("MATCH p= (policy:Policy)  where policy.diseasesCovered=$policyDisease RETURN policy")
     List<Policy> findByDisease(List<String> policyDisease);
 
-    @Query("MATCH  p = (policy:Policy) WHERE (policy.maxAge>$age AND policy.minAge<$age) AND (policy.gender=$userGender) RETURN policy")
+    @Query("MATCH  p = (policy:Policy) WHERE (policy.maxAge>$age AND policy.minAge<$age) AND (policy.gender=$userGender) RETURN policy" )
     List<Policy> findByAgeGender(Integer age,List<String> userGender);
 
 
@@ -73,5 +73,10 @@ public interface RecommendationsRepo extends Neo4jRepository<Insured,Long> {
 
     @Query("MATCH  p = (policy:Policy) WHERE (policy.gender=$userGender) AND (policy.diseasesCovered=$policyDisease) RETURN policy")
     List<Policy> findByGenderDisease(List<String>userGender,List<String>policyDisease);
+
+  
+
+
+
 
 }
