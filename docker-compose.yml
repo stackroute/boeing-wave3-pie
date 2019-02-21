@@ -197,3 +197,13 @@ services:
   expose:
    - 8091
 
+ landing:
+  image: landing
+  build: landing_page/
+  restart: always
+  network_mode: host
+  hostname: localhost
+  ports:
+   - 8087:8087
+  expose:
+   - 8087
