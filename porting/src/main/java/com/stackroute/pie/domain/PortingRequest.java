@@ -29,7 +29,7 @@ private int portingRequestId;
     @NotBlank
     private int cumulativeBonus;
     @NotBlank
-    private String[] addOns;
+    private String addOns;
     @NotBlank
     private int policyNumber;
     @NotBlank
