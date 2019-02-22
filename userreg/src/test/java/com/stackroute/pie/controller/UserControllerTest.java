@@ -15,6 +15,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -30,7 +31,10 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import java.util.Date;
 
 
-
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
+import static org.springframework.mock.http.server.reactive.MockServerHttpRequest.put;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -68,6 +72,9 @@ public class UserControllerTest {
     Insured user;
 
     SignUpForm signUpForm;
+    private int insuredId;
+    private Insured user1;
+
 
 
     @Before
@@ -88,7 +95,10 @@ public class UserControllerTest {
 
 //           Insured user =new Insured("saurabhn","saurabh","saurabhna","sasa@gmail.com","qwertyu",null,"male",4);
 
-
+        mockMVC = MockMvcBuilders.standaloneSetup(userController).build();
+        user1 = new Insured(1,"anusha","anusha123","anusha@gmail.com","anusha",21,"female","cat");
+//            requestList.add(0,new Request(2,"acc","xyz","abc"));
+//            user = new Insured(1,requestList);
     }
 
 
@@ -105,6 +115,7 @@ public class UserControllerTest {
 
 
     }
+
     public static String asJsonString(final Object object) {
         try {
             return new ObjectMapper().writeValueAsString(object);
@@ -113,6 +124,18 @@ public class UserControllerTest {
         }
 
 
+    }
+
+    private static String jsonToString(final Object obj) throws JsonProcessingException {
+        String result;
+        try {
+            final ObjectMapper mapper = new ObjectMapper();
+            final String jsonContent = mapper.writeValueAsString(obj);
+            result = jsonContent;
+        } catch (JsonProcessingException e) {
+            result = "Json processing error";
+        }
+        return result;
     }
 
 
