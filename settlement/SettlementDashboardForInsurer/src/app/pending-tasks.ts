@@ -1,8 +1,8 @@
 import {Task} from './task';
 export class PendingTasks {
-    pendingTasksId: Number;
+    pendingTasksId: number;
     taskList: Task[];
-    newInsurerName: String;
-    insuredName: String;
-    insurerName: String;
+    newInsurerName: string;
+    insuredName: string;
+    insurerName: string;
 }
