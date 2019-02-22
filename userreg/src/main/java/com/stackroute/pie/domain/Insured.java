@@ -64,7 +64,7 @@ public class Insured {
 
 
 
-    private Set<Policy> policies =new HashSet<>();
+    private List<Policy> policies =new ArrayList<>();
 
     private List<Request> requests= new ArrayList<>();
 
@@ -82,20 +82,27 @@ public class Insured {
 
 
     public Insured(String fullName, String username, String email, String password, String gender, Date createdDate, String securityAnswer,int age) {
+
         this.fullName = fullName;
         this.username = username;
         this.email = email;
         this.password = password;
         this.gender= gender;
-        this.createdDate=createdDate;
+        this.createdDate = createdDate;
         this.securityAnswer=securityAnswer;
         this.age=age;
     }
 
-
-
-
-
+    public Insured(int insuredId, @NotBlank @Size(min = 3, max = 50) String fullName, @NotBlank @UniqueElements @Size(min = 3, max = 50) String username, @UniqueElements @NotBlank @Size(max = 50) @Email String email, @NotBlank @Size(min = 6, max = 100) String password, int age, @NotBlank String gender, @NotBlank String securityAnswer) {
+        this.insuredId = insuredId;
+        this.fullName = fullName;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.age = age;
+        this.gender = gender;
+        this.securityAnswer = securityAnswer;
+    }
 }
 
 

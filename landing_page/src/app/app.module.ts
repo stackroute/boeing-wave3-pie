@@ -68,7 +68,6 @@ import { MyPoliciesComponent } from './my-policies/my-policies.component';
 import { IncomingPortingRequestsComponent } from './components/incoming-porting-requests/incoming-porting-requests.component';
 import { OutgoingPortingRequestsComponent } from './components/outgoing-porting-requests/outgoing-porting-requests.component';
 import { RegisterComponent } from './components/register/register.component';
-import { Insurer1Component } from './components/insurer1/insurer1.component';
 import { CompanyComponent } from './components/company/company.component';
 import { DeleteRequestComponent } from './components/delete-request/delete-request.component';
 import { DisplayRequestsComponent } from './components/display-requests/display-requests.component';
@@ -94,16 +93,13 @@ const routes: Routes = [];
     DashboardComponent,
     RecommendationsComponent,
     MyPoliciesComponent,
-    // LoginInsurerComponent,
     AddNewPolicyComponent,
     IncomingPortingRequestsComponent,
     OutgoingPortingRequestsComponent,
     FormDashboardComponent,
     RegisterComponent,
-    // CompanyLoginComponent,
     NewFormFormatComponent,
     SideBarComponent,
-    Insurer1Component,
     CompanyComponent,
     UserComponent,
     UserProfileComponent,

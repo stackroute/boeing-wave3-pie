@@ -17,6 +17,8 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SignUpForm {
+
+    ;
     @NotBlank
     @Size(min = 3, max = 50)
 
@@ -33,7 +35,7 @@ public class SignUpForm {
 
     private Set<String> role;
 
-
+    private int insuredId;
 
     private Set<Policy> policees;
 
