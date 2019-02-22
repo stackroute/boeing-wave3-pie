@@ -17,7 +17,6 @@ private int portingRequestId;
     private String insuredName;
     @NotBlank
     private String insurerName;
-    @NotBlank
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date dateOfBirth;
     @NotBlank
