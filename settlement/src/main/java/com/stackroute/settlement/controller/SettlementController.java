@@ -37,5 +37,12 @@ public class SettlementController {
     public ResponseEntity<PendingTasks> appendAPendingTask(@RequestBody Task task, @PathVariable int pendingTasksId) {
         return new ResponseEntity<PendingTasks>(settlementServices.appendTask(pendingTasksId, task), HttpStatus.OK);
     }
-    
+    @DeleteMapping("pendingtask/{pendingTasksId}/{taskName}")
+    public ResponseEntity<PendingTasks> deleteAPendingTask(@PathVariable int pendingTasksId, @PathVariable String taskName) {
+        return new ResponseEntity<PendingTasks>(settlementServices.deleteTask(pendingTasksId, taskName), HttpStatus.OK);
+    }
+    @PutMapping("pendingtask/{pendingTasksId}/{taskName}/{status}")
+    public ResponseEntity<PendingTasks> changeAPendingTaskStatus(@PathVariable int pendingTasksId, @PathVariable String taskName,@PathVariable boolean status) {
+        return new ResponseEntity<PendingTasks>(settlementServices.changePendingTaskStatus(pendingTasksId, taskName, status), HttpStatus.OK);
+    }
 }
