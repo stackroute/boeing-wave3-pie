@@ -9,18 +9,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Policy {
 
-
-    private int policyid;
+    private long policyId;
+    private String insuredName;
     private String insurerName;
-    private String[] diseases;
-
-
-
-    private int sumInsured;
+    private String policyName;
+    private String diseasesCovered;
+    private long SumInsured;
     private int waitingPeriod;
     private int monthlyPremium;
     private int yearlyPremium;
-
-
 
 }

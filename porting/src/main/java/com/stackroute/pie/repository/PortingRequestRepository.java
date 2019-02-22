@@ -14,10 +14,10 @@ public interface PortingRequestRepository extends MongoRepository<PortingRequest
     public Optional<PortingRequest> findByPortingRequestId(int requestId);
     public void deleteByPortingRequestId(int requestId);
     public Boolean existsByInsuredName(String insuredName);
+    public Boolean existsByNewInsuredName(String newInsuredName);
     public List<PortingRequest> findByInsuredName(String insuredName);
     Optional<List<PortingRequest>> findByInsurerName(String insurerName);
     Optional<List<PortingRequest>> findByNewInsurerName(String newInsurerName);
-//    Optional<List<PortingRequest>> findByInsuredName (String insuredName);
     Optional<PortingRequest> findByInsuredNameAndCreateDate (String insuredName,Date createDate);
     void deleteByInsuredNameAndCreateDate(String insuredName,Date createDate);
 }

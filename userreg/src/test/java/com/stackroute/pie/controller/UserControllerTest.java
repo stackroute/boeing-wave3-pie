@@ -2,11 +2,10 @@ package com.stackroute.pie.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.stackroute.pie.domain.Request;
+
 import com.stackroute.pie.domain.Insured;
 import com.stackroute.pie.message.request.SignUpForm;
 import com.stackroute.pie.repository.UserRepository;
-import com.stackroute.pie.security.WebSecurityConfig;
 import com.stackroute.pie.security.jwt.JwtAuthEntryPoint;
 import com.stackroute.pie.security.jwt.JwtAuthTokenFilter;
 import com.stackroute.pie.security.jwt.JwtProvider;
@@ -28,8 +27,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 
 import java.util.Date;
-
-
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -68,6 +65,9 @@ public class UserControllerTest {
     Insured user;
 
     SignUpForm signUpForm;
+    private int insuredId;
+    private Insured user1;
+
 
 
     @Before
@@ -86,8 +86,10 @@ public class UserControllerTest {
         Insured  user =new Insured(signUpForm.getFullName(),signUpForm.getUsername(),signUpForm.getEmail(),signUpForm.getPassword(),signUpForm.getGender(),signUpForm.getCreatedDate(),signUpForm.getSecurityAnswer(),signUpForm.getAge());
 
 
-//           Insured user =new Insured("saurabhn","saurabh","saurabhna","sasa@gmail.com","qwertyu",null,"male",4);
 
+
+        mockMVC = MockMvcBuilders.standaloneSetup(userController).build();
+        user1 = new Insured(1,"anusha","anusha123","anusha@gmail.com","anusha",21,"female","cat");
 
     }
 
@@ -95,7 +97,6 @@ public class UserControllerTest {
 
     @Test
     public void registerUser() throws Exception {
-//        Mockito.when(userRepository.save(user)).thenReturn(user);
         String uri ="/api/auth/signup";
         this.mockMVC.perform(post(uri)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -105,6 +106,7 @@ public class UserControllerTest {
 
 
     }
+
     public static String asJsonString(final Object object) {
         try {
             return new ObjectMapper().writeValueAsString(object);
@@ -113,6 +115,18 @@ public class UserControllerTest {
         }
 
 
+    }
+
+    private static String jsonToString(final Object obj) throws JsonProcessingException {
+        String result;
+        try {
+            final ObjectMapper mapper = new ObjectMapper();
+            final String jsonContent = mapper.writeValueAsString(obj);
+            result = jsonContent;
+        } catch (JsonProcessingException e) {
+            result = "Json processing error";
+        }
+        return result;
     }
 
 

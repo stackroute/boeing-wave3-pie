@@ -105,12 +105,12 @@ public class UserController {
 
     }
     @PutMapping("/profile/{username}")
-    public ResponseEntity User (@PathVariable("username") String username, @RequestBody Insured insured){
+    public ResponseEntity User (@PathVariable("username") String username, @RequestBody Insured user){
         ResponseEntity responseEntity;
 
         try {
 
-            Insured insured1 = userService.updateProfile(username, insured);
+            Insured insured1 = userService.updateProfile(username, user);
             responseEntity =  new ResponseEntity<Insured>(insured1, HttpStatus.OK);
 
         }
