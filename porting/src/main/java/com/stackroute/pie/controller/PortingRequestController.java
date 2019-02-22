@@ -2,12 +2,14 @@ package com.stackroute.pie.controller;
 
 import com.stackroute.pie.domain.PortingRequest;
 import com.stackroute.pie.exceptions.RequestNotFoundException;
+import com.stackroute.pie.repository.PortingRequestRepository;
 import com.stackroute.pie.services.PortingRequestServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.service.ResponseMessage;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,9 +21,12 @@ import java.util.List;
 public class PortingRequestController {
 
     PortingRequestServiceImpl requestService;
+
+    PortingRequestRepository portingRequestRepository;
     @Autowired
-    public PortingRequestController(PortingRequestServiceImpl requestService) {
+    public PortingRequestController(PortingRequestServiceImpl requestService, PortingRequestRepository portingRequestRepository) {
         this.requestService = requestService;
+        this.portingRequestRepository = portingRequestRepository;
     }
 
     //Method to store porting request details
@@ -91,6 +96,10 @@ public class PortingRequestController {
     //Method to display incoming porting requests
     @GetMapping("/incomingportingrequest/{newInsurerName}")
     public ResponseEntity<?> incomingPortingRequest( @PathVariable("newInsurerName") String newInsurerName) {
+        if (portingRequestRepository.existsByNewInsuredName(newInsurerName) == false) {
+            return new ResponseEntity<>("Insurer Not Found",
+                    HttpStatus.NOT_FOUND);
+        }
         List<PortingRequest> incomingPortingRequests = requestService.getIncomingPortingRequest(newInsurerName);
         List<PortingRequest> incomingPortingRequests1 = new ArrayList<>();
         System.out.println("In the incomingportingrequest");
@@ -105,6 +114,10 @@ public class PortingRequestController {
     //Method to display outgoing porting requests
     @GetMapping("/outgoingportingrequest/{insurerName}")
     public ResponseEntity<?> outgoingPortingRequest(@PathVariable("insurerName") String insurerName) {
+        if (portingRequestRepository.existsByInsuredName(insurerName) == false) {
+            return new ResponseEntity<>("Insurer Not Found",
+                    HttpStatus.NOT_FOUND);
+        }
         List<PortingRequest> outgoingPortingRequests = requestService.getOutgoingPortingRequest(insurerName);
         List<PortingRequest> outgoingPortingRequests1 = new ArrayList<>();
         for(int i =0 ;i < outgoingPortingRequests.size(); i++) {
@@ -118,6 +131,10 @@ public class PortingRequestController {
     //Method to accept outgoing requests
     @PutMapping("/acceptoutgoingportingrequest")
     public ResponseEntity<?> acceptOutgoingPortingRequest(@RequestBody PortingRequest portingRequest) {
+        if (portingRequestRepository.existsByInsuredName(portingRequest.getInsurerName()) == false) {
+            return new ResponseEntity<>("Insurer Not Found",
+                    HttpStatus.NOT_FOUND);
+        }
         PortingRequest acceptOutgoingPortingRequest = requestService.acceptOutgoingPortingRequest(portingRequest);
         requestService.deletePortingRequest(portingRequest);
         acceptOutgoingPortingRequest.setFromApproval(1);
@@ -130,6 +147,10 @@ public class PortingRequestController {
     //Method to accept outgoing requests
     @PutMapping("/acceptincomingportingrequest")
     public ResponseEntity<?> acceptIncomingPortingRequest(@RequestBody PortingRequest portingRequest) {
+        if (portingRequestRepository.existsByNewInsuredName(portingRequest.getNewInsurerName()) == false) {
+            return new ResponseEntity<>("Insurer Not Found",
+                    HttpStatus.NOT_FOUND);
+        }
         PortingRequest acceptIncomingPortingRequest = requestService.acceptIncomingPortingRequest(portingRequest);
         requestService.deletePortingRequest(portingRequest);
         acceptIncomingPortingRequest.setFromApproval(1);
@@ -141,6 +162,10 @@ public class PortingRequestController {
     //Method to reject incoming requests
     @PutMapping("/rejectincomingportingrequest")
     public ResponseEntity<?> rejectIncomingPortingRequest(@RequestBody PortingRequest portingRequest) {
+        if (portingRequestRepository.existsByNewInsuredName(portingRequest.getNewInsurerName()) == false) {
+            return new ResponseEntity<>("Insurer Not Found",
+                    HttpStatus.NOT_FOUND);
+        }
         PortingRequest rejectIncomingPortingRequest = requestService.rejectIncomingPortingRequest(portingRequest);
         requestService.deletePortingRequest(portingRequest);
         rejectIncomingPortingRequest.setFromApproval(1);
