@@ -42,8 +42,9 @@ public interface RecommendationsRepo extends Neo4jRepository<Insured,Long> {
     @Query("MATCH p= (policy:Policy)  where policy.diseasesCovered=$policyDisease RETURN policy")
     List<Policy> findByDisease(List<String> policyDisease);
 
-    @Query("MATCH  p = (policy:Policy) WHERE (policy.maxAge>$age AND policy.minAge<$age) AND (policy.gender=$userGender) RETURN policy" )
-    List<Policy> findByAgeGender(Integer age,List<String> userGender);
+    @Query("MATCH  p = (policy:Policy) WHERE (policy.maxAge>$age AND policy.minAge<$age) AND (policy.gender=$gender) RETURN policy" )
+    List<Policy> findByAgeGender(@Param("age")int age,@Param("gender")List<String> gender);
+
 
 
     @Query("MATCH  p = (policy:Policy) WHERE (policy.maxAge>$age AND policy.minAge<$age) AND (policy.diseasesCovered=$policyDisease) RETURN policy")
@@ -52,9 +53,6 @@ public interface RecommendationsRepo extends Neo4jRepository<Insured,Long> {
     @Query("MATCH  p = (policy:Policy) WHERE (policy.gender=$userGender) AND (policy.diseasesCovered=$policyDisease) RETURN policy")
     List<Policy> findByGenderDisease(List<String>userGender,List<String>policyDisease);
 
-  
-
-
-
-
+    @Query("MATCH p= (insured:Insured)  where insured.username=$username RETURN insured.age")
+    Insured findUserAge(@Param("username")String username);
 }

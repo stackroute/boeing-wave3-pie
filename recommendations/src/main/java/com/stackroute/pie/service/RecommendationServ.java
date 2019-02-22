@@ -5,6 +5,7 @@ import com.stackroute.pie.domain.Insured;
 import com.stackroute.pie.domain.Insurer;
 import com.stackroute.pie.domain.Policy;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 public interface RecommendationServ {
@@ -19,11 +20,11 @@ public interface RecommendationServ {
     List<Policy> getByAge(int age);
     List<Policy> getByGender(List<String> userGender);
     List<Policy> getByDisease(List<String> policyDisease);
-    List<Policy> getByAgeGender(int age,List<String>userGender);
+    List<Policy> getByAgeGender(int age,List<String>gender);
     List<Policy> getByAgeDisease(int age,List<String>policyDisease);
     List<Policy> getByGenderDisease(List<String>userGender,List<String>policyDisease);
-
-
-
+    Insured getUserAge(String username);
+    Insured getUserGender(String username);
+   List<Policy> getPolicy(int age,String gender);
 
 }

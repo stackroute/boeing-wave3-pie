@@ -1,6 +1,6 @@
 package com.stackroute.pie.service;
 
-import com.stackroute.pie.domain.Disease;
+
 import com.stackroute.pie.domain.Insured;
 import com.stackroute.pie.domain.Insurer;
 import com.stackroute.pie.domain.Policy;
@@ -76,8 +76,8 @@ public class RecommendationsServImpl implements RecommendationServ {
     }
 
     @Override
-    public List<Policy> getByAgeGender(int age, List<String> userGender) {
-        return recommendationsRepo.findByAgeGender(age,userGender);
+    public List<Policy> getByAgeGender(int age, List<String> gender) {
+        return recommendationsRepo.findByAgeGender(age,gender);
     }
 
 
@@ -92,5 +92,19 @@ public class RecommendationsServImpl implements RecommendationServ {
         return recommendationsRepo.findByGenderDisease(userGender,policyDisease);
     }
 
+    @Override
+    public Insured getUserAge(String username) {
+        return recommendationsRepo.findUserAge(username);
+    }
+
+    @Override
+    public Insured getUserGender(String username) {
+        return null;
+    }
+
+    @Override
+    public List<Policy> getPolicy(int age, String gender) {
+        return null;
+    }
 
 }

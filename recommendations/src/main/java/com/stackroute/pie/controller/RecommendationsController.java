@@ -138,8 +138,8 @@ public class RecommendationsController {
         return policiyy;
     }
 
-    @GetMapping("policyByAgeGender/{age}/{usergender}")
-    public  List<Policy> getByAgeGender(@PathVariable("age")int age,@PathVariable("usergender")String usergender){
+    @GetMapping("policyByAgeGender/{age}/{gender}")
+    public  List<Policy> getByAgeGender(@PathVariable("age")int age,@PathVariable("gender")String usergender){
         System.out.println("in controller");
 
         List<String> genderList= Arrays.asList(usergender);
@@ -148,6 +148,8 @@ public class RecommendationsController {
         System.out.println(policiyy);
         return policiyy;
     }
+
+
 
 
     @GetMapping("policyByAgeDisease/{age}/{policyDisease}")
@@ -171,5 +173,7 @@ public class RecommendationsController {
         System.out.println(policiyy);
         return policiyy;
     }
+
+
 
 }
