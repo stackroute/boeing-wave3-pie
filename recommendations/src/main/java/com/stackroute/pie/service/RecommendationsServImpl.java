@@ -6,10 +6,7 @@ import com.stackroute.pie.domain.Insurer;
 import com.stackroute.pie.domain.Policy;
 import com.stackroute.pie.repository.RecommendationsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jmx.export.naming.IdentityNamingStrategy;
 import org.springframework.stereotype.Service;
-
-import java.io.PipedOutputStream;
 import java.util.List;
 
 @Service
@@ -27,8 +24,6 @@ public class RecommendationsServImpl implements RecommendationServ {
 
     @Override
     public Policy createPolicy(Policy policy) {
-       // String license = policy.getInsurerName();
-        //Insurer insurer1 = recommendationsRepo.findByInsurerLicense(license).get();
         return recommendationsRepo.newPolicy(policy.getPolicyId(),policy.getPolicyInsurerName(),policy.getPolicyName(),policy.getMinAge(),policy.getMaxAge(),policy.getGender(),policy.getDiseasesCovered(),policy.getPolicyType());
     }
 
@@ -36,24 +31,6 @@ public class RecommendationsServImpl implements RecommendationServ {
     public Insured createInsured(Insured insured) {
         return recommendationsRepo.newInsured(insured.getInsuredId(),insured.getUsername(),insured.getGender(),insured.getAge());
     }
-
-    @Override
-    public Insurer updateInsurer(Insurer insurer) {
-        return null;
-    }
-
-    @Override
-    public Policy updatePolicy(Policy policy) {
-        return null;
-    }
-
-
-
-    @Override
-    public Insured updateInsured(Insured insured) {
-        return null;
-    }
-
 
     @Override
     public String insurerPolicy(String insurerName, int policyId) {
@@ -74,12 +51,6 @@ public class RecommendationsServImpl implements RecommendationServ {
     }
 
     @Override
-    public Disease createDisease(Disease disease) {
-        return null;
-    }
-
-
-    @Override
     public List<Policy> displayPolicy() {
         return recommendationsRepo.findViewedPolicy();
     }
@@ -89,9 +60,8 @@ public class RecommendationsServImpl implements RecommendationServ {
         return recommendationsRepo.findByuserName(username);
     }
 
-
     @Override
-    public List<Policy> getByAge(Integer age) {
+    public List<Policy> getByAge(int age) {
         return recommendationsRepo.findByAge(age);
     }
 
