@@ -47,9 +47,7 @@ public class InsurerController {
             return new ResponseEntity<>(new ResponseMessage("Fail -> Email is already in use!"),
                     HttpStatus.CONFLICT);
         }
-        System.out.println("Incoming");
         signUpRequest.setPassword(bCryptPasswordEncoder.encode(signUpRequest.getPassword()));
-        System.out.println(signUpRequest);
         //Calling InsurerService to add into the MongoDB
         Insurer insurer = insurerService.addInsurer(signUpRequest);
         //Kafka producing the Insurer pojo ,so that login microservice can consume it
@@ -60,6 +58,10 @@ public class InsurerController {
     //Method for adding a new policy for existing insurer
     @PutMapping("/policy/newpolicy")
     public ResponseEntity<?> addNewPolicy(@RequestBody Policy insurerPolicy){
+        if (insurerRepository.existsByInsurerName(insurerPolicy.getPolicyName()) == false) {
+            return new ResponseEntity<>(new ResponseMessage("Insurer Not Found"),
+                    HttpStatus.NOT_FOUND);
+        }
         Insurer insurer = insurerService.addNewPolicy(insurerPolicy);
         kafkaTemplate.send("insurer_policy_json",insurer);
         return new ResponseEntity<Insurer>(insurer, HttpStatus.CREATED);
@@ -68,6 +70,10 @@ public class InsurerController {
     //Method for displaying the exiting policy
     @GetMapping("/policy/display/{insurerLicense}")
     public ResponseEntity<?> getPolicies(@PathVariable(value = "insurerLicense") String insurerLicense){
+        if (insurerRepository.existsByInsurerLicense(insurerLicense) == false) {
+            return new ResponseEntity<>(new ResponseMessage("Insurer Not Found"),
+                    HttpStatus.NOT_FOUND);
+        }
         List<Policy> policies = insurerService.getPolicies(insurerLicense);
         return new ResponseEntity<List<Policy>>(policies, HttpStatus.OK);
     }
@@ -75,6 +81,11 @@ public class InsurerController {
     //Method for deleting an existing policy
     @PutMapping("/policy/delete/{insurerName}/{policyId}")
     public ResponseEntity<?> deletePolicy(@PathVariable(value = "insurerName") String insurerName, @PathVariable(value = "policyId") long policyId){
+        if (insurerRepository.existsByInsurerName(insurerName) == false) {
+            return new ResponseEntity<>(new ResponseMessage("Insurer Not Found"),
+                    HttpStatus.NOT_FOUND);
+        }
+
         System.out.println("InsurerLicence : "+insurerName + " " +"policyId : "+policyId);
         Insurer insurer = insurerService.deletePolicy(insurerName,policyId);
         return new ResponseEntity<Insurer>(insurer, HttpStatus.OK);

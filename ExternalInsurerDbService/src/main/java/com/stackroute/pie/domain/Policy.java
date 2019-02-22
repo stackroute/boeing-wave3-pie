@@ -1,40 +1,34 @@
 package com.stackroute.pie.domain;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.validation.constraints.NotBlank;
-import java.util.ArrayList;
-import java.util.List;
-
-@Document(collection = "policies")
+@Document(collection="insurancelist")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class Policy {
-    @NotBlank
-    @UniqueElements
-    private int policyId;
-    @NotBlank
+
+    private long policyId;
     private String insurerName;
-    @NotBlank
-    @UniqueElements
     private String policyName;
-    @NotBlank
+    //private String policyType;
     private long minSumInsured;
-    @NotBlank
     private long maxSumInsured;
     private int noOfCashLessHospitals;
-    @NotBlank
+    //private List<String> cashLessHospitals;
+//    private long monthlyPremium;
+//    private long yearlyPremium;
+    //private List<String> diseasesCovered;
+    //  private String age;
     private int minAge;
-    @NotBlank
     private int maxAge;
-    @NotBlank
     private int waitingPeriod;
-    private List<String> insuredList = new ArrayList<>();
-    private List<String> diseases = new ArrayList<>();
+    // private Timestamp createdAt;
+    //  private Timestamp updatedAt;
+    //  private String createdBy;
+    //  private String updatedBy;
 }

@@ -15,9 +15,12 @@ import java.util.List;
 @AllArgsConstructor
 public class Policy {
     @Relationship(type= "HAS_A_POLICY_IN" ,direction=Relationship.INCOMING)
+
     @Id
     private int policyId;
+
     private String policyInsurerName;
+
     private String policyName;
     List<String> policyType;
     private long minSumInsured;
@@ -31,7 +34,7 @@ public class Policy {
     private int maxAge;
     private int waitingPeriod;
    List<Disease> diseasesList;
-    List<String> gender;
+   List<String> gender;
 //     private Timestamp createdAt;
 //      private Timestamp updatedAt;
       private String createdBy;

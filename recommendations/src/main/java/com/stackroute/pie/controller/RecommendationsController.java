@@ -7,9 +7,8 @@ import com.stackroute.pie.service.RecommendationsServImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
-
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,6 +18,10 @@ import static java.util.Arrays.asList;
 @RequestMapping("rest/neo4j/recommendations")
 @CrossOrigin("*")
 public class RecommendationsController {
+
+
+    @Autowired
+    private KafkaTemplate<String, List<Policy>> kafkaTemplate;
 
     @Autowired
     RecommendationsServImpl recommendationsServ;
@@ -30,6 +33,8 @@ public class RecommendationsController {
         System.out.println((Insurer1));
         return responseEntity;
     }
+
+
 
     @PostMapping("policy")
     public ResponseEntity<?> savePolicy(@RequestBody Policy policy){
@@ -48,34 +53,6 @@ public class RecommendationsController {
         System.out.println((Insured1));
         return responseEntity;
     }
-
-    @PutMapping("update/insurer")
-    public ResponseEntity<?> updateInsurer(@RequestBody Insurer insurer){
-        ResponseEntity responseEntity;
-        Insurer Insurer1=recommendationsServ.updateInsurer(insurer);
-        responseEntity= new ResponseEntity<Insurer>(Insurer1, HttpStatus.CREATED);
-        System.out.println((Insurer1));
-        return responseEntity;
-    }
-
-    @PutMapping("update/policy")
-    public ResponseEntity<?> updatePolicy(@RequestBody Policy policy){
-        ResponseEntity responseEntity;
-        Policy Policy1=recommendationsServ.updatePolicy(policy);
-        responseEntity= new ResponseEntity<Policy>(Policy1, HttpStatus.CREATED);
-        System.out.println((Policy1));
-        return responseEntity;
-    }
-
-    @PutMapping("update/insured")
-    public ResponseEntity<?> updateInsured(@RequestBody Insured insured){
-        ResponseEntity responseEntity;
-        Insured Insured1=recommendationsServ.updateInsured(insured);
-        responseEntity= new ResponseEntity<Insured>(Insured1, HttpStatus.CREATED);
-        System.out.println((Insured1));
-        return responseEntity;
-    }
-
 
     @PostMapping(value = "relationship/{insurerName}/{policyId}")
     public ResponseEntity<?> linkpolicy(@PathVariable String insurerName,@PathVariable int policyId){
@@ -148,7 +125,6 @@ public class RecommendationsController {
             policiyy=recommendationsServ.getByGender(userGenderList);
             System.out.println(policiyy);
         }
-//        List<policy> policiyy=recommendationService.getByGender();
         System.out.println("end: "+policiyy);
         return policiyy;
     }
@@ -162,12 +138,13 @@ public class RecommendationsController {
         return policiyy;
     }
 
-    @GetMapping("policyByAgeGender/{age}/{userGender}")
-    public  List<Policy> getByAgeGender(@PathVariable("age")int age,@PathVariable("userGender")String usergender){
+    @GetMapping("policyByAgeGender/{age}/{usergender}")
+    public  List<Policy> getByAgeGender(@PathVariable("age")int age,@PathVariable("usergender")String usergender){
         System.out.println("in controller");
 
         List<String> genderList= Arrays.asList(usergender);
         List<Policy> policiyy=recommendationsServ.getByAgeGender(age,genderList);
+        kafkaTemplate.send("ageGenderPolicy", policiyy);
         System.out.println(policiyy);
         return policiyy;
     }
@@ -184,7 +161,7 @@ public class RecommendationsController {
     }
 
 
-    @GetMapping("policyByAGenderDisease/{usergender}/{policyDisease}")
+    @GetMapping("policyByGenderDisease/{usergender}/{policyDisease}")
     public  List<Policy> getByAgeDisease(@PathVariable("usergender")String usergender,@PathVariable("policyDisease")String policyDisease){
         System.out.println("in controller");
         List<String> genderList= Arrays.asList(usergender);

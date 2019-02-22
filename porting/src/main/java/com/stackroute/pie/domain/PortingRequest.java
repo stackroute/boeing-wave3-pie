@@ -17,7 +17,6 @@ private int portingRequestId;
     private String insuredName;
     @NotBlank
     private String insurerName;
-    @NotBlank
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date dateOfBirth;
     @NotBlank
@@ -29,7 +28,7 @@ private int portingRequestId;
     @NotBlank
     private int cumulativeBonus;
     @NotBlank
-    private String[] addOns;
+    private String addOns;
     @NotBlank
     private int policyNumber;
     @NotBlank
