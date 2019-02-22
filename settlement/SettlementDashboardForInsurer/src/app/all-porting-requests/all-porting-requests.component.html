@@ -1,0 +1,5 @@
+<input [(ngModel)]="currentCompanyName">
+<button (click)="fetchAllPortingRequests(currentCompanyName)">Fetch All Porting Requests</button>
+<div *ngIf="fetchAllPortingRequestsIsClicked">
+  {{pendingTasks}}
+</div>

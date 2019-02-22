@@ -2,11 +2,10 @@ package com.stackroute.pie.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.stackroute.pie.domain.Request;
+
 import com.stackroute.pie.domain.Insured;
 import com.stackroute.pie.message.request.SignUpForm;
 import com.stackroute.pie.repository.UserRepository;
-import com.stackroute.pie.security.WebSecurityConfig;
 import com.stackroute.pie.security.jwt.JwtAuthEntryPoint;
 import com.stackroute.pie.security.jwt.JwtAuthTokenFilter;
 import com.stackroute.pie.security.jwt.JwtProvider;
@@ -15,7 +14,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -30,11 +28,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.Date;
 
-
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
-import static org.springframework.mock.http.server.reactive.MockServerHttpRequest.put;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -93,19 +86,17 @@ public class UserControllerTest {
         Insured  user =new Insured(signUpForm.getFullName(),signUpForm.getUsername(),signUpForm.getEmail(),signUpForm.getPassword(),signUpForm.getGender(),signUpForm.getCreatedDate(),signUpForm.getSecurityAnswer(),signUpForm.getAge());
 
 
-//           Insured user =new Insured("saurabhn","saurabh","saurabhna","sasa@gmail.com","qwertyu",null,"male",4);
+
 
         mockMVC = MockMvcBuilders.standaloneSetup(userController).build();
         user1 = new Insured(1,"anusha","anusha123","anusha@gmail.com","anusha",21,"female","cat");
-//            requestList.add(0,new Request(2,"acc","xyz","abc"));
-//            user = new Insured(1,requestList);
+
     }
 
 
 
     @Test
     public void registerUser() throws Exception {
-//        Mockito.when(userRepository.save(user)).thenReturn(user);
         String uri ="/api/auth/signup";
         this.mockMVC.perform(post(uri)
                 .contentType(MediaType.APPLICATION_JSON)

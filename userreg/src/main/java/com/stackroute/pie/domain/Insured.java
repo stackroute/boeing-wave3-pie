@@ -61,9 +61,9 @@ public class Insured {
     private Set<Role> roles = new HashSet<>();
 
 
-    private Set<Policy> policies = new HashSet<>();
+    private List<Policy> policies =new ArrayList<>();
 
-    private List<Request> requests = new ArrayList<>();
+    private List<Request> requests= new ArrayList<>();
 
 
     public Insured(int insuredId, List<Request> requests) {
@@ -97,11 +97,6 @@ public class Insured {
         this.gender = gender;
         this.securityAnswer = securityAnswer;
     }
-
-
-
-
-
 }
 
 

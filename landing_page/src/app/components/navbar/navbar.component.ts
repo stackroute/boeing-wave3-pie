@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,13 +7,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  @Input() login: boolean;
+  sign = 'SignIn'
   username: any;
   message: string;
   name: any;
   isLogin: any;
   currentRoute: any;
   constructor(private router: Router) { }
-
+  
   ngOnInit() {
     console.log(this.message);
     this.router.events.subscribe(event => {

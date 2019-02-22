@@ -4,14 +4,7 @@ import org.springframework.data.annotation.Id;
 
 public class Role {
     @Id
-
-//        @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-//        @Enumerated(EnumType.STRING)
-//        @NaturalId
-
-
 
     private RoleName name;
 

@@ -8,7 +8,7 @@ import { catchError, map } from 'rxjs/operators';
 export class UserDashboardService {
   public localMongoUrl = 'http://13.126.73.190:8090/api/auth/requests/';
  public recommendationsUrl = 'http://13.126.73.190:8080/rest/neo4j/recommendations/policyByuserName/';
- public profileUrl = 'http://13.126.73.190:8090/api/auth/profile/';
+ public profileUrl = 'http://13.126.73.190:8092/userreg/api/auth/profile/';
  constructor(private http: HttpClient) {
    console.log('http service got called');
  }
