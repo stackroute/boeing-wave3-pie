@@ -35,10 +35,18 @@ public class InsuredDetailsServiceImplTest {
         optional = Optional.of(insured);
     }
     @Test
-    public void getRequestsSuccess() throws UserNotFoundException,Exception {
-        when(userRepository.existsByInsuredId(insured.getInsuredId())).thenReturn(true);
-        when(userRepository.findByInsuredId(insured.getInsuredId())).thenReturn(optional);
-        Insured expectedOutput = userProfileService.getRequests(insured.getInsuredId());
+    public void getProfileSuccess() throws UserNotFoundException,Exception {
+        when(userRepository.existsByUsername(insured.getUsername())).thenReturn(true);
+        when(userRepository.findByUsername(insured.getUsername())).thenReturn(optional);
+        Insured expectedOutput = userProfileService.getProfile(insured.getUsername());
         assertEquals(optional.get(),expectedOutput);
+    }
+    @Test
+    public void updateProfileSuccess() throws UserNotFoundException,Exception {
+
+        when(userRepository.existsByUsername(insured.getUsername())).thenReturn(true);
+        when(userRepository.findByUsername(insured.getUsername())).thenReturn(optional);
+        Insured actual = userProfileService.updateProfile(insured.getUsername(),insured);
+        assertEquals(insured,actual);
     }
 }

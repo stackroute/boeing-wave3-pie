@@ -1,5 +1,5 @@
+import { CompanyAuthService } from './../companyauth/companyauth.service';
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth/auth.service';
 import { SignUpInfo } from '../auth/signup-info';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -25,7 +25,7 @@ secondForm: FormGroup;
 
 
 
-constructor(private authService: AuthService, private router: Router,private formBuilder: FormBuilder,private insurerPolicyService: InsurerPolicyService) { }
+constructor(private authService: CompanyAuthService, private router: Router,private formBuilder: FormBuilder,private insurerPolicyService: InsurerPolicyService) { }
 
 
 ngOnInit() {
