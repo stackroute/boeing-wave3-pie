@@ -1,5 +1,36 @@
-<input [(ngModel)]="currentCompanyName">
-<button (click)="fetchAllPortingRequests(currentCompanyName)">Fetch All Porting Requests</button>
+<input [(ngModel)]="currentCompanyName" />
+<button (click)="fetchAllPortingRequests(currentCompanyName)">
+  Fetch All Porting Requests
+</button>
 <div *ngIf="fetchAllPortingRequestsIsClicked">
-  {{pendingTasks}}
+  <ul>
+    <li *ngFor="let pendingTask of pendingTasks">
+      {{ pendingTask.insuredName }}
+      <button (click)="viewPendingTasksOfInsured(pendingTask.insuredName)">
+        View Details
+      </button>
+      <div *ngIf="viewPendingTasksOfInsuredIsClicked && pendingTask.insuredName === currentInsuredName">
+        <div *ngFor="let task of pendingTask.taskList">
+          {{ task.taskName }}
+          {{ task.taskDescription }}
+          <div *ngIf="task.status">
+            Completed
+          </div>
+          <div *ngIf="!task.status">
+            Not Completed
+          </div>
+          {{ task.dueDate }}
+        </div>
+        <button (click)="addANewPendingTask()">Add a new Task</button>
+        <div *ngIf="viewPendingTasksOfInsuredIsClicked && addANewPendingTaskIsClicked && pendingTask.insuredName === currentInsuredName">
+          <div [(ngModel)]="newPendingTask">
+            <input value="newPendingTask.taskName">
+            <input value="newPendingTask.taskDescription">
+            <input value="newPendingTask.dueDate">
+          </div>
+          <button (click)="saveNewPendingTask()">Save</button>
+        </div>
+      </div>
+    </li>
+  </ul>
 </div>
