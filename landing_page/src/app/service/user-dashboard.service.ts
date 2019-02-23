@@ -7,7 +7,7 @@ import { catchError, map } from 'rxjs/operators';
 })
 export class UserDashboardService {
   public localMongoUrl = 'http://13.126.73.190:8090/api/auth/requests/';
- public recommendationsUrl = 'http://13.126.73.190:8080/rest/neo4j/recommendations/policyByuserName/';
+ public recommendationsUrl = 'http://172.23.239.158:8086/rest/neo4j/recommendations/policyByAgeGender/28/female';
  public profileUrl = 'http://13.126.73.190:8092/userreg/api/auth/profile/';
  constructor(private http: HttpClient) {
    console.log('http service got called');
@@ -20,7 +20,7 @@ export class UserDashboardService {
    }
    public getRecommendations(userId): any {
      console.log(userId);
-     const recommendations = this.http.get(this.recommendationsUrl + userId);
+     const recommendations = this.http.get(this.recommendationsUrl );
      return recommendations;
    }
    public getProfile(username): any {
