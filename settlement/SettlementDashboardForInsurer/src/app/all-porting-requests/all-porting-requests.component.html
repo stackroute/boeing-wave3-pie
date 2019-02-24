@@ -25,12 +25,12 @@
         </tr>
         <button (click)="addANewPendingTask()">Add a new Task</button>
         <div *ngIf="viewPendingTasksOfInsuredIsClicked && addANewPendingTaskIsClicked && pendingTask.insuredName === currentInsuredName">
-          <div [(ngModel)]="newPendingTask">
-            <input placeholder="Task Name">
-            <input placeholder="Task Description">
-            <input placeholder="Due Date">
-          </div>
-          <button (click)="saveNewPendingTask()">Save</button>
+          <div>
+            <input placeholder="Task Name" [(ngModel)]="newPendingTaskName" />
+            <input placeholder="Task Description" [(ngModel)]="newPendingTaskDescription" />
+            <input placeholder="Due Date" [(ngModel)]="newPendingTaskDueDate" />
+          </div> 
+          <button (click)="saveNewPendingTask(pendingTask)">Save</button>
         </div>
       </div>
     </li>

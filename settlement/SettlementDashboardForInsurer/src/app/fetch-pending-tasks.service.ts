@@ -27,6 +27,7 @@ export class FetchPendingTasksService {
     return this.httpClient.get<PendingTasks[]>(this.settlementUrl + this.fetchAllPortingRequestsUrl + currentCompanyName);
   }
   addANewPendingTask(pendingtasksId: number, newTask: Task): Observable<PendingTasks>{
+    console.log(this.settlementUrl + this.addANewPendingTaskUrl + pendingtasksId)
     return this.httpClient.post<PendingTasks>(this.settlementUrl + this.addANewPendingTaskUrl + pendingtasksId, newTask, this.httpOptions);
   }
 }
