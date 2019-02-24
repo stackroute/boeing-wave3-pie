@@ -28,6 +28,6 @@ export class FetchPendingTasksService {
   }
   addANewPendingTask(pendingtasksId: number, newTask: Task): Observable<PendingTasks>{
     console.log(this.settlementUrl + this.addANewPendingTaskUrl + pendingtasksId)
-    return this.httpClient.post<PendingTasks>(this.settlementUrl + this.addANewPendingTaskUrl + pendingtasksId, newTask, this.httpOptions);
+    return this.httpClient.put<PendingTasks>(this.settlementUrl + this.addANewPendingTaskUrl + pendingtasksId, newTask, this.httpOptions);
   }
 }

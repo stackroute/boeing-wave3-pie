@@ -22,6 +22,16 @@
           <td *ngIf="task.status">Completed</td>
           <td *ngIf="!task.status">Not Completed</td>
           <td>{{task.dueDate}}</td>
+          <td *ngIf="!task.status">
+            <button (click)="modifyStatusOfTask(task.status)">
+              Mark As Completed
+            </button>
+          </td>
+          <td *ngIf="task.status">
+            <button (click)="modifyStatusOfTask(task.status)" >
+              Mark As Not Completed
+            </button>
+          </td>
         </tr>
         <button (click)="addANewPendingTask()">Add a new Task</button>
         <div *ngIf="viewPendingTasksOfInsuredIsClicked && addANewPendingTaskIsClicked && pendingTask.insuredName === currentInsuredName">

@@ -31,22 +31,27 @@ export class AllPortingRequestsComponent implements OnInit {
     this.fetchAllPortingRequestsIsClicked = false;
     this.viewPendingTasksOfInsuredIsClicked = false;
     this.addANewPendingTaskIsClicked = false;
-    this.initNewPendingTask();
+  }
+  reinitializeAllClickedVariables(): void {
+    this.addANewPendingTaskIsClicked = false;
   }
   initNewPendingTask(): void {
     this.newPendingTask = {"taskName": "Temp", "taskDescription": "Temp", "dueDate":"53", "taskStatus": false};
   }
   fetchAllPortingRequests(currentCompanyName: string): void {
+    this.reinitializeAllClickedVariables();
     this.fetchAllPortingRequestsIsClicked = true;
     this.fetchPendingTasksService
       .fetchAllPortingRequests(currentCompanyName)
       .subscribe(pendingTasks => (this.pendingTasks = pendingTasks));
   }
   viewPendingTasksOfInsured(insuredName: string): void {
+    this.reinitializeAllClickedVariables();
     this.currentInsuredName = insuredName;
     this.viewPendingTasksOfInsuredIsClicked = true;
   }
   addANewPendingTask(): void {
+    this.initNewPendingTask();
     this.addANewPendingTaskIsClicked = true;
   }
   saveNewPendingTask(pendingTasks: PendingTasks): void {

@@ -15,7 +15,6 @@ import java.util.List;
 @Controller
 @Data
 @CrossOrigin("*")
-@
 @RequestMapping("api/v1/")
 public class SettlementController {
     private SettlementServices settlementServices;
