@@ -64,4 +64,14 @@ export class AllPortingRequestsComponent implements OnInit {
       .addANewPendingTask(pendingTasks.pendingTasksId, this.newPendingTask)
       .subscribe();
   }
+  modifyStatusOfTask(taskStatus: boolean, taskName: string, pendingTasksId: number): void{
+    this.fetchPendingTasksService.modifyStatusOfTask(!taskStatus, pendingTasksId, taskName).subscribe();
+    for(let pendingtask of this.pendingTasks) {
+      console.log(pendingtask.pendingTasksId);
+      for(let task of pendingtask.taskList) {
+        console.log(task.taskStatus);
+      }
+    }
+    
+  }
 }
