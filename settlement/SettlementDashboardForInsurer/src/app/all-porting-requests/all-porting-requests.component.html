@@ -2,7 +2,9 @@
 <button (click)="fetchAllPortingRequests(currentCompanyName)">
   Fetch All Porting Requests
 </button>
-<div *ngIf="fetchAllPortingRequestsIsClicked">
+
+<app-display-all-porting-requests *ngIf="fetchAllPortingRequestsIsClicked" [pendingTasks]="pendingTasks"></app-display-all-porting-requests>
+<!-- <div *ngIf="fetchAllPortingRequestsIsClicked">
   <ul>
     <li *ngFor="let pendingTask of pendingTasks">
       {{ pendingTask.insuredName }}
@@ -45,4 +47,4 @@
       </div>
     </li>
   </ul>
-</div>
+</div> -->
