@@ -94,33 +94,21 @@ services:
     healthcheck:
       test: "exit 0"
 
-  zookeeper:
-   image: wurstmeister/zookeeper
-   container_name: zookeeper
-   network_mode: "host"
-   hostname: localhost
-   ports:
-    - 2181:2181
-   restart: always
-   healthcheck:
-    test: "exit 0"
-
   kafka:
-    image: wurstmeister/kafka
-    container_name: kafka
-    network_mode: "host"
-    hostname: localhost
+    image: landoop/fast-data-dev:latest
     ports:
-     - 9092:9092
-    depends_on:
-      zookeeper:
-        condition: service_healthy
-    environment:
-      KAFKA_ZOOKEEPER_CONNECT: 'localhost:2181'
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
-      KAFKA_LISTENERS: PLAINTEXT://localhost:9092
-      KAFKA_CREATE_TOPICS: "AuthMessage, QuestionMessage"
+      - 2181:2181
+      - 3030:3030
+      - 9092:9092
+      - 8081:8081
+      - 8082:8082
+      - 8083:8083
+    container_name: kafka_docker
+    network_mode: host
+    hostname: localhost
     restart: always
+    volumes:
+      - /home/ubuntu/deployment/KafkaDocker:/data/kafka
     healthcheck:
       test: "exit 0"
   
@@ -191,9 +179,9 @@ services:
       kafka:
         condition: service_healthy
     ports:
-      - 8080:8080
+      - 8096:8096
     expose:
-      - 8080
+      - 8096
     healthcheck:
       test: "exit 0"
 
@@ -279,3 +267,4 @@ services:
       - 4200
     healthcheck:
       test: "exit 0"
+
