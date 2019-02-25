@@ -75,12 +75,12 @@ public class RecommendationsController {
         return responseEntity;
     }
 
-//    @GetMapping("policies")
-//    public List<Policy> getAll(){
-//        List<Policy> policyList=recommendationsServ.displayPolicy();
-//        return policyList;
-//
-//    }
+    @GetMapping("policies")
+    public List<Policy> getAll(){
+        List<Policy> policyList=recommendationsServ.displayPolicy();
+        return policyList;
+
+    }
 //
 //    @GetMapping("policyByuserName/{username}")
 //    public  List<Policy> getByname(@PathVariable("username") String username){
@@ -193,7 +193,5 @@ public class RecommendationsController {
         return policiyy;
     }
 
-//
-//
-//
+
 }

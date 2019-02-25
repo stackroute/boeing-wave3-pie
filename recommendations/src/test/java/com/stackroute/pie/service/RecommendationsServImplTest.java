@@ -74,12 +74,5 @@ public class RecommendationsServImplTest {
     }
 
 
-//    @Test
-//    public void getByAgeGender() {
-//        when(recommendationsRepo.findByAgeGender(22,"female")).thenReturn(policyList);
-//        List<Policy> policySaved=recommendationsServ.getByAgeGender("tejaswini");
-//        System.out.println(policySaved);
-//        assertEquals(policySaved,policyList);
-//    }
 
 }

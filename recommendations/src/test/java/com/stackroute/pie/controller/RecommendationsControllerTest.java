@@ -189,4 +189,16 @@ public class RecommendationsControllerTest {
                         .content(jsonToString(policy1)));
                // .andExpect(status().isOk());
     }
+
+    @Test
+    public void viewPolicy1() throws  Exception{
+        String uri = "/rest/neo4j/recommendations/relation/policies";
+        this.mockMvc
+                .perform(get(uri)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON)
+                        .content(jsonToString(policy1)));
+
+    }
+
 }
