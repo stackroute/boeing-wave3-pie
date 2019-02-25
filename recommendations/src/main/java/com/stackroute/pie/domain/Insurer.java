@@ -61,7 +61,8 @@ public class Insurer {
 
     public Insurer() {}
 
-    public Insurer(String insurerName, String insurerLicense, String insurerEmail, String password, String insurerAddress, String securityQuestion, String securityAnswer) {
+    public Insurer(Long insurerId,String insurerName, String insurerLicense, String insurerEmail, String password, String insurerAddress, String securityQuestion, String securityAnswer) {
+        this.insurerId=insurerId;
         this.insurerName = insurerName;
         this.insurerLicense = insurerLicense;
         this.insurerEmail = insurerEmail;

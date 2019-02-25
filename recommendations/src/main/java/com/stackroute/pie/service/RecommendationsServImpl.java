@@ -24,7 +24,7 @@ public class RecommendationsServImpl implements RecommendationServ {
 
     @Override
     public Policy createPolicy(Policy policy) {
-        return recommendationsRepo.newPolicy(policy.getPolicyId(),policy.getPolicyInsurerName(),policy.getPolicyName(),policy.getMinAge(),policy.getMaxAge(),policy.getGender(),policy.getDiseasesCovered(),policy.getPolicyType());
+        return recommendationsRepo.newPolicy(policy.getPolicyId(),policy.getInsurerName(),policy.getPolicyName(),policy.getMinAge(),policy.getMaxAge(),policy.getGender(),policy.getDiseases(),policy.getPolicyType());
     }
 
     @Override
@@ -51,6 +51,20 @@ public class RecommendationsServImpl implements RecommendationServ {
     }
 
     @Override
+    public List<Policy> getByAgeGender(String username) {
+        Insured user=recommendationsRepo.findUser(username);
+        int age =user.getAge();
+        String gender=user.getGender();
+        return recommendationsRepo.findByAgeGender(age,gender);
+
+    }
+
+    @Override
+    public Insured findUser(String username) {
+        return recommendationsRepo.findUser(username);
+    }
+//
+    @Override
     public List<Policy> displayPolicy() {
         return recommendationsRepo.findViewedPolicy();
     }
@@ -60,13 +74,10 @@ public class RecommendationsServImpl implements RecommendationServ {
         return recommendationsRepo.findByuserName(username);
     }
 
-    @Override
-    public List<Policy> getByAge(int age) {
-        return recommendationsRepo.findByAge(age);
-    }
+
 
     @Override
-    public List<Policy> getByGender(List<String> userGender) {
+    public List<Policy> getByGender(String userGender) {
         return recommendationsRepo.findByGender(userGender);
     }
 
@@ -75,36 +86,25 @@ public class RecommendationsServImpl implements RecommendationServ {
         return recommendationsRepo.findByDisease(policyDisease);
     }
 
-    @Override
-    public List<Policy> getByAgeGender(int age, List<String> gender) {
-        return recommendationsRepo.findByAgeGender(age,gender);
-    }
 
-
-//
     @Override
     public List<Policy> getByAgeDisease(int age, List<String> policyDisease) {
         return recommendationsRepo.findByAgeDisease(age,policyDisease);
     }
 
     @Override
-    public List<Policy> getByGenderDisease(List<String> userGender, List<String> policyDisease) {
+    public List<Policy> getByGenderDisease(String userGender, List<String> policyDisease) {
         return recommendationsRepo.findByGenderDisease(userGender,policyDisease);
     }
 
-    @Override
-    public Insured getUserAge(String username) {
-        return recommendationsRepo.findUserAge(username);
-    }
 
-    @Override
-    public Insured getUserGender(String username) {
-        return null;
-    }
 
     @Override
     public List<Policy> getPolicy(int age, String gender) {
         return null;
     }
 
+
+//
+//
 }

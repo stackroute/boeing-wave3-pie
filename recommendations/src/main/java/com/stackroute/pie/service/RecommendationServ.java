@@ -17,14 +17,14 @@ public interface RecommendationServ {
      String viewPolicy(int policyId,String username);
     List<Policy> displayPolicy();
     List<Policy> getByUserName(String username);
-    List<Policy> getByAge(int age);
-    List<Policy> getByGender(List<String> userGender);
+   // List<Policy> getByAge(int age);
+    List<Policy> getByGender(String userGender);
     List<Policy> getByDisease(List<String> policyDisease);
-    List<Policy> getByAgeGender(int age,List<String>gender);
+  List<Policy> getByAgeGender(String username);
     List<Policy> getByAgeDisease(int age,List<String>policyDisease);
-    List<Policy> getByGenderDisease(List<String>userGender,List<String>policyDisease);
-    Insured getUserAge(String username);
-    Insured getUserGender(String username);
+    List<Policy> getByGenderDisease(String userGender,List<String>policyDisease);
+
    List<Policy> getPolicy(int age,String gender);
+     Insured findUser(String username);
 
 }

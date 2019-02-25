@@ -73,13 +73,14 @@ public class Insured {
 
 
 
-    public Insured(String fullName, String username, String email, String password, String gender, Date createdDate, String securityAnswer,int age) {
+    public Insured(int insuredId,String fullName, String username, String email, String password, String gender,  String securityAnswer,int age) {
+        this.insuredId=insuredId;
         this.fullName = fullName;
         this.username = username;
         this.email = email;
         this.password = password;
         this.gender= gender;
-        this.createdDate=createdDate;
+        //this.createdDate=createdDate;
         this.securityAnswer=securityAnswer;
         this.age=age;
     }
