@@ -268,3 +268,10 @@ services:
     healthcheck:
       test: "exit 0"
 
+  settlement:
+    image: settlement:1.0.0
+    restart: always
+    build: settlement/
+    ports:
+      - 8073:8073
+    network_mode: host
