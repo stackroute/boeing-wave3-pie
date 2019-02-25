@@ -16,7 +16,6 @@ import java.util.List;
 @AllArgsConstructor
 @Document(collection = "portingrequest")
 public class PortingRequest {
-
     private int portingRequestId;
     List<Field> formFields = new ArrayList<>();
     @NotBlank
