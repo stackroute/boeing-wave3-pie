@@ -14,7 +14,7 @@ public interface PortingRequestRepository extends MongoRepository<PortingRequest
     public Optional<PortingRequest> findByPortingRequestId(int requestId);
     public void deleteByPortingRequestId(int requestId);
     public Boolean existsByInsuredName(String insuredName);
-    public Boolean existsByNewInsuredName(String newInsuredName);
+    public Boolean existsByNewInsurerName(String newInsurerName);
     public List<PortingRequest> findByInsuredName(String insuredName);
     Optional<List<PortingRequest>> findByInsurerName(String insurerName);
     Optional<List<PortingRequest>> findByNewInsurerName(String newInsurerName);
