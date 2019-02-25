@@ -109,6 +109,8 @@ services:
     restart: always
     volumes:
       - /home/ubuntu/deployment/KafkaDocker:/data/kafka
+    healthcheck:
+      test: "exit 0"
   
   recommendations:
     image: recommendation-service:latest
