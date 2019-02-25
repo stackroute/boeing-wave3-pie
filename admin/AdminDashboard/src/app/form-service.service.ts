@@ -1,27 +1,47 @@
-import { Injectable } from '@angular/core';
-import {FormFormat} from './formformat';
-import { Observable } from 'rxjs';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { FormFormat } from "./formformat";
+import { Observable } from "rxjs";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class FormServiceService {
-
   allFormFormats: Observable<FormFormat[]>;
 
-  adminUrl = 'http://localhost:8092/admin/api/v1/';
-  getAllFormsUrl = 'formformats/';
-  getFormFormatUrl = 'formformat/';
-  deleteFormUrl = 'formformat/';
-  constructor(private http: HttpClient) { }
+  adminUrl = "http://localhost:8092/admin/api/v1/";
+  getAllFormsUrl = "formformats/";
+  getFormFormatUrl = "formformat/";
+  saveFormUrl = "formformat/";
+  updateFormUrl = "formformat/";
+  deleteFormUrl = "formformat/";
+
+  tempFormFormat: Observable<FormFormat>;
+  constructor(private http: HttpClient) {}
   getAllFormFormats(): Observable<FormFormat[]> {
     return this.http.get<FormFormat[]>(this.adminUrl + this.getAllFormsUrl);
   }
   getFormFormat(formId: number): Observable<FormFormat> {
-    return this.http.get<FormFormat>(this.adminUrl + this.getFormFormatUrl + formId);
+    return this.http.get<FormFormat>(
+      this.adminUrl + this.getFormFormatUrl + formId
+    );
   }
-  deleteForm(formId: number): Observable<FormFormat>{
-    return this.http.delete<FormFormat>(this.adminUrl + this.deleteFormUrl + formId);
+  saveForm(newFormFormat: FormFormat): Observable<FormFormat> {
+    this.getAllFormFormats();
+    this.tempFormFormat = this.http.post<FormFormat>(
+      this.adminUrl + this.saveFormUrl,
+      newFormFormat
+    );
+    return this.tempFormFormat;
+  }
+  deleteForm(formId: number): Observable<FormFormat> {
+    return this.http.delete<FormFormat>(
+      this.adminUrl + this.deleteFormUrl + formId
+    );
+  }
+  updateForm(formFormat: FormFormat): Observable<FormFormat> {
+   this.tempFormFormat = this.http.put<FormFormat>(this.adminUrl + this.updateFormUrl + formFormat.formId, formFormat);
+   this.getAllFormFormats();
+   return this.tempFormFormat;
   }
 }

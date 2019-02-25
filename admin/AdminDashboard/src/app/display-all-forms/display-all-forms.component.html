@@ -4,4 +4,6 @@
     <button (click)="deleteForm(form.formId)">DELETE</button>
   </li>
 </ul>
+<!-- <router-outlet [currentFormFormat]="currentFormFormat"></router-outlet> -->
 <app-display-form *ngIf="showFormDetailsComponent" [currentFormFormat]='currentFormFormat'></app-display-form>
+<app-add-new-form [allFormFormats]="allFormFormats"></app-add-new-form>
