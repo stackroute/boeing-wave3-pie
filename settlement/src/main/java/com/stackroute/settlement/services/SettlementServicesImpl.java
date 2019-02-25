@@ -16,7 +16,7 @@ public class SettlementServicesImpl implements SettlementServices {
     public SettlementServicesImpl(SettlementRepository settlementRepository) {this.settlementRepository = settlementRepository;}
     @Override
     public List<PendingTasks> getAllPendingTasksForInsurer(String insurerName) {
-        List<PendingTasks> allPendingTasks = settlementRepository.findAllByInsurerName(insurerName);
+        List<PendingTasks> allPendingTasks = settlementRepository.findAllByInsurerNameOrderByInsuredNameAsc(insurerName);
         return allPendingTasks;
     }
     @Override

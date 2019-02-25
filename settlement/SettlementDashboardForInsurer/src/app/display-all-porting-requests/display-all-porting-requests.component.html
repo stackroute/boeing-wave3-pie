@@ -19,8 +19,8 @@
       <tr *ngFor="let task of pendingTask.taskList" class="taskstable">
         <td>{{ task.taskName }}</td>
         <td>{{ task.taskDescription }}</td>
-        <td *ngIf="task.taskStatus">Completed</td>
-        <td *ngIf="!task.taskStatus">Not Completed</td>
+        <td *ngIf="task.taskStatus" class="marked-complete-text">Completed</td>
+        <td *ngIf="!task.taskStatus" class="marked-not-complete-text">Not Completed</td>
         <td>{{ task.dueDate }}</td>
         <td *ngIf="!task.taskStatus">
           <button
