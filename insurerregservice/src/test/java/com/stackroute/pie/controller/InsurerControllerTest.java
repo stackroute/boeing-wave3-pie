@@ -78,7 +78,6 @@ public class InsurerControllerTest {
             result = "Json processing error";
         }
         return result;
-
     }
 
     @After

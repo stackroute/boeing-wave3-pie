@@ -104,6 +104,22 @@ public class UserController {
         return responseEntity;
 
     }
+    //Method for displaying the exiting policy
+    @GetMapping("/policy/display/{username}")
+    public ResponseEntity<?> getPolicies(@PathVariable(value = "username") String username){
+       ResponseEntity responseEntity;
+        try {
+
+            List<Policy> policies = userService.getPolicies(username);
+            responseEntity =  new ResponseEntity<List<Policy>>(policies, HttpStatus.OK);
+
+        }
+        catch (UserNotFoundException ex) {
+            responseEntity = new ResponseEntity<String>(ex.getMessage(),HttpStatus.CONFLICT);
+            ex.printStackTrace();
+        }
+        return responseEntity;
+    }
     @PutMapping("/profile/{username}")
     public ResponseEntity User (@PathVariable("username") String username, @RequestBody Insured user){
         ResponseEntity responseEntity;

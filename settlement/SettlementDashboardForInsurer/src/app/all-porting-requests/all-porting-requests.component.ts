@@ -9,9 +9,14 @@ import { Task } from "../task";
   styleUrls: ["./all-porting-requests.component.css"]
 })
 export class AllPortingRequestsComponent implements OnInit {
-  currentCompanyName: String;
+  currentCompanyName: string;
   pendingTasks: PendingTasks[];
+
   newPendingTask: Task;
+  newPendingTaskName: string;
+  newPendingTaskDescription: string;
+  newPendingTaskDueDate: string;
+
   currentInsuredName: string;
   fetchAllPortingRequestsIsClicked: Boolean;
   addANewPendingTaskIsClicked: Boolean;
@@ -27,23 +32,46 @@ export class AllPortingRequestsComponent implements OnInit {
     this.viewPendingTasksOfInsuredIsClicked = false;
     this.addANewPendingTaskIsClicked = false;
   }
+  reinitializeAllClickedVariables(): void {
+    this.addANewPendingTaskIsClicked = false;
+  }
+  initNewPendingTask(): void {
+    this.newPendingTask = {"taskName": "Temp", "taskDescription": "Temp", "dueDate":"53", "taskStatus": false};
+  }
   fetchAllPortingRequests(currentCompanyName: string): void {
+    this.reinitializeAllClickedVariables();
     this.fetchAllPortingRequestsIsClicked = true;
     this.fetchPendingTasksService
       .fetchAllPortingRequests(currentCompanyName)
       .subscribe(pendingTasks => (this.pendingTasks = pendingTasks));
   }
   viewPendingTasksOfInsured(insuredName: string): void {
+    this.reinitializeAllClickedVariables();
     this.currentInsuredName = insuredName;
     this.viewPendingTasksOfInsuredIsClicked = true;
   }
   addANewPendingTask(): void {
+    this.initNewPendingTask();
     this.addANewPendingTaskIsClicked = true;
   }
-  saveNewPendingTask(pendingTasksId: number): void {
+  saveNewPendingTask(pendingTasks: PendingTasks): void {
     this.newPendingTask.taskStatus = false;
+    this.newPendingTask.taskName = this.newPendingTaskName;
+    this.newPendingTask.taskDescription= this.newPendingTaskDescription;
+    this.newPendingTask.dueDate= this.newPendingTaskDueDate;
+
     this.fetchPendingTasksService
-      .addANewPendingTask(pendingTasksId, this.newPendingTask)
+      .addANewPendingTask(pendingTasks.pendingTasksId, this.newPendingTask)
       .subscribe();
+  }
+  modifyStatusOfTask(taskStatus: boolean, taskName: string, pendingTasksId: number): void{
+    this.fetchPendingTasksService.modifyStatusOfTask(!taskStatus, pendingTasksId, taskName).subscribe();
+    for(let pendingtask of this.pendingTasks) {
+      console.log(pendingtask.pendingTasksId);
+      for(let task of pendingtask.taskList) {
+        console.log(task.taskStatus);
+      }
+    }
+    
   }
 }
