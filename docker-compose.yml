@@ -119,8 +119,6 @@ services:
     network_mode: host
     hostname: localhost
     depends_on:
-      mongo:
-        condition: service_healthy
       apigateway:
         condition: service_healthy
       eurekaserver:
