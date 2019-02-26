@@ -32,5 +32,6 @@ export class DisplayAllFormsComponent implements OnInit {
   }
   deleteForm(formId: number): void {
     this.formService.deleteForm(formId).subscribe();
+    this.getAllFormFormats();
   }
 }

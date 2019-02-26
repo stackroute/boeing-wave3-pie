@@ -1,17 +1,24 @@
 <mat-tab-group style="margin-left: 0%;" mat-align-tabs="center">
   <mat-tab label="Enter Your Name">
     <form [formGroup]="firstForm">
+        
       <mat-form-field style="margin-left: 28%;">
         <input
           matInput
           placeholder="Username"
           formControlName="username"
           required
-        />
+        >
+        <mat-error *ngIf="isFieldInvalid('username')">
+             User name is required
+        </mat-error> 
       </mat-form-field>
       <br />
       <mat-form-field style="margin-left: 28%;">
         <input matInput placeholder="Email" formControlName="email" required />
+        <mat-error *ngIf="isFieldInvalid('username')">
+            Email is required
+       </mat-error>
       </mat-form-field>
       <br />
       <mat-form-field style="margin-left: 28%;">
@@ -22,6 +29,9 @@
           formControlName="password"
           required
         />
+        <mat-error *ngIf="isFieldInvalid('username')">
+           Password is required
+       </mat-error>
       </mat-form-field>
     </form>
   </mat-tab>
@@ -34,10 +44,16 @@
           formControlName="fullName"
           required
         />
+        <mat-error *ngIf="isFieldInvalid('username')">
+            Name is required
+       </mat-error>
       </mat-form-field>
       <br />
       <mat-form-field style="margin-left: 45%;">
         <input matInput placeholder="age" formControlName="age" required />
+        <mat-error *ngIf="isFieldInvalid('username')">
+            Age is required
+       </mat-error>
       </mat-form-field>
       <br />
       <mat-form-field style="margin-left: 45%;">
@@ -60,6 +76,9 @@
           placeholder="Security Answer"
           formControlName="securityAnswer"
         />
+        <mat-error *ngIf="isFieldInvalid('username')">
+            Security Answer is required
+       </mat-error>
       </mat-form-field>
     </form>
     <div style="margin-left: 60%; margin-bottom: 20%;">

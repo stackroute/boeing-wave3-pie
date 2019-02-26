@@ -12,8 +12,11 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
-  private loginUrl = 'http://13.126.73.190:8096/api/auth/signin';
-  private signupUrl = 'http://localhost:8097/api/auth/signup';
+
+
+  private loginUrl = 'http://13.126.73.190:8092/commonauth/api/auth/signin';
+  private signupUrl = 'http://13.126.73.190:8092/userreg/api/auth/signup';
+
 
   constructor(private http: HttpClient) {
   }

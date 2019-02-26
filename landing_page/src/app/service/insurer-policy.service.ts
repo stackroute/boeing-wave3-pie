@@ -18,7 +18,11 @@ export class InsurerPolicyService {
 
  constructor(private http: HttpClient) { }
 
+<<<<<<< HEAD
  localUrl = 'http://localhost:8093/api/auth/';
+=======
+ localUrl = 'http://13.126.73.190:8092/insurerregservice/api/v1/';
+>>>>>>> e8d80a2a96bed48860aa57c2c8fb5ca6b09b5449
 
 
  addNewPolicy(policy : PolicyFormInfo):Observable<Object> {

@@ -1,5 +1,5 @@
 import { InsurerPolicyService } from './../../service/insurer-policy.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -20,4 +20,5 @@ insurerName;
    console.log(this.insurerName)
    this.insurerPolicyService.deletePolicy(this.insurerName,this.policyId).subscribe(policy => console.log(policy));  
  }
+ 
 }

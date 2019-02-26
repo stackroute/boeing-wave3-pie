@@ -1,6 +1,7 @@
 package com.stackroute.pie.services;
 
 import com.stackroute.pie.domain.Insured;
+import com.stackroute.pie.domain.Policy;
 import com.stackroute.pie.repository.UserRepository;
 import com.stackroute.pie.exceptions.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 //import javax.transaction.Transactional;
 
@@ -36,11 +39,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return UserPrinciple.build(insured);
     }
 
-    public Insured getRequests(int insuredId) throws UserNotFoundException {
-        if(userRepository.existsByInsuredId(insuredId)) {
+    public List<Policy> getPolicies(String username) throws UserNotFoundException {
+        if(userRepository.existsByUsername(username)) {
 
-            Insured insured1 = userRepository.findByInsuredId(insuredId).get();
-            return insured1;
+            Insured insured1 = userRepository.findByUsername(username).get();
+            return insured1.getPolicies();
         }
         else
             throw new UserNotFoundException();
@@ -56,14 +59,17 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 public Insured getProfile(String username) throws UserNotFoundException{
     if(userRepository.existsByUsername(username)){
-//            System.out.println("service" + userRepository.existsByUsername(username));
         Insured insured1 = userRepository.findByUsername(username).get();
-//            System.out.println(insured1);
         return insured1;
     }
     else
         throw new UserNotFoundException();
 }
+//
+//    public List<Policy> getPolicies(String username) {
+//        Insured insured1 = userRepository.findByUsername(username).get();
+//        return insured1.getPolicies();
+//    }
     public Insured updateProfile(String username, Insured insured) throws UserNotFoundException{
 
         if(userRepository.existsByUsername(username)) {

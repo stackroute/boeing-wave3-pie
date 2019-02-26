@@ -1,35 +1,104 @@
 package com.stackroute.settlement.services;
 
 import com.stackroute.settlement.domain.PendingTasks;
-import com.stackroute.settlement.domain.Tasks;
+import com.stackroute.settlement.domain.Task;
 import com.stackroute.settlement.repository.SettlementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class SettlementServicesImpl implements SettlementServices {
     private SettlementRepository settlementRepository;
     @Autowired
     public SettlementServicesImpl(SettlementRepository settlementRepository) {this.settlementRepository = settlementRepository;}
     @Override
-    public List<PendingTasks> getAllPendingTasksForInsurer(Long insurerId) {
-        List<PendingTasks> pendingTasksList = settlementRepository.findAll();
-        List<PendingTasks> pendingTasksList = settlementRepository.
-        return pendingTasksList;
+    public List<PendingTasks> getAllPendingTasksForInsurer(String insurerName) {
+        List<PendingTasks> allPendingTasks = settlementRepository.findAllByInsurerNameOrderByInsuredNameAsc(insurerName);
+        return allPendingTasks;
+    }
+    @Override
+    public PendingTasks appendTask(int pendingTasksId, Task task) {
+        PendingTasks pendingTasks = settlementRepository.findByPendingTasksId(pendingTasksId);
+        List<Task> currentListOfTasks = pendingTasks.getTaskList();
+        if(currentListOfTasks == null) {
+            List<Task> newTaskList = new ArrayList<Task>();
+            newTaskList.add(task);
+            pendingTasks.setTaskList(newTaskList);
+            settlementRepository.deleteById(pendingTasksId);
+            settlementRepository.save(pendingTasks);
+            return pendingTasks;
+        }
+        currentListOfTasks.add(task);
+        pendingTasks.setTaskList(currentListOfTasks);
+        settlementRepository.deleteById(pendingTasksId);
+        settlementRepository.save(pendingTasks);
+        return pendingTasks;
+    }
+
+
+    @Override
+    public PendingTasks modifyTask(int pendingTasksId, Task oldTask, Task newTask) {
+        PendingTasks pendingTasks = settlementRepository.findByPendingTasksId(pendingTasksId);
+        settlementRepository.deleteById(pendingTasksId);
+        List<Task> currentListOfTasks = pendingTasks.getTaskList();
+        for(Task task : currentListOfTasks) {
+            if(task.equals(oldTask)) {
+                task = newTask;
+                break;
+            }
+        }
+        pendingTasks.setTaskList(currentListOfTasks);
+        settlementRepository.save(pendingTasks);
+        return pendingTasks;
+    }
+
+
+    @Override
+    public PendingTasks getAllPendingTasksForInsured(String insurerName, String insuredName) {
+        PendingTasks allPendingTasksForInsured = settlementRepository.findAllByInsurerNameAndInsuredName(insurerName, insuredName);
+        return allPendingTasksForInsured;
     }
 
     @Override
-    public PendingTasks addTask(int pendingTasksId, Tasks task) {
-        return null;
+    public PendingTasks putPendingTasks(PendingTasks pendingTasks) {
+        settlementRepository.save(pendingTasks);
+        return pendingTasks;
     }
 
     @Override
-    public PendingTasks modifyTask(int pendingTasksId, Tasks taskOldId, Tasks taskNewId) {
-        return null;
+    public PendingTasks deleteTask(int pendingTasksId, String taskName) {
+        PendingTasks pendingTasks = settlementRepository.findByPendingTasksId(pendingTasksId);
+        settlementRepository.deleteById(pendingTasksId);
+        List<Task> newTaskList = new ArrayList<Task>();
+        List<Task> currentTaskList = pendingTasks.getTaskList();
+        for(Task task: currentTaskList) {
+            if(task.getTaskName().equals(taskName)) {
+                continue;
+            }
+            newTaskList.add(task);
+        }
+        pendingTasks.setTaskList(newTaskList);
+        settlementRepository.save(pendingTasks);
+        return pendingTasks;
     }
 
     @Override
-    public PendingTasks removeTask(int pendingTasksId, Tasks taskOldId) {
-        return null;
+    public PendingTasks changePendingTaskStatus(int pendingTasksId, String taskName, boolean status) {
+        PendingTasks pendingTasks = settlementRepository.findByPendingTasksId(pendingTasksId);
+        List<Task> taskList = pendingTasks.getTaskList();
+        if(taskList == null)
+            return null;
+        for(Task task: taskList) {
+            if(task.getTaskName().equals(taskName)) {
+                task.setTaskStatus(status);
+                break;
+            }
+        }
+        settlementRepository.deleteById(pendingTasksId);
+        settlementRepository.save(pendingTasks);
+        return pendingTasks;
     }
 }

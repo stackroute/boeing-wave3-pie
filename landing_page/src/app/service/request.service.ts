@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class RequestService {
-  private requestUrl = 'http://13.126.73.190:8091/api/v1/';
+  private requestUrl = 'http://13.126.73.190:8092/porting/api/v1/';
   constructor(private http: HttpClient) {
    console.log('http service got called');
   }

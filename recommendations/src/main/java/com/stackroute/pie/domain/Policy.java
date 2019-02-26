@@ -34,7 +34,7 @@ public class Policy {
     private int maxAge;
     private int waitingPeriod;
    List<Disease> diseasesList;
-    List<String> gender;
+   List<String> gender;
 //     private Timestamp createdAt;
 //      private Timestamp updatedAt;
       private String createdBy;
