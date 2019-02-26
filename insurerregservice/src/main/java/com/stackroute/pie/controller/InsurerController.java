@@ -58,7 +58,7 @@ public class InsurerController {
     //Method for adding a new policy for existing insurer
     @PutMapping("/policy/newpolicy")
     public ResponseEntity<?> addNewPolicy(@RequestBody Policy insurerPolicy){
-        if (insurerRepository.existsByInsurerName(insurerPolicy.getPolicyName()) == false) {
+        if (!insurerRepository.existsByInsurerName(insurerPolicy.getInsurerName())) {
             return new ResponseEntity<>(new ResponseMessage("Insurer Not Found"),
                     HttpStatus.NOT_FOUND);
         }
@@ -70,7 +70,7 @@ public class InsurerController {
     //Method for displaying the exiting policy
     @GetMapping("/policy/display/{insurerLicense}")
     public ResponseEntity<?> getPolicies(@PathVariable(value = "insurerLicense") String insurerLicense){
-        if (insurerRepository.existsByInsurerLicense(insurerLicense) == false) {
+        if (!insurerRepository.existsByInsurerLicense(insurerLicense)) {
             return new ResponseEntity<>(new ResponseMessage("Insurer Not Found"),
                     HttpStatus.NOT_FOUND);
         }
