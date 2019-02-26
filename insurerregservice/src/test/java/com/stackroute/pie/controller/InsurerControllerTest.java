@@ -65,7 +65,7 @@ public class InsurerControllerTest {
         MockitoAnnotations.initMocks(this);
         mockMVC = MockMvcBuilders.standaloneSetup(insurerController).build();
         insurer = new Insurer("maxbupa","maxbupa","maxbupa@gmail.com","maxbupa","bangalore","whats your favourite food","pizza",policy);
-        policy1 = new Policy(22,"maxbupa","alive",12,23,2,11,60,2,insuredList,diseases);
+        policy1 = new Policy(22,"maxbupa","alive",12,23,2,11,60,2);
     }
     private static String jsonToString(final Object obj) throws JsonProcessingException {
         String result;
