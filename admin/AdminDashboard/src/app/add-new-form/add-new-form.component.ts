@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormFormat } from 'app/formformat';
 import { FormServiceService } from 'app/form-service.service';
+import { DisplayAllFormsComponent } from 'app/display-all-forms/display-all-forms.component';
 
 @Component({
   selector: 'app-add-new-form',
@@ -13,9 +14,10 @@ export class AddNewFormComponent implements OnInit {
   private newForm: FormFormat;
   newFormName: string;
   private newField: string;
+  newFormId = 0;
 
   @Input() allFormFormats: FormFormat[];
-  newFormId = 0;
+  @Output() newFormCreated = new EventEmitter();
 
   constructor(private formService: FormServiceService) { this.formService = formService;}
 
@@ -31,6 +33,7 @@ export class AddNewFormComponent implements OnInit {
   }
   addNewField(): void {
     this.newForm.fields.push(this.newField);
+    this.newField = null;
   }
   saveForm(): void {
 
@@ -42,5 +45,12 @@ export class AddNewFormComponent implements OnInit {
     this.newForm.formName = this.newFormName;
     this.newForm.formId = this.newFormId + 1;
     this.formService.saveForm(this.newForm).subscribe();
+    this.newFormCreated.emit('new form created');
+    this.displayNewFormClicked = false;
+    this.newForm.formName = null;
+    this.newForm.formId = null;
+    this.newFormName = null;
+    this.newFormId = null;
+    this.newField = null;
   }
 }
