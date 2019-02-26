@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormFormat } from '../formformat';
 import { FormServiceService } from 'app/form-service.service';
 
@@ -12,6 +12,7 @@ export class DisplayFormComponent implements OnInit {
   @Input() currentFormFormat: FormFormat;
   @Input() showForm
   @Output() deleteFieldIsClicked: false;
+  @Output() saveFormIsClicked = new EventEmitter();
   newField: string;
   constructor(private formService: FormServiceService) { }
 
@@ -23,11 +24,13 @@ export class DisplayFormComponent implements OnInit {
   }
   addField(): void {
     this.currentFormFormat.fields.push(this.newField);
+    this.newField = null;
   }
   saveForm(): void {
     // this.formService.deleteForm(this.currentFormFormat.formId);
     // this.formService.saveForm(this.currentFormFormat);
     this.formService.updateForm(this.currentFormFormat).subscribe();
+    this.saveFormIsClicked.emit(null);
   }
 
 }

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <catalog>
+
+    <policy policyId="10187">
+
+        <insurerName>Max Bupa</insurerName>
+        <policyName>Max Bupa Heartbeat Health Gold Plan-1</policyName>
+        <minSumInsured>30000</minSumInsured>
+        <maxSumInsured>500000</maxSumInsured>
+        <minAge>21</minAge>
+        <maxAge>67</maxAge>
+        <waitingPeriod>3</waitingPeriod>
+        <noOfCashLessHospitals>5</noOfCashLessHospitals>
+
+    </policy>
+
+    <policy policyId="90771">
+
+        <insurerName>Max Bupa</insurerName>
+        <policyName>Max Bupa Heartbeat Health Gold Plan-2</policyName>
+        <minSumInsured>40000</minSumInsured>
+        <maxSumInsured>700000</maxSumInsured>
+        <minAge>30</minAge>
+        <maxAge>81</maxAge>
+        <waitingPeriod>6</waitingPeriod>
+        <noOfCashLessHospitals>12</noOfCashLessHospitals>
+
+    </policy>
+
+    <policy policyId="70176">
+
+        <insurerName>Max Bupa</insurerName>
+        <policyName>Max Bupa Heartbeat Health Gold Plan-3</policyName>
+        <minSumInsured>20000</minSumInsured>
+        <maxSumInsured>400000</maxSumInsured>
+        <minAge>40</minAge>
+        <maxAge>70</maxAge>
+        <waitingPeriod>3</waitingPeriod>
+        <noOfCashLessHospitals>21</noOfCashLessHospitals>
+
+    </policy>
+
+    <policy policyId="267601">
+
+        <insurerName>Max Bupa</insurerName>
+        <policyName>Max Bupa Heartbeat Health Gold Plan-4</policyName>
+        <minSumInsured>70000</minSumInsured>
+        <maxSumInsured>120000</maxSumInsured>
+        <minAge>30</minAge>
+        <maxAge>80</maxAge>
+        <waitingPeriod>2</waitingPeriod>
+        <noOfCashLessHospitals>10</noOfCashLessHospitals>
+
+    </policy>
+
+</catalog>

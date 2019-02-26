@@ -255,6 +255,28 @@ services:
     healthcheck:
       test: "exit 0"
 
+  externalinsurerdbservice:
+    image: externalinsurerdbservice
+    build: ExternalInsurerDbService/
+    restart: always
+    network_mode: host
+    hostname: localhost
+    depends_on:
+      mongo:
+        condition: service_healthy
+      configserver:
+        condition: service_healthy
+      eurekaserver:
+        condition: service_healthy
+      apigateway:
+        condition: service_healthy
+    ports:
+      - 8094:8094
+    expose:
+      - 8094
+    healthcheck:
+      test: "exit 0"
+
   landing:
     image: landing
     build: landing_page/
@@ -275,3 +297,4 @@ services:
     ports:
       - 8073:8073
     network_mode: host
+

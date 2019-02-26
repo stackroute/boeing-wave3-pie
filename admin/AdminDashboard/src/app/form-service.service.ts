@@ -27,7 +27,6 @@ export class FormServiceService {
     );
   }
   saveForm(newFormFormat: FormFormat): Observable<FormFormat> {
-    this.getAllFormFormats();
     this.tempFormFormat = this.http.post<FormFormat>(
       this.adminUrl + this.saveFormUrl,
       newFormFormat
