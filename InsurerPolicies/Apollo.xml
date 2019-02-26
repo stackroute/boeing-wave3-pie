@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <catalog>
+
+    <policy policyid="101">
+
+        <insurerName>Apollo</insurerName>
+        <policyName>Apollo Plan-1</policyName>
+        <minSumInsured>20000</minSumInsured>
+        <maxSumInsured>600000</maxSumInsured>
+        <minAge>31</minAge>
+        <maxAge>77</maxAge>
+        <waitingPeriod>3</waitingPeriod>
+        <noOfCashLessHospitals>5</noOfCashLessHospitals>
+
+    </policy>
+
+    <policy policyid="901">
+
+        <insurerName>Apollo</insurerName>
+        <policyName>Apollo Plan-2</policyName>
+        <minSumInsured>10000</minSumInsured>
+        <maxSumInsured>800000</maxSumInsured>
+        <minAge>21</minAge>
+        <maxAge>67</maxAge>
+        <waitingPeriod>7</waitingPeriod>
+        <noOfCashLessHospitals>15</noOfCashLessHospitals>
+
+    </policy>
+
+    <policy policyid="701">
+
+        <insurerName>Apollo</insurerName>
+        <policyName>Apollo Plan-3</policyName>
+        <minSumInsured>30000</minSumInsured>
+        <maxSumInsured>1500000</maxSumInsured>
+        <minAge>40</minAge>
+        <maxAge>80</maxAge>
+        <waitingPeriod>6</waitingPeriod>
+        <noOfCashLessHospitals>21</noOfCashLessHospitals>
+
+    </policy>
+
+    <policy policyid="201">
+
+        <insurerName>Apollo</insurerName>
+        <policyName>Apollo Plan-4</policyName>
+        <minSumInsured>70000</minSumInsured>
+        <maxSumInsured>700000</maxSumInsured>
+        <minAge>21</minAge>
+        <maxAge>60</maxAge>
+        <waitingPeriod>3</waitingPeriod>
+        <noOfCashLessHospitals>5</noOfCashLessHospitals>
+
+    </policy>
+
+</catalog>
