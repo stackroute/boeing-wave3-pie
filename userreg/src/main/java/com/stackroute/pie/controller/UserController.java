@@ -59,9 +59,11 @@ public class UserController {
                 encoder.encode(signUpRequest.getPassword()),signUpRequest.getGender(),signUpRequest.getCreatedDate(),signUpRequest.getSecurityAnswer(),signUpRequest.getAge());
 
 
-        Set<Policy> policySet=signUpRequest.getPolicees();
+        List<Policy> policySet=signUpRequest.getPolicies();
 
          List<Request> requestList =signUpRequest.getRequests();
+
+         List<FamilyMembers> familyMembersList=signUpRequest.getFamilyMembers();
 
         Set<Role> roles = new HashSet<>();
 
