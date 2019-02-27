@@ -1,6 +1,6 @@
-package com.stackroute.pie.admin.repository;
+package com.stackroute.pie.repository;
 
-import com.stackroute.pie.admin.domain.FormFormat;
+import com.stackroute.pie.domain.FormFormat;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

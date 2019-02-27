@@ -1,4 +1,4 @@
-package com.stackroute.pie.admin.domain;
+package com.stackroute.pie.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

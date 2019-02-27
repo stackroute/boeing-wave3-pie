@@ -1,11 +1,12 @@
-package com.stackroute.pie.admin.controller;
+package com.stackroute.pie.controller;
 
-import com.stackroute.pie.admin.domain.FormFormat;
-import com.stackroute.pie.admin.services.AdminServices;
+import com.stackroute.pie.domain.FormFormat;
+import com.stackroute.pie.services.AdminServices;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +18,9 @@ import java.util.Optional;
 @RequestMapping("/api/v1/")
 @CrossOrigin("*")
 public class AdminController {
+
+    @Autowired
+    private KafkaTemplate<String, FormFormat> kafkaTemplate;
     private AdminServices adminServices;
     @Autowired
     public AdminController(AdminServices adminServices) {
@@ -25,6 +29,7 @@ public class AdminController {
     @PostMapping("formformat")
     public ResponseEntity<?> addNewFormFormat(@RequestBody FormFormat formFormat) {
         FormFormat savedFormFormat = adminServices.addNewFormFormat(formFormat);
+        kafkaTemplate.send("formFormats", savedFormFormat);
         return new ResponseEntity<FormFormat>(savedFormFormat, HttpStatus.CREATED);
     }
     @GetMapping("formformats")

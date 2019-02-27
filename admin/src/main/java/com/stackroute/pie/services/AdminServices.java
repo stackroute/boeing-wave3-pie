@@ -1,6 +1,6 @@
-package com.stackroute.pie.admin.services;
+package com.stackroute.pie.services;
 
-import com.stackroute.pie.admin.domain.FormFormat;
+import com.stackroute.pie.domain.FormFormat;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
