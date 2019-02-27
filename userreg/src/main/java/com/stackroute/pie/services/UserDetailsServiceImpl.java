@@ -1,5 +1,6 @@
 package com.stackroute.pie.services;
 
+import com.stackroute.pie.domain.FamilyMembers;
 import com.stackroute.pie.domain.Insured;
 import com.stackroute.pie.domain.Policy;
 import com.stackroute.pie.repository.UserRepository;
@@ -11,6 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 //import javax.transaction.Transactional;
@@ -85,6 +87,39 @@ public Insured getProfile(String username) throws UserNotFoundException{
         }
         else
             throw new UserNotFoundException();
+    }
+
+    public Insured addFamilyMembers(FamilyMembers familyMembers) {
+        String name = familyMembers.getUsername();
+        System.out.println(" Taking in Name");
+
+        Insured insured1 = userRepository.findByUsername(name).get();
+        System.out.println("Finding by name");
+
+        List<FamilyMembers> familyMembersList = new ArrayList<>();
+
+//        familyMembersList = userRepository.findByUsername(name).get().getFamilyMembers();
+
+        System.out.println("Got family members");
+        System.out.println("family members" + familyMembersList);
+
+        familyMembersList.add(familyMembers);
+
+        System.out.println("Added family members");
+
+        insured1.setFamilyMembers(familyMembersList);
+
+        System.out.println("Set family members");
+
+        userRepository.deleteByUsername(name);
+        System.out.println("Delete the username");
+//        insurerRepository.deleteByInsurerName(name);
+        userRepository.save(insured1);
+        System.out.println("Saved the insured details");
+//        insurerRepository.save(insurer1);
+
+//        return insurerRepository.findByInsurerName(name).get();
+        return  userRepository.findByUsername(name).get();
     }
 
 }

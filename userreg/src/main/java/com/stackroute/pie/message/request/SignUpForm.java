@@ -70,7 +70,7 @@ public class SignUpForm {
 
     private String existingDisease;
 
-    private List<FamilyMembers> familyMembers=new ArrayList<>();
+   private  List<FamilyMembers> familyMembers;
 
 
 }

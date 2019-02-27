@@ -14,4 +14,5 @@ public interface UserRepository extends MongoRepository<Insured,Long> {
     Boolean existsByEmail(String email);
     public boolean existsByInsuredId(int userId);
     public Optional<Insured> findByInsuredId(int userId);
+    void deleteByUsername(String username);
 }

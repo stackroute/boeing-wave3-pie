@@ -1,6 +1,7 @@
 package com.stackroute.pie.controller;
 
 import com.stackroute.pie.domain.*;
+import com.stackroute.pie.repository.FamilyMembersRepository;
 import com.stackroute.pie.repository.UserRepository;
 import com.stackroute.pie.exceptions.UserNotFoundException;
 import com.stackroute.pie.message.request.SignUpForm;
@@ -27,11 +28,12 @@ public class UserController {
     @Autowired
     private KafkaTemplate<String, Insured> kafkaTemplate;
 
+    @Autowired
+    private KafkaTemplate<String, FamilyMembers> kafkaTemplates;
+
 
     @Autowired
     UserRepository userRepository;
-
-
 
     @Autowired
     PasswordEncoder encoder;
@@ -40,6 +42,8 @@ public class UserController {
     @Autowired
     private UserDetailsServiceImpl userService;
 
+    @Autowired
+    FamilyMembersRepository familyMembersRepository;
 
 
     @PostMapping("/signup")
@@ -53,26 +57,22 @@ public class UserController {
             return new ResponseEntity<>(new ResponseMessage("Fail -> Email is already in use!"),
                     HttpStatus.BAD_REQUEST);
         }
-
         // Creating insured's account
+        List<FamilyMembers> familyMembers;
         Insured insured = new Insured(signUpRequest.getFullName(), signUpRequest.getUsername(), signUpRequest.getEmail(),
-                encoder.encode(signUpRequest.getPassword()),signUpRequest.getGender(),signUpRequest.getCreatedDate(),signUpRequest.getSecurityAnswer(),signUpRequest.getAge());
+                encoder.encode(signUpRequest.getPassword()), signUpRequest.getGender(), signUpRequest.getCreatedDate(), signUpRequest.getSecurityAnswer(), signUpRequest.getAge(),signUpRequest.getFamilyMembers());
 
 
-        List<Policy> policySet=signUpRequest.getPolicies();
+        List<Policy> policySet = signUpRequest.getPolicies();
 
-         List<Request> requestList =signUpRequest.getRequests();
-
-         List<FamilyMembers> familyMembersList=signUpRequest.getFamilyMembers();
+        List<Request> requestList = signUpRequest.getRequests();
 
         Set<Role> roles = new HashSet<>();
 
         Role userrRole = new Role();
 
 
-        Set<Request> requests =new HashSet<>();
-
-
+        Set<Request> requests = new HashSet<>();
 
 
         userrRole.setName(RoleName.ROLE_USER);
@@ -88,58 +88,69 @@ public class UserController {
         return new ResponseEntity<>(new ResponseMessage("Insured registered successfully!"), HttpStatus.OK);
     }
 
-//
+    //
     @GetMapping("/profile/{username}")
-    public ResponseEntity User (@PathVariable("username") String username){
+    public ResponseEntity User(@PathVariable("username") String username) {
         ResponseEntity responseEntity;
 
         try {
 
             Insured insured1 = userService.getProfile(username);
-            responseEntity =  new ResponseEntity<Insured>(insured1, HttpStatus.OK);
+            responseEntity = new ResponseEntity<Insured>(insured1, HttpStatus.OK);
 
-        }
-        catch (UserNotFoundException ex) {
-            responseEntity = new ResponseEntity<String>(ex.getMessage(),HttpStatus.CONFLICT);
+        } catch (UserNotFoundException ex) {
+            responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);
             ex.printStackTrace();
         }
         return responseEntity;
 
     }
+
     //Method for displaying the exiting policy
     @GetMapping("/policy/display/{username}")
-    public ResponseEntity<?> getPolicies(@PathVariable(value = "username") String username){
-       ResponseEntity responseEntity;
+    public ResponseEntity<?> getPolicies(@PathVariable(value = "username") String username) {
+        ResponseEntity responseEntity;
         try {
 
             List<Policy> policies = userService.getPolicies(username);
-            responseEntity =  new ResponseEntity<List<Policy>>(policies, HttpStatus.OK);
+            responseEntity = new ResponseEntity<List<Policy>>(policies, HttpStatus.OK);
 
-        }
-        catch (UserNotFoundException ex) {
-            responseEntity = new ResponseEntity<String>(ex.getMessage(),HttpStatus.CONFLICT);
+        } catch (UserNotFoundException ex) {
+            responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);
             ex.printStackTrace();
         }
         return responseEntity;
     }
+
     @PutMapping("/profile/{username}")
-    public ResponseEntity User (@PathVariable("username") String username, @RequestBody Insured user){
+    public ResponseEntity User(@PathVariable("username") String username, @RequestBody Insured user) {
         ResponseEntity responseEntity;
 
         try {
 
             Insured insured1 = userService.updateProfile(username, user);
-            responseEntity =  new ResponseEntity<Insured>(insured1, HttpStatus.OK);
+            responseEntity = new ResponseEntity<Insured>(insured1, HttpStatus.OK);
 
-        }
-        catch (UserNotFoundException ex) {
-            responseEntity = new ResponseEntity<String>(ex.getMessage(),HttpStatus.CONFLICT);
+        } catch (UserNotFoundException ex) {
+            responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);
             ex.printStackTrace();
         }
         return responseEntity;
 
     }
 
+
+
+    @PutMapping("profile/familymembers")
+    public ResponseEntity<?> addFamilyMembers(@RequestBody FamilyMembers familyMembers) {
+
+        Insured insured1 = userService.addFamilyMembers(familyMembers);
+        kafkaTemplate.send("family_json", insured1);
+         System.out.println(insured1.getFamilyMembers());
+        return new ResponseEntity<Insured>(insured1, HttpStatus.CREATED);
+
+
+    }
 }
 
 

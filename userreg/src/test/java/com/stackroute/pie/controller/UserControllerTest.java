@@ -3,6 +3,7 @@ package com.stackroute.pie.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import com.stackroute.pie.domain.FamilyMembers;
 import com.stackroute.pie.domain.Insured;
 import com.stackroute.pie.message.request.SignUpForm;
 import com.stackroute.pie.repository.UserRepository;
@@ -27,6 +28,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 
 import java.util.Date;
+import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -67,7 +69,7 @@ public class UserControllerTest {
     SignUpForm signUpForm;
     private int insuredId;
     private Insured user1;
-
+    List<FamilyMembers> familyMembers;
 
 
     @Before
@@ -83,7 +85,8 @@ public class UserControllerTest {
         signUpForm.setSecurityAnswer("food");
         signUpForm.setCreatedDate(new Date());
         signUpForm.setUsername("qwertyu");
-        Insured  user =new Insured(signUpForm.getFullName(),signUpForm.getUsername(),signUpForm.getEmail(),signUpForm.getPassword(),signUpForm.getGender(),signUpForm.getCreatedDate(),signUpForm.getSecurityAnswer(),signUpForm.getAge());
+        signUpForm.setFamilyMembers(familyMembers);
+        Insured  user =new Insured(signUpForm.getFullName(),signUpForm.getUsername(),signUpForm.getEmail(),signUpForm.getPassword(),signUpForm.getGender(),signUpForm.getCreatedDate(),signUpForm.getSecurityAnswer(),signUpForm.getAge(),signUpForm.getFamilyMembers());
 
 
 

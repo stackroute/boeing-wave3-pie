@@ -19,11 +19,11 @@ public class KafkaConsumer {
     @Autowired
     CommonAuthRepository commonAuthRepository;
 
-    @KafkaListener(topics = "deepak", groupId = "group_id")
-    public void consume(String message) {
-        System.out.println("String wala method");
-        System.out.println("Consumed message1: " + message);
-    }
+//    @KafkaListener(topics = "deepak", groupId = "group_id")
+//    public void consume(String message) {
+//        System.out.println("String wala method");
+//        System.out.println("Consumed message1: " + message);
+//    }
 //    @KafkaListener(topics = "Kafka_Example_json", groupId = "group_json",
 //            containerFactory = "userKafkaListenerFactory")
 
