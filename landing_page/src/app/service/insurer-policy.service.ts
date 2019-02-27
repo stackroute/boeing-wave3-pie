@@ -26,10 +26,16 @@ export class InsurerPolicyService {
   return this.http.put(this.localUrl+ 'policy/newpolicy',policy);
  }
 
+//  getPolicies(insurerLicense : String):Observable<Object> {
+//    console.log('adadsasdas')
+//   return this.http.get(this.localUrl+ 'policy/external'+'/'+insurerLicense);
+//  }        
+
+
  getPolicies(insurerLicense : String):Observable<Object> {
-   console.log('adadsasdas')
-  return this.http.get(this.localUrl+ 'policy/display/'+insurerLicense);
- }
+  console.log('adadsasdas')
+ return this.http.get(this.localUrl+ 'policy/display/'+insurerLicense);
+}
 
 
  deletePolicy(insurerName,policyId):Observable<Object>{

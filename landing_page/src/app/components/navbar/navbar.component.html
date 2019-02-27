@@ -1,4 +1,5 @@
-<!-- <nav class="navbar navbar-light" style="background-color:  #ffe6e6; height:85px;">
+
+<nav class="navbar navbar-light" style="background-color:  #ffe6e6; height:85px;">
       <div class="container-fluid">
           <div class="navbar-header">
       <a class="navbar-brand" href="#">
@@ -14,7 +15,7 @@
   </ul>
       <form class="navbar-form navbar-left" (ngSubmit) = "search()" style="margin-left:15%;margin-top: 2%;">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search">
+          <input type="text" class="form-control" name="message" [(ngModel)]="message" placeholder="Search">
           <div class="input-group-btn">
             <button class="btn btn-success" type="submit">
               <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
@@ -25,41 +26,215 @@
    
     <div class="signin" style=" margin-top: 1%;">
       <ul class="nav navbar-nav navbar-right">
-      <li class = "nav-link dropdown"  >
-          <a class = "dropdown-toggle" data-toggle = "dropdown" href="#"><span class="glyphicon glyphicon-user" ></span> Sign In</a>
-          <ul class = "dropdown-menu">
-            <li><a routerLink = '/admin' routerLinkActive = "active">Admin Login</a></li>
-            <li><a routerLink = '/login' routerLinkActive = "active">User Login</a></li>
-            <li><a routerLink = '/companylogin' routerLinkActive = "active">Company Login</a></li>
-    
-          </ul>
-      </li>
+      
+          <a  [routerLink]="['/login']" ><span class="glyphicon glyphicon-user" ></span> Sign In</a>
+          
+     
     </ul>
     </div>
 </div>
 </div>
 
-</nav> -->
-<mat-toolbar color="warn" style="opacity:0.5;">
-  <mat-toolbar-row >
-    <button
-      type="button"
-      aria-label="Toggle sidenav"
-      mat-icon-button
-      (click)="drawer.toggle()"
-      color="primary"
-    >
+</nav>
+<!-- <mat-toolbar color="warn"  style="opacity:0.5">
+  <mat-toolbar-row><button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" color="primary">
       <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-    </button>
+      </button>
     
+
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#" style="margin-bottom: 3.8rem;">
+        <img
+          src="./../../assets/img/logo1.png"
+          alt="Logo"
+          class="img-responsive"
+          width="70px"
+          height="80px"
+        />
+      </a>
+    </div>
+    <div class="collapse navbar-collapse dropdown show" id="collapsibleNavbar">
+      <ul class="nav navbar-nav">
+        <li></li>
+        <li>
+          <a [routerLink]="['/home']" routerLinkActive="router-link-active"
+            >Home</a
+          >
+        </li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <form
+        class="navbar-form navbar-left"
+        (ngSubmit)="search()"
+        style="margin-left:30%;margin-bottom: 1%;"
+      >
+        <div class="input-group" style="margin-bottom:1%;">
+          <input type="text" class="form-control" placeholder="Search" />
+          <div class="input-group-btn">
+            <button class="btn btn-success" type="submit">
+              <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="signout" style=" margin-top: 1%;margin-left: 30%;">
+      <ul class="nav navbar-nav navbar-right">
+    
+        <li class="nav-item">
+          <a class="nav-link" (click)="logout()">Logout</a>
+        </li>
+      </ul>
+    </div>
+</mat-toolbar-row>
+
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #drawer mode="side" opened role="navigation">
+    <mat-nav-list>
+      <a
+        mat-list-item
+        [routerLink]="['/mypolicies', username]"
+        routerLinkActive="active"
+        >My Policies</a
+      >
+      <a
+        mat-list-item
+        [routerLink]="['/recommendations', username]"
+        routerLinkActive="active"
+        >Recommendations</a
+      >
+      <a
+        mat-list-item
+        [routerLink]="['/myrequests', username]"
+        routerLinkActive="active"
+        >My Requests</a
+      >
+      <a mat-list-item [routerLink]="['/porting']" routerLinkActive="active"
+        >Porting Request</a
+      >
+      <a
+        mat-list-item
+        [routerLink]="['/myprofile', username]"
+        routerLinkActive="active"
+        >My profile</a
+      >
+      
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+</mat-toolbar> -->
+<!-- <div *ngIf="info.token;else loggedOut"> -->
+<!-- <mat-toolbar color="warn" style="opacity:0.5;">
+    <mat-toolbar-row >
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        color="primary"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#" style="margin-bottom: 3.8rem;">
+            <img
+              src="./../../assets/img/logo1.png"
+              alt="Logo"
+              class="img-responsive"
+              width="70px"
+              height="80px"
+            />
+          </a>
+        </div>
+        <div
+          class="collapse navbar-collapse dropdown show"
+          id="collapsibleNavbar"
+        >
+          <ul class="nav navbar-nav">
+            <li></li>
+            <li>
+              <a [routerLink]="['/home']" routerLinkActive="router-link-active"
+                >Home</a
+              >
+            </li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+            <form #createForm="ngForm" (ngSubmit)="search()" id="form-buscar">
+                 <div class="form-group"> -->
+                <!-- <div class="input-group">
+                    <input type="text" class="form-control" name="message" [(ngModel)]="message" placeholder="Search">
+                        <span class="input-group-btn">
+                      <button class="btn btn-success" type="submit" id="button-addon2">
+                     <i class="glyphicon glyphicon-search" aria-hidden="true"></i> </button>
+                      </span>
+                    
+                  </div>
+                </form>
+        </div>
+        <div class="signin" style=" margin-top: 1%;margin-left: 30%;">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="nav-link dropdown"></li>
+              <a routerLink="/login" routerLinkActive="active" (click)="logout()"
+                ><span class="glyphicon glyphicon-user"></span> Sign Out</a>
+          </ul>
+        </div>
+  
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-sidenav-container class="example-container" >
+    <mat-sidenav #drawer mode="side" opened role="navigation">
+      <mat-nav-list>
+        <a mat-list-item [routerLink]="['/mypolicies']" routerLinkActive="active"
+          >My Policies</a
+        >
+        <a mat-list-item [routerLink]="['/recommendations', username]" routerLinkActive="active"
+        >Recommendations</a
+      >
+        <a
+          mat-list-item
+          [routerLink]="['/myrequests', username]"
+          routerLinkActive="active"
+          >My Requests</a
+        >
+        <a mat-list-item [routerLink]="['/porting']" routerLinkActive="active"
+          >Porting Request</a
+        >
+        <a mat-list-item [routerLink]="['/myprofile',username]" routerLinkActive = "active">My profile</a>
+        <a mat-list-item [routerLink]="['/myCompanyPolicy',insurerLicense]" routerLinkActive = "active" >My Policies</a>
+        <a mat-list-item [routerLink]="['/incomingPortingRequest',insurerLicense]" routerLinkActive = "active" > Incoming Porting Requests</a>
+        <a mat-list-item [routerLink]="['/outgoingPortingRequest',insurerLicense]" routerLinkActive = "active" > Outgoing Porting Requests</a>
+        <a mat-list-item [routerLink]="['/newPolicyForm']" routerLinkActive = "active" >Add New Policy</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container> --> 
+
+<!-- 
+  <nav
+    class="navbar navbar-light"
+    style="background-color:  #ffe6e6; height:85px;"
+  >
+    <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#" style="margin-bottom: 3.8rem;">
+        <a class="navbar-brand" href="#">
           <img
             src="./../../assets/img/logo1.png"
             alt="Logo"
             class="img-responsive"
             width="70px"
-            height="80px"
+            height="90px"
           />
         </a>
       </div>
@@ -77,62 +252,130 @@
           <li><a href="#">About</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
-      </div>
-      <div>
-        <form
-          class="navbar-form navbar-left"
-          (ngSubmit)="search()"
-          style="margin-left:30%;margin-bottom: 1%;"
-        >
-          <div class="input-group" style="margin-bottom:1%;">
-            <input type="text" class="form-control" placeholder="Search" />
-            <div class="input-group-btn" >
-              <button class="btn btn-success" type="submit">
-                <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
-              </button>
-            </div>
-          </div>
-        </form>
-        
-      </div>
-      <div class="signin" style=" margin-top: 1%;margin-left: 30%;">
-        <ul class="nav navbar-nav navbar-right">
-          <li class="nav-link dropdown"></li>
-            <a routerLink="/login" routerLinkActive="active"
-              ><span class="glyphicon glyphicon-user"></span> Sign In</a>
-        </ul>
-      </div>
+        <form #createForm="ngForm" (ngSubmit)="search()" id="form-buscar">
+          
+            <div class="input-group">
+                <input type="text" class="form-control" name="message" [(ngModel)]="message" placeholder="Search">
+                    <span class="input-group-btn">
+                  <button class="btn btn-success" type="submit" id="button-addon2">
+                 <i class="glyphicon glyphicon-search" aria-hidden="true"></i> </button>
+                  </span>
+               
+              </div>
+            </form>
 
+        <div class="signin" >
+          <ul class="nav navbar-nav navbar-right" style="margin-bottom:100px;">
+            <a class="nav-link" routerLink="/login"
+              ><span class="glyphicon glyphicon-user"> </span> Sign In</a
+            >
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav> -->
+
+<!-- <router-outlet></router-outlet> -->
+
+      <!-- <mat-toolbar
+  color="warn"
+  *ngIf="info.token&&(!(dashboard()))"
+  style="opacity:0.5;"
+>
+  <mat-toolbar-row>
+    <button
+      type="button"
+      aria-label="Toggle sidenav"
+      mat-icon-button
+      (click)="drawer.toggle()"
+      color="primary"
+    >
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#" style="margin-bottom: 3.8rem;">
+        <img
+          src="./../../assets/img/logo1.png"
+          alt="Logo"
+          class="img-responsive"
+          width="70px"
+          height="80px"
+        />
+      </a>
+    </div>
+    <div class="collapse navbar-collapse dropdown show" id="collapsibleNavbar">
+      <ul class="nav navbar-nav">
+        <li></li>
+        <li>
+          <a [routerLink]="['/home']" routerLinkActive="router-link-active"
+            >Home</a
+          >
+        </li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <form
+        class="navbar-form navbar-left"
+        (ngSubmit)="search()"
+        style="margin-left:30%;margin-bottom: 1%;"
+      >
+        <div class="input-group" style="margin-bottom:1%;">
+          <input type="text" class="form-control" placeholder="Search" />
+          <div class="input-group-btn">
+            <button class="btn btn-success" type="submit">
+              <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="signout" style=" margin-top: 1%;margin-left: 30%;">
+      <ul class="nav navbar-nav navbar-right">
+      
+        <li class="nav-item">
+          <a class="nav-link" (click)="logout()">Logout</a>
+        </li>
+      </ul>
+    </div>
   </mat-toolbar-row>
-</mat-toolbar>
-<mat-sidenav-container class="example-container" >
+<mat-sidenav-container class="example-container">
   <mat-sidenav #drawer mode="side" opened role="navigation">
     <mat-nav-list>
-      <a mat-list-item [routerLink]="['/mypolicies']" routerLinkActive="active"
+        <a
+        mat-list-item
+        [routerLink]="['/myCompanyPolicy', insurerLicense]"
+        routerLinkActive="active"
         >My Policies</a
       >
-      <a mat-list-item [routerLink]="['/recommendations', username]" routerLinkActive="active"
-      >Recommendations</a
-    >
       <a
         mat-list-item
-        [routerLink]="['/myrequests', username]"
+        [routerLink]="['/incomingPortingRequest', insurerLicense]"
         routerLinkActive="active"
-        >My Requests</a
       >
-      <a mat-list-item [routerLink]="['/porting']" routerLinkActive="active"
-        >Porting Request</a
+        Incomming Poritng Requests</a
       >
-      <a mat-list-item [routerLink]="['/myprofile',username]" routerLinkActive = "active">My profile</a>
-      <a mat-list-item [routerLink]="['/myCompanyPolicy',insurerLicense]" routerLinkActive = "active" >My Policies</a>
-      <a mat-list-item [routerLink]="['/incomingPortingRequest',insurerLicense]" routerLinkActive = "active" > Incomming Poritng Requests</a>
-      <a mat-list-item [routerLink]="['/outgoingPortingRequest',insurerLicense]" routerLinkActive = "active" > Outing Poritng Requests</a>
-      <a mat-list-item [routerLink]="['/newPolicyForm']" routerLinkActive = "active" >Add New Policy</a>
+      <a
+        mat-list-item
+        [routerLink]="['/outgoingPortingRequest', insurerLicense]"
+        routerLinkActive="active"
+      >
+        Outing Poritng Requests</a
+      >
+      <a
+        mat-list-item
+        [routerLink]="['/newPolicyForm']"
+        routerLinkActive="active"
+        >Add New Policy</a
+      >
+
+      
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
-
-<!-- <router-outlet></router-outlet> -->
+</mat-toolbar> -->

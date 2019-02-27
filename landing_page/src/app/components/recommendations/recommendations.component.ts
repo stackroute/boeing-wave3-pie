@@ -9,6 +9,7 @@ import { Component, OnInit, SimpleChanges } from '@angular/core';
 })
 export class RecommendationsComponent implements OnInit {
   userName: any;
+
   public recommendations;
   constructor(public route: ActivatedRoute, private router: Router, public userService: UserDashboardService) { }
   ngOnInit() {
@@ -31,4 +32,5 @@ export class RecommendationsComponent implements OnInit {
       this.router.navigate(['/dashboard',this.userName]);
     }
 
+   
 }

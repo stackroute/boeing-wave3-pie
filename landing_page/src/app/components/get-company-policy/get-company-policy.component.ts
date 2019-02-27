@@ -18,6 +18,7 @@ this.insurerLicense = this._route.snapshot.paramMap.get('insurerLicense');
 this.requests = this.insurerPolicyService.getPolicies(this.insurerLicense).subscribe(
   data => {
     this.requests = data;
+    console.log(data);
 },
   error => {
     console.log('some error occured');

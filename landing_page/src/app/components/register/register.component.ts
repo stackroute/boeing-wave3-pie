@@ -20,6 +20,7 @@ selectedCar: string;
 firstForm: FormGroup;
 secondForm: FormGroup;
 private formSubmitAttempt: boolean;
+
 constructor(private authService: AuthService, private router: Router,private formBuilder: FormBuilder) { }
 ngOnInit() {
   console.log("abcd");

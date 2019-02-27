@@ -18,7 +18,7 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Insurer {
+public class    Insurer {
 
     private Long insurerId;
 
