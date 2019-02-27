@@ -1,9 +1,9 @@
-package com.stackroute.settlement.controller;
+package com.stackroute.controller;
 
 
-import com.stackroute.settlement.domain.PendingTasks;
-import com.stackroute.settlement.domain.Task;
-import com.stackroute.settlement.services.SettlementServices;
+import com.stackroute.domain.PendingTasks;
+import com.stackroute.domain.Task;
+import com.stackroute.services.SettlementServices;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

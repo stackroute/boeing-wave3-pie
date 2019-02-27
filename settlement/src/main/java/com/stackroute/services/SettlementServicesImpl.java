@@ -1,8 +1,8 @@
-package com.stackroute.settlement.services;
+package com.stackroute.services;
 
-import com.stackroute.settlement.domain.PendingTasks;
-import com.stackroute.settlement.domain.Task;
-import com.stackroute.settlement.repository.SettlementRepository;
+import com.stackroute.repository.SettlementRepository;
+import com.stackroute.domain.PendingTasks;
+import com.stackroute.domain.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

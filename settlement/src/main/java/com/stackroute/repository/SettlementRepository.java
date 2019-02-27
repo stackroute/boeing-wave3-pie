@@ -1,6 +1,6 @@
-package com.stackroute.settlement.repository;
+package com.stackroute.repository;
 
-import com.stackroute.settlement.domain.PendingTasks;
+import com.stackroute.domain.PendingTasks;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
