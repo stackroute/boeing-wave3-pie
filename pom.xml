@@ -93,6 +93,7 @@
         </dependencies>
     </dependencyManagement>
 
+
     <build>
         <plugins>
             <plugin>
@@ -120,6 +121,12 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.6.0.1398</version>
             </plugin>
             <!--<plugin>-->
                 <!--<groupId>org.codehaus.mojo</groupId>-->
@@ -177,6 +184,8 @@
                 <artifactId>maven-site-plugin</artifactId>
                 <version>3.7.1</version>
             </plugin>
+
+
 
             <!--
               Spot Bugs

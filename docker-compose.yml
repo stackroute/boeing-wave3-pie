@@ -128,6 +128,7 @@ services:
       neo4j:
         condition: service_healthy
       kafka:
+
         condition: service_healthy
     ports:
       - 8086:8086
@@ -146,7 +147,7 @@ services:
     hostname: localhost
     restart: always
     volumes:
-      - /DB/neo4j/data:/data
+      -  $HOME/neo4j/data:/data
     environment:
       - NEO4J_AUTH=neo4j/pass
     healthcheck:
