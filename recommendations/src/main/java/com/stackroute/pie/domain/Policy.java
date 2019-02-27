@@ -25,7 +25,7 @@ public class Policy {
 //    private String policyInsurerName;
 //
 //    private String policyName;
-//    String policyType;
+//   List <String> policyType;
 //    private long minSumInsured;
 //    private long maxSumInsured;
 //    private int noOfCashLessHospitals;
@@ -35,12 +35,15 @@ public class Policy {
 //    private int minAge;
 //    private int maxAge;
 //    private int waitingPeriod;
-//   List<Disease> diseasesList;
-//   List<String> gender;
+//   //List<Disease> diseasesList;
+//
 ////     private Timestamp createdAt;
 ////      private Timestamp updatedAt;
 //      private String createdBy;
 //      private String updatedBy;
+//    private List<String> gender;
+
+
     private int policyId;
     @NotBlank
     private String insurerName;

@@ -2,6 +2,7 @@ package com.stackroute.pie.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.stackroute.pie.domain.FamilyMembers;
 import com.stackroute.pie.domain.Insured;
 import com.stackroute.pie.domain.Insurer;
 import com.stackroute.pie.domain.Policy;
@@ -53,17 +54,21 @@ public class RecommendationsControllerTest {
     private Policy policy1;
     private Insured insured1;
     private List<String> diseases = new ArrayList<String>();
+    private List<FamilyMembers> familyMembers=new ArrayList<>() ;
+    private FamilyMembers familyMembers1;
 
 
     @Before
     public void setup(){
         MockitoAnnotations.initMocks(this);
         diseases.add("Cancer");
+        familyMembers1 = new FamilyMembers("teju","manasa",22,"sister","female");
+        familyMembers.add(familyMembers1);
         //mockMvc= MockMvcBuilders.standaloneSetup(recommendationsController).build();
         mockMvc=MockMvcBuilders.standaloneSetup(recommendationsController).build();
         insurer1=new Insurer(1L,"Starhealth Insurance Company","1INS001","starhealth@gmail.com","starpass","Bangalore","what is ypur favourite food","cake");
         policy1=new Policy(11,"Starhealth Insurance Company","Star Comprehensive Insurance Policy",279,1788,78,2,65,2,"female","Family",diseases);
-        insured1=new Insured(1,"tejaswinisrinivas","teju","teju@gmail.com","teju1997","female","cake",22);
+        insured1=new Insured(1,"tejaswinisrinivas","teju","teju@gmail.com","teju1997","female","cake",22,"Cancer",familyMembers,1);
 
     }
 
@@ -200,5 +205,6 @@ public class RecommendationsControllerTest {
                         .content(jsonToString(policy1)));
 
     }
+
 
 }

@@ -36,11 +36,11 @@ public class RecommendationsServImplTest {
         diseases.add("Cancer");
 //        policyList.add(policy1);
         insurer1=new Insurer(1L,"Starhealth Insurance Company","1INS001","starhealth@gmail.com","starpass","Bangalore","what is ypur favourite food","cake");
-        policy1=new Policy(11,"Starhealth Insurance Company","Star Comprehensive Insurance Policy",279,1788,78,2,65,2,"female","Family",diseases);
+       // policy1=new Policy(11,"Starhealth Insurance Company","Star Comprehensive Insurance Policy",279,1788,78,2,65,2,"female","Family",diseases);
         policyList.add(policy1);
 
       //  policyList.add(new Policy());
-        insured1=new Insured(1,"tejaswinisrinivas","teju","teju@gmail.com","teju1997","female","cake",22);
+       // insured1=new Insured(1,"tejaswinisrinivas","teju","teju@gmail.com","teju1997","female","cake",22);
 
     }
 
@@ -59,12 +59,12 @@ public class RecommendationsServImplTest {
         assertEquals(insurerSaved,insurer1);
     }
 
-    @Test
-    public void createInsured() {
-        when(recommendationsRepo.newInsured(1,"teju","female",22)).thenReturn(insured1);
-        Insured insuredSaved=recommendationsServ.createInsured(insured1);
-        assertEquals(insuredSaved,insured1);
-    }
+//    @Test
+//    public void createInsured() {
+//        when(recommendationsRepo.newInsured(1,"teju","female",22)).thenReturn(insured1);
+//        Insured insuredSaved=recommendationsServ.createInsured(insured1);
+//        assertEquals(insuredSaved,insured1);
+//    }
 
     @Test
     public void findUser1() {

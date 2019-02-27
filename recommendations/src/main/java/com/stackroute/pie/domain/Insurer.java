@@ -54,7 +54,7 @@ public class Insurer {
 
 
 
-    //document inside the doucmnet
+    //document inside the docucmnet
     private List<Policy> policies;
 
     private Set<Role> roles = new HashSet<>();
