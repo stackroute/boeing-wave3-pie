@@ -55,6 +55,8 @@ public class Insured {
     @NotBlank
     private  String gender;
 
+    //private String existingDisease;
+
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date createdDate = new Date();
@@ -71,17 +73,25 @@ public class Insured {
     @NotBlank
     private String securityAnswer;
 
+    private  String existingDisease;
+
+    private int numberOfDependants;
 
 
-    public Insured(String fullName, String username, String email, String password, String gender, Date createdDate, String securityAnswer,int age) {
+    private List<FamilyMembers> familyMembers ;
+
+    public Insured(int insuredId,String fullName, String username, String email, String password, String gender,  String securityAnswer,int age,String existingDisease,List<FamilyMembers> familyMembers,int numberOfDependants) {
+        this.insuredId=insuredId;
         this.fullName = fullName;
         this.username = username;
         this.email = email;
         this.password = password;
         this.gender= gender;
-        this.createdDate=createdDate;
+        //this.createdDate=createdDate;
         this.securityAnswer=securityAnswer;
         this.age=age;
+        this.existingDisease=existingDisease;
+        this.numberOfDependants=numberOfDependants;
     }
 
 

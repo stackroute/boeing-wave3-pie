@@ -1,12 +1,16 @@
 package com.stackroute.pie.service;
 
-import com.stackroute.pie.domain.Disease;
+
+import com.stackroute.pie.domain.FamilyMembers;
 import com.stackroute.pie.domain.Insured;
 import com.stackroute.pie.domain.Insurer;
 import com.stackroute.pie.domain.Policy;
 import com.stackroute.pie.repository.RecommendationsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -24,12 +28,49 @@ public class RecommendationsServImpl implements RecommendationServ {
 
     @Override
     public Policy createPolicy(Policy policy) {
-        return recommendationsRepo.newPolicy(policy.getPolicyId(),policy.getPolicyInsurerName(),policy.getPolicyName(),policy.getMinAge(),policy.getMaxAge(),policy.getGender(),policy.getDiseasesCovered(),policy.getPolicyType());
+        return recommendationsRepo.newPolicy(policy.getPolicyId(),policy.getInsurerName(),policy.getPolicyName(),policy.getMinAge(),policy.getMaxAge(),policy.getGender(),policy.getDiseases(),policy.getPolicyType());
     }
 
     @Override
     public Insured createInsured(Insured insured) {
-        return recommendationsRepo.newInsured(insured.getInsuredId(),insured.getUsername(),insured.getGender(),insured.getAge());
+        return recommendationsRepo.newInsured(insured.getInsuredId(),insured.getUsername(),insured.getGender(),insured.getAge(),insured.getExistingDisease(),insured.getNumberOfDependants());
+    }
+
+    @Override
+    public Insurer deleteInsurer(Insurer insurer) {
+        return recommendationsRepo.deleteInsurer(insurer.getInsurerLicense());
+    }
+
+    @Override
+    public Policy deletePolicy(Policy policy) {
+        return recommendationsRepo.deletePolicy(policy.getPolicyId());
+    }
+
+    @Override
+    public Insured deleteInsured(Insured insured) {
+        return recommendationsRepo.deleteInsured(insured.getInsuredId());
+    }
+
+    @Override
+    public Insurer updateInsurer(Insurer insurer) {
+        return recommendationsRepo.updateInsurer(insurer.getInsurerId(),insurer.getInsurerName(),insurer.getInsurerLicense());
+    }
+
+
+    @Override
+    public Policy updatePolicy(Policy policy) {
+        return recommendationsRepo.updatePolicy(policy.getPolicyId(),policy.getInsurerName(),policy.getPolicyName(),policy.getMinAge(),policy.getMaxAge(),policy.getGender(),policy.getDiseases(),policy.getPolicyType());
+
+    }
+
+    @Override
+    public Insured updateInsured(Insured insured) {
+        return recommendationsRepo.updateInsured(insured.getInsuredId(),insured.getUsername(),insured.getGender(),insured.getAge(),insured.getExistingDisease(),insured.getNumberOfDependants());
+    }
+
+    @Override
+    public FamilyMembers createMembers(FamilyMembers familyMembers) {
+        return recommendationsRepo.newFamilyMembers(familyMembers.getUsername(),familyMembers.getMemberName(),familyMembers.getMemberAge(),familyMembers.getRelation(),familyMembers.getMemberGender());
     }
 
     @Override
@@ -51,6 +92,60 @@ public class RecommendationsServImpl implements RecommendationServ {
     }
 
     @Override
+    public String linkDependants(String memberName, String username) {
+        recommendationsRepo.addDependant(memberName,username);
+        return " ";
+    }
+
+    @Override
+    public List<Policy> getByAgeGender(String username) {
+        Insured user=recommendationsRepo.findUser(username);
+        int age =user.getAge();
+        String gender=user.getGender();
+        return recommendationsRepo.findByAgeGender(age,gender);
+
+    }
+
+    @Override
+    public List<Policy> getByAgeDisease(int age, List<String> policyDisease) {
+        return null;
+    }
+
+    @Override
+    public List<Policy> getByGenderDisease(String userGender, List<String> policyDisease) {
+        return null;
+    }
+
+    @Override
+    public List<Policy> getPolicy(int age, String gender) {
+        return null;
+    }
+
+    @Override
+    public Insured findUser(String username) {
+        return recommendationsRepo.findUser(username);
+    }
+
+    @Override
+    public List<Policy> getByAgeGenderDisease(String username) {
+        Insured user=recommendationsRepo.findUser(username);
+        int age=user.getAge();
+        String gender=user.getGender();
+        String existingDisease=user.getExistingDisease();
+        return recommendationsRepo.findByAgeGenderDisease(age,gender,existingDisease);
+
+            }
+
+    @Override
+    public List<Policy> policyForDependants(String username) {
+        FamilyMembers familyMembers =recommendationsRepo.findDependants(username);
+        String memberGender = familyMembers.getMemberGender();
+        int memberAge=familyMembers.getMemberAge();
+        return recommendationsRepo.findByAgeGender(memberAge,memberGender);
+
+    }
+
+    @Override
     public List<Policy> displayPolicy() {
         return recommendationsRepo.findViewedPolicy();
     }
@@ -61,36 +156,28 @@ public class RecommendationsServImpl implements RecommendationServ {
     }
 
     @Override
-    public List<Policy> getByAge(int age) {
+    public List<Policy> getByAge(String username) {
+        Insured user=recommendationsRepo.findUser(username);
+        int age =user.getAge();
         return recommendationsRepo.findByAge(age);
+
+    }
+
+
+    @Override
+    public List<Policy> getByGender(String username) {
+        Insured user=recommendationsRepo.findUser(username);
+        String gender=user.getGender();
+         return recommendationsRepo.findByGender(gender);
     }
 
     @Override
-    public List<Policy> getByGender(List<String> userGender) {
-        return recommendationsRepo.findByGender(userGender);
+    public List<Policy> getByDisease(String username) {
+
+        Insured user = recommendationsRepo.findUser(username);
+        String existingDisease = user.getExistingDisease();
+        List<String> policyDiseases = new ArrayList<>();
+        policyDiseases.add(existingDisease);
+        return recommendationsRepo.findByDisease(policyDiseases);
     }
-
-    @Override
-    public List<Policy> getByDisease(List<String> policyDisease) {
-        return recommendationsRepo.findByDisease(policyDisease);
-    }
-
-    @Override
-    public List<Policy> getByAgeGender(int age, List<String> userGender) {
-        return recommendationsRepo.findByAgeGender(age,userGender);
-    }
-
-
-//
-    @Override
-    public List<Policy> getByAgeDisease(int age, List<String> policyDisease) {
-        return recommendationsRepo.findByAgeDisease(age,policyDisease);
-    }
-
-    @Override
-    public List<Policy> getByGenderDisease(List<String> userGender, List<String> policyDisease) {
-        return recommendationsRepo.findByGenderDisease(userGender,policyDisease);
-    }
-
-
 }
