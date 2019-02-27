@@ -29,14 +29,14 @@ this.firstForm = this.formBuilder.group({
 
 }
 );
-this.thirdForm = this.formBuilder.group({
+this.secondForm = this.formBuilder.group({
  minSumInsured: ["", Validators.required],
  maxSumInsured: ["", Validators.required],
  hospitals: ["", Validators.required]
 
 }
 );
-this.secondForm = this.formBuilder.group({
+this.thirdForm = this.formBuilder.group({
  minAge: ["", Validators.required],
  maxAge: ["", Validators.required],
  waitingPeriod: ["", Validators.required]

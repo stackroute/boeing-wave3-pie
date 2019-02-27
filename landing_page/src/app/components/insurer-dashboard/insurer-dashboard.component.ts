@@ -1,30 +1,19 @@
-import { TokenStorageService } from "./../companyauth/token-storage.service";
-import { ActivatedRoute, Router } from "@angular/router";
-import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: "app-insurer-dashboard",
-  templateUrl: "./insurer-dashboard.component.html",
-  styleUrls: ["./insurer-dashboard.component.css"]
+  selector: 'app-insurer-dashboard',
+  templateUrl: './insurer-dashboard.component.html',
+  styleUrls: ['./insurer-dashboard.component.css']
 })
 export class InsurerDashboardComponent implements OnInit {
   insurerLicense: any;
-  info: any;
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private token: TokenStorageService
-  ) {}
+  
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.insurerLicense = this.route.snapshot.paramMap.get("insurerLicense");
-    this.info = {
-      token: this.token.getToken(),
-      username: this.token.getUsername(),
-      authorities: this.token.getAuthorities()
-    };
-    if (!this.info.token) {
-      this.router.navigateByUrl("login");
-    }
+    this.insurerLicense = this.route.snapshot.paramMap.get('insurerLicense');
+    let company = window.localStorage.setItem("insurername",this.insurerLicense);
   }
+
 }

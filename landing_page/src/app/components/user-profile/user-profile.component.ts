@@ -10,22 +10,25 @@ import { UserDashboardService } from 'src/app/service/user-dashboard.service';
 export class UserProfileComponent implements OnInit {
   public username;
   public profile:any;
+  
   constructor(private route: ActivatedRoute, private userService: UserDashboardService) { }
  
  ngOnInit() {
+   
    this.username = this.route.snapshot.paramMap.get('username');
    console.log('ts' + this.username);
-   this.userService.getProfile(this.username).subscribe(
-    data => {
-      console.log("username: " + data.username);
-      console.log('jell' + data.email);
-      this.profile = data;
- },
-    error => {
-      console.log('some error occured');
-      console.log(error.errorMessage);
-    // tslint:disable-next-line:semicolon
-    }
-  );
+   this.profile = this.userService.getProfile(this.username);
+   console.log("hIIII" + this.profile.username);
+//     data => {
+//       console.log("username: " + data.username);
+//       console.log('jell' + data.email);
+//       this.profile = data;
+//  },
+//     error => {
+//       console.log('some error occured');
+//       console.log(error.errorMessage);
+  
+//     }
+  
  }
 }

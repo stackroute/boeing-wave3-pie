@@ -14,6 +14,7 @@ export class PortingRequestComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private requestService: RequestService,private router: Router) { }
  
   ngOnInit() {
+    let name = window.localStorage.getItem("insuredname"); 
     this.portingForm = this.formBuilder.group({
       insuredName:['',Validators.required],
       dateOfBirth:['',Validators.required],
@@ -44,7 +45,7 @@ export class PortingRequestComponent implements OnInit {
         console.log(error);
       }
     );
-    this.router.navigate(['/dashboard','Sourabhi567']);
+    this.router.navigate(['/dashboard',name]);
   }
   logged(){
     this.loggedIn=true;

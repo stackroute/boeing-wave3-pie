@@ -7,9 +7,9 @@ import { catchError, map } from 'rxjs/operators';
 })
 export class UserDashboardService {
   public localMongoUrl = 'http://13.126.73.190:8090/api/auth/requests/';
- public recommendationsUrl = 'http://172.23.239.158:8086/rest/neo4j/recommendations/policyByAgeGender/28/female';
- public profileUrl = 'http://13.126.73.190:8092/userreg/api/auth/profile/';
- public policiesUrl = 'http://localhost:8093/api/auth/policy/display/Anusha';
+ public recommendationsUrl = 'http://172.23.239.158:8086/rest/neo4j/recommendations/policyByAgeGender/';
+ public profileUrl = 'http://172.23.239.138:8093/api/auth/profile/';
+ public policiesUrl = 'http://localhost:8093/api/auth/policy/display/tedaaa';
  constructor(private http: HttpClient) {
    console.log('http service got called');
  }
@@ -19,9 +19,9 @@ export class UserDashboardService {
      console.log(requests);
      return requests;
    }
-   public getRecommendations(userId): any {
-     console.log(userId);
-     const recommendations = this.http.get(this.recommendationsUrl );
+   public getRecommendations(username): any {
+     console.log(username);
+     const recommendations = this.http.get(this.recommendationsUrl + username);
      return recommendations;
    }
    public getPolicies(username): any {
@@ -31,8 +31,9 @@ export class UserDashboardService {
   }
    public getProfile(username): any {
      console.log('service' + username);
-     const profile = this.http.get(this.profileUrl);
+     const profile = this.http.get(this.profileUrl + username);
      console.log('after');
+     console.log(profile);
      return profile;
    }
    public updateProfile(username, form): any {

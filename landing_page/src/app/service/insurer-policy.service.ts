@@ -18,7 +18,7 @@ export class InsurerPolicyService {
 
  constructor(private http: HttpClient) { }
 
- localUrl = 'http://13.126.73.190:8092/insurerregservice/api/v1/';
+ localUrl = 'http://172.23.239.82:8090/api/v1/';
 
 
  addNewPolicy(policy : PolicyFormInfo):Observable<Object> {
@@ -26,16 +26,10 @@ export class InsurerPolicyService {
   return this.http.put(this.localUrl+ 'policy/newpolicy',policy);
  }
 
-//  getPolicies(insurerLicense : String):Observable<Object> {
-//    console.log('adadsasdas')
-//   return this.http.get(this.localUrl+ 'policy/external'+'/'+insurerLicense);
-//  }        
-
-
  getPolicies(insurerLicense : String):Observable<Object> {
-  console.log('adadsasdas')
- return this.http.get(this.localUrl+ 'policy/display/'+insurerLicense);
-}
+   console.log('adadsasdas')
+  return this.http.get(this.localUrl+ 'policy/display/'+insurerLicense);
+ }
 
 
  deletePolicy(insurerName,policyId):Observable<Object>{

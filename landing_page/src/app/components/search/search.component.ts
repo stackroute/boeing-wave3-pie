@@ -1,5 +1,5 @@
 import { SearchService } from './../../service/search.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -29,6 +29,12 @@ export class SearchComponent implements OnInit {
     console.log( "abd" + this.message);
     this.policies = this.searchService.getSearch(this.message).subscribe(data=>this.policies = data);
     console.log("fcgvhbj" + this.policies.policyId);
+    
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
+    //Add '${implements OnChanges}' to the class.
+    window.location.reload();
   }
 
 }

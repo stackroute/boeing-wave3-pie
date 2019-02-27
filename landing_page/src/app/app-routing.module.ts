@@ -30,7 +30,7 @@ const routes: Routes = [
   {path:'register', component:RegisterComponent},
   { path: 'dashboard/:username', component: DashboardComponent},
   {path: 'recommendations/:username', component: RecommendationsComponent},
-  {path: 'mypolicies', component: MyPoliciesComponent},
+  {path: 'mypolicies/:username', component: MyPoliciesComponent},
   // {path:'companylogin', component: LoginInsurerComponent},
   {path: 'newPolicyForm', component: AddNewPolicyComponent},
   {path: 'incomingPortingRequest/:insurerLicense', component: IncomingPortingRequestsComponent},

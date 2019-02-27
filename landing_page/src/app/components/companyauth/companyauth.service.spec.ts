@@ -1,4 +1,4 @@
-import { AuthService } from './companyauth.service';
+import { AuthService } from './../auth/auth.service';
 import { TestBed } from '@angular/core/testing';
 
 
