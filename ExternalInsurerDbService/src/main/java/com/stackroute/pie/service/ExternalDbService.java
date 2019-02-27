@@ -6,7 +6,7 @@ import org.json.JSONException;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 
- interface ExternalDbService {
+public interface ExternalDbService {
 
     Insurer getPolicies(String insurerName) throws ClassNotFoundException, SQLException, UnsupportedEncodingException, JSONException;
 

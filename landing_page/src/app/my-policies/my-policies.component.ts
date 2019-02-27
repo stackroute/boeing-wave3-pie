@@ -1,3 +1,5 @@
+import { UserDashboardService } from 'src/app/service/user-dashboard.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyPoliciesComponent implements OnInit {
 
-  constructor() { }
+public policies;
+username: any;
+constructor(public _route: ActivatedRoute, private router: Router, public userService: UserDashboardService) { }
+ngOnInit() {
+this.username = this._route.snapshot.paramMap.get('username');
+this.policies = this.userService.getPolicies(this.username).subscribe(
+  data => {
 
-  ngOnInit() {
+    this.policies = data;
+    console.log(this.policies);
+},
+  error => {
+    console.log('some error occured');
+    console.log(error.errorMessage);
   }
+);
+}
 
 }

@@ -1,5 +1,6 @@
 package com.stackroute.pie.message.request;
 
+import com.stackroute.pie.domain.FamilyMembers;
 import com.stackroute.pie.domain.Policy;
 import com.stackroute.pie.domain.Request;
 import lombok.AllArgsConstructor;
@@ -10,6 +11,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -37,7 +39,10 @@ public class SignUpForm {
 
     private int insuredId;
 
-    private Set<Policy> policees;
+
+
+    private List<Policy> policies;
+
 
     private List<Request> requests;
 
@@ -63,6 +68,9 @@ public class SignUpForm {
     @NotBlank
     private String securityAnswer;
 
+    private String existingDisease;
+
+    private List<FamilyMembers> familyMembers=new ArrayList<>();
 
 
 }

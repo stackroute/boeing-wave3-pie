@@ -7,6 +7,7 @@ import { FormsDashboardComponent } from './forms-dashboard/forms-dashboard.compo
 import { DisplayAllFormsComponent } from './display-all-forms/display-all-forms.component';
 import { DisplayFormComponent } from './display-form/display-form.component';
 import { AddNewFormComponent } from './add-new-form/add-new-form.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AddNewFormComponent } from './add-new-form/add-new-form.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

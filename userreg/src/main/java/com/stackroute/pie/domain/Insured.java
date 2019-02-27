@@ -53,6 +53,8 @@ public class Insured {
     @NotBlank
     private String gender;
 
+    private  String existingDisease;
+
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date createdDate = new Date();
@@ -75,9 +77,9 @@ public class Insured {
     @NotBlank
     private String securityAnswer;
 
+   private List<FamilyMembers> familyMembers=new ArrayList<>();
 
-    public Insured(String fullName, String username, String email, String password, String gender, Date createdDate, String securityAnswer, int age) {
-        this.fullName = fullName;
+    public Insured(String fullName, String username, String email, String password, String gender, Date createdDate, String securityAnswer, int age){
         this.username = username;
         this.email = email;
         this.password = password;
@@ -85,6 +87,7 @@ public class Insured {
         this.createdDate = createdDate;
         this.securityAnswer = securityAnswer;
         this.age = age;
+        this.existingDisease=existingDisease;
     }
 
     public Insured(int insuredId, @NotBlank @Size(min = 3, max = 50) String fullName, @NotBlank @UniqueElements @Size(min = 3, max = 50) String username, @UniqueElements @NotBlank @Size(max = 50) @Email String email, @NotBlank @Size(min = 6, max = 100) String password, int age, @NotBlank String gender, @NotBlank String securityAnswer) {

@@ -1,8 +1,8 @@
-<br>
-<br>
-<br>
 
-<div class="mypolicy" style="margin-left:12%">
+<app-dashboard></app-dashboard>
+<div class="container">
+<div class="mypolicy" style="position:center;">
+  
 <table class="table table-striped">
    <thead>
      <tr>
@@ -94,3 +94,32 @@
        </tfoot>
      </table>
  </div>
+</div>
+ <app-footer></app-footer>
+ <router-outlet></router-outlet>
+ 
+ <!-- <div class="container" style="text-align:center; margin-bottom:20%;">
+    <div class="row" style="text-align:center">
+      <div class="col-md-12" style="font-size:18px">My policies</div>
+      <br /><br /><br /><br />
+    </div>
+    <div class="row" style="text-align:center">
+      <div *ngFor="let count of policies" class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">Policy Name: {{ count.policyName }}</div>
+          <div class="panel-body">
+            <p>PolicyId: {{ count.policyId }}</p>
+            <p>InsurerName: {{count.insurerName}}</p>
+            <p>Monthly Premium: {{ count.monthlyPremium }}</p>
+            <p>Waiting Period: {{ count.waitingPeriod }}</p>
+          </div>
+          <div class="panel-footer">
+            <a [routerLink]="['/deletePolicy', count.insurerName,count.policyId]" class="btn btn-primary" style ="margin-right: 5%;"onClick= "window.location.reload();">Delete</a>
+             <a [routerLink]="['/updateRequest', count.portingRequestId]" class="btn btn-primary"onClick= "window.location.reload();">Update</a> 
+           </div>
+        </div>
+        <br />
+      </div>
+    </div>
+   </div>
+   -->

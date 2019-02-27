@@ -22,6 +22,9 @@ export class DisplayAllFormsComponent implements OnInit {
       .getAllFormFormats()
       .subscribe(allFormFormats => (this.allFormFormats = allFormFormats));
   }
+  getAllFormFormatsOnEventClick(dullValue: string) {
+    this.getAllFormFormats();
+  }
   showFormDetails(formId: number): void {
     this.showFormDetailsComponent = true;
     this.formService
@@ -31,6 +34,13 @@ export class DisplayAllFormsComponent implements OnInit {
       );
   }
   deleteForm(formId: number): void {
+    console.log('Delete Pressed');
     this.formService.deleteForm(formId).subscribe();
+    this.formService
+      .getAllFormFormats()
+      .subscribe(allFormFormats => (this.allFormFormats = allFormFormats));
+  }
+  makeShowFormDetailsComponentFalse(): void {
+    this.showFormDetailsComponent = false;
   }
 }

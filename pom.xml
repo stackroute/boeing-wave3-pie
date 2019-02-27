@@ -36,7 +36,9 @@
         <module>insurerregservice</module>
        	<module>search-service</module>
         <module>commonauth</module>
+        <module>ExternalInsurerDbService</module>
         <module>settlement</module>
+
     </modules>
     <dependencies>
         <dependency>
