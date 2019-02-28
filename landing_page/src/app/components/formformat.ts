@@ -1,4 +1,4 @@
-export class formformat {
+export class FormFormat {
     formId;
     formName: String;
     fields: String[];

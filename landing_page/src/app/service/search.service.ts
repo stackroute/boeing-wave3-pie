@@ -12,7 +12,7 @@ export class SearchService {
     visible: boolean;
     v: any;
     
-    public baseUrl = 'http://13.126.73.190:8092/searchservice/api/v1/';
+    public baseUrl = 'http://172.23.239.171:8051/api/v1/';
     private messageSource = new BehaviorSubject('');
   currentMessage = this.messageSource.asObservable();
     constructor(private http: HttpClient) {
@@ -28,7 +28,8 @@ export class SearchService {
       }
     public getSearch(searchValue):any{
         console.log("inside service");
-        this.v = this.http.get(this.baseUrl + 'policies/' + searchValue );
+        console.log("search url: "+ this.baseUrl + 'policies/' + searchValue);
+        this.v = this.http.get(  this.baseUrl + '/policies/' + searchValue );
         console.log("search policy object "+this.v);
         return this.v;
     }
