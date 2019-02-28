@@ -28,7 +28,7 @@ export class SearchService {
       }
     public getSearch(searchValue):any{
         console.log("inside service");
-        this.v = this.http.get(  this.baseUrl + 'policies/' + searchValue );
+        this.v = this.http.get(this.baseUrl + 'policies/' + searchValue );
         console.log("search policy object "+this.v);
         return this.v;
     }

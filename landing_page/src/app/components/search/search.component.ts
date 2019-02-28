@@ -27,7 +27,10 @@ export class SearchComponent implements OnInit {
     console.log("in search");
     this.message = this.route.snapshot.paramMap.get('value');
     console.log( "abd" + this.message);
-    this.policies = this.searchService.getSearch(this.message).subscribe(data=>this.policies = data);
+    this.policies = this.searchService.getSearch(this.message).subscribe(data=>{
+      this.policies = data;
+      console.log(data);
+    });
     console.log("fcgvhbj" + this.policies.policyId);
     
   }

@@ -33,7 +33,7 @@ export class UserDashboardService {
      console.log('service' + username);
      const profile = this.http.get(this.profileUrl + username);
      console.log('after');
-     console.log(profile);
+     console.log('anusha' + profile);
      return profile;
    }
    public updateProfile(username, form): any {
