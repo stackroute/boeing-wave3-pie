@@ -1,4 +1,4 @@
-import { formformat } from './../components/formformat';
+import { FormFormat } from './../components/formformat';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs';
@@ -13,15 +13,15 @@ export class FetchFormsService {
   private addNewFormFormatUrl = 'formformat';
   private deleteFormFormatUrl = 'formformat/';
   constructor(private http: HttpClient) { }
-  getAllFormFormats(): Observable<formformat[]> {
-    return this.http.get<formformat[]>(this.adminUrl + this.getAllFormFormatsUrl);
+  getAllFormFormats(): Observable<FormFormat[]> {
+    return this.http.get<FormFormat[]>(this.adminUrl + this.getAllFormFormatsUrl);
   }
-  addNewFormFormat(): Observable<formformat> {
-    return this.http.get<formformat>(this.adminUrl + this.addNewFormFormatUrl);
+  addNewFormFormat(): Observable<FormFormat> {
+    return this.http.get<FormFormat>(this.adminUrl + this.addNewFormFormatUrl);
   }
   deleteFormFormat(formId): void {
     console.log(formId);
     console.log(this.adminUrl + this.deleteFormFormatUrl + formId);
-    this.http.delete<formformat>(this.adminUrl + this.deleteFormFormatUrl + formId);
+    this.http.delete<FormFormat>(this.adminUrl + this.deleteFormFormatUrl + formId);
   }
 }
