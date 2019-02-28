@@ -29,7 +29,7 @@ public class AdminController {
     @PostMapping("formformat")
     public ResponseEntity<?> addNewFormFormat(@RequestBody FormFormat formFormat) {
         FormFormat savedFormFormat = adminServices.addNewFormFormat(formFormat);
-        kafkaTemplate.send("formFormats", savedFormFormat);
+//        kafkaTemplate.send("formFormats", savedFormFormat);
         return new ResponseEntity<FormFormat>(savedFormFormat, HttpStatus.CREATED);
     }
     @GetMapping("formformats")
@@ -53,5 +53,10 @@ public class AdminController {
     public ResponseEntity<FormFormat> updateFormFormat(@PathVariable(value = "formId", required = true) int formId, @RequestBody FormFormat updatedFormFormat) {
         FormFormat newFormFormat = adminServices.updateFormFormat(formId, updatedFormFormat);
         return new ResponseEntity<FormFormat>(newFormFormat, HttpStatus.OK);
+    }
+    @GetMapping("formformat/name={formName}")
+    public ResponseEntity<FormFormat> getFormByName(@PathVariable(value = "formName", required = true) String formName) {
+        FormFormat formFormat = adminServices.getFormFormatByName(formName);
+        return new ResponseEntity<FormFormat>(formFormat, HttpStatus.OK);
     }
 }
