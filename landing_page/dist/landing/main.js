@@ -546,12 +546,10 @@ var AuthService = /** @class */ (function () {
         this.http = http;
         this.router = router;
         this.loggedIn = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](false);
-        // private loginUrl = 'http://13.126.73.190:8092/commonauth/api/auth/signin';
-        this.loginUrl = 'http://172.23.239.82:8096/api/auth/signin';
-        this.signupUrl = 'http://172.23.239.138:8093/api/auth/signup';
+        this.loginUrl = 'http://13.126.73.190:8092/commonauth/api/auth/signin';
+        this.signupUrl = 'http://13.126.73.190:8092/userreg/api/auth/signup';
     }
     Object.defineProperty(AuthService.prototype, "isLoggedIn", {
-        // private loginUrl = 'http://localhost:8093/api/auth/signin';
         get: function () {
             return this.loggedIn.asObservable();
         },
@@ -811,8 +809,8 @@ var httpOptions = {
 var CompanyAuthService = /** @class */ (function () {
     function CompanyAuthService(http) {
         this.http = http;
-        this.signupUrl = 'http://172.23.239.82:8090/api/v1/signup';
-        this.addPolicyUrl = 'http://172.233.239.82:8090/api/v1/policy/newpolicy';
+        this.signupUrl = 'http://13.126.73.190:8092/insurerregservice/api/v1/signup';
+        this.addPolicyUrl = 'http://13.126.73.190:8092/insurerregservice/api/v1/policy/newpolicy';
     }
     // attemptAuth(credentials: AuthLoginInfo): Observable<JwtResponse> {
     //   return this.http.post<JwtResponse>(this.loginUrl, credentials, httpOptions);
@@ -3076,7 +3074,7 @@ var InsurerAcceptincomingportingrequestService = /** @class */ (function () {
         this.http = http;
         this.messageSource = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]('');
         this.currentMessage = this.messageSource.asObservable();
-        this.baseUrl = 'http://localhost:8091/api/v1/';
+        this.baseUrl = 'http://13.126.73.190:8092/porting/api/v1/';
         this.visible = false;
     }
     InsurerAcceptincomingportingrequestService.prototype.changeMessage = function (message) {
@@ -3130,7 +3128,7 @@ var InsurerAcceptoutgoingportingrequestService = /** @class */ (function () {
         this.http = http;
         this.messageSource = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]('');
         this.currentMessage = this.messageSource.asObservable();
-        this.baseUrl = 'http://localhost:8091/api/v1/';
+        this.baseUrl = 'http://13.126.73.190:8092/porting/api/v1/';
         this.visible = false;
     }
     InsurerAcceptoutgoingportingrequestService.prototype.changeMessage = function (message) {
@@ -3183,7 +3181,7 @@ var InsurerOutgoingportingrequestService = /** @class */ (function () {
         this.http = http;
         this.messageSource = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]('');
         this.currentMessage = this.messageSource.asObservable();
-        this.baseUrl = 'http://localhost:8091/api/v1/';
+        this.baseUrl = 'http://13.126.73.190:8092/porting/api/v1/';
         this.visible = false;
     }
     InsurerOutgoingportingrequestService.prototype.changeMessage = function (message) {
@@ -3237,7 +3235,7 @@ var httpOptions = {
 var InsurerPolicyService = /** @class */ (function () {
     function InsurerPolicyService(http) {
         this.http = http;
-        this.localUrl = 'http://172.23.239.82:8090/api/v1/';
+        this.localUrl = 'http://13.126.73.190:8092/insurerregservice/api/v1/';
     }
     InsurerPolicyService.prototype.addNewPolicy = function (policy) {
         console.log('adadsasdas');
@@ -3284,7 +3282,7 @@ __webpack_require__.r(__webpack_exports__);
 var RequestService = /** @class */ (function () {
     function RequestService(http) {
         this.http = http;
-        this.requestUrl = 'http://localhost:8091/api/v1/';
+        this.requestUrl = 'http://13.126.73.190:8092/porting/api/v1/';
         console.log('http service got called');
     }
     RequestService.prototype.postRequest = function (portingForm) {
@@ -3343,7 +3341,7 @@ __webpack_require__.r(__webpack_exports__);
 var SearchService = /** @class */ (function () {
     function SearchService(http) {
         this.http = http;
-        this.baseUrl = 'http://172.23.239.171:8051/api/v1/';
+        this.baseUrl = 'http://13.126.73.190:8092/searchservice/api/v1/';
         this.messageSource = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"]('');
         this.currentMessage = this.messageSource.asObservable();
         console.log("http search service is called");
@@ -3356,8 +3354,7 @@ var SearchService = /** @class */ (function () {
     };
     SearchService.prototype.getSearch = function (searchValue) {
         console.log("inside service");
-        console.log("search url: " + this.baseUrl + 'policies/' + searchValue);
-        this.v = this.http.get(this.baseUrl + '/policies/' + searchValue);
+        this.v = this.http.get(this.baseUrl + 'policies/' + searchValue);
         console.log("search policy object " + this.v);
         return this.v;
     };
@@ -3400,10 +3397,10 @@ __webpack_require__.r(__webpack_exports__);
 var UserDashboardService = /** @class */ (function () {
     function UserDashboardService(http) {
         this.http = http;
-        this.localMongoUrl = 'http://13.126.73.190:8090/api/auth/requests/';
+        this.localMongoUrl = 'http://13.126.73.190:8092/porting/api/auth/requests/';
         this.recommendationsUrl = 'http://172.23.239.158:8086/rest/neo4j/recommendations/policyByAgeGender/';
-        this.profileUrl = 'http://172.23.239.138:8093/api/auth/profile/';
-        this.policiesUrl = 'http://localhost:8093/api/auth/policy/display/tedaaa';
+        this.profileUrl = 'http://13.126.73.190:8092/userreg/api/auth/profile/';
+        this.policiesUrl = 'http://13.126.73.190:8092/userreg/api/auth/policy/display/tedaaa';
         console.log('http service got called');
     }
     UserDashboardService.prototype.getRequests = function (userId) {
@@ -3557,7 +3554,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/user/Desktop/27(1)/landing_page/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /home/user/Documents/v1.0.1/boeing-wave3-pie/landing_page/src/main.ts */"./src/main.ts");
 
 
 /***/ })
