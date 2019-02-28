@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormFormat } from "../formformat";
-import { FormServiceService } from "../form-service.service";
+import { FormServiceService } from "../../service/form-service.service";
 
 @Component({
   selector: "app-display-all-forms",

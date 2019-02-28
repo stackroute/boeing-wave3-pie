@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormFormat } from '../formformat';
-import { FormServiceService } from 'app/form-service.service';
+import { FormServiceService } from '../../service/form-service.service';
 
 @Component({
   selector: 'app-display-form',

@@ -8,7 +8,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { UpdateRequestComponent } from './components/update-request/update-request.component';
 import { DeleteRequestComponent } from './components/delete-request/delete-request.component';
 import { PortingRequestComponent } from './components/porting-request/porting-request.component';
-import { FormDashboardComponent } from './components/form-dashboard/form-dashboard.component';
+// import { FormDashboardComponent } from './components/form-dashboard/form-dashboard.component';
 import { OutgoingPortingRequestsComponent } from './components/outgoing-porting-requests/outgoing-porting-requests.component';
 import { IncomingPortingRequestsComponent } from './components/incoming-porting-requests/incoming-porting-requests.component';
 import { AddNewPolicyComponent } from './components/add-new-policy/add-new-policy.component';
@@ -22,6 +22,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SearchComponent } from './components/search/search.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { FormsDashboardComponent } from './components/forms-dashboard/forms-dashboard.component';
 
 const routes: Routes = [
   {path: 'search/:value', component: SearchComponent},
@@ -35,7 +36,7 @@ const routes: Routes = [
   {path: 'newPolicyForm', component: AddNewPolicyComponent},
   {path: 'incomingPortingRequest/:insurerLicense', component: IncomingPortingRequestsComponent},
  {path:'outgoingPortingRequest/:insurerLicense', component: OutgoingPortingRequestsComponent},
-  {path: 'admin', component:FormDashboardComponent},
+  {path: 'admin', component:FormsDashboardComponent},
     {path: 'porting', component:PortingRequestComponent},
    {path: 'deleteRequest/:requestId', component:DeleteRequestComponent},
    {path: 'updateRequest/:requestId', component:UpdateRequestComponent},

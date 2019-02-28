@@ -1,20 +1,21 @@
-import { Injectable } from "@angular/core";
-import { FormFormat } from "./formformat";
-import { Observable } from "rxjs";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { FormFormat } from '../components/formformat';
+import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class FormServiceService {
   allFormFormats: Observable<FormFormat[]>;
 
-  adminUrl = "http://localhost:8092/admin/api/v1/";
-  getAllFormsUrl = "formformats/";
-  getFormFormatUrl = "formformat/";
-  saveFormUrl = "formformat/";
-  updateFormUrl = "formformat/";
-  deleteFormUrl = "formformat/";
+  // adminUrl = 'http://localhost:8092/admin/api/v1/';
+  adminUrl = 'http://localhost:8055/api/v1/'
+  getAllFormsUrl = 'formformats/';
+  getFormFormatUrl = 'formformat/';
+  saveFormUrl = 'formformat/';
+  updateFormUrl = 'formformat/';
+  deleteFormUrl = 'formformat/';
 
   tempFormFormat: Observable<FormFormat>;
   constructor(private http: HttpClient) {}

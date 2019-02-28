@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormFormat } from 'app/formformat';
-import { FormServiceService } from 'app/form-service.service';
-import { DisplayAllFormsComponent } from 'app/display-all-forms/display-all-forms.component';
+import { FormFormat } from '../formformat';
+import { FormServiceService } from '../../service/form-service.service';
+import { DisplayAllFormsComponent } from '../display-all-forms/display-all-forms.component';
 
 @Component({
   selector: 'app-add-new-form',
