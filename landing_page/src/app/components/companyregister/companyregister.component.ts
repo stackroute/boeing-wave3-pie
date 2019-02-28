@@ -21,6 +21,7 @@ selectedValue: string;
 selectedCar: string;
 firstForm: FormGroup;
 secondForm: FormGroup;
+private formSubmitAttempt: boolean;
 
 
 
@@ -29,36 +30,43 @@ constructor(private authService: CompanyAuthService, private router: Router,priv
 
 
 ngOnInit() {
-  console.log("abcd");
-  this.firstForm = this.formBuilder.group({
-    insurerName: ['', Validators.required],
-    insurerLicense: ['', Validators.required],
+ console.log("abcd");
+ this.firstForm = this.formBuilder.group({
+   insurerName: ['', Validators.required],
+   insurerLicense: ['', Validators.required],
+   insurerEmail: ['', Validators.required],
+   password: ['', [Validators.required, Validators.minLength(6)]]
+ });
+
+ this.secondForm = this.formBuilder.group({
+   insurerAddress: ['', Validators.required],
+   securityQuestion: ['', Validators.required],
+   securityAnswer: ['', Validators.required]});
+
+}
+
+isFieldInvalid(field: string) {
+ return (
+   (!this.firstForm.get(field).valid && this.firstForm.get(field).touched) ||
+   (this.firstForm.get(field).untouched && this.formSubmitAttempt)
+ );
+}
 
 
-  });
-  this.secondForm = this.formBuilder.group({
-    insurerEmail: ['', Validators.required],
-    insurerAddress: ['', Validators.required],
-    password: ['', [Validators.required, Validators.minLength(6)]],
-    securityQuestion: ['', Validators.required],
-    securityAnswer: ['', Validators.required]});
+submitForm() {
+ console.log("hi");
 
- }
+ const signUpForm = Object.assign(this.firstForm.value, this.secondForm.value);
+   console.log('registerForm.value : ', signUpForm);
 
- submitForm() {
-  console.log("hi");
-
-  const signUpForm = Object.assign(this.firstForm.value, this.secondForm.value);
-    console.log('registerForm.value : ', signUpForm);
-
-  this.authService.signUp(signUpForm).subscribe(
-    data => {
-      console.log(data);
-    },
-    error => {
-      console.log(error);
-    }
-  );
-  this.router.navigate(['/login']);
+ this.authService.signUp(signUpForm).subscribe(
+   data => {
+     console.log(data);
+   },
+   error => {
+     console.log(error);
+   }
+ );
+ this.router.navigate(['/login']);
 }
 }
