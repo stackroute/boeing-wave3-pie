@@ -11,8 +11,8 @@
   <ul class="nav navbar-nav">
       <li></li>
     <li><a [routerLink]="['/home']" routerLinkActive="router-link-active" >Home</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Contact</a></li>
+    <li><a [routerLink]="['/about']" routerLinkActive="router-link-active">About</a></li>
+    <li><a [routerLink]="['/contact']" routerLinkActive="router-link-active">Contact</a></li>
   </ul>
       <form class="navbar-form navbar-left" (ngSubmit) = "search()" style="margin-left:15%;margin-top: 2%;">
         <div class="input-group">

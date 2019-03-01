@@ -45,4 +45,10 @@ public class AdminServicesImpl implements AdminServices{
         FormFormat newFormFormat = adminRepository.save(updatedFormFormat);
         return newFormFormat;
     }
+
+    @Override
+    public FormFormat getFormFormatByName(String formName) {
+        FormFormat formFormat = adminRepository.findByFormName(formName);
+        return formFormat;
+    }
 }

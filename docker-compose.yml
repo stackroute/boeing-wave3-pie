@@ -297,4 +297,3 @@ services:
     ports:
       - 8073:8073
     network_mode: host
-

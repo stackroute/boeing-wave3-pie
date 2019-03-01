@@ -54,4 +54,9 @@ public class AdminController {
         FormFormat newFormFormat = adminServices.updateFormFormat(formId, updatedFormFormat);
         return new ResponseEntity<FormFormat>(newFormFormat, HttpStatus.OK);
     }
+    @GetMapping("formformat/name={formName}")
+    public ResponseEntity<FormFormat> getFormByName(@PathVariable(value = "formName", required = true) String formName) {
+        FormFormat formFormat = adminServices.getFormFormatByName(formName);
+        return new ResponseEntity<FormFormat>(formFormat, HttpStatus.OK);
+    }
 }
