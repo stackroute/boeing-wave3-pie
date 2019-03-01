@@ -1,8 +1,8 @@
-From node:carbon 
+From node:carbon
 
 WORKDIR /app
 
-COPY . . 
+COPY . .
 
 RUN npm install 
 
