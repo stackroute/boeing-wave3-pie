@@ -1,9 +1,8 @@
-<!-- <app-navbar></app-navbar> -->
 <mat-tab-group style="margin-left: 0%;" mat-align-tabs="center">
   <mat-tab label="Enter Your Name">
     <form [formGroup]="firstForm">
         
-      <mat-form-field style="margin-left: 28%;">
+      <mat-form-field style="margin-left: 30%;">
         <input
           matInput
           placeholder="Username"
@@ -15,14 +14,14 @@
         </mat-error> 
       </mat-form-field>
       <br />
-      <mat-form-field style="margin-left: 28%;">
+      <mat-form-field style="margin-left: 30%;">
         <input matInput placeholder="Email" formControlName="email" required />
         <mat-error *ngIf="isFieldInvalid('email')">
             Email is required
        </mat-error>
       </mat-form-field>
       <br />
-      <mat-form-field style="margin-left: 28%;">
+      <mat-form-field style="margin-left: 30%;">
         <input
           matInput
           type="password"
@@ -38,7 +37,7 @@
   </mat-tab>
   <mat-tab label="Fill out other details">
     <form [formGroup]="secondForm">
-      <mat-form-field style="margin-left: 45%;">
+      <mat-form-field style="margin-left: 35%;">
         <input
           matInput
           placeholder="Full Name"
@@ -50,28 +49,28 @@
        </mat-error>
       </mat-form-field>
       <br />
-      <mat-form-field style="margin-left: 45%;">
+      <mat-form-field style="margin-left: 35%;">
         <input matInput placeholder="age" formControlName="age" required />
         <mat-error *ngIf="isFieldInvalid('username')">
             Age is required
        </mat-error>
       </mat-form-field>
       <br />
-      <mat-form-field style="margin-left: 45%;">
+      <mat-form-field style="margin-left: 35%;">
         <mat-select placeholder="Gender" formControlName="gender">
           <mat-option value="Male">Male</mat-option>
           <mat-option value="Female">Female</mat-option>
         </mat-select>
       </mat-form-field>
       <br />
-      <mat-form-field style="margin-left: 45%;">
+      <mat-form-field style="margin-left: 35%;">
         <mat-select placeholder="Security Question">
           <mat-option value="option">What is your favourite food?</mat-option>
           <mat-option value="option">What is your favourite pet?</mat-option>
         </mat-select>
       </mat-form-field>
       <br />
-      <mat-form-field style="margin-left: 45%;">
+      <mat-form-field style="margin-left: 35%;">
         <input
           matInput
           placeholder="Security Answer"
@@ -82,7 +81,7 @@
        </mat-error>
       </mat-form-field>
     </form>
-    <div style="margin-left: 60%; margin-bottom: 20%;">
+    <div style="margin-left: 35%; margin-bottom: 20%;">
       <button
         class="btn btn-success btn-outline-rounded"
         (click)="submitForm()"
