@@ -51,8 +51,10 @@ export class LoginComponent implements OnInit {
          else if (role === 'ROLE_INSURER') {
            this.router.navigate(['/insurerDashboard', this.form.username]);
            return true;
-
-         }
+          }
+          else if(role === 'ROLE_ADMIN'){
+            this.router.navigate(['/admin',this.form.username])
+          }
      });
    }
      error => {
