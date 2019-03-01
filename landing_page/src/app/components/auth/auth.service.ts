@@ -13,12 +13,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
-<<<<<<< HEAD
   private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-=======
-
-
->>>>>>> c0475b88073f4c42339bb40b67c52c0b1ea6d4b3
   private loginUrl = 'http://13.126.73.190:8092/commonauth/api/auth/signin';
   private signupUrl = 'http://13.126.73.190:8092/userreg/api/auth/signup';
   // private loginUrl = 'http://localhost:8093/api/auth/signin';
@@ -26,12 +21,8 @@ export class AuthService {
     return this.loggedIn.asObservable();
   }
 
-<<<<<<< HEAD
-  constructor(private http: HttpClient, private router: Router) {
-=======
 
   constructor(private http: HttpClient) {
->>>>>>> c0475b88073f4c42339bb40b67c52c0b1ea6d4b3
   }
   attemptAuth(credentials: AuthLoginInfo): Observable<JwtResponse> {
     this.loggedIn.next(true);

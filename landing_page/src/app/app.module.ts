@@ -10,7 +10,7 @@ import { AddNewPolicyComponent } from './components/add-new-policy/add-new-polic
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MyRequestsComponent } from './components/my-requests/my-requests.component';
 import { HomeComponent } from './components/home/home.component';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -78,6 +78,8 @@ import { CompanyPolicyDeleteComponent } from './components/company-policy-delete
 import { GetCompanyPolicyComponent } from './components/get-company-policy/get-company-policy.component';
 import { CompanyregisterComponent } from './components/companyregister/companyregister.component';
 import { InsurerDashboardComponent } from './components/insurer-dashboard/insurer-dashboard.component';
+import { AboutComponent } from './components/about/about.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 const routes: Routes = [];
 @NgModule({
@@ -111,14 +113,15 @@ const routes: Routes = [];
     CompanyPolicyDeleteComponent,
     GetCompanyPolicyComponent,
     CompanyregisterComponent,
-    InsurerDashboardComponent
+    InsurerDashboardComponent,
+    AboutComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FlexLayoutModule,
     FormsModule,
-    RouterModule.forRoot(routes),
     CarouselModule,
     HttpClientModule,
     ReactiveFormsModule,
