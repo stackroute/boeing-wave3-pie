@@ -1,22 +1,15 @@
-#FROM node:9.6.1 as node
-#WORKDIR /usr/src
-#COPY package*.json ./
-#RUN npm install
-#COPY . .
-#RUN npm run build
-#EXPOSE 4200
-## Stage 2
-#FROM node
-#RUN npm install http-server -g
-#CMD ["http-server","-p","8063", "dist/landing"]
+From node:carbon 
 
-FROM node:8.11.2-alpine as node
+WORKDIR /app
 
-RUN npm install
-COPY . .
-# RUN npm run build
+COPY . . 
 
-# Stage 2
-FROM node
-RUN npm install http-server -g
-CMD ["http-server","-p","8063", "dist/landing"]
+RUN npm install 
+
+RUN npm install http-server -g 
+
+RUN npm run build
+
+WORKDIR /app/dist/landing
+
+CMD ["http-server", "-c1", "-p", "8063"]
