@@ -15,6 +15,4 @@ public interface AdminRepository extends MongoRepository<FormFormat, Integer> {
     @Query
     public FormFormat findByFormName(String formName);
 
-    @Query
-    List<FormFormat> findAllByFormNameByRegex(String formName);
 }
