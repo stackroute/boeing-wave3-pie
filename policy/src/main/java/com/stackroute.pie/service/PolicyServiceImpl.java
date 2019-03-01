@@ -1,7 +1,7 @@
-package com.stackroute.service;
+package com.stackroute.pie.service;
 
-import com.stackroute.domain.Policy;
-import com.stackroute.repository.PolicyRepository;
+import com.stackroute.pie.domain.Policy;
+import com.stackroute.pie.repository.PolicyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

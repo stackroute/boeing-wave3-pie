@@ -1,6 +1,6 @@
-package com.stackroute.service;
+package com.stackroute.pie.service;
 
-import com.stackroute.domain.Policy;
+import com.stackroute.pie.domain.Policy;
 import org.springframework.http.ResponseEntity;
 
 public interface PolicyService {

@@ -1,4 +1,4 @@
-package com.stackroute.config;
+package com.stackroute.pie.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,14 +1,11 @@
-package com.stackroute.controller;
+package com.stackroute.pie.controller;
 
-import com.stackroute.domain.Policy;
-import com.stackroute.repository.PolicyRepository;
-import com.stackroute.service.PolicyService;
-import com.stackroute.service.PolicyServiceImpl;
+import com.stackroute.pie.domain.Policy;
+import com.stackroute.pie.repository.PolicyRepository;
+import com.stackroute.pie.service.PolicyServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import springfox.documentation.service.ResponseMessage;
 
 @RestController
 @RequestMapping("api/v1/")

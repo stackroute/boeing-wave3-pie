@@ -1,6 +1,6 @@
-package com.stackroute.repository;
+package com.stackroute.pie.repository;
 
-import com.stackroute.domain.Policy;
+import com.stackroute.pie.domain.Policy;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
