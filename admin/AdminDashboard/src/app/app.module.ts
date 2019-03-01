@@ -8,6 +8,7 @@ import { DisplayAllFormsComponent } from './display-all-forms/display-all-forms.
 import { DisplayFormComponent } from './display-form/display-form.component';
 import { AddNewFormComponent } from './add-new-form/add-new-form.component';
 import {FormsModule} from '@angular/forms';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import {FormsModule} from '@angular/forms';
     FormsDashboardComponent,
     DisplayAllFormsComponent,
     DisplayFormComponent,
-    AddNewFormComponent
+    AddNewFormComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

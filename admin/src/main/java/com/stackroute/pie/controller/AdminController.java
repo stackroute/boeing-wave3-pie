@@ -59,4 +59,9 @@ public class AdminController {
         FormFormat formFormat = adminServices.getFormFormatByName(formName);
         return new ResponseEntity<FormFormat>(formFormat, HttpStatus.OK);
     }
+    @GetMapping("formformat/search={formName}")
+    public ResponseEntity<?> searchFormByFormName(@PathVariable(value = "formName", required = true) String formName) {
+        List<FormFormat> searchedFormFormats = adminServices.searchFormFormats(formName);
+        return new ResponseEntity<List<FormFormat>>(searchedFormFormats, HttpStatus.OK);
+    }
 }
