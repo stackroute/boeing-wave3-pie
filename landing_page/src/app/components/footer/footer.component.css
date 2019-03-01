@@ -1,4 +1,4 @@
-.wrapper {
+ .wrapper {
     display: flex;
     justify-content: center;
   }
@@ -33,4 +33,7 @@
 footerl {
     background-color: black;
     color: white;
-}
+} 
+
+
+ 

@@ -1,3 +1,5 @@
+import { ContactComponent } from './components/contact/contact.component';
+import { AboutComponent } from './components/about/about.component';
 import { InsurerDashboardComponent } from './components/insurer-dashboard/insurer-dashboard.component';
 import { DisplayRequestsComponent } from './components/display-requests/display-requests.component';
 import { CompanyPolicyDeleteComponent } from './components/company-policy-delete/company-policy-delete.component';
@@ -47,7 +49,9 @@ const routes: Routes = [
    {path:'deletePolicy/:insurerName/:policyId',component:CompanyPolicyDeleteComponent},
    {path: 'companyregister', component: CompanyregisterComponent},
    {path: 'myrequests/:username',component: DisplayRequestsComponent},
-   {path: 'insurerDashboard/:insurerLicense',component:InsurerDashboardComponent}
+   {path: 'insurerDashboard/:insurerLicense',component:InsurerDashboardComponent},
+   {path: 'about',component:AboutComponent},
+   {path: 'contact',component:ContactComponent}
 ];
 
 @NgModule({

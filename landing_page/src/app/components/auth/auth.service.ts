@@ -14,15 +14,25 @@ const httpOptions = {
 })
 export class AuthService {
   private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+<<<<<<< HEAD
+  private loginUrl = 'http://13.126.73.190:8092/commonauth/api/auth/signin';
+  private signupUrl = 'http://13.126.73.190:8092/userreg/api/auth/signup';
+=======
   // private loginUrl = 'http://13.126.73.190:8092/commonauth/api/auth/signin';
   private loginUrl = 'http://172.23.239.82:8096/api/auth/signin';
   private signupUrl = 'http://172.23.239.138:8093/api/auth/signup';
+>>>>>>> bace0326d0c99d4d03ebcae9cd940c01b442b45c
   // private loginUrl = 'http://localhost:8093/api/auth/signin';
   get isLoggedIn() {
     return this.loggedIn.asObservable();
   }
 
+<<<<<<< HEAD
+
+  constructor(private http: HttpClient) {
+=======
   constructor(private http: HttpClient, private router: Router) {
+>>>>>>> bace0326d0c99d4d03ebcae9cd940c01b442b45c
   }
   attemptAuth(credentials: AuthLoginInfo): Observable<JwtResponse> {
     this.loggedIn.next(true);

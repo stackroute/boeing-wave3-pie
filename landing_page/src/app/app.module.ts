@@ -10,7 +10,7 @@ import { AddNewPolicyComponent } from './components/add-new-policy/add-new-polic
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MyRequestsComponent } from './components/my-requests/my-requests.component';
 import { HomeComponent } from './components/home/home.component';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
