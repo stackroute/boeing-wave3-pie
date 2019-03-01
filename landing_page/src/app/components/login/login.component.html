@@ -1,4 +1,7 @@
- <div class="row col-sm-6" style="max-width:350px; margin-left: 35%">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"> -->
+
+ 
+ <!-- <div class="row col-sm-6" style=" margin-left: 35%;margin-top: 10%;">
     <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
       <div class="form-group">
         <label for="username">Username</label>
@@ -25,9 +28,150 @@
        
       </div>
     </form>
+ </div>
     <hr />
+    <div class="row col-sm-6" style=" margin-left: 35%;">
     <p>Don't have an account?</p>
     <a [routerLink]="['/register']" routerLinkActive="router-link-active"  class="btn btn-success">Sign Up</a>
-  <!-- </div> -->
-</div>
+</div> -->
 
+<!-- <div class="bg-img">
+        <form action="/action_page.php" class="container">
+          <h1>Login</h1>
+      
+          <label for="email"><b>Email</b></label>
+          <input type="text" placeholder="Enter Email" name="email" required>
+      
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+      
+          <button type="submit" class="btn">Login</button>
+        </form>
+    <p class="text-center"><a href="#">Create an Account</a></p>
+</div>  -->
+
+<!-- <div class="contact-form">
+        <h2>Contact Form</h2>
+        <form>
+            <p>Email</p>
+            <input type="text" name="" placeholder="Enter Email">
+            <p>Password</p>
+            <input type="password" name="" placeholder="Enter Password">
+            <input type="submit" name="" value="Sign In">
+        </form>
+        <p>Don't have an account?</p>
+        <a [routerLink]="['/register']" routerLinkActive="router-link-active"  class="btn btn-success">Sign Up</a>
+    
+    </div> -->
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<style type="text/css">
+	.login-form {
+		width: 340px;
+    	margin: 50px auto;
+	}
+    .login-form form {
+    	margin-bottom: 15px;
+        background: #f7f7f7;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+    }
+    .login-form h2 {
+        margin: 0 0 15px;
+    }
+    .form-control, .btn {
+        min-height: 38px;
+        border-radius: 2px;
+    }
+    .btn {        
+        font-size: 15px;
+        font-weight: bold;
+    }
+</style>
+<body>
+<div class="login-form">
+    <form action="/examples/actions/confirmation.php" method="post">
+        <h2 class="text-center">Log in</h2>       
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Username" required="required">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="Password" required="required">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Log in</button>
+        </div>
+        <div class="clearfix">
+            <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
+            <a href="#" class="pull-right">Forgot Password?</a>
+        </div>        
+    </form>
+    <p class="text-center"><a href="#">Create an Account</a></p>
+</div>
+</body>
+                               		                            
+
+<!-- <div class="container body-content m_body_content">
+        
+    <div id="main_container" ng-controller="login" class="ng-scope">
+        <div class="login_info">
+            <span class="login_icon"></span>
+            <div class="login_heading">My Account<em>Your own online Personal Assistant</em></div>
+            <div class="login_subtext">
+                <ul class="subtext_data">
+                    <li>View Policy Details</li>
+                    <li>Raise Queries</li>
+                    <li>See your recent searches</li>
+                    <li>Customer Care</li>
+                    <li>Reviews &amp; Feedback</li>
+                </ul>
+            </div>
+            <span class="arrow_div"></span>
+        </div>
+        <div class="login_container">
+            <div class="login_inner_box">
+                <ul class="logininput">
+                 <div class="login-form">
+    <form action="/examples/actions/confirmation.php" method="post">
+        <h2 class="text-center">Log in</h2>       
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Username" required="required">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="Password" required="required">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Log in</button>
+        </div>     
+    </form>
+    <p class="text-center"><a href="#">Create an Account</a></p>
+</div>  
+                </ul></div></div>
+
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <li>
+                        <span><em class="mobile_icon"></em></span><font>Mobile</font>
+                        <label>+
+                            <input name="" type="text" ng-model="cust.CountryCode" class="min_wid ng-pristine ng-untouched ng-valid ng-not-empty" disabled="disabled">
+                            <input name="" type="text" class="max_wid ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength" placeholder="Mobile No" only-valid-number="" maxlength="10" my-enter="submit()" ng-model="cust.Mobile" ng-blur="setMobile(cust.Mobile);">
+                        </label>
+                    </li>
+                </ul> -->
+                <!-- <span class="error ng-binding ng-scope" ng-if="errorMessage!=''">Please enter a valid mobile number</span>
+               
+                <div class="login_proceed">
+                    <button ng-click="isCustomerRegister ? Login():CustomerRegister()" type="button">Proceed</button>
+                </div> -->
+            <!-- </div>
+        </div>  --> 
+    <!-- </div>
+        </div> -->
