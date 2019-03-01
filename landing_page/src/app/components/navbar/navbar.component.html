@@ -1,3 +1,4 @@
+<ng-template #loggedOut>
 
 <nav class="navbar navbar-light" style="background-color:  #ffe6e6; height:85px;">
       <div class="container-fluid">
@@ -36,7 +37,8 @@
 </div>
 
 </nav>
-<!-- <mat-toolbar color="warn"  style="opacity:0.5">
+</ng-template>
+ <mat-toolbar color="warn" *ngIf="info.token;else loggedOut" style="opacity:0.5">
   <mat-toolbar-row><button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" color="primary">
       <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
@@ -90,25 +92,25 @@
       </ul>
     </div>
 </mat-toolbar-row>
-
-<mat-sidenav-container class="example-container">
+</mat-toolbar> 
+<mat-sidenav-container class="example-container" *ngIf="(info.token)&&((dashboard()));">
   <mat-sidenav #drawer mode="side" opened role="navigation">
     <mat-nav-list>
       <a
         mat-list-item
-        [routerLink]="['/mypolicies', username]"
+        [routerLink]="['/mypolicies', insuredName]"
         routerLinkActive="active"
         >My Policies</a
       >
       <a
         mat-list-item
-        [routerLink]="['/recommendations', username]"
+        [routerLink]="['/recommendations', insuredName]"
         routerLinkActive="active"
         >Recommendations</a
       >
       <a
         mat-list-item
-        [routerLink]="['/myrequests', username]"
+        [routerLink]="['/myrequests', insuredName]"
         routerLinkActive="active"
         >My Requests</a
       >
@@ -117,7 +119,7 @@
       >
       <a
         mat-list-item
-        [routerLink]="['/myprofile', username]"
+        [routerLink]="['/myprofile', insuredName]"
         routerLinkActive="active"
         >My profile</a
       >
@@ -128,7 +130,21 @@
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
-</mat-toolbar> -->
+
+<mat-sidenav-container class="example-container" *ngIf="(info.token)&&(!(dashboard()))" >
+  <mat-sidenav #drawer mode="side" opened role="navigation">
+    <mat-nav-list>
+      
+      <a mat-list-item [routerLink]="['/myCompanyPolicy',insurerName]" routerLinkActive = "active" >My Policies</a>
+      <a mat-list-item [routerLink]="['/incomingPortingRequest',insurerName]" routerLinkActive = "active" > Incoming Porting Requests</a>
+      <a mat-list-item [routerLink]="['/outgoingPortingRequest',insurerName]" routerLinkActive = "active" > Outgoing Porting Requests</a>
+      <a mat-list-item [routerLink]="['/newPolicyForm']" routerLinkActive = "active" >Add New Policy</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 <!-- <div *ngIf="info.token;else loggedOut"> -->
 <!-- <mat-toolbar color="warn" style="opacity:0.5;">
     <mat-toolbar-row >
@@ -191,35 +207,7 @@
   
     </mat-toolbar-row>
   </mat-toolbar>
-  <mat-sidenav-container class="example-container" >
-    <mat-sidenav #drawer mode="side" opened role="navigation">
-      <mat-nav-list>
-        <a mat-list-item [routerLink]="['/mypolicies']" routerLinkActive="active"
-          >My Policies</a
-        >
-        <a mat-list-item [routerLink]="['/recommendations', username]" routerLinkActive="active"
-        >Recommendations</a
-      >
-        <a
-          mat-list-item
-          [routerLink]="['/myrequests', username]"
-          routerLinkActive="active"
-          >My Requests</a
-        >
-        <a mat-list-item [routerLink]="['/porting']" routerLinkActive="active"
-          >Porting Request</a
-        >
-        <a mat-list-item [routerLink]="['/myprofile',username]" routerLinkActive = "active">My profile</a>
-        <a mat-list-item [routerLink]="['/myCompanyPolicy',insurerLicense]" routerLinkActive = "active" >My Policies</a>
-        <a mat-list-item [routerLink]="['/incomingPortingRequest',insurerLicense]" routerLinkActive = "active" > Incoming Porting Requests</a>
-        <a mat-list-item [routerLink]="['/outgoingPortingRequest',insurerLicense]" routerLinkActive = "active" > Outgoing Porting Requests</a>
-        <a mat-list-item [routerLink]="['/newPolicyForm']" routerLinkActive = "active" >Add New Policy</a>
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <router-outlet></router-outlet>
-    </mat-sidenav-content>
-  </mat-sidenav-container> --> 
+   --> 
 
 <!-- 
   <nav

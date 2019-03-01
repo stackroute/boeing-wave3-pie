@@ -13,8 +13,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class CompanyAuthService {
-  private signupUrl = 'http://13.126.73.190:8092/insurerregservice/api/v1/signup';
-  private addPolicyUrl = 'http://13.126.73.190:8092/insurerreg/api/v1/policy/newpolicy';
+  private signupUrl = 'http://172.23.239.82:8090/api/v1/signup';
+  private addPolicyUrl = 'http://172.233.239.82:8090/api/v1/policy/newpolicy';
 
   constructor(private http: HttpClient) {
   }

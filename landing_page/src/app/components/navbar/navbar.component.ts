@@ -17,9 +17,12 @@ export class NavbarComponent implements OnInit {
   isLogin: any;
   currentRoute: any;
   info: any;
+  insuredName: any;
+  insurerName: any;
   constructor(private router: Router,private token: TokenStorageService) { }
   ngOnInit() {
-
+    this.insuredName = window.localStorage.getItem("insuredname");
+    this.insurerName = window.localStorage.getItem("insurername");
     this.info = {
       token: this.token.getToken(),
       username: this.token.getUsername(),
@@ -38,7 +41,7 @@ export class NavbarComponent implements OnInit {
     console.log('search method');
     this.router.navigate(['/search', this.message]);
     console.log("in search");
-    // window.location.reload();
+    window.location.reload();
   }
   logout() {
     this.token.signOut();

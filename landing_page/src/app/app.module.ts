@@ -4,7 +4,7 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { NewFormFormatComponent } from './components/new-form-format/new-form-format.component';
 import { LoginComponent } from './components/login/login.component';
 // import { CompanyLoginComponent } from './components/companylogin/companylogin.component';
-import { FormDashboardComponent } from './components/form-dashboard/form-dashboard.component';
+// import { FormDashboardComponent } from './components/form-dashboard/form-dashboard.component';
 import { AddNewPolicyComponent } from './components/add-new-policy/add-new-policy.component';
 // import { LoginInsurerComponent } from './components/login-insurer/login-insurer.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -78,8 +78,10 @@ import { CompanyPolicyDeleteComponent } from './components/company-policy-delete
 import { GetCompanyPolicyComponent } from './components/get-company-policy/get-company-policy.component';
 import { CompanyregisterComponent } from './components/companyregister/companyregister.component';
 import { InsurerDashboardComponent } from './components/insurer-dashboard/insurer-dashboard.component';
-import { AboutComponent } from './components/about/about.component';
-import { ContactComponent } from './components/contact/contact.component';
+import { DisplayAllFormsComponent } from './components/display-all-forms/display-all-forms.component';
+import { DisplayFormComponent } from './components/display-form/display-form.component';
+import { FormsDashboardComponent } from './components/forms-dashboard/forms-dashboard.component';
+import { AddNewFormComponent } from './components/add-new-form/add-new-form.component';
 
 const routes: Routes = [];
 @NgModule({
@@ -98,7 +100,7 @@ const routes: Routes = [];
     AddNewPolicyComponent,
     IncomingPortingRequestsComponent,
     OutgoingPortingRequestsComponent,
-    FormDashboardComponent,
+    // FormDashboardComponent,
     RegisterComponent,
     NewFormFormatComponent,
     SideBarComponent,
@@ -114,8 +116,10 @@ const routes: Routes = [];
     GetCompanyPolicyComponent,
     CompanyregisterComponent,
     InsurerDashboardComponent,
-    AboutComponent,
-    ContactComponent
+    AddNewFormComponent,
+    DisplayAllFormsComponent,
+    DisplayFormComponent,
+    FormsDashboardComponent
   ],
   imports: [
     BrowserModule,

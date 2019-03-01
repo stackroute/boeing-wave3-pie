@@ -113,7 +113,7 @@ public class PortingRequestController {
     //Method to display outgoing porting requests
     @GetMapping("/outgoingportingrequest/{insurerName}")
     public ResponseEntity<?> outgoingPortingRequest(@PathVariable("insurerName") String insurerName) {
-        if (portingRequestRepository.existsByInsuredName(insurerName) == false) {
+        if (portingRequestRepository.existsByInsurerName(insurerName) == false) {
             return new ResponseEntity<>("Insurer Not Found",
                     HttpStatus.NOT_FOUND);
         }
@@ -131,7 +131,7 @@ public class PortingRequestController {
     //Method to accept outgoing requests
     @PutMapping("/acceptoutgoingportingrequest")
     public ResponseEntity<?> acceptOutgoingPortingRequest(@RequestBody PortingRequest portingRequest) {
-        if (portingRequestRepository.existsByInsuredName(portingRequest.getInsurerName()) == false) {
+        if (portingRequestRepository.existsByInsurerName(portingRequest.getInsurerName()) == false) {
             return new ResponseEntity<>("Insurer Not Found",
                     HttpStatus.NOT_FOUND);
         }
