@@ -1,3 +1,5 @@
+import { ContactComponent } from './components/contact/contact.component';
+import { AboutComponent } from './components/about/about.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { UserComponent } from './components/user/user.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
@@ -92,6 +94,8 @@ const routes: Routes = [];
     FooterComponent,
     SearchComponent,
     LoginComponent,
+    AboutComponent,
+    ContactComponent,
     HomeComponent,
     MyRequestsComponent,
     DashboardComponent,
