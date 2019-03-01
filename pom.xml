@@ -38,6 +38,7 @@
         <module>commonauth</module>
         <module>ExternalInsurerDbService</module>
         <module>settlement</module>
+        <module>policy</module>
 
     </modules>
     <dependencies>

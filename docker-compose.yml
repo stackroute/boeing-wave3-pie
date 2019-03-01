@@ -160,7 +160,6 @@ services:
       - 8055:8055
     network_mode: host
 
-
   commonauth:
     image: commonauth
     build: commonauth/

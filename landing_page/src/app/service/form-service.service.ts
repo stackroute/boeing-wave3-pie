@@ -10,7 +10,7 @@ export class FormServiceService {
   allFormFormats: Observable<FormFormat[]>;
 
   // adminUrl = 'http://localhost:8092/admin/api/v1/';
-  adminUrl = 'http://localhost:8055/api/v1/'
+  adminUrl = 'http://13.126.73.190:8092/admin/api/v1/'
   getAllFormsUrl = 'formformats/';
   getFormFormatUrl = 'formformat/';
   saveFormUrl = 'formformat/';
