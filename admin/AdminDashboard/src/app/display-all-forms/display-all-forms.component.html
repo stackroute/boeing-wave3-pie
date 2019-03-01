@@ -1,9 +1,0 @@
-<ul>
-  <li *ngFor="let form of allFormFormats">
-    <button (click)="showFormDetails(form.formId)">{{form.formName}}</button>
-    <button (click)="deleteForm(form.formId)">DELETE</button>
-  </li>
-</ul>
-<!-- <router-outlet [currentFormFormat]="currentFormFormat"></router-outlet> -->
-<app-display-form *ngIf="showFormDetailsComponent" [currentFormFormat]='currentFormFormat' (saveFormIsClicked)="makeShowFormDetailsComponentFalse()"></app-display-form>
-<app-add-new-form [allFormFormats]="allFormFormats" (newFormCreated)="getAllFormFormatsOnEventClick($event)"></app-add-new-form>

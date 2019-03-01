@@ -1,8 +1,0 @@
-<ul>
-  <li *ngFor="let field of currentFormFormat.fields">{{ field }}
-    <button (click)="deleteField(field)">Delete</button>
-  </li>
-</ul>
-<input [(ngModel)]="newField">
-<button (click)="addField()">Add New Field</button>
-<button (click)="saveForm()">Save Form</button>
