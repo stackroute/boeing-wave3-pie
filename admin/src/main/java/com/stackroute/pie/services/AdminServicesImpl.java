@@ -51,4 +51,10 @@ public class AdminServicesImpl implements AdminServices{
         FormFormat formFormat = adminRepository.findByFormName(formName);
         return formFormat;
     }
+
+    @Override
+    public List<FormFormat> searchFormFormats(String formName) {
+        List<FormFormat> searchedFormFormat = adminRepository.findAllByFormNameByRegex(formName);
+        return searchedFormFormat;
+    }
 }

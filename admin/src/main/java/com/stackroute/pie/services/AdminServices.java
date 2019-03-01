@@ -14,4 +14,5 @@ public interface AdminServices {
     public Optional<FormFormat> getFormFormat(int formId);
     public FormFormat updateFormFormat(int formId, FormFormat updatedFormFormat);
     public FormFormat getFormFormatByName(String formName);
+    public List<FormFormat> searchFormFormats(String formName);
 }
