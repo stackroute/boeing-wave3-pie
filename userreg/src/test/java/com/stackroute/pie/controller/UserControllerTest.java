@@ -30,6 +30,9 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import java.util.Date;
 import java.util.List;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 //
 //import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 //import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -136,7 +139,3 @@ public class UserControllerTest {
 
 
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 9e6efe2... updating
