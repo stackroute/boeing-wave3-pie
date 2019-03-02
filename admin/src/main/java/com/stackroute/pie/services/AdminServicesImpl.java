@@ -9,6 +9,7 @@ import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 @Service
 public class AdminServicesImpl implements AdminServices{
@@ -59,7 +60,7 @@ public class AdminServicesImpl implements AdminServices{
         List<FormFormat> fetchedFormFormats = adminRepository.findAll();
         List<FormFormat> filteredFormFormats = new ArrayList<>();
         for(FormFormat formFormat : fetchedFormFormats) {
-            if(formFormat.getFormName().equals(formName)) {
+            if(formFormat.getFormName().toLowerCase().contains(formName.toLowerCase())) {
                 filteredFormFormats.add(formFormat);
             }
         }
