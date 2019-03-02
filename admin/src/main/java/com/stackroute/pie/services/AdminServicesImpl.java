@@ -2,6 +2,7 @@ package com.stackroute.pie.services;
 
 import com.stackroute.pie.domain.FormFormat;
 import com.stackroute.pie.repository.AdminRepository;
+import me.xdrop.fuzzywuzzy.FuzzySearch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,7 +61,7 @@ public class AdminServicesImpl implements AdminServices{
         List<FormFormat> fetchedFormFormats = adminRepository.findAll();
         List<FormFormat> filteredFormFormats = new ArrayList<>();
         for(FormFormat formFormat : fetchedFormFormats) {
-            if(formFormat.getFormName().toLowerCase().contains(formName.toLowerCase())) {
+            if(FuzzySearch.ratio(formName.toLowerCase(), formFormat.getFormName().toLowerCase()) > 50) {
                 filteredFormFormats.add(formFormat);
             }
         }
