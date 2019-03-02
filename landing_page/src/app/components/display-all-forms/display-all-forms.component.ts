@@ -35,10 +35,12 @@ export class DisplayAllFormsComponent implements OnInit {
   }
   deleteForm(formId: number): void {
     console.log('Delete Pressed');
-    this.formService.deleteForm(formId).subscribe();
-    this.formService
+    this.formService.deleteForm(formId).subscribe((data) =>  this.formService
       .getAllFormFormats()
-      .subscribe(allFormFormats => (this.allFormFormats = allFormFormats));
+      .subscribe(allFormFormats => (this.allFormFormats = allFormFormats)));
+    // this.formService
+      // .getAllFormFormats()
+      // .subscribe(allFormFormats => (this.allFormFormats = allFormFormats));
   }
   makeShowFormDetailsComponentFalse(): void {
     this.showFormDetailsComponent = false;
