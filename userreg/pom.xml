@@ -5,12 +5,12 @@
 	<parent>
 		<groupId>com.stackroute</groupId>
 		<artifactId>pie</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.3-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>  <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.stackroute</groupId>
 	<artifactId>userreg</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<name>userreg</name>
 	<description>insured registration service</description>
 
