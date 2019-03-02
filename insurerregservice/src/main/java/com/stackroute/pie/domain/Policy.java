@@ -35,6 +35,4 @@ public class Policy {
     private int maxAge;
     @NotBlank
     private int waitingPeriod;
-//    private List<String> insuredList = new ArrayList<>();
-//    private List<String> diseases = new ArrayList<>();
 }
