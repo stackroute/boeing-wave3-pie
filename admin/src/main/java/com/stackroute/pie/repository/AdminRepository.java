@@ -9,12 +9,8 @@ import java.util.List;
 
 @Repository
 public interface AdminRepository extends MongoRepository<FormFormat, Integer> {
-    @Query
-    public FormFormat getFormFormatByFormName(String formName);
 
     @Query
     public FormFormat findByFormName(String formName);
 
-    @Query
-    List<FormFormat> findAllByFormNameByRegex(String formName);
 }
