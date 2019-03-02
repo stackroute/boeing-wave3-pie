@@ -38,7 +38,7 @@
 </div>
 
 </nav> -->
-<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse sticky-top">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -57,16 +57,16 @@
               </li>
               <!-- <li><a href="#">About</a></li>
     <li><a href="#">Contact</a></li> -->
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-              </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-            </li>
-            <li class="nav-item">
-                <a  [routerLink]="['/login']" ><span class="glyphicon glyphicon-user" ></span> Sign In</a>
+    <li class="nav-item">
+      <a [routerLink]="['/about']" routerLinkActive="router-link-active">About</a>
+      </li>
+        <li class="nav-item">
+      <a [routerLink]="['/contact']" routerLinkActive="router-link-active">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a  [routerLink]="['/login']" ><span class="glyphicon glyphicon-user" ></span> Sign In</a>
 
-            </li>
+      </li>
         </ul>
       </div>
         <div class="nav-searchbar-wrapper nav-item">
