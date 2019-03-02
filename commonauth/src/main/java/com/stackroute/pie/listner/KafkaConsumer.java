@@ -19,14 +19,6 @@ public class KafkaConsumer {
     @Autowired
     CommonAuthRepository commonAuthRepository;
 
-//    @KafkaListener(topics = "deepak", groupId = "group_id")
-//    public void consume(String message) {
-//        System.out.println("String wala method");
-//        System.out.println("Consumed message1: " + message);
-//    }
-//    @KafkaListener(topics = "Kafka_Example_json", groupId = "group_json",
-//            containerFactory = "userKafkaListenerFactory")
-
  //consuming data from kafka & setting it to commonauth
     @KafkaListener(topics = "userregg_json", groupId = "group_json", containerFactory = "userKafkaListenerFactory")
     public void consumeJson(Insured user) {
@@ -44,7 +36,6 @@ public class KafkaConsumer {
         CommonAuth commonAuth = new CommonAuth();
         commonAuth.setRoles(user.getRoles());
         commonAuth.setEmail(user.getEmail());
-//        commonAuth.setId(user.getInsuredId());
         commonAuth.setName(user.getName());
         commonAuth.setPassword(user.getPassword());
         commonAuth.setRoles(roles);
@@ -57,13 +48,7 @@ public class KafkaConsumer {
 
     @KafkaListener(topics = "company_1_json", groupId = "group_json", containerFactory = "userKafkaListenerFactory")
     public void consumeJson(Insurer user) {
-        System.out.println("yoyoyoyoyo");
-        System.out.println("Consumed JSON Message: " + user);
-
-
         Set<Role> roles = new HashSet<>();
-
-
         Role insurerRole = roleRepository.findByName(RoleName.ROLE_INSURER)
                 .orElseThrow(() -> new RuntimeException("Fail! -> Cause: Insured Role not find."));
         roles.add(insurerRole);

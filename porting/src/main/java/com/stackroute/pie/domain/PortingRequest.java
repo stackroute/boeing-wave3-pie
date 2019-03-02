@@ -59,7 +59,6 @@ public class PortingRequest {
 
     @DateTimeFormat
     private Date acceptedDateofPreviousInsurer;
-//
     public PortingRequest(int portingRequestId, @NotBlank String insuredName, @NotBlank String insurerName, @NotBlank String insuredAddress, @NotBlank String insurerProduct, @NotBlank int sumInsured, @NotBlank int cumulativeBonus, @NotBlank String addOns, @NotBlank int policyNumber, @NotBlank String newInsurerName, @NotBlank String newInsurerProduct, @NotBlank int newSumInsured, @NotBlank int newCumulativeBonus, @NotBlank String reasonForPortability, int familyMembers, @NotBlank boolean exclusionPeriod, int fromApproval, int toApproval) {
         this.portingRequestId = portingRequestId;
         this.insuredName = insuredName;

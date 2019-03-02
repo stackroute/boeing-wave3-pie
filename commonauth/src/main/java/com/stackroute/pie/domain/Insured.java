@@ -15,37 +15,13 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Insured {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private int insuredId;
-
-
-//    @NotBlank
-//    @Size(min=3, max = 50)
     private String name;
-
-//    @NotBlank
-//    @Size(min=3, max = 50)
     private String username;
-
-//    @NaturalId
-//    @NotBlank
-//    @Size(max = 50)
-//    @Email
     private String email;
-
-//    @NotBlank
-//    @Size(min=6, max = 100)
     private String password;
-
-
-//    @ManyToMany(fetch = FetchType.LAZY)
-//    @JoinTable(name = "user_roles",
-//            joinColumns = @JoinColumn(name = "user_id"),
-//            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
-
-
 
     public Insured(String name, String username, String email, String password) {
         this.name = name;
