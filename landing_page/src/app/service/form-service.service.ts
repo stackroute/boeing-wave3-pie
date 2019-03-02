@@ -16,6 +16,7 @@ export class FormServiceService {
   saveFormUrl = 'formformat/';
   updateFormUrl = 'formformat/';
   deleteFormUrl = 'formformat/';
+  searchUrl = 'formformat/search=';
 
   tempFormFormat: Observable<FormFormat>;
   constructor(private http: HttpClient) {}
@@ -43,5 +44,8 @@ export class FormServiceService {
    this.tempFormFormat = this.http.put<FormFormat>(this.adminUrl + this.updateFormUrl + formFormat.formId, formFormat);
    this.getAllFormFormats();
    return this.tempFormFormat;
+  }
+  searchForForms(searchTerm: string): Observable<FormFormat[]> {
+    return this.http.get<FormFormat[]>(this.adminUrl + this.searchUrl + searchTerm);
   }
 }

@@ -12,10 +12,13 @@ export class DisplayAllFormsComponent implements OnInit {
   currentFormFormat: FormFormat;
 
   showFormDetailsComponent = false;
+
+  searchTerm: string;
   constructor(private formService: FormServiceService) {}
 
   ngOnInit() {
     this.getAllFormFormats();
+    this.searchTerm = "";
   }
   getAllFormFormats(): void {
     this.formService
@@ -23,7 +26,7 @@ export class DisplayAllFormsComponent implements OnInit {
       .subscribe(allFormFormats => (this.allFormFormats = allFormFormats));
   }
   getAllFormFormatsOnEventClick(dullValue: string) {
-    this.getAllFormFormats();
+    this.formService.getAllFormFormats().subscribe((data) => (this.allFormFormats = data));
   }
   showFormDetails(formId: number): void {
     this.showFormDetailsComponent = true;
@@ -38,11 +41,11 @@ export class DisplayAllFormsComponent implements OnInit {
     this.formService.deleteForm(formId).subscribe((data) =>  this.formService
       .getAllFormFormats()
       .subscribe(allFormFormats => (this.allFormFormats = allFormFormats)));
-    // this.formService
-      // .getAllFormFormats()
-      // .subscribe(allFormFormats => (this.allFormFormats = allFormFormats));
   }
   makeShowFormDetailsComponentFalse(): void {
     this.showFormDetailsComponent = false;
+  }
+  searchForForms(searchTerm: string): void {
+    this.formService.searchForForms(searchTerm).subscribe((data) => (this.allFormFormats = data));
   }
 }

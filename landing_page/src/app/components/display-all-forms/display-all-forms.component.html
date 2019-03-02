@@ -1,3 +1,6 @@
+<input [(ngModel)]="searchTerm" placeholder="Search for a form">
+<button (click)="searchForForms(searchTerm)">Search</button>
+<button (click)="clearSearch()">Clear Search</button>
 <ul>
   <li *ngFor="let form of allFormFormats">
     <button (click)="showFormDetails(form.formId)">{{form.formName}}</button>
