@@ -1,4 +1,4 @@
-package com.stackroute.pie.configuration;
+package com.stackroute.pie.config;
 
 import com.stackroute.pie.domain.PortingRequest;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
