@@ -16,3 +16,7 @@
 Run ```mvn clean compile package``` on all the services
 
 
+This Application consists of both front-end, which is angular code and back-end, which is springboot.
+To run the application RUN "mvn clean compile package" and "sudo docker-compose up --build -d"
+Use 8063 as port for angular application to run on browser.
+
