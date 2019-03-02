@@ -7,6 +7,7 @@ import com.stackroute.pie.services.PortingRequestServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.service.ResponseMessage;
 
@@ -18,6 +19,9 @@ import java.util.List;
 @RequestMapping("api/v1/")
 @CrossOrigin("*")
 public class PortingRequestController {
+
+    @Autowired
+    private KafkaTemplate<String, PortingRequest> kafkaTemplate;
 
     PortingRequestServiceImpl requestService;
 
@@ -156,6 +160,7 @@ public class PortingRequestController {
         acceptIncomingPortingRequest.setFromApproval(1);
         acceptIncomingPortingRequest.setToApproval(1);
         PortingRequest portingRequest1 = requestService.postRequest(acceptIncomingPortingRequest);
+        kafkaTemplate.send("incomingporting", portingRequest1);
         return new ResponseEntity<PortingRequest>(portingRequest1, HttpStatus.OK);
     }
 
