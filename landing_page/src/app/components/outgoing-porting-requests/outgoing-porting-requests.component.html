@@ -22,7 +22,7 @@
           <td>{{ request.insuredName }}</td>
           <td>{{ request.insurerName }}</td>
           <button class = "btn btn-primary" (click)="port(request)">Accept Porting</button>
-<button class = "btn btn-primary">Raise Grievence</button>
+<button class = "btn btn-primary" [currentCompanyName]="request.insurerName" [currentInsuredName]="request.insuredName" routerLink="/display-all-porting-requests">Raise Grievence</button>
 				 <!-- <td>20000</td>  -->
            <!-- <td> 
               <div class="btn-group" role="group" aria-label="...">
