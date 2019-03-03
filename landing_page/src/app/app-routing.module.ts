@@ -25,6 +25,8 @@ import { SearchComponent } from './components/search/search.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsDashboardComponent } from './components/forms-dashboard/forms-dashboard.component';
+import {DisplayAllPortingRequestsComponent} from './components/display-all-porting-requests/display-all-porting-requests.component';
+import {AllPortingRequestsComponent} from './components/all-porting-requests/all-porting-requests.component';
 
 const routes: Routes = [
   {path: 'search/:value', component: SearchComponent},
@@ -51,7 +53,10 @@ const routes: Routes = [
    {path: 'myrequests/:username',component: DisplayRequestsComponent},
    {path: 'insurerDashboard/:insurerLicense',component:InsurerDashboardComponent},
    {path: 'about',component:AboutComponent},
-   {path: 'contact',component:ContactComponent}
+   {path: 'contact',component:ContactComponent},
+   {path: 'all-porting-requests', component:AllPortingRequestsComponent},
+   {path: 'display-all-porting-requests', component:DisplayAllPortingRequestsComponent}
+
 ];
 
 @NgModule({

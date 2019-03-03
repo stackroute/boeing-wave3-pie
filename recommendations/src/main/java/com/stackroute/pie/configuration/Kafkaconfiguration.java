@@ -23,19 +23,6 @@ import java.util.Map;
 @EnableKafka
 @Configuration
 public class Kafkaconfiguration {
-//    @Bean
-//    public ProducerFactory<String, List<Policy>> producerFactory() {
-//        Map<String, Object> config = new HashMap<>();
-//        config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "172.23.239.158:9092");
-//        config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-//        config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
-//        System.out.println("inside producer factory*************************");
-//        return new DefaultKafkaProducerFactory<>(config);
-//    }
-//    @Bean
-//    public KafkaTemplate<String, List<Policy>> kafkaTemplate() {
-//        return new KafkaTemplate<String, List<Policy>>(producerFactory());
-//    }
 
     @Bean
     public ConsumerFactory<String, String> consumerFactory() {

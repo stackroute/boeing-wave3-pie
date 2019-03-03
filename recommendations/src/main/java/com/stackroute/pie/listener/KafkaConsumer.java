@@ -21,8 +21,6 @@ public class KafkaConsumer {
         System.out.println("String wala method");
         System.out.println("Consumed message1: " + message);
     }
-//    @KafkaListener(topics = "Kafka_Example_json", groupId = "group_json",
-//            containerFactory = "userKafkaListenerFactory")
 
     //consuming data from kafka & setting it to commonauth
     @KafkaListener(topics = "userregg_json", groupId = "group_json", containerFactory = "insuredKafkaListenerFactory")
@@ -40,7 +38,6 @@ public class KafkaConsumer {
         System.out.println("yoyoyoyoyo");
         System.out.println("Consumed JSON Message: " + insurer);
         recommendationsRepo.newInsurer(insurer.getInsurerId(), insurer.getInsurerName(), insurer.getInsurerLicense());
-        //recommendationsRepo.newInsured(insurer.getInsuredId(),insured.getUsername(),insured.getGender(),insured.getAge(),insured.getExistingDisease(),insured.getFamilyMembers());
 
 
     }
