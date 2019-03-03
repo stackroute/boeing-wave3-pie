@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormFormat } from "../formformat";
 import { FormServiceService } from "../../service/form-service.service";
+import { Template } from '@angular/compiler/src/render3/r3_ast';
 
 @Component({
   selector: "app-display-all-forms",
@@ -19,13 +20,14 @@ export class DisplayAllFormsComponent implements OnInit {
   ngOnInit() {
     this.getAllFormFormats();
     this.searchTerm = "";
+    this.currentFormFormat = {formId: 1, formName: "Template", fields:[]};
   }
   getAllFormFormats(): void {
     this.formService
       .getAllFormFormats()
       .subscribe(allFormFormats => (this.allFormFormats = allFormFormats));
   }
-  getAllFormFormatsOnEventClick(dullValue: string) {
+  getAllFormFormatsOnEventClick(dullValue: any) {
     this.formService.getAllFormFormats().subscribe((data) => (this.allFormFormats = data));
   }
   showFormDetails(formId: number): void {
@@ -47,5 +49,8 @@ export class DisplayAllFormsComponent implements OnInit {
   }
   searchForForms(searchTerm: string): void {
     this.formService.searchForForms(searchTerm).subscribe((data) => (this.allFormFormats = data));
+  }
+  clearSearch(): void {
+    this.formService.getAllFormFormats().subscribe((data) => this.allFormFormats = data);
   }
 }
