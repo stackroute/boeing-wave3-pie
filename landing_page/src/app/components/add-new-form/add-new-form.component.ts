@@ -46,7 +46,7 @@ export class AddNewFormComponent implements OnInit {
     this.newForm.formName = this.newFormName;
     this.newForm.formId = this.newFormId + 1;
     this.formService.saveForm(this.newForm).subscribe();
-    this.newFormCreated.emit(this.newForm);
+    this.newFormCreated.emit(null);
     this.displayNewFormClicked = false;
     this.newForm.formName = null;
     this.newForm.formId = null;
