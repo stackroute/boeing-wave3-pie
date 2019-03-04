@@ -113,6 +113,7 @@ const routes: Routes = [];
     RegisterComponent,
     NewFormFormatComponent,
     SideBarComponent,
+    MyPoliciesComponent,
     CompanyComponent,
     UserComponent,
     UserProfileComponent,
