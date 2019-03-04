@@ -28,7 +28,7 @@ export class DisplayAllFormsComponent implements OnInit {
       .subscribe(allFormFormats => (this.allFormFormats = allFormFormats));
   }
   getAllFormFormatsOnEventClick(dullValue: any) {
-    this.formService.getAllFormFormats().subscribe((data) => (this.allFormFormats = data));
+    this.formService.getAllFormFormats().subscribe(allFormFormats => (this.allFormFormats = allFormFormats));
   }
   showFormDetails(formId: number): void {
     this.showFormDetailsComponent = true;

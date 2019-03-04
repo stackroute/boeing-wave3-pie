@@ -1,21 +1,29 @@
-<div class="row">
-  <input class="search-input-box col-8" [(ngModel)]="searchTerm" placeholder="Search for a form">
-  <button class="search-button col-2" (click)="searchForForms(searchTerm)">Search</button>
-  <button class="clear-search-button col-2" (click)="clearSearch()">Clear Search</button>
-</div>
-<div class="add-new-form-component">
-  <app-add-new-form [allFormFormats]="allFormFormats" (newFormCreated)="getAllFormFormatsOnEventClick($event)">
-  </app-add-new-form>
-</div>
-<div class="container" *ngFor="let form of allFormFormats">
+<div class="container list-of-forms">
   <div class="row">
-    <p class="col display-form-name">{{form.formName}}</p>
-    <button class="col" (click)="showFormDetails(form.formId)">View This Form</button>
-    <button class="col" (click)="deleteForm(form.formId)">DELETE</button>
+    <div class="col-2"></div>
+    <input class="search-input-box col-4" [(ngModel)]="searchTerm" placeholder="Search for a form">
+    <div class="col-1"></div>
+    <button class="search-button col-1" (click)="searchForForms(searchTerm)">Search</button>
+    <div class="col-1"></div>
+    <button class="clear-search-button col-1" (click)="clearSearch()">Clear Search</button>
+    <div class="col-1"></div>
   </div>
-  <div class="row" *ngIf="showFormDetailsComponent && form.formId === currentFormFormat.formId">
-    <app-display-form [currentFormFormat]='currentFormFormat' (saveFormIsClicked)="makeShowFormDetailsComponentFalse()">
-    </app-display-form>
+  <div class="add-new-form-component">
+    <app-add-new-form [allFormFormats]="allFormFormats" (newFormCreated)="getAllFormFormatsOnEventClick($event)">
+    </app-add-new-form>
+  </div>
+  <div class="container list-of-forms" *ngFor="let form of allFormFormats">
+    <div class="row">
+      <div class="col-2"></div>
+      <p class="col-4 display-form-name">{{form.formName}}</p>
+      <button class="col-2" (click)="showFormDetails(form.formId)">View This Form</button>
+      <button class="col-2" (click)="deleteForm(form.formId)">DELETE</button>
+      <div class="col-2"></div>
+    </div>
+    <div class="row" *ngIf="showFormDetailsComponent && form.formId === currentFormFormat.formId">
+      <app-display-form [currentFormFormat]='currentFormFormat'
+        (saveFormIsClicked)="makeShowFormDetailsComponentFalse()">
+      </app-display-form>
+    </div>
   </div>
 </div>
-<!-- <router-outlet [currentFormFormat]="currentFormFormat"></router-outlet> -->

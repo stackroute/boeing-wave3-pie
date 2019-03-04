@@ -1,6 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UserDashboardService } from 'src/app/service/user-dashboard.service';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-user-profile',
@@ -10,8 +11,9 @@ import { UserDashboardService } from 'src/app/service/user-dashboard.service';
 export class UserProfileComponent implements OnInit {
   public username;
   public profile:any;
+  profileForm: any;
   
-  constructor(private route: ActivatedRoute, private userService: UserDashboardService) { }
+  constructor(private formBuilder: FormBuilder,private route: ActivatedRoute, private userService: UserDashboardService) { }
  
  ngOnInit() {
    
