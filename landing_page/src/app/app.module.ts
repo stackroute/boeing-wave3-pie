@@ -1,3 +1,4 @@
+import { MyPoliciesComponent } from './components/my-policies/my-policies.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { AboutComponent } from './components/about/about.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
@@ -66,7 +67,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SearchComponent } from './components/search/search.component';
 import { httpInterceptorProviders } from './components/auth/auth-interceptor';
 import { RecommendationsComponent } from './components/recommendations/recommendations.component';
-import { MyPoliciesComponent } from './my-policies/my-policies.component';
 import { IncomingPortingRequestsComponent } from './components/incoming-porting-requests/incoming-porting-requests.component';
 import { OutgoingPortingRequestsComponent } from './components/outgoing-porting-requests/outgoing-porting-requests.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -84,8 +84,11 @@ import { DisplayAllFormsComponent } from './components/display-all-forms/display
 import { DisplayFormComponent } from './components/display-form/display-form.component';
 import { FormsDashboardComponent } from './components/forms-dashboard/forms-dashboard.component';
 import { AddNewFormComponent } from './components/add-new-form/add-new-form.component';
+import { CalculatorComponent } from './components/calculator/calculator.component';
 import { AllPortingRequestsComponent } from './components/all-porting-requests/all-porting-requests.component';
 import { DisplayAllPortingRequestsComponent } from './components/display-all-porting-requests/display-all-porting-requests.component';
+import { PolicyDetailsComponent } from './components/policy-details/policy-details.component';
+import { BuyPolicyComponent } from './components/buy-policy/buy-policy.component';
 
 const routes: Routes = [];
 @NgModule({
@@ -110,6 +113,7 @@ const routes: Routes = [];
     RegisterComponent,
     NewFormFormatComponent,
     SideBarComponent,
+    MyPoliciesComponent,
     CompanyComponent,
     UserComponent,
     UserProfileComponent,
@@ -126,9 +130,15 @@ const routes: Routes = [];
     DisplayAllFormsComponent,
     DisplayFormComponent,
     FormsDashboardComponent,
+    CalculatorComponent,
     AllPortingRequestsComponent,
-    DisplayAllPortingRequestsComponent
+    DisplayAllPortingRequestsComponent,
+    PolicyDetailsComponent,
+    MyPoliciesComponent,
+    BuyPolicyComponent
   ],
+  entryComponents: [CalculatorComponent],
+
   imports: [
     BrowserModule,
     AppRoutingModule,

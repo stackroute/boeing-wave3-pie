@@ -1,9 +1,12 @@
-import { TokenStorageService } from "./../companyauth/token-storage.service";
-import { Component, OnInit, Input } from "@angular/core";
-import { Router } from "@angular/router";
-import { InternalFormsSharedModule } from "@angular/forms/src/directives";
-import { Subscription } from "rxjs";
-import { ObservableMedia, MediaChange } from "@angular/flex-layout";
+import { CalculatorComponent } from './../calculator/calculator.component';
+import { MatDialog } from '@angular/material';
+import { TokenStorageService } from './../companyauth/token-storage.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { InternalFormsSharedModule } from '@angular/forms/src/directives';
+import { Subscription } from 'rxjs';
+import { ObservableMedia, MediaChange } from '@angular/flex-layout';
+
 
 @Component({
   selector: "app-navbar",
