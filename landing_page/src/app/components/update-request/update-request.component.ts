@@ -1,7 +1,7 @@
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { RequestService } from 'src/app/service/request.service';
+import { RequestService } from './../../service/request.service';
 
 @Component({
   selector: 'app-update-request',

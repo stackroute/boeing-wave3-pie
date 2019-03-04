@@ -3,11 +3,14 @@ import { InsurerAcceptincomingportingrequestService } from './../../service/insu
 import { InsurerIncomingportingrequestService } from './../../service/InsurerIncomingportingrequestService';
 import { InsurerOutgoingportingrequestService } from './../../service/insurer-outgoingportingrequest.service';
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit, Input } from '@angular/core';
-import { InsurerAcceptoutgoingportingrequestService } from 'src/app/service/insurer-acceptoutgoingportingrequest.service';
-import { InsurerRejectincomingportingrequestService } from 'src/app/service/InsurerRejectincomingportingrequestService';
+
 import { MatDialog } from '@angular/material';
 import { ReviewComponent } from '../review/review.component';
+
+import { Component, OnInit } from '@angular/core';
+import { InsurerAcceptoutgoingportingrequestService } from './../../service/insurer-acceptoutgoingportingrequest.service';
+import { InsurerRejectincomingportingrequestService } from './../../service/InsurerRejectincomingportingrequestService';
+
 
 @Component({
   selector: 'app-incoming-porting-requests',
@@ -50,18 +53,6 @@ export class IncomingPortingRequestsComponent implements OnInit {
   reloadData(){
     window.location.reload();
   }
-  // review(insuredname): void{
-  //   console.log("fgh"+insuredname);
-  //   let as = window.localStorage.setItem("insuredname",insuredname);
-  //   // console.log(as);
-  //   // console.log(this.dialog.open(ReviewComponent));
-  //   console.log("About to open the review Component");
-  //   const dialogRef = this.dialog.open(ReviewComponent,{});
-  //   console.log("Opened the review");
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log('The dialog was closed');
-  //   })
-  // }
   openDialog(insuredname): void {
     let as = window.localStorage.setItem("insuredname",insuredname);
     const dialogRef = this.dialog.open(ReviewComponent, {

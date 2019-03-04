@@ -1,6 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { UserDashboardService } from 'src/app/service/user-dashboard.service';
+import { UserDashboardService } from './../../service/user-dashboard.service';
 import { FormBuilder } from '@angular/forms';
 
 @Component({
@@ -16,8 +16,10 @@ export class UserProfileComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,private route: ActivatedRoute, private userService: UserDashboardService) { }
  
  ngOnInit() {
-   
-   this.username = this.route.snapshot.paramMap.get('username');
+ this.profileForm=this.formBuilder.group({
+
+ })
+  this.username = this.route.snapshot.paramMap.get('username');
    console.log('ts' + this.username);
    this.profile = this.userService.getProfile(this.username).subscribe(
     data => {

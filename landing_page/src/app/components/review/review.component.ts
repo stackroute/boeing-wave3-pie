@@ -1,7 +1,7 @@
 import { UserService } from './../../service/user.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from "@angular/material";
-import { UserDashboardService } from 'src/app/service/user-dashboard.service';
+import { UserDashboardService } from './../../service/user-dashboard.service';
 @Component({
   selector: 'app-review',
   templateUrl: './review.component.html',

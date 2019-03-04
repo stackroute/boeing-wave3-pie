@@ -1,6 +1,6 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { PolicyService } from 'src/app/service/policy.service';
+import { PolicyService } from './../../service/policy.service';
 
 @Component({
   selector: 'app-policy-details',
