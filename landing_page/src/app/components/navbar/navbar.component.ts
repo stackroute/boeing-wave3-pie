@@ -4,6 +4,9 @@ import { TokenStorageService } from './../companyauth/token-storage.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { InternalFormsSharedModule } from '@angular/forms/src/directives';
+import { Subscription } from 'rxjs';
+import { ObservableMedia, MediaChange } from '@angular/flex-layout';
+
 
 @Component({
   selector: 'app-navbar',
@@ -21,7 +24,26 @@ export class NavbarComponent implements OnInit {
   info: any;
   insuredName: any;
   insurerName: any;
-  constructor(private router: Router,private token: TokenStorageService) { }
+  opened = true;
+  over = 'side';
+  expandHeight = '42px';
+  collapseHeight = '42px';
+  displayMode = 'flat';
+  // overlap = false;
+
+  watcher: Subscription;
+  constructor(private router: Router,private token: TokenStorageService,media: ObservableMedia) { 
+    this.watcher = media.subscribe((change: MediaChange) => {
+      if (change.mqAlias === 'sm' || change.mqAlias === 'xs') {
+        this.opened = false;
+        this.over = 'over';
+      } else {
+        this.opened = true;
+        this.over = 'side';
+      }
+    });
+  }
+  
   ngOnInit() {
     this.insuredName = window.localStorage.getItem("insuredname");
     this.insurerName = window.localStorage.getItem("insurername");
@@ -30,7 +52,6 @@ export class NavbarComponent implements OnInit {
       username: this.token.getUsername(),
       authorities: this.token.getAuthorities()
     };
-
     console.log(this.message);
     this.router.events.subscribe(event => {
       if (event.constructor.name === "NavigationEnd") {

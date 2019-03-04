@@ -14,5 +14,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.username = this.route.snapshot.paramMap.get('username');
     let as = window.localStorage.setItem("insuredname",this.username);
+
   }
+
 }

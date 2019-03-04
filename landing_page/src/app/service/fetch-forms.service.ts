@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class FetchFormsService {
 
-  // private adminUrl = 'http://localhost:8092/admin/api/v1/formformats';
-  private adminUrl = 'http://13.126.73.190:8092/admin/api/v1/';
+  private adminUrl = 'http://localhost:8092/admin/api/v1/formformats';
+  // private adminUrl = 'http://13.126.73.190:8092/admin/api/v1/';
   private getAllFormFormatsUrl = 'formformats';
   private addNewFormFormatUrl = 'formformat';
   private deleteFormFormatUrl = 'formformat/';

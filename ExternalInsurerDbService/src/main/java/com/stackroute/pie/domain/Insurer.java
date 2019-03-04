@@ -36,7 +36,6 @@ public class Insurer {
     @Email
     private String insurerEmail;
 
-    //    @Transactional
     @NotBlank
     @Size(min=6, max = 100)
     private String password;

@@ -85,6 +85,8 @@ import { DisplayFormComponent } from './components/display-form/display-form.com
 import { FormsDashboardComponent } from './components/forms-dashboard/forms-dashboard.component';
 import { AddNewFormComponent } from './components/add-new-form/add-new-form.component';
 import { CalculatorComponent } from './components/calculator/calculator.component';
+import { AllPortingRequestsComponent } from './components/all-porting-requests/all-porting-requests.component';
+import { DisplayAllPortingRequestsComponent } from './components/display-all-porting-requests/display-all-porting-requests.component';
 
 const routes: Routes = [];
 @NgModule({
@@ -125,7 +127,9 @@ const routes: Routes = [];
     DisplayAllFormsComponent,
     DisplayFormComponent,
     FormsDashboardComponent,
-    CalculatorComponent
+    CalculatorComponent,
+    AllPortingRequestsComponent,
+    DisplayAllPortingRequestsComponent
   ],
   entryComponents: [CalculatorComponent],
 
