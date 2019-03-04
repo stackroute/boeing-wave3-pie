@@ -16,8 +16,10 @@ export class UserProfileComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,private route: ActivatedRoute, private userService: UserDashboardService) { }
  
  ngOnInit() {
-   
-   this.username = this.route.snapshot.paramMap.get('username');
+ this.profileForm=this.formBuilder.group({
+
+ })
+  this.username = this.route.snapshot.paramMap.get('username');
    console.log('ts' + this.username);
    this.profile = this.userService.getProfile(this.username);
    console.log("hIIII" + this.profile.username);
@@ -31,6 +33,6 @@ export class UserProfileComponent implements OnInit {
 //       console.log(error.errorMessage);
   
 //     }
-  
+
  }
 }
