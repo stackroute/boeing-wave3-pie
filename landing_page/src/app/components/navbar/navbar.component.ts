@@ -1,3 +1,5 @@
+import { CalculatorComponent } from './../calculator/calculator.component';
+import { MatDialog } from '@angular/material';
 import { TokenStorageService } from './../companyauth/token-storage.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
@@ -7,13 +9,13 @@ import { ObservableMedia, MediaChange } from '@angular/flex-layout';
 
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  selector: "app-navbar",
+  templateUrl: "./navbar.component.html",
+  styleUrls: ["./navbar.component.css"]
 })
 export class NavbarComponent implements OnInit {
   @Input() login: boolean;
-  sign = 'SignIn'
+  sign = "SignIn";
   username: any;
   message: string;
   name: any;
@@ -23,25 +25,30 @@ export class NavbarComponent implements OnInit {
   insuredName: any;
   insurerName: any;
   opened = true;
-  over = 'side';
-  expandHeight = '42px';
-  collapseHeight = '42px';
-  displayMode = 'flat';
+  logout1 = true;
+  over = "side";
+  expandHeight = "42px";
+  collapseHeight = "42px";
+  displayMode = "flat";
   // overlap = false;
 
   watcher: Subscription;
-  constructor(private router: Router,private token: TokenStorageService,media: ObservableMedia) { 
+  constructor(
+    private router: Router,
+    private token: TokenStorageService,
+    media: ObservableMedia
+  ) {
     this.watcher = media.subscribe((change: MediaChange) => {
-      if (change.mqAlias === 'sm' || change.mqAlias === 'xs') {
+      if (change.mqAlias === "sm" || change.mqAlias === "xs") {
         this.opened = false;
-        this.over = 'over';
+        this.over = "over";
       } else {
         this.opened = true;
-        this.over = 'side';
+        this.over = "side";
       }
     });
   }
-  
+
   ngOnInit() {
     this.insuredName = window.localStorage.getItem("insuredname");
     this.insurerName = window.localStorage.getItem("insurername");
@@ -54,23 +61,32 @@ export class NavbarComponent implements OnInit {
     this.router.events.subscribe(event => {
       if (event.constructor.name === "NavigationEnd") {
         this.name = (<any>event).url.split("/").slice(-1)[0];
-        this.isLogin = this.currentRoute === 'insurerDashboard/:insurerLicense';
+        this.isLogin = this.currentRoute === "insurerDashboard/:insurerLicense";
       }
-  })
-}
+    });
+  }
   search() {
-    console.log('search method');
-    this.router.navigate(['/search', this.message]);
+    console.log("search method");
+    this.router.navigate(["/search", this.message]);
     console.log("in search");
     window.location.reload();
   }
   logout() {
     this.token.signOut();
     window.location.reload();
-    this.router.navigate(['/home']);
+    this.logout1 = true;
+    this.router.navigate(["/home"]);
   }
-  dashboard(){
-    if(this.info.authorities=='ROLE_USER')
-    return true;
+  dashboard() {
+    if (this.info.authorities == "ROLE_USER") {
+      this.logout1 = false;
+      return true;
+    }
+  }
+  idashboard() {
+    if (this.info.authorities == "ROLE_INSURER") {
+      this.logout1 = false;
+      return true;
+    }
   }
 }

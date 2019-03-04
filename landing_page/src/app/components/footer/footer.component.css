@@ -18,7 +18,7 @@
   color: white;
 }
 
-.wrapper {
+ .wrapper {
     display: flex;
     justify-content: center;
   }
@@ -55,8 +55,8 @@ footerl {
     color: white;
 } 
 footer{
-  position: fixed;
   overflow: auto;
+  margin-top: auto;
 }
 
 .list{

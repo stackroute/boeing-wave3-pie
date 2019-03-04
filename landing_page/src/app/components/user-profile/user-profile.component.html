@@ -5,14 +5,21 @@
           <div class="controles-container">
 
           <mat-form-field>
-              <input formControlName="fullName" matInput placeholder="Full Name" >
-              </mat-form-field>
+              <input formControlName="username" matInput placeholder="{{profile.username}}"[readonly]="true" >
+              <!-- <input formControlName="username" [(ngModel)]="{{profile.username}}"> -->
+            </mat-form-field>
           <mat-form-field>
-              <input formControlName="fullName" matInput placeholder="Full Name">
+              <input formControlName="gender" matInput placeholder="{{profile.gender}}"[readonly]="true">
           </mat-form-field>
           <mat-form-field>
-              <input formControlName="fullName" matInput placeholder="Full Name">
-          </mat-form-field>    
+              <input formControlName="email" matInput placeholder="{{profile.email}}" [readonly]="true">
+          </mat-form-field>  
+          <!-- <mat-form-field>
+            <input formControlName="fullName" matInput placeholder="{{profile.}}" [readonly]="true">
+        </mat-form-field>   
+        <mat-form-field>
+            <input formControlName="fullName" matInput placeholder="{{profile.username}}" [readonly]="true">
+        </mat-form-field>    -->
       <!-- <li>Insured Name : {{ profile.username }}</li>
       <li>Password : {{ profile.password }}</li>
       <li>Email : {{ profile.email }}</li>
