@@ -13,6 +13,7 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
   @Input() pendingTasks: PendingTasks;
   @Input() currentCompanyName: string;
   @Input() currentInsuredName: string;
+  @Input() portingRequestId: number;
   viewPendingTasksOfInsuredClicked: boolean;
   newPendingTask: Task;
   newPendingTaskName: string;

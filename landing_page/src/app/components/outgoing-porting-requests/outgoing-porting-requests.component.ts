@@ -11,9 +11,13 @@ import { InsurerAcceptoutgoingportingrequestService } from 'src/app/service/insu
 export class OutgoingPortingRequestsComponent implements OnInit {
   insurerLicense: any;
   requests: any;
+  currentCompanyName: string;
+  rasieGrievanceButtonIsClicked: boolean;
+  idForGrievances: number;
   constructor(private route:ActivatedRoute, private incoming: InsurerOutgoingportingrequestService,private portrequest: InsurerAcceptoutgoingportingrequestService) { }
 
   ngOnInit() {
+  this.rasieGrievanceButtonIsClicked  =false;
     console.log("inside outgoing");
     this.insurerLicense = this.route.snapshot.paramMap.get('insurerLicense');
     console.log(this.insurerLicense);
@@ -31,6 +35,10 @@ export class OutgoingPortingRequestsComponent implements OnInit {
   }
   reloadData(){
     window.location.reload();
+  }
+  raiseGrievanceButtonClicked(portrequestId: number): void {
+    this.rasieGrievanceButtonIsClicked = true;
+    this.idForGrievances = portrequestId;
   }
 
 }
