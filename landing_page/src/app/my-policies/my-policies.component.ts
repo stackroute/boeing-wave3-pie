@@ -1,4 +1,4 @@
-import { UserDashboardService } from 'src/app/service/user-dashboard.service';
+import { UserDashboardService } from './../service/user-dashboard.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 

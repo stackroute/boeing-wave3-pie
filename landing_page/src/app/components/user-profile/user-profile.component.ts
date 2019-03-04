@@ -1,6 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { UserDashboardService } from 'src/app/service/user-dashboard.service';
+import { UserDashboardService } from './../../service/user-dashboard.service';
 import { FormBuilder } from '@angular/forms';
 
 @Component({

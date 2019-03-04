@@ -12,7 +12,7 @@ import { AddNewPolicyComponent } from './components/add-new-policy/add-new-polic
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MyRequestsComponent } from './components/my-requests/my-requests.component';
 import { HomeComponent } from './components/home/home.component';
-import { Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -86,6 +86,7 @@ import { FormsDashboardComponent } from './components/forms-dashboard/forms-dash
 import { AddNewFormComponent } from './components/add-new-form/add-new-form.component';
 import { AllPortingRequestsComponent } from './components/all-porting-requests/all-porting-requests.component';
 import { DisplayAllPortingRequestsComponent } from './components/display-all-porting-requests/display-all-porting-requests.component';
+import { DialogbotComponent } from './components/dialogbot/dialogbot.component';
 
 const routes: Routes = [];
 @NgModule({
@@ -127,13 +128,16 @@ const routes: Routes = [];
     DisplayFormComponent,
     FormsDashboardComponent,
     AllPortingRequestsComponent,
-    DisplayAllPortingRequestsComponent
+    DisplayAllPortingRequestsComponent,
+    DialogbotComponent
   ],
+  entryComponents: [DialogbotComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FlexLayoutModule,
     FormsModule,
+    RouterModule.forRoot(routes),
     CarouselModule,
     HttpClientModule,
     ReactiveFormsModule,
