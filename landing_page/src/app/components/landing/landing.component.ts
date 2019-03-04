@@ -12,13 +12,13 @@ export class LandingComponent implements OnInit {
 
   ngOnInit() {
   }
-  openDialog(): void {
-    const dialogRef = this.dialog.open(CalculatorComponent, {
-    });
+  // openDialog(): void {
+  //   const dialogRef = this.dialog.open(CalculatorComponent, {
+  //   });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
-  }
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log('The dialog was closed');
+  //   });
+  // }
 
 }

@@ -1,6 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { UserDashboardService } from 'src/app/service/user-dashboard.service';
+import { UserDashboardService } from './../../service/user-dashboard.service';
 import { FormBuilder } from '@angular/forms';
 
 @Component({
@@ -21,18 +21,17 @@ export class UserProfileComponent implements OnInit {
  })
   this.username = this.route.snapshot.paramMap.get('username');
    console.log('ts' + this.username);
-   this.profile = this.userService.getProfile(this.username);
-   console.log("hIIII" + this.profile.username);
-//     data => {
-//       console.log("username: " + data.username);
-//       console.log('jell' + data.email);
-//       this.profile = data;
-//  },
-//     error => {
-//       console.log('some error occured');
-//       console.log(error.errorMessage);
+   this.profile = this.userService.getProfile(this.username).subscribe(
+    data => {
+      this.profile = data;
+      console.log(data);
+      console.log(this.profile);
+  },
+    error => {
+      console.log('some error occured');
+      console.log(error.errorMessage);
   
-//     }
-
+    }
+  );
  }
 }

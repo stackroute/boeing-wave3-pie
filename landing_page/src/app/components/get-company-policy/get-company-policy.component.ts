@@ -1,7 +1,7 @@
 import { InsurerPolicyService } from './../../service/insurer-policy.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, SimpleChanges } from '@angular/core';
-import { RequestService } from 'src/app/service/request.service';
+import { RequestService } from './../../service/request.service';
 
 @Component({
  selector: 'app-get-company-policy',

@@ -16,9 +16,9 @@ public interface RecommendationServ {
      Policy updatePolicy(Policy policy);
      Insured updateInsured(Insured insured);
      FamilyMembers createMembers(FamilyMembers familyMembers);
-     String insurerPolicy(String insurerName,int policyId);
-     String insuredPolicy(int policyId,String username);
-     String viewPolicy(int policyId,String username);
+     String insurerPolicy(String insurerName,Long policyId);
+     String insuredPolicy(Long policyId,String username);
+     String viewPolicy(Long policyId,String username);
      String linkDependants(String memberName,String username);
     List<Policy> displayPolicy();
     List<Policy> getByUserName(String username);
@@ -33,6 +33,7 @@ public interface RecommendationServ {
      Insured findUser(String username);
      List<Policy> getByAgeGenderDisease(String username);
      List<Policy> policyForDependants(String username);
+
 
 
 

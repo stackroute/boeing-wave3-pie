@@ -27,18 +27,18 @@ public class Policy {
     @NotBlank
     private String policyName;
     @NotBlank
-    private int policyId;
+    private long policyId;
     @NotBlank
     private int minAge;
     @NotBlank
     private int maxAge;
     private String policyType;
     private String genderAvail;
-    private int waitingPeriod;
+    private int waitingPeriod ;
     private int policyTerm;
-    private int minimumPremium;
-    private int sumInsured;
-    private String policyDescription;
+    private int minSumInsured;
+    private int maxSumInsured;
+    private String policyDescription = "";
     private List<String> diseasesCovered = new ArrayList<>();
     private List<String> cashlessHospitals = new ArrayList<>();
     private List<String> termsAndConditions = new ArrayList<>();
@@ -47,16 +47,21 @@ public class Policy {
 
 
     //Custom Constructor for adding new policy
-    public Policy( String insurerName, String insurerLicense, String policyName, int policyId, int minAge, int maxAge,
-                  int minimumPremium, int sumInsured, String policyDescription) {
+    public Policy( String insurerName, String insurerLicense, String policyName, long policyId, int minAge, int maxAge,
+                  int minSumInsured, int maxSumInsured, String policyDescription, String policyType,
+                   String genderAvail, int waitingPeriod, int policyTerm) {
         this.uniqueId = insurerName + policyName;
         this.insurerName = insurerName;
         this.policyName = policyName;
         this.policyId = policyId;
         this.minAge = minAge;
         this.maxAge = maxAge;
-        this.minimumPremium = minimumPremium;
-        this.sumInsured = sumInsured;
+        this.policyType = policyType;
+        this.genderAvail = genderAvail;
+        this.waitingPeriod = waitingPeriod;
+        this.policyTerm = policyTerm;
+        this.minSumInsured = minSumInsured;
+        this.maxSumInsured = maxSumInsured;
         this.insurerLicense = insurerLicense;
         this.policyDescription = policyDescription;
     }
