@@ -136,7 +136,7 @@ public class PolicyController {
         return responseEntity;
     }
 
-    //Getting the policy for insurerd for more details
+    //Getting the insurerList for porting purpose
     @GetMapping("policy")
     public ResponseEntity<?> getInsurerList() {
         Set<String> insurerList = new HashSet<>();
