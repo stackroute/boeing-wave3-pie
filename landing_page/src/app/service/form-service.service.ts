@@ -9,13 +9,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class FormServiceService {
   allFormFormats: Observable<FormFormat[]>;
 
-  // adminUrl = 'http://localhost:8092/admin/api/v1/';
-  adminUrl = 'http://13.126.73.190:8092/admin/api/v1/'
+  //TODO: Remember to configure the AWS URL before pushing to git.
+  adminUrl = 'http://localhost:8092/admin/api/v1/';
+  // adminUrl = 'http://13.126.73.190:8092/admin/api/v1/'
   getAllFormsUrl = 'formformats/';
   getFormFormatUrl = 'formformat/';
   saveFormUrl = 'formformat/';
   updateFormUrl = 'formformat/';
   deleteFormUrl = 'formformat/';
+  searchUrl = 'formformat/search=';
 
   tempFormFormat: Observable<FormFormat>;
   constructor(private http: HttpClient) {}
@@ -43,5 +45,8 @@ export class FormServiceService {
    this.tempFormFormat = this.http.put<FormFormat>(this.adminUrl + this.updateFormUrl + formFormat.formId, formFormat);
    this.getAllFormFormats();
    return this.tempFormFormat;
+  }
+  searchForForms(searchTerm: string): Observable<FormFormat[]> {
+    return this.http.get<FormFormat[]>(this.adminUrl + this.searchUrl + searchTerm);
   }
 }

@@ -17,7 +17,7 @@ export class AddNewFormComponent implements OnInit {
   newFormId = 0;
 
   @Input() allFormFormats: FormFormat[];
-  @Output() newFormCreated = new EventEmitter();
+  @Output() newFormCreated = new EventEmitter<FormFormat>();
 
   constructor(private formService: FormServiceService) { this.formService = formService;}
 
@@ -30,6 +30,7 @@ export class AddNewFormComponent implements OnInit {
 
   createNewForm(): void {
     this.displayNewFormClicked = true;
+    this.newForm = {"formId": 1, "formName": "Temp", "fields": []};
   }
   addNewField(): void {
     this.newForm.fields.push(this.newField);
@@ -45,7 +46,7 @@ export class AddNewFormComponent implements OnInit {
     this.newForm.formName = this.newFormName;
     this.newForm.formId = this.newFormId + 1;
     this.formService.saveForm(this.newForm).subscribe();
-    this.newFormCreated.emit('new form created');
+    this.newFormCreated.emit(null);
     this.displayNewFormClicked = false;
     this.newForm.formName = null;
     this.newForm.formId = null;

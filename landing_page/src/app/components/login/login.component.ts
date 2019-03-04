@@ -56,6 +56,7 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/admin',this.form.username])
           }
      });
+     window.location.reload();
    }
      error => {
        console.log(error);

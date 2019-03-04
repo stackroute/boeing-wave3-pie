@@ -1,3 +1,23 @@
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 30px;
+  height: 60px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
+}
+
+.fa:hover {
+  opacity: 0.7;
+}
+
+.fa-android {
+  background: orange;
+  color: white;
+}
+
  .wrapper {
     display: flex;
     justify-content: center;
@@ -34,6 +54,37 @@ footerl {
     background-color: black;
     color: white;
 } 
+footer{
+  overflow: auto;
+  margin-top: auto;
+}
 
+.list{
+  color:white;
+}
 
+@media screen and (max-width:475px){
+    footer{
+      height: 20%;
+      width: 100%;
+    }
+    .divmargin{
+      margin-bottom: 20%;
+    }
+}
  
+
+  /* #main-footer{
+    background: #263f26;
+    color: white;
+    padding: 6rem 0;
+    font-size:0.8rem;
+}
+
+#main-footer h6{
+    color:#718fa9;
+}
+
+#main-footer a{
+    color: #6c5f73;
+} */

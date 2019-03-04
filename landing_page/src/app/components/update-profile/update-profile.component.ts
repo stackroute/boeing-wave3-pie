@@ -1,7 +1,7 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { UserDashboardService } from 'src/app/service/user-dashboard.service';
+import { UserDashboardService } from './../../service/user-dashboard.service';
 
 @Component({
   selector: 'app-update-profile',

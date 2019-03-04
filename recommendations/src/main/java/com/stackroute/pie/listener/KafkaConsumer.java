@@ -1,9 +1,6 @@
 package com.stackroute.pie.listener;
 
-import com.stackroute.pie.domain.FamilyMembers;
-import com.stackroute.pie.domain.Insured;
-import com.stackroute.pie.domain.Insurer;
-import com.stackroute.pie.domain.Policy;
+import com.stackroute.pie.domain.*;
 import com.stackroute.pie.repository.RecommendationsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -21,8 +18,6 @@ public class KafkaConsumer {
         System.out.println("String wala method");
         System.out.println("Consumed message1: " + message);
     }
-//    @KafkaListener(topics = "Kafka_Example_json", groupId = "group_json",
-//            containerFactory = "userKafkaListenerFactory")
 
     //consuming data from kafka & setting it to commonauth
     @KafkaListener(topics = "userregg_json", groupId = "group_json", containerFactory = "insuredKafkaListenerFactory")
@@ -40,20 +35,17 @@ public class KafkaConsumer {
         System.out.println("yoyoyoyoyo");
         System.out.println("Consumed JSON Message: " + insurer);
         recommendationsRepo.newInsurer(insurer.getInsurerId(), insurer.getInsurerName(), insurer.getInsurerLicense());
-        //recommendationsRepo.newInsured(insurer.getInsuredId(),insured.getUsername(),insured.getGender(),insured.getAge(),insured.getExistingDisease(),insured.getFamilyMembers());
 
 
     }
 
-    @KafkaListener(topics = "insurer_policy_json", groupId = "group_json", containerFactory = "policyKafkaListenerFactory")
-    public void consumeJson1(Insurer insurer) {
+    @KafkaListener(topics = "policy_added", groupId = "group_json", containerFactory = "policyKafkaListenerFactory")
+    public void consumeJson1(Policy policy) {
         System.out.println("yoyoyoyoyo");
-        System.out.println("Consumed JSON Message: " + insurer);
-        for (Policy policy : insurer.getPolicies()) {
-            recommendationsRepo.newPolicy(policy.getPolicyId(), policy.getInsurerName(), policy.getPolicyName(), policy.getMinAge(), policy.getMaxAge(), policy.getGender(), policy.getDiseases(), policy.getPolicyType());
-            System.out.println(insurer.getInsurerName());
-            recommendationsRepo.insurerPolicy(insurer.getInsurerName(), policy.getPolicyId());
-        }
+        System.out.println("Consumed JSON Message: " + policy);
+        recommendationsRepo.newPolicy(policy.getUniqueId(),policy.getPolicyId(), policy.getInsurerName(),policy.getInsurerLicense(), policy.getPolicyName(), policy.getMinAge(), policy.getMaxAge(), policy.getGenderAvail(), policy.getDiseasesCovered(), policy.getPolicyType(),policy.getPolicyDescription());
+        System.out.println(policy.getInsurerName());
+        recommendationsRepo.insurerPolicy(policy.getInsurerName(), policy.getPolicyId());
     }
 
 

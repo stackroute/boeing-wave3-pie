@@ -3,6 +3,7 @@
     width: 100%;
     padding-left: 0px;
     padding-right: 0px;
+    
 }
 
 .carousel-caption {
@@ -15,7 +16,11 @@
     position: absolute;
 
   }
-
+.divmargin{
+    margin-bottom: 20%;
+    width:100%;
+    
+}
   /* #about{
     background: url(/../assets/img/health-insurance-home-hero-banner.jpg) center center no-repeat;
     background-size: cover;
@@ -29,3 +34,9 @@
     color: white;
     padding: 1.875rem;
 }  */
+@media screen and (max-width:475px){
+    .divmargin{
+        margin-bottom: 30%;
+
+    }
+}

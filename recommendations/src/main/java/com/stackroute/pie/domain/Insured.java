@@ -23,7 +23,6 @@ public class Insured {
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Relationship(type="VIEWED_POLICY")
     @Id
-
     private int insuredId;
 
     @NotBlank
@@ -49,7 +48,7 @@ public class Insured {
     @Size(min=6, max = 100)
     private String password;
 
-    private int age;
+    private Long age;
 
 
     @NotBlank
@@ -80,7 +79,7 @@ public class Insured {
 
     private List<FamilyMembers> familyMembers ;
 
-    public Insured(int insuredId,String fullName, String username, String email, String password, String gender,  String securityAnswer,int age,String existingDisease,List<FamilyMembers> familyMembers,int numberOfDependants) {
+    public Insured(int insuredId,String fullName, String username, String email, String password, String gender,  String securityAnswer,Long age,String existingDisease,List<FamilyMembers> familyMembers,int numberOfDependants) {
         this.insuredId=insuredId;
         this.fullName = fullName;
         this.username = username;

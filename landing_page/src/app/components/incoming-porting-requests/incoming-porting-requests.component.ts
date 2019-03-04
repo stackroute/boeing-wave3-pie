@@ -3,8 +3,8 @@ import { InsurerIncomingportingrequestService } from './../../service/InsurerInc
 import { InsurerOutgoingportingrequestService } from './../../service/insurer-outgoingportingrequest.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { InsurerAcceptoutgoingportingrequestService } from 'src/app/service/insurer-acceptoutgoingportingrequest.service';
-import { InsurerRejectincomingportingrequestService } from 'src/app/service/InsurerRejectincomingportingrequestService';
+import { InsurerAcceptoutgoingportingrequestService } from './../../service/insurer-acceptoutgoingportingrequest.service';
+import { InsurerRejectincomingportingrequestService } from './../../service/InsurerRejectincomingportingrequestService';
 
 @Component({
   selector: 'app-incoming-porting-requests',

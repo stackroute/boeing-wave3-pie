@@ -21,12 +21,7 @@ public class UserPrinciple implements UserDetails {
     private static final long serialVersionUID = 1L;
 
     private int insuredId;
-
-
-//    private String name;
-
     private String username;
-
     private String email;
 
     @JsonIgnore
@@ -37,8 +32,7 @@ public class UserPrinciple implements UserDetails {
     public UserPrinciple(
                          String username, String email, String password,
                          Collection<? extends GrantedAuthority> authorities) {
-//        this.insuredId = insuredId;
-//        this.name = name;
+
         this.username = username;
         this.email = email;
         this.password = password;
@@ -51,7 +45,7 @@ public class UserPrinciple implements UserDetails {
         ).collect(Collectors.toList());
 
         return new UserPrinciple(
-//                commonAuth.getInsuredId(),
+
                 commonAuth.getUsername(),
                 commonAuth.getEmail(),
                 commonAuth.getPassword(),

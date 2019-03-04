@@ -10,6 +10,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.Normalizer;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,5 +59,10 @@ public class AdminController {
     public ResponseEntity<FormFormat> getFormByName(@PathVariable(value = "formName", required = true) String formName) {
         FormFormat formFormat = adminServices.getFormFormatByName(formName);
         return new ResponseEntity<FormFormat>(formFormat, HttpStatus.OK);
+    }
+    @GetMapping("formformat/search={formName}")
+    public ResponseEntity<List<FormFormat>> searchFormByName(@PathVariable(value = "formName", required = true) String formName) {
+        List<FormFormat> formFormat = adminServices.searchFormFormatByFormName(formName);
+        return new ResponseEntity<List<FormFormat>>(formFormat, HttpStatus.OK);
     }
 }
