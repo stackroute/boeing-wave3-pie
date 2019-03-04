@@ -84,6 +84,7 @@ import { DisplayAllFormsComponent } from './components/display-all-forms/display
 import { DisplayFormComponent } from './components/display-form/display-form.component';
 import { FormsDashboardComponent } from './components/forms-dashboard/forms-dashboard.component';
 import { AddNewFormComponent } from './components/add-new-form/add-new-form.component';
+import { CalculatorComponent } from './components/calculator/calculator.component';
 import { AllPortingRequestsComponent } from './components/all-porting-requests/all-porting-requests.component';
 import { DisplayAllPortingRequestsComponent } from './components/display-all-porting-requests/display-all-porting-requests.component';
 import { PolicyDetailsComponent } from './components/policy-details/policy-details.component';
@@ -128,12 +129,15 @@ const routes: Routes = [];
     DisplayAllFormsComponent,
     DisplayFormComponent,
     FormsDashboardComponent,
+    CalculatorComponent,
     AllPortingRequestsComponent,
     DisplayAllPortingRequestsComponent,
     PolicyDetailsComponent,
     MyPoliciesComponent,
     BuyPolicyComponent
   ],
+  entryComponents: [CalculatorComponent],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
