@@ -11,13 +11,15 @@ import {FetchPendingTasksService} from '../../service/fetch-pending-tasks.servic
 export class DisplayAllPortingRequestsComponent implements OnInit {
 
   @Input() pendingTasks: PendingTasks;
+  @Input() currentCompanyName: string;
+  @Input() currentInsuredName: string;
   viewPendingTasksOfInsuredClicked: boolean;
   newPendingTask: Task;
   newPendingTaskName: string;
   newPendingTaskDescription: string;
   newPendingTaskDueDate: string;
 
-  currentInsuredName: string;
+  // currentInsuredName: string;
   fetchAllPortingRequestsIsClicked: Boolean;
   addANewPendingTaskIsClicked: Boolean;
   viewPendingTasksOfInsuredIsClicked: Boolean;

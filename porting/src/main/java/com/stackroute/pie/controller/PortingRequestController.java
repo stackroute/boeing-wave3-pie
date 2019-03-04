@@ -14,6 +14,7 @@ import springfox.documentation.service.ResponseMessage;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1/")
@@ -177,6 +178,10 @@ public class PortingRequestController {
         rejectIncomingPortingRequest.setToApproval(2);
         PortingRequest portingRequest1 = requestService.postRequest(rejectIncomingPortingRequest);
         return new ResponseEntity<PortingRequest>(portingRequest1, HttpStatus.OK);
+    }
+    @GetMapping("outgoingportingrequest/portingRequestId={portingRequestId}")
+    public ResponseEntity<?> getPortingRequestByPortingRequestId(@PathVariable (value = "portingRequestId", required = true) int portingRequestId) {
+        return new ResponseEntity<Optional<PortingRequest>>(requestService.getPortingRequestByPortingRequestId(portingRequestId), HttpStatus.OK);
     }
 
 }
