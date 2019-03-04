@@ -21,6 +21,7 @@ selectedValue: string;
 selectedCar: string;
 firstForm: FormGroup;
 secondForm: FormGroup;
+private formSubmitAttempt: boolean;
 
 
 
@@ -33,17 +34,24 @@ ngOnInit() {
   this.firstForm = this.formBuilder.group({
     insurerName: ['', Validators.required],
     insurerLicense: ['', Validators.required],
-
-
-  });
-  this.secondForm = this.formBuilder.group({
     insurerEmail: ['', Validators.required],
+    password: ['', [Validators.required, Validators.minLength(6)]]
+  });
+  
+  this.secondForm = this.formBuilder.group({
     insurerAddress: ['', Validators.required],
-    password: ['', [Validators.required, Validators.minLength(6)]],
     securityQuestion: ['', Validators.required],
     securityAnswer: ['', Validators.required]});
 
  }
+
+ isFieldInvalid(field: string) {
+  return (
+    (!this.firstForm.get(field).valid && this.firstForm.get(field).touched) ||
+    (this.firstForm.get(field).untouched && this.formSubmitAttempt) 
+  );
+}
+
 
  submitForm() {
   console.log("hi");
