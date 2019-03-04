@@ -60,7 +60,12 @@ public class AdminServicesImpl implements AdminServices{
     public List<FormFormat> searchFormFormatByFormName(String formName) {
         List<FormFormat> fetchedFormFormats = adminRepository.findAll();
         List<FormFormat> filteredFormFormats = new ArrayList<>();
+        List<FormFormat> exactSearchFormFormat = new ArrayList<>();
         for(FormFormat formFormat : fetchedFormFormats) {
+            if(FuzzySearch.ratio(formName.toLowerCase(), formFormat.getFormName().toLowerCase()) == 100 ) {
+                exactSearchFormFormat.add(formFormat);
+                return exactSearchFormFormat;
+            }
             if(FuzzySearch.ratio(formName.toLowerCase(), formFormat.getFormName().toLowerCase()) > 50) {
                 filteredFormFormats.add(formFormat);
             }

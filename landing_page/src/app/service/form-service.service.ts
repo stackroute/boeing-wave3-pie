@@ -9,8 +9,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class FormServiceService {
   allFormFormats: Observable<FormFormat[]>;
 
-  // adminUrl = 'http://localhost:8092/admin/api/v1/';
-  adminUrl = 'http://13.126.73.190:8092/admin/api/v1/'
+  //TODO: Remember to configure the AWS URL before pushing to git.
+  adminUrl = 'http://localhost:8092/admin/api/v1/';
+  // adminUrl = 'http://13.126.73.190:8092/admin/api/v1/'
   getAllFormsUrl = 'formformats/';
   getFormFormatUrl = 'formformat/';
   saveFormUrl = 'formformat/';

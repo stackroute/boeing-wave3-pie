@@ -5,12 +5,12 @@
 	<parent>
 		<groupId>com.stackroute</groupId>
 		<artifactId>pie</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.3-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>  <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.stackroute</groupId>
 	<artifactId>search-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<name>search-service</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -97,6 +97,16 @@
 			<groupId>org.apache.opennlp</groupId>
 			<artifactId>opennlp-tools</artifactId>
 			<version>1.8.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka-test</artifactId>
+			<scope>test</scope>
 		</dependency>
 
 	</dependencies>
