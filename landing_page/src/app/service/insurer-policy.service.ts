@@ -19,6 +19,8 @@ export class InsurerPolicyService {
  constructor(private http: HttpClient) { }
 
  localUrl = 'http://13.126.73.190:8092/insurerregservice/api/v1/';
+ policiesUrl = 'http://localhost:8097/api/v1/';
+
 
 
  addNewPolicy(policy : PolicyFormInfo):Observable<Object> {
@@ -28,7 +30,7 @@ export class InsurerPolicyService {
 
  getPolicies(insurerLicense : String):Observable<Object> {
    console.log('adadsasdas')
-  return this.http.get(this.localUrl+ 'policy/display/'+insurerLicense);
+  return this.http.get(this.policiesUrl+'policy/'+insurerLicense);
  }
 
 
