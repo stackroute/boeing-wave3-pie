@@ -1,3 +1,4 @@
+import { PolicyPremium } from './../policy-premium';
 import { PolicyFormInfo } from './../components/policyStore/policy-form-info';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -30,6 +31,11 @@ export class InsurerPolicyService {
    console.log('adadsasdas')
   return this.http.get(this.localUrl+ 'policy/display/'+insurerLicense);
  }
+
+ getPremium(premium : PolicyPremium):Observable<Object> {
+  console.log('adadsasdas')
+ return this.http.post('http://localhost:8097/api/auth'+ '/policy/premium/calculator',premium);
+}
 
 
  deletePolicy(insurerName,policyId):Observable<Object>{

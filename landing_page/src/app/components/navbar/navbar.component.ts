@@ -1,3 +1,5 @@
+import { CalculatorComponent } from './../calculator/calculator.component';
+import { MatDialog } from '@angular/material';
 import { TokenStorageService } from './../companyauth/token-storage.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';

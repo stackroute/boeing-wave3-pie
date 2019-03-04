@@ -84,6 +84,7 @@ import { DisplayAllFormsComponent } from './components/display-all-forms/display
 import { DisplayFormComponent } from './components/display-form/display-form.component';
 import { FormsDashboardComponent } from './components/forms-dashboard/forms-dashboard.component';
 import { AddNewFormComponent } from './components/add-new-form/add-new-form.component';
+import { CalculatorComponent } from './components/calculator/calculator.component';
 
 const routes: Routes = [];
 @NgModule({
@@ -123,8 +124,11 @@ const routes: Routes = [];
     AddNewFormComponent,
     DisplayAllFormsComponent,
     DisplayFormComponent,
-    FormsDashboardComponent
+    FormsDashboardComponent,
+    CalculatorComponent
   ],
+  entryComponents: [CalculatorComponent],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
