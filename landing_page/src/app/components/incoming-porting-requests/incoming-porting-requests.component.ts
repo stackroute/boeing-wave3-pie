@@ -1,10 +1,13 @@
+import { CalculatorComponent } from './../calculator/calculator.component';
 import { InsurerAcceptincomingportingrequestService } from './../../service/insurer-acceptincomingportingrequest.service';
 import { InsurerIncomingportingrequestService } from './../../service/InsurerIncomingportingrequestService';
 import { InsurerOutgoingportingrequestService } from './../../service/insurer-outgoingportingrequest.service';
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { InsurerAcceptoutgoingportingrequestService } from 'src/app/service/insurer-acceptoutgoingportingrequest.service';
 import { InsurerRejectincomingportingrequestService } from 'src/app/service/InsurerRejectincomingportingrequestService';
+import { MatDialog } from '@angular/material';
+import { ReviewComponent } from '../review/review.component';
 
 @Component({
   selector: 'app-incoming-porting-requests',
@@ -14,7 +17,13 @@ import { InsurerRejectincomingportingrequestService } from 'src/app/service/Insu
 export class IncomingPortingRequestsComponent implements OnInit {
   insurerLicense: any;
   requests: any;
-  constructor(private route:ActivatedRoute, private incoming: InsurerIncomingportingrequestService,private portrequest: InsurerAcceptincomingportingrequestService, private portrequest1: InsurerRejectincomingportingrequestService) { }
+  // request: any;
+  // public reviewComponent: ReviewComponent;
+  public insuredName: any;
+  constructor(private route:ActivatedRoute, private incoming: InsurerIncomingportingrequestService,
+    private portrequest: InsurerAcceptincomingportingrequestService, 
+    private portrequest1: InsurerRejectincomingportingrequestService, 
+    public dialog: MatDialog) { }
 
   ngOnInit() {
     console.log("inside Incoming");
@@ -31,6 +40,7 @@ export class IncomingPortingRequestsComponent implements OnInit {
   port(request) {
     this.portrequest.getSearch(request).subscribe(data=>console.log(data));
     this.reloadData();
+    
   }
 
   port1(request) {
@@ -40,5 +50,25 @@ export class IncomingPortingRequestsComponent implements OnInit {
   reloadData(){
     window.location.reload();
   }
+  // review(insuredname): void{
+  //   console.log("fgh"+insuredname);
+  //   let as = window.localStorage.setItem("insuredname",insuredname);
+  //   // console.log(as);
+  //   // console.log(this.dialog.open(ReviewComponent));
+  //   console.log("About to open the review Component");
+  //   const dialogRef = this.dialog.open(ReviewComponent,{});
+  //   console.log("Opened the review");
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log('The dialog was closed');
+  //   })
+  // }
+  openDialog(insuredname): void {
+    let as = window.localStorage.setItem("insuredname",insuredname);
+    const dialogRef = this.dialog.open(ReviewComponent, {
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
 }

@@ -89,6 +89,7 @@ import { AllPortingRequestsComponent } from './components/all-porting-requests/a
 import { DisplayAllPortingRequestsComponent } from './components/display-all-porting-requests/display-all-porting-requests.component';
 import { PolicyDetailsComponent } from './components/policy-details/policy-details.component';
 import { BuyPolicyComponent } from './components/buy-policy/buy-policy.component';
+import { ReviewComponent } from './components/review/review.component';
 
 const routes: Routes = [];
 @NgModule({
@@ -134,9 +135,10 @@ const routes: Routes = [];
     DisplayAllPortingRequestsComponent,
     PolicyDetailsComponent,
     MyPoliciesComponent,
-    BuyPolicyComponent
+    BuyPolicyComponent,
+    ReviewComponent
   ],
-  entryComponents: [CalculatorComponent],
+  entryComponents: [CalculatorComponent,ReviewComponent],
 
   imports: [
     BrowserModule,
