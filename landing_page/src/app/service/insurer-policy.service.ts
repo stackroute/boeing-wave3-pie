@@ -3,6 +3,7 @@ import { PolicyFormInfo } from './../components/policyStore/policy-form-info';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
+import { ipaddressvalue } from './ipaddressvalue';
 const httpOptions = {
  headers: new HttpHeaders({
    'Access-Control-Allow-Origin':'*',
@@ -19,7 +20,8 @@ export class InsurerPolicyService {
 
  constructor(private http: HttpClient) { }
 
- localUrl = 'http://13.126.73.190:8092/insurerregservice/api/v1/';
+//  localUrl = 'http://13.126.73.190:8092/insurerregservice/api/v1/';
+localUrl = 'http://' + ipaddressvalue + ':8092/insurerregservice/api/v1/'
  policiesUrl = 'http://localhost:8097/api/v1/';
 
 

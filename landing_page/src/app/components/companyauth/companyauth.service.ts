@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { AuthLoginInfo } from './login-info';
 import { SignUpInfo } from './signup-info';
 import { PolicyFormInfo } from '../policyStore/policy-form-info';
+import { ipaddressvalue } from 'src/app/service/ipaddressvalue';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -15,7 +16,7 @@ const httpOptions = {
 export class CompanyAuthService {
   // private signupUrl = 'http://13.126.73.190:8092/insurerregservice/api/v1/signup';
   private addPolicyUrl = 'http://13.126.73.190:8092/insurerregservice/api/v1/policy/newpolicy';
-  private signupUrl = 'http://172.23.239.82:8092/insurerregservice/api/v1/signup';
+  private signupUrl = 'http://' + ipaddressvalue + ':8092/insurerregservice/api/v1/signup';
 
   constructor(private http: HttpClient) {
   }

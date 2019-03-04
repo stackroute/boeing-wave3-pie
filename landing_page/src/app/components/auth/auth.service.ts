@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class AuthService {
   private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  private loginUrl = 'http://' + ipaddressvalue + ':8092/commonauth/api/auth/signin';
+  private loginUrl = 'http://' + ipaddressvalue + ':8096/api/auth/signin';
   private signupUrl = 'http://' + ipaddressvalue + ':8092/userreg/api/auth/signup';
 
   get isLoggedIn() {
