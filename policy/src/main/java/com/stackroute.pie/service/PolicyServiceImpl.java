@@ -9,18 +9,21 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class PolicyServiceImpl implements PolicyService {
 
     private PolicyRepository policyRepository;
-    private KafkaTemplate<String, Policy> kafkaTemplate;
+//    private KafkaTemplate<String, Policy> kafkaTemplate;
 
+    //, KafkaTemplate<String, Policy> kafkaTemplate
     @Autowired
-    PolicyServiceImpl(PolicyRepository policyRepository, KafkaTemplate<String, Policy> kafkaTemplate) {
+    PolicyServiceImpl(PolicyRepository policyRepository) {
         this.policyRepository = policyRepository;
-        this.kafkaTemplate = kafkaTemplate;
+//        this.kafkaTemplate = kafkaTemplate;
     }
     //Method for adding the policy for insurer
     @Override
@@ -35,7 +38,7 @@ public class PolicyServiceImpl implements PolicyService {
         policyRepository.save(policy1);
         Policy policy2 = policyRepository.findByUniqueId(policy1.getUniqueId()).get();
         System.out.println(policy2);
-        kafkaTemplate.send("policy_added",policy2);
+//        kafkaTemplate.send("policy_added",policy2);
         return new ResponseEntity<>("Policy has been added", HttpStatus.CREATED);
     }
 
@@ -63,15 +66,15 @@ public class PolicyServiceImpl implements PolicyService {
 
     //Method to find policy based on insurerName and policyName
     @Override
-    public ResponseEntity<?> getPolicyForUser(String insurerName, String policyName) {
-        if(policyRepository.existsByInsurerName(insurerName) == false) {
-            return new ResponseEntity<>("Policies doesn't exist under that insurer", HttpStatus.NOT_FOUND);
-        }
-        if(policyRepository.existsByPolicyNameAndInsurerName(policyName,insurerName) == false) {
-            return new ResponseEntity<>("The requested policy doesn't exist", HttpStatus.NOT_FOUND);
-        }
+    public Policy getPolicyForUser(String insurerName, String policyName) {
+//        if(policyRepository.existsByInsurerName(insurerName) == false) {
+//            return new ResponseEntity<>("Policies doesn't exist under that insurer", HttpStatus.NOT_FOUND);
+//        }
+//        if(policyRepository.existsByPolicyNameAndInsurerName(policyName,insurerName) == false) {
+//            return new ResponseEntity<>("The requested policy doesn't exist", HttpStatus.NOT_FOUND);
+//        }
         Policy policy = policyRepository.findByInsurerNameAndPolicyName(insurerName,policyName).get();
-        return new ResponseEntity<>(policy, HttpStatus.FOUND);
+        return policy;
     }
 
     //Method for adding the inusredName
@@ -125,5 +128,16 @@ public class PolicyServiceImpl implements PolicyService {
             return new ResponseEntity<>("No policies are found for that insured", HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(insuredPolicies, HttpStatus.FOUND);
+    }
+
+    //Method to get Insurer Names
+    @Override
+    public ResponseEntity<?> getInsurerList() {
+        Set<String> set = new HashSet<String>();
+        List<Policy> policies = policyRepository.findAll();
+        for(int i = 0; i < policies.size(); i++) {
+            set.add(policies.get(i).getInsurerName());
+        }
+        return new ResponseEntity<>(set, HttpStatus.FOUND);
     }
 }
