@@ -13,7 +13,7 @@ import { AddNewPolicyComponent } from './components/add-new-policy/add-new-polic
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MyRequestsComponent } from './components/my-requests/my-requests.component';
 import { HomeComponent } from './components/home/home.component';
-import { Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -87,8 +87,9 @@ import { AddNewFormComponent } from './components/add-new-form/add-new-form.comp
 import { CalculatorComponent } from './components/calculator/calculator.component';
 import { AllPortingRequestsComponent } from './components/all-porting-requests/all-porting-requests.component';
 import { DisplayAllPortingRequestsComponent } from './components/display-all-porting-requests/display-all-porting-requests.component';
-import { PolicyDetailsComponent } from './components/policy-details/policy-details.component';
+import { DialogbotComponent } from './components/dialogbot/dialogbot.component';
 import { BuyPolicyComponent } from './components/buy-policy/buy-policy.component';
+import { PolicyDetailsComponent } from './components/policy-details/policy-details.component';
 
 const routes: Routes = [];
 @NgModule({
@@ -113,6 +114,7 @@ const routes: Routes = [];
     RegisterComponent,
     NewFormFormatComponent,
     SideBarComponent,
+    MyPoliciesComponent,
     CompanyComponent,
     UserComponent,
     UserProfileComponent,
@@ -132,17 +134,19 @@ const routes: Routes = [];
     CalculatorComponent,
     AllPortingRequestsComponent,
     DisplayAllPortingRequestsComponent,
+    DialogbotComponent,
     PolicyDetailsComponent,
     MyPoliciesComponent,
     BuyPolicyComponent
   ],
-  entryComponents: [CalculatorComponent],
-
+  entryComponents: [DialogbotComponent,CalculatorComponent],
+    
   imports: [
     BrowserModule,
     AppRoutingModule,
     FlexLayoutModule,
     FormsModule,
+    RouterModule.forRoot(routes),
     CarouselModule,
     HttpClientModule,
     ReactiveFormsModule,

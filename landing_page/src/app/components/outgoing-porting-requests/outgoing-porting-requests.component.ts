@@ -1,7 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { InsurerOutgoingportingrequestService } from 'src/app/service/insurer-outgoingportingrequest.service';
-import { InsurerAcceptoutgoingportingrequestService } from 'src/app/service/insurer-acceptoutgoingportingrequest.service';
+import { InsurerOutgoingportingrequestService } from './../../service/insurer-outgoingportingrequest.service';
+import { InsurerAcceptoutgoingportingrequestService } from './../../service/insurer-acceptoutgoingportingrequest.service';
 
 @Component({
   selector: 'app-outgoing-porting-requests',
