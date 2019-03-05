@@ -12,9 +12,10 @@ import java.util.Optional;
 @Repository
 public interface PolicyRepository extends MongoRepository<Policy, String> {
     boolean existsByInsurerName(String insurerName);
-    boolean existsByPolicyIdAndInsurerName(int policyId,String insurerName);
+    boolean existsByInsurerLicense(String insurerLicense);
+    boolean existsByPolicyIdAndInsurerName(long policyId,String insurerName);
     boolean existsByPolicyNameAndInsurerName(String policyName,String insurerName);
-    Optional<List<Policy>> findByInsurerName(String insurerName);
+    Optional<List<Policy>> findByInsurerLicense(String insurerLicense);
     Optional<Policy> findByInsurerNameAndPolicyName(String insurerName, String policyName);
     Optional<Policy> findByUniqueId(String uniqueId);
 }

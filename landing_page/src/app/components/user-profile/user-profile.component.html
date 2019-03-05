@@ -1,26 +1,19 @@
-<!-- <app-dashboard></app-dashboard> -->
-<form [formGroup]="profileForm"  class="normal-form">
-  <mat-grid-list cols="2" rowHeight="300px">
-      <mat-grid-tile>
-          <div class="controles-container">
+<div style="margin-left:30%;">
 
-          <mat-form-field>
-              <input formControlName="fullName" matInput placeholder="Full Name" >
-              </mat-form-field>
-          <mat-form-field>
-              <input formControlName="fullName" matInput placeholder="Full Name">
-          </mat-form-field>
-          <mat-form-field>
-              <input formControlName="fullName" matInput placeholder="Full Name">
-          </mat-form-field>    
-      <!-- <li>Insured Name : {{ profile.username }}</li>
-      <li>Password : {{ profile.password }}</li>
-      <li>Email : {{ profile.email }}</li>
-      <li>Full Name : {{ profile.fullName}}</li> -->
-      <a [routerLink]="['/updateProfile', 'sachinten']" class="btn btn-primary">Update</a>
-   </div>
-    </mat-grid-tile>
-    </mat-grid-list>
- <!-- <app-footer></app-footer>
- <router-outlet></router-outlet> -->
- 
+  <ul style="list-style: none">
+    <li>Insured Name : {{ profile.username}}</li>
+    <li>Email : {{ profile.email }}</li>
+    <li>Age : {{profile.age}}</li>
+    <li>Gender : {{profile.gender}}</li>
+    <li>Full Name : {{ profile.fullName}}</li>
+    <li>Family Members :
+      <div *ngFor = "let count of profile.familyMembers">
+        <li>Member Name : {{count.memberName}}</li>
+        <li>Member Age: {{count.memberAge}}</li>
+        <li>Member Gender : {{count.memberGender}}</li>
+        <li>Relation : {{relation}}}</li>
+      </div>
+    </li>
+    <a [routerLink]="['/updateProfile', profile.username]" class="btn btn-primary">Update</a>
+  </ul>
+</div>

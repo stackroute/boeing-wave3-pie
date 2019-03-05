@@ -1,30 +1,32 @@
+<div class="mypolicy">
+  <div *ngFor="let request of requests">
 
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Logo</th>
+          <th>Request ID</th>
+          <th>User Name</th>
+          <th>Old Insurer Name</th>
+          <!-- <th>Sum Insured</th> -->
 
- <div class="mypolicy">
-    <div *ngFor = "let request of requests">
-
-<table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Logo</th>
-        <th>Request ID</th>
-        <th>User Name</th>
-        <th>Old Insurer Name</th>
-        <!-- <th>Sum Insured</th> -->
-        
-        <th>Action</th> 
-      </tr>
-    </thead>
-    <tbody>
-				<tr>
-					<td><img class="img-thumbnail img-responsive" alt="image" src="./../../assets/img/user.jpeg" alt="Logo" class = "img-responsive" style="width: 50px; height: 50px;"/></td>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><img class="img-thumbnail img-responsive" alt="image" src="./../../assets/img/user.jpeg" alt="Logo"
+              class="img-responsive" style="width: 50px; height: 50px;" /></td>
           <td>{{ request.portingRequestId }}</td>
           <td>{{ request.insuredName }}</td>
           <td>{{ request.insurerName }}</td>
-          <button class = "btn btn-primary" (click)="port(request)">Accept Porting</button>
-<button class = "btn btn-primary">Raise Grievence</button>
-				 <!-- <td>20000</td>  -->
-           <!-- <td> 
+          <button class="btn btn-primary" (click)="port(request)">Accept Porting</button>
+          <button class="btn btn-primary" (click)='raiseGrievanceButtonClicked(request.portingRequestId)'>Raise
+            Grievence</button>
+          <app-all-porting-requests *ngIf="raiseGrievanceButtonIsClicked" [currentCompanyName]="request.insurerName" [portingRequestId]="request.portingRequestId">
+          </app-all-porting-requests>
+          <!-- <td>20000</td>  -->
+          <!-- <td> 
               <div class="btn-group" role="group" aria-label="...">
                 <button type="button" class="btn btn-default" ng-click="editRecord(row.id)"><i class="glyphicon glyphicon-pencil">
                   </i></button>
@@ -32,7 +34,7 @@
                   </i></button>
               </div>
             </td> -->
-        </tr> 
+        </tr>
         <!-- <tr>
             <td><img class="img-thumbnail img-responsive" alt="image" src="./../../assets/img/user.jpeg" alt="Logo" class = "img-responsive" style="width: 50px; height: 50px;"/></td>
             <td>Max Bupa Cancer</td>
@@ -79,20 +81,20 @@
                     </td>
               </tr>  -->
 
-    </tbody>
+      </tbody>
       <tfoot>
-          <tr>
-            <td colspan="5" class="text-center">
-              <div st-pagination="" st-items-by-page="itemsByPage"></div>
-            </td>
-          </tr>
-        </tfoot>
-      </table>
-  </div> 
+        <tr>
+          <td colspan="5" class="text-center">
+            <div st-pagination="" st-items-by-page="itemsByPage"></div>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
   </div>
-  <br/>
-<br/>
-<br/>
+</div>
+<br />
+<br />
+<br />
 <app-side-bar></app-side-bar>
 
 <!-- <div *ngFor = "let request of requests">

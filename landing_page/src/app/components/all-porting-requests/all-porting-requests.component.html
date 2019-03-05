@@ -1,6 +1,5 @@
-<input [(ngModel)]="currentCompanyName" />
+<!-- <input [(ngModel)]="currentCompanyName" />
 <button (click)="fetchAllPortingRequests(currentCompanyName)" routerLink="/display-all-porting-requests">
   Fetch All Porting Requests
-</button>
-
-<app-display-all-porting-requests *ngIf="fetchAllPortingRequestsIsClicked" [pendingTasks]="pendingTasks"></app-display-all-porting-requests>
+</button> -->
+<app-display-all-porting-requests [pendingTasks]="pendingTasks"></app-display-all-porting-requests>

@@ -5,6 +5,7 @@ import { JwtResponse } from './jwt-response';
 import { AuthLoginInfo } from './login-info';
 import { SignUpInfo } from './signup-info';
 import { Router } from '@angular/router';
+import { ipaddressvalue } from '../../service/ipaddressvalue';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -14,9 +15,13 @@ const httpOptions = {
 })
 export class AuthService {
   private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  // private loginUrl = 'http://13.126.73.190:8092/commonauth/api/auth/signin';
+  private loginUrl = 'http://13.126.73.190:8092/commonauth/api/auth/signin';
+  // private loginUrl = 'http://localhost:8096/api/auth/signin';
   private signupUrl = 'http://13.126.73.190:8092/userreg/api/auth/signup';
-   private loginUrl = 'http://172.23.239.82:8096/api/auth/signin';
+  // private loginUrl = 'http://localhost:8096/api/auth/signin';
+  // private signupUrl = 'http://localhost:8093/api/auth/signup';
+
+  
 
   get isLoggedIn() {
     return this.loggedIn.asObservable();
