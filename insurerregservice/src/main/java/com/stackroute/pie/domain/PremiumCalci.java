@@ -17,7 +17,6 @@ public class PremiumCalci {
     private String userName;
     private double sumInsured;
     private String  city;
-    //private Date DOB;
     private  int ageOfEldest;
     private int noOfAdults;
     private int noOfChildren;

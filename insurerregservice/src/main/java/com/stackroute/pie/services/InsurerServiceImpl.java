@@ -74,6 +74,7 @@ public class InsurerServiceImpl implements  InsurerService{
         return insurer1;
     }
 
+    @Override
     public long calculatePremium(PremiumCalci premiumCalci){
 
         long premium = 1000;
