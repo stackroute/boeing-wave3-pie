@@ -3,7 +3,6 @@ import { PolicyFormInfo } from './../components/policyStore/policy-form-info';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
-import { ipaddressvalue } from './ipaddressvalue';
 const httpOptions = {
  headers: new HttpHeaders({
    'Access-Control-Allow-Origin':'*',
