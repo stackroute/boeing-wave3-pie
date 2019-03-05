@@ -88,3 +88,23 @@ footer{
 #main-footer a{
     color: #6c5f73;
 } */
+
+
+#footer-main{
+  background: #222;
+  color: white;
+  font-size: 0.8rem;
+  padding: 2.5rem 0;
+}
+
+
+.list{
+  font-size: 20px;
+}
+.links{
+  font-size: 20px;
+}
+.linkslist{
+  font-size: 20px;
+
+}
