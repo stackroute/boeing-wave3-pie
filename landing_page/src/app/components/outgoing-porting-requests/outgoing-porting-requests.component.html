@@ -20,7 +20,9 @@
           <td>{{ request.portingRequestId }}</td>
           <td>{{ request.insuredName }}</td>
           <td>{{ request.insurerName }}</td>
+          <button mat-raised-button (click)="openDialog(request.insuredName)" style="position: relative; right: 0;margin-top: 0px;">Review</button>
           <button class="btn btn-primary" (click)="port(request)">Accept Porting</button>
+          
           <button class="btn btn-primary" (click)='raiseGrievanceButtonClicked(request.portingRequestId)'>Raise
             Grievence</button>
           <app-all-porting-requests *ngIf="raiseGrievanceButtonIsClicked" [currentCompanyName]="request.insurerName" [portingRequestId]="request.portingRequestId">
@@ -36,8 +38,6 @@
             </td> -->
         </tr>
         <!-- <tr>
-            <td><img class="img-thumbnail img-responsive" alt="image" src="./../../assets/img/user.jpeg" alt="Logo" class = "img-responsive" style="width: 50px; height: 50px;"/></td>
-            <td>Max Bupa Cancer</td>
             <td>Dave</td>
             <td>ICICI Lombard</td>
             <td>50000</td> 

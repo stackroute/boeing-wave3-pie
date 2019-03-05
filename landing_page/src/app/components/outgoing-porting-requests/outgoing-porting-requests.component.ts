@@ -4,7 +4,6 @@ import { InsurerOutgoingportingrequestService } from './../../service/insurer-ou
 import { InsurerAcceptoutgoingportingrequestService } from './../../service/insurer-acceptoutgoingportingrequest.service';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import { AllPortingRequestsComponent } from '../all-porting-requests/all-porting-requests.component';
-
 @Component({
   selector: 'app-outgoing-porting-requests',
   templateUrl: './outgoing-porting-requests.component.html',
@@ -37,6 +36,15 @@ export class OutgoingPortingRequestsComponent implements OnInit {
   }
   reloadData() {
     window.location.reload();
+  }
+  openDialog(insuredname): void {
+    let as = window.localStorage.setItem("insuredname",insuredname);
+    const dialogRef = this.dialog.open(ReviewComponent, {
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
   raiseGrievanceButtonClicked(portrequestId: number): boolean{
     const dialogConfig = new MatDialogConfig();
