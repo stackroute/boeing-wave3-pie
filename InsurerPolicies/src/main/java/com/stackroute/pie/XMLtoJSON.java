@@ -44,11 +44,10 @@ public class XMLtoJSON {
 
             // inserting data from xml file into UserPolicies table in the policyDB database
 
-            String sql = "INSERT INTO " + insurers[i] +  "(id,Policy) values(?, ?)";
+            String sql = "INSERT INTO " + insurers[i] +  "(Policy) values(?)";
             PreparedStatement statement = conn.prepareStatement(sql);
-            //statement.setString(1,insurers[i]);
-            statement.setInt(1, 1);
-            statement.setString(2, strr[i].substring(0, strr[i].length() - 10));
+            //statement.setString(1,insurers[i])
+            statement.setString(1, strr[i].substring(0, strr[i].length() - 10));
             statement.executeUpdate();
 
         }
