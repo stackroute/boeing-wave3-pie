@@ -1,21 +1,20 @@
 package com.stackroute.pie.controller;
 
-
-import com.stackroute.pie.domain.Insurer;
+import com.stackroute.pie.domain.InsurerPolicy;
 import com.stackroute.pie.service.ExternalDbService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
+import java.util.List;
 
+
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/v1/")
+@RequestMapping("/api/v1")
 public class ExternalDbController {
 
     private ExternalDbService externalDbService;
@@ -30,8 +29,8 @@ public class ExternalDbController {
     @GetMapping("/policy/external/{insurerName}")
     public ResponseEntity<?> getPolicies(@PathVariable(value = "insurerName") String insurerName) throws UnsupportedEncodingException, SQLException, ClassNotFoundException {
         System.out.println(insurerName + "####");
-       Insurer insurer = externalDbService.getPolicies(insurerName);
-        return new ResponseEntity<Insurer>(insurer, HttpStatus.OK);
+       List<InsurerPolicy> insurer = externalDbService.getPolicies(insurerName);
+        return new ResponseEntity<List<InsurerPolicy>>(insurer, HttpStatus.OK);
     }
 
 
