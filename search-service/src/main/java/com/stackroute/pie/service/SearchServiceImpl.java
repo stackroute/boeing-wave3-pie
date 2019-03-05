@@ -14,12 +14,6 @@ import opennlp.tools.tokenize.SimpleTokenizer;
 import opennlp.tools.util.Span;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.data.mongodb.core.aggregation.Aggregation;
-import org.springframework.data.mongodb.core.aggregation.AggregationOperation;
-import org.springframework.data.mongodb.core.aggregation.TypedAggregation;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -54,19 +48,6 @@ public class SearchServiceImpl implements SearchService {
 
     int count;
 
-
-//    private SearchServiceImpl service;
-
-
-//    private void simulateSlowService() {
-//        try {
-//            Thread.sleep(3000L);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
-
     @Override
     public List<Policy> getAllPolicies(String value) {
         List<Policy> policy1 = new ArrayList<>();
@@ -89,89 +70,7 @@ public class SearchServiceImpl implements SearchService {
     }
 
 
-//        int count;
-//        SearchPDM searchvalue1 = new SearchPDM();
-//        String diseases = "cancer, diabetes, aids, dengue, malaria, tuberculosis, cardiac, heartattack, surgery";
-//        List<Policy> policy1 = new ArrayList<>();
-//        List<Policy> policy2 = new ArrayList<>();
-//
-//
-//        if (diseases.contains(value)) {
-//
-//            String[] strings = diseases.split(", ");
-//            for (int i = 0; i < strings.length; i++) {
-//
-//                if (strings[i].matches(value)) {
-//                    System.out.println("String value" + value);
-//
-////
-////                    if(searchValueRepository.existsById(value)){
-////                        searchvalue =searchValueRepository.findBySearchValue(value);
-////                        System.out.println(searchvalue.getSearchValue());
-////                        count=searchvalue.getCount();
-////                        searchvalue.setSearchValue(value);
-////                        searchvalue.setCount(++count);
-////                    }
-////                    else{
-////                        count=0;
-////                        searchvalue.setSearchValue(value);
-////                        searchvalue.setCount(++count);
-////                    }
-//
-////                    System.out.println(count);
-//
-//                    List<Policy> policies = searchRepository.findAll();
-//                    for (Policy a : policies) {
-////                        System.out.println("Inside policy" + a);
-//                        List<String> disease = a.getDiseasesList();
-//                        //System.out.println(disease);
-//                        for (String d : disease) {
-//                            System.out.println("DiseaseName :"+d);
-//                            if (d.equals(value)) {
-//                                System.out.println("Added " + d);
-//                            }
-////                           for (String d : disease) {
-////                            System.out.println("DiseaseName :" + d);
-//////                            System.out.println("Inside disease" + d);
-////                            if (value.equals(d)) {
-//////                                System.out.println("Inside if part of disease" + d);
-////                                policy1.add(a);
-////                                searchvalue1 = saveSearch(a);
-////
-////
-//////                                if(searchValueRepository.existsById(a.getPolicyName())){
-//////                                    searchvalue =searchValueRepository.findBySearchValue(a.getPolicyName());
-//////                                    System.out.println("Search!!!! "+searchvalue.getSearchValue());
-//////                                    count=searchvalue.getCount();
-//////                                    searchvalue.setSearchValue(searchvalue.getSearchValue());
-//////                                    searchvalue.setCount(++count);
-//////                                }
-//////                                else{
-//////                                    count=0;
-//////                                    searchvalue.setSearchValue(a.getPolicyName());
-//////                                    searchvalue.setCount(++count);
-//////                                }
-//////                                SearchPDM c1=saveCount(searchvalue);
-//////                                System.out.println("SearchValue "+c1.getSearchValue());
-//////                                System.out.println(c1.getCount());
-////                            }
-////                        }
-//                        }
-//                    }
-//                }
-//            }
-//
-//        }
-//        return policy1;
-//    }
 
-//        } else {
-////            int count = 0;
-//            policy2 = searchRepository.findByPolicyName(value);
-//            for (Policy p : policy2)
-//                searchvalue1 = saveSearch(p);
-//            return policy2;
-//        }
 
 
     //    @Override
