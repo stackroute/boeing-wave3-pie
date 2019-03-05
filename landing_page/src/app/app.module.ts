@@ -149,7 +149,6 @@ const routes: Routes = [];
     AppRoutingModule,
     FlexLayoutModule,
     FormsModule,
-    RouterModule.forRoot(routes),
     CarouselModule,
     HttpClientModule,
     ReactiveFormsModule,
