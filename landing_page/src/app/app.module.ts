@@ -142,7 +142,7 @@ const routes: Routes = [];
     BuyPolicyComponent,
     ReviewComponent
   ],
-  entryComponents: [CalculatorComponent,ReviewComponent],
+  entryComponents: [CalculatorComponent,ReviewComponent,DialogbotComponent],
   
   imports: [
     BrowserModule,
