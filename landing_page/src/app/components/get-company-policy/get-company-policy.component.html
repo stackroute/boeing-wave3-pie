@@ -11,18 +11,22 @@
           <div class="panel-heading">Policy Name: {{ count.policyName }}</div>
           <div class="panel-body">
             <p>PolicyId: {{ count.policyId }}</p>
-            <p>Min Sum Insured: {{count.minSumInsured}}</p>
-            <p>Max Sum Insured: {{count.maxSumInsured}}</p>
-            <p>No of Cash Less Hospitals: {{ count.noOfCashLessHospitals }}</p>
+            <p>Policy Type: {{count.policyType}}</p>
+            <p>Genger Avail : {{count.genderAvail}}</p>
             <p>Min Age: {{count.minAge}}</p>
             <p>Max Age: {{count.maxAge}}</p>
-            <p>InsurerName: {{count.insurerName}}</p>
+            <p>Policy Term: {{count.policyTerm}}</p>
+            <p>Min Sum Insured: {{count.minSumInsured}}</p>
+            <p>Max Sum Insured: {{count.maxSumInsured}}</p>
+            <!-- <p>InsurerName: {{count.insurerName}}</p> -->
             <p>Waiting Period: {{ count.waitingPeriod }}</p>
+            <p>Policy Description: {{count.policyDescription}}</p>
+
    
    
           </div>
           <div class="panel-footer">
-            <a [routerLink]="['/deletePolicy', count.insurerName,count.policyId]" class="btn btn-primary" style ="margin-right: 5%;"onClick= "window.location.reload();">Delete</a>
+            <a [routerLink]="['/deletePolicy', count.insurerName,count.policyName]" class="btn btn-primary" style ="margin-right: 5%;"onClick= "window.location.reload();">Delete</a>
             <!-- <a [routerLink]="['/updateRequest', count.portingRequestId]" class="btn btn-primary"onClick= "window.location.reload();">Update</a> -->
            </div>
         </div>

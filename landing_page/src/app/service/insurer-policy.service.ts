@@ -27,7 +27,7 @@ export class InsurerPolicyService {
 
  addNewPolicy(policy : PolicyFormInfo):Observable<Object> {
    console.log('adadsasdas')
-  return this.http.put(this.localUrl+ 'policy/newpolicy',policy);
+  return this.http.post(this.localUrl+ 'policy',policy);
  }
 
  getPolicies(insurerLicense : String):Observable<Object> {
@@ -37,14 +37,14 @@ export class InsurerPolicyService {
 
  getPremium(premium : PolicyPremium):Observable<Object> {
   console.log('adadsasdas')
- return this.http.post('http://13.126.73.190:8092/calculator/api/auth'+ '/policy/premium/calculator',premium);
-}
+ return this.http.post('http://13.126.73.190:8092/insurerregservice/api/v1'+ '/policy/premium/calculator',premium);
+ }
 
 
- deletePolicy(insurerName,policyId):Observable<Object>{
+ deletePolicy(insurerName:String,policyName:String):Observable<Object>{
    console.log(insurerName);
-   console.log(policyId);
-   return this.http.put(this.localUrl+'policy/delete/'+insurerName+'/'+policyId,0);
+   console.log(policyName);
+   return this.http.delete(this.localUrl+'policy/'+insurerName+'/'+policyName);
 
  }
 }
