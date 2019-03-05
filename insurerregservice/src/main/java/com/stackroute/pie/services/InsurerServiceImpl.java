@@ -1,9 +1,6 @@
 package com.stackroute.pie.services;
 
-import com.stackroute.pie.domain.Insurer;
-import com.stackroute.pie.domain.Policy;
-import com.stackroute.pie.domain.Role;
-import com.stackroute.pie.domain.RoleName;
+import com.stackroute.pie.domain.*;
 import com.stackroute.pie.message.request.SignUpForm;
 import com.stackroute.pie.repository.InsurerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,5 +72,82 @@ public class InsurerServiceImpl implements  InsurerService{
         insurer.setRoles(roles);
         Insurer insurer1 = insurerRepository.save(insurer);
         return insurer1;
+    }
+
+    public long calculatePremium(PremiumCalci premiumCalci){
+
+        long premium = 1000;
+        if (premiumCalci.getAgeOfEldest() < 40) {
+            premium *= 1.1;
+
+        }
+        else{
+            // Add 20% per 5 years above 40
+            int age = premiumCalci.getAgeOfEldest() - 40;
+            while (age >= 5) {
+                premium *= 1.2;
+                age -= 5;
+            }
+
+        }
+        if (premiumCalci.getPolicyName().equals("Apollo-cancer") ) {
+            premium *= 1.3;
+        }
+        if (premiumCalci.getPolicyName().equals("MaxBupa-cancer") ) {
+            premium *= 1.2;
+        }
+        if (premiumCalci.getPolicyName().equals("StarHealth-cancer") ) {
+            premium *= 1.1;
+        }
+
+
+        if (premiumCalci.getPolicyName().equals( "Apollo-children")) {
+            premium *= 1.2;
+        }
+        if (premiumCalci.getPolicyName().equals("MaxBupa-children") ) {
+            premium *= 1.3;
+        }
+        if (premiumCalci.getPolicyName() .equals("StarHealth-children") ) {
+            premium *= 1.5;
+        }
+
+
+        if (premiumCalci.getPolicyName().equals("Apollo-Family") ) {
+            premium *= 1.075;
+        }
+        if (premiumCalci.getPolicyName().equals("MaxBupa-Family") ) {
+            premium *= 1.15;
+        }
+        if (premiumCalci.getPolicyName().equals("StarHealth-Family") ) {
+            premium *= 1.1;
+        }
+
+
+        if (premiumCalci.getSumInsured() == 100000) {
+            premium *= 1.1;
+        }
+        if (premiumCalci.getSumInsured() == 200000) {
+            premium *= 1.2;
+        }
+        if (premiumCalci.getSumInsured() == 300000) {
+            premium *= 1.3;
+        }
+        if (premiumCalci.getSumInsured() == 400000) {
+            premium *= 1.4;
+        }
+        if (premiumCalci.getSumInsured() == 500000) {
+            premium *= 1.5;
+        }  if (premiumCalci.getSumInsured() == 600000) {
+            premium *= 1.6;
+        }
+
+
+        premium*= premiumCalci.getNoOfAdults();
+        premium+= (premiumCalci.getNoOfChildren()*.5);
+
+        premium*= premiumCalci.getNoOfYears();
+
+        return premium;
+
     }
 }
