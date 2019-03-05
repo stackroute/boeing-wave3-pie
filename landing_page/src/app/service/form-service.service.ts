@@ -10,9 +10,9 @@ import {ipaddressvalue} from './ipaddressvalue';
 export class FormServiceService {
   allFormFormats: Observable<FormFormat[]>;
 
-  //TODO: Remember to configure the AWS URL before pushing to git.
+  //TODO: Remember to configure the AWS URL before pushing to git
   adminUrl = 'http://' + ipaddressvalue + ':8092/admin/api/v1/';
-  // adminUrl = 'http://13.126.73.190:8092/admin/api/v1/'
+  // adminUrl = 'http://13.126.73.190:8092/admin/api/v1/';
   getAllFormsUrl = 'formformats/';
   getFormFormatUrl = 'formformat/';
   saveFormUrl = 'formformat/';

@@ -20,9 +20,8 @@ export class InsurerPolicyService {
 
  constructor(private http: HttpClient) { }
 
-//  localUrl = 'http://13.126.73.190:8092/insurerregservice/api/v1/';
-localUrl = 'http://' + ipaddressvalue + ':8092/insurerregservice/api/v1/'
- policiesUrl = 'http://localhost:8097/api/v1/';
+ localUrl = 'http://13.126.73.190:8092/insurerregservice/api/v1/';
+ policiesUrl = 'http://13.126.73.190:8092/policy/api/v1/';
 
 
 
