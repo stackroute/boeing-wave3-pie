@@ -30,13 +30,7 @@ export class UpdateProfileComponent implements OnInit {
       fullName: ['', Validators.required],
       insuredId: ['',Validators.required]
       });
-      this.thirdForm = this.formBuilder.group({
-        memberName: [''],
-        memberAge: [''],
-        memberGender: [''],
-        relation: ['']
-      })
- 
+      
    }
  
    submitForm() {
