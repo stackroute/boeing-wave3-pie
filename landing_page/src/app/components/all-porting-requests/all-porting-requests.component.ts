@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { FetchPendingTasksService } from "../../service/fetch-pending-tasks.service";
 import { PendingTasks } from "../pending-tasks";
 import { Task } from "../task";
@@ -9,7 +9,8 @@ import { Task } from "../task";
   styleUrls: ["./all-porting-requests.component.css"]
 })
 export class AllPortingRequestsComponent implements OnInit {
-  currentCompanyName: string;
+  @Input() currentCompanyName: string;
+  @Input() portingRequestId: number;
   pendingTasks: PendingTasks[];
 
   newPendingTask: Task;
@@ -27,7 +28,6 @@ export class AllPortingRequestsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.currentCompanyName = null;
     this.fetchAllPortingRequestsIsClicked = false;
     this.viewPendingTasksOfInsuredIsClicked = false;
     this.addANewPendingTaskIsClicked = false;
@@ -74,4 +74,5 @@ export class AllPortingRequestsComponent implements OnInit {
     }
     
   }
+  getPendingTasksByPortingRequestId()
 }
