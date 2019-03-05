@@ -57,7 +57,7 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatTreeModule
+  MatTreeModule,
   
  } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
@@ -190,7 +190,7 @@ const routes: Routes = [];
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatTreeModule
+  MatTreeModule,
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],
