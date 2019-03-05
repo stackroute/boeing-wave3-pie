@@ -17,4 +17,7 @@ public interface SettlementRepository extends MongoRepository<PendingTasks, Inte
 
     @Query
     public PendingTasks findByPendingTasksId(int pendingTasksId);
+
+    @Query
+    public PendingTasks findByPortingRequestId(int portingRequestId);
 }

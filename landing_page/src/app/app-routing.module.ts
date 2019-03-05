@@ -50,7 +50,7 @@ const routes: Routes = [
    {path: 'updateProfile/:username', component:UpdateProfileComponent},
    {path:'newPolicyForm', component:AddNewPolicyComponent},
    {path:'myCompanyPolicy/:insurerLicense',component:GetCompanyPolicyComponent},
-   {path:'deletePolicy/:insurerName/:policyId',component:CompanyPolicyDeleteComponent},
+   {path:'deletePolicy/:insurerName/:policyName',component:CompanyPolicyDeleteComponent},
    {path: 'companyregister', component: CompanyregisterComponent},
    {path: 'myrequests/:username',component: DisplayRequestsComponent},
    {path: 'insurerDashboard/:insurerLicense',component:InsurerDashboardComponent},
