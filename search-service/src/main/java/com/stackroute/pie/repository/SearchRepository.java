@@ -15,13 +15,13 @@ public interface SearchRepository extends MongoRepository<Policy, Integer> {
     List<Policy> findByPolicyName(String policyName);
 
     //To find policies based on diseaseName
-    List<Policy> findByDiseasesListDiseaseName(String diseaseName);
+    List<Policy> findByDiseasesCovered(String diseaseName);
 
     //To find policies by InsurerName
     List<Policy> findByInsurerName(String insurerName);
 
     //To find policies by sumInsured
-    List<Policy> findBySumInsured(int sumInsured);
+//    List<Policy> findBySumInsured(int sumInsured);
+//}
 }
-
 
