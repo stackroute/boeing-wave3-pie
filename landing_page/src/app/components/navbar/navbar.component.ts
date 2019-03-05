@@ -37,6 +37,7 @@ export class NavbarComponent implements OnInit {
     private router: Router,
     private token: TokenStorageService,
     media: ObservableMedia
+    
   ) {
     this.watcher = media.subscribe((change: MediaChange) => {
       if (change.mqAlias === "sm" || change.mqAlias === "xs") {
