@@ -74,5 +74,4 @@ export class AllPortingRequestsComponent implements OnInit {
     }
     
   }
-  getPendingTasksByPortingRequestId()
 }

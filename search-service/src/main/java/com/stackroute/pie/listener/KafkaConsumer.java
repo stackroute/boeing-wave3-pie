@@ -23,7 +23,7 @@ public class KafkaConsumer {
 //            containerFactory = "userKafkaListenerFactory")
 
         //consuming data from kafka & setting it to commonauth
-        @KafkaListener(topics = "insurer_only_policy_json", groupId = "group_json", containerFactory = "userKafkaListenerFactory")
+        @KafkaListener(topics = "policy_added", groupId = "group_json", containerFactory = "userKafkaListenerFactory")
         public void consumeJson(Policy policy) {
             System.out.println("yoyoyoyoyo");
             System.out.println("Consumed JSON Message: " + policy);

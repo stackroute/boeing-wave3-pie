@@ -1,71 +1,210 @@
 package com.stackroute.pie.service;
 
-import com.stackroute.pie.domain.Diseases;
+//import com.stackroute.pie.domain.Diseases;
 import com.stackroute.pie.domain.Policy;
+import com.stackroute.pie.domain.SearchPDM;
 import com.stackroute.pie.repository.SearchRepository;
+import com.stackroute.pie.repository.SearchValueRepository;
 import com.stackroute.pie.service.SearchService;
+import edu.stanford.nlp.tagger.maxent.MaxentTagger;
 import opennlp.tools.postag.POSModel;
 import opennlp.tools.postag.POSSample;
 import opennlp.tools.postag.POSTaggerME;
 import opennlp.tools.tokenize.SimpleTokenizer;
+import opennlp.tools.util.Span;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.aggregation.Aggregation;
+import org.springframework.data.mongodb.core.aggregation.AggregationOperation;
+import org.springframework.data.mongodb.core.aggregation.TypedAggregation;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.query.Query;
 import springfox.documentation.annotations.Cacheable;
+
 import java.io.InputStream;
 import java.util.*;
-
+import java.util.logging.Logger;
 
 @Service
+@CacheConfig(cacheNames = "Policy")
 public class SearchServiceImpl implements SearchService {
+    //    private SearchRepository searchRepository;
 
     @Autowired
-    public SearchServiceImpl(SearchRepository searchRepository) {
-        this.searchRepository = searchRepository;
+    private KafkaTemplate<String, SearchPDM> kafkaTemplate;
 
+    @Autowired
+    public SearchServiceImpl(SearchRepository searchRepository, SearchValueRepository searchValueRepository) {
+        this.searchRepository = searchRepository;
+        this.searchValueRepository = searchValueRepository;
     }
 
     @Autowired
     SearchRepository searchRepository;
 
+    @Autowired
+    SearchValueRepository searchValueRepository;
+
+    SearchPDM searchvalue = new SearchPDM();
+
+    int count;
+
+
+//    private SearchServiceImpl service;
+
+
+//    private void simulateSlowService() {
+//        try {
+//            Thread.sleep(3000L);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//    }
+
+
     @Override
     public List<Policy> getAllPolicies(String value) {
-        String diseases = "cancer, diabetes, aids, dengue, malaria, tuberculosis, cardiac, heartattack, surgery";
         List<Policy> policy1 = new ArrayList<>();
-        List<Policy> policy2 = new ArrayList<>();
+        List<String> tok = new ArrayList<>();
 
-
-        if (diseases.contains(value)) {
-            String[] strings = diseases.split(", ");
-            for (int i = 0; i < strings.length; i++) {
-
-                if (strings[i].matches(value)) {
-                    System.out.println("String value" + value);
-                    List<Policy> policies = searchRepository.findAll();
-                    for (Policy a : policies) {
-                        System.out.println("Inside policy" + a);
-                        List<Diseases> disease = a.getDiseasesList();
-                        for (Diseases d : disease) {
-                            System.out.println("Inside disease" + d);
-                            if (d.getDiseaseName().equals(value)) {
-                                System.out.println("Inside if part of disease" + d.getDiseaseName());
-                                policy1.add(a);
-                            }
-                        }
-                    }
+        List<Policy> pol = searchRepository.findAll();
+        for (Policy p : pol) {
+            System.out.println("Inside policies :" + p);
+            tok = p.getDiseasesCovered();
+            System.out.println(p.getDiseasesCovered());
+            System.out.println("Asd :" + tok);
+            for (int t = 0; t < tok.size(); t++) {
+                if (tok.get(t).equals(value)) {
+                    System.out.println("NAme :" + p);
+                    policy1.add(p);
                 }
             }
-            return policy1;
-        } else {
-            policy2 = searchRepository.findByPolicyName(value);
-            return policy2;
         }
+        return policy1;
     }
 
-    @Override
+
+//        int count;
+//        SearchPDM searchvalue1 = new SearchPDM();
+//        String diseases = "cancer, diabetes, aids, dengue, malaria, tuberculosis, cardiac, heartattack, surgery";
+//        List<Policy> policy1 = new ArrayList<>();
+//        List<Policy> policy2 = new ArrayList<>();
+//
+//
+//        if (diseases.contains(value)) {
+//
+//            String[] strings = diseases.split(", ");
+//            for (int i = 0; i < strings.length; i++) {
+//
+//                if (strings[i].matches(value)) {
+//                    System.out.println("String value" + value);
+//
+////
+////                    if(searchValueRepository.existsById(value)){
+////                        searchvalue =searchValueRepository.findBySearchValue(value);
+////                        System.out.println(searchvalue.getSearchValue());
+////                        count=searchvalue.getCount();
+////                        searchvalue.setSearchValue(value);
+////                        searchvalue.setCount(++count);
+////                    }
+////                    else{
+////                        count=0;
+////                        searchvalue.setSearchValue(value);
+////                        searchvalue.setCount(++count);
+////                    }
+//
+////                    System.out.println(count);
+//
+//                    List<Policy> policies = searchRepository.findAll();
+//                    for (Policy a : policies) {
+////                        System.out.println("Inside policy" + a);
+//                        List<String> disease = a.getDiseasesList();
+//                        //System.out.println(disease);
+//                        for (String d : disease) {
+//                            System.out.println("DiseaseName :"+d);
+//                            if (d.equals(value)) {
+//                                System.out.println("Added " + d);
+//                            }
+////                           for (String d : disease) {
+////                            System.out.println("DiseaseName :" + d);
+//////                            System.out.println("Inside disease" + d);
+////                            if (value.equals(d)) {
+//////                                System.out.println("Inside if part of disease" + d);
+////                                policy1.add(a);
+////                                searchvalue1 = saveSearch(a);
+////
+////
+//////                                if(searchValueRepository.existsById(a.getPolicyName())){
+//////                                    searchvalue =searchValueRepository.findBySearchValue(a.getPolicyName());
+//////                                    System.out.println("Search!!!! "+searchvalue.getSearchValue());
+//////                                    count=searchvalue.getCount();
+//////                                    searchvalue.setSearchValue(searchvalue.getSearchValue());
+//////                                    searchvalue.setCount(++count);
+//////                                }
+//////                                else{
+//////                                    count=0;
+//////                                    searchvalue.setSearchValue(a.getPolicyName());
+//////                                    searchvalue.setCount(++count);
+//////                                }
+//////                                SearchPDM c1=saveCount(searchvalue);
+//////                                System.out.println("SearchValue "+c1.getSearchValue());
+//////                                System.out.println(c1.getCount());
+////                            }
+////                        }
+//                        }
+//                    }
+//                }
+//            }
+//
+//        }
+//        return policy1;
+//    }
+
+//        } else {
+////            int count = 0;
+//            policy2 = searchRepository.findByPolicyName(value);
+//            for (Policy p : policy2)
+//                searchvalue1 = saveSearch(p);
+//            return policy2;
+//        }
+
+
+    //    @Override
     public Policy savePolicy(Policy policy) {
         Policy policy1 = searchRepository.save(policy);
         return policy1;
+    }
+
+    public SearchPDM saveSearch(Policy policies) {
+
+        if (searchValueRepository.existsById(policies.getPolicyName())) {
+            searchvalue = searchValueRepository.findBySearchValue(policies.getPolicyName());
+            System.out.println("Search!!!! " + searchvalue.getSearchValue());
+            count = searchvalue.getCount();
+            searchvalue.setSearchValue(searchvalue.getSearchValue());
+            searchvalue.setCount(++count);
+        } else {
+            count = 0;
+            searchvalue.setSearchValue(policies.getPolicyName());
+            searchvalue.setCount(++count);
+        }
+        SearchPDM c1 = saveCount(searchvalue);
+        System.out.println("Saving into SearchValueRepo:" + c1.getSearchValue());
+        System.out.println("Saving into SearchValueRepo:" + c1.getCount());
+//        kafkaTemplate.send("searchFrequency",searchvalue);
+        return searchvalue;
+    }
+
+
+    public SearchPDM saveCount(SearchPDM searchPDM) {
+
+        SearchPDM count1 = searchValueRepository.save(searchPDM);
+        return count1;
     }
 
     public static String[] stopwords = {".", "a", "as", "able", "about", "above", "according", "across", "actually", "after", "afterwards", "again",
@@ -99,14 +238,15 @@ public class SearchServiceImpl implements SearchService {
 
     public static Set<String> stopWordSet = new HashSet<String>(Arrays.asList(stopwords));
 
+
     @Cacheable(value = "policies")
     public List<Policy> getByDisease(String disease) {
-        return searchRepository.findByDiseasesListDiseaseName(disease);
+        return searchRepository.findByDiseasesCovered(disease);
     }
 
     @Cacheable(value = "diseases")
     List<Policy> findByDiseasesListDiseaseName(String diseaseName) {
-        return searchRepository.findByDiseasesListDiseaseName(diseaseName);
+        return searchRepository.findByDiseasesCovered(diseaseName);
     }
 
     @Cacheable(value = "Insurer")
@@ -118,27 +258,34 @@ public class SearchServiceImpl implements SearchService {
     List<Policy> findByPolicyName(String policyName) {
         return searchRepository.findByPolicyName(policyName);
     }
-
-    @Cacheable(value = "SumInsured")
-    List<Policy> findBySumInsured(int num) {
-        return searchRepository.findBySumInsured(num);
-    }
+//
+//    @Cacheable(value = "SumInsured")
+//    List<Policy> findBySumInsured(int num) {
+//        return searchRepository.findBySumInsured(num);
+//    }
 
     @Cacheable(value = "findAll")
     List<Policy> findAll() {
         return searchRepository.findAll();
     }
 
+    public static String[] policyArr ={"Jeevan Sathi", "JeevanAnand" ,"JeevanVima" ,"HealthSecure" ,"JeevanHealth" , "Jeevan" , "ApolloHealthSecure","ApolloHealthCare"};
+
+    public static Set<String> policyString = new HashSet<String>(Arrays.asList(policyArr));
+
     @Cacheable("policies")
     public List<Policy> tokenString(String value) throws Exception {
         List<String> tokenList = new ArrayList<>();
         List<Policy> policies = new ArrayList<>();
-
+        List<Policy> policies1 = new ArrayList<>();
+        List<Policy> policies3= new ArrayList<>();
+        SearchPDM searchvalue2 = new SearchPDM();
+        int count;
         List<String> newpolicy1 = new ArrayList<>();
         Policy newpolicy;
         String companyString = "MaxBupa,StarHealth,Apollo,Religare";
-        String policyString = "JeevanSathi , JeevanAnand ,JeevanVima ,HealthSecure ,JeevanHealth";
-        String diseaseString = "cancer, diabetes, aids, dengue, malaria, tuberculosis, cardiac, heartattack, surgery";
+        //String policyString = "JeevanSathi , JeevanAnand ,JeevanVima ,HealthSecure ,JeevanHealth";
+        String diseaseString = " cancer, diabetes, aids, dengue, malaria, tuberculosis, cardiac, heartattack, surgery";
 
         String result = "";
         String[] words = value.split("\\s+");
@@ -160,11 +307,11 @@ public class SearchServiceImpl implements SearchService {
         }
         int j = 0;
         POSSample sample = new POSSample(token1, tags);
-        System.out.println(sample.toString());
+//        System.out.println(sample.toString());
         String[] strings = sample.toString().split(" ");
-        System.out.println("strings[0] " + strings[0]);
+//        System.out.println("strings[0] " + strings[0]);
         int len = strings.length;
-        System.out.println(len);
+//        System.out.println(len);
         if (len == 1) {
 
             if (strings[0].contains("CD")) {
@@ -172,235 +319,371 @@ public class SearchServiceImpl implements SearchService {
                 j = Integer.parseInt(strings[0].split("_")[0]);
 
                 if (j > 1000) {
-                    addPolicy = findBySumInsured(j);
+                    policies=searchRepository.findAll();
+                    for(Policy p:policies){
+//                        System.out.println("Inside loop"+p.getMinSumInsured());
+                        if (p.getMaxSumInsured()>j && p.getMinSumInsured()<j)
+                            addPolicy.add(p);
+                        searchvalue2=saveSearch(p);
+                    }
                     return addPolicy;
-                } else if (j < 100) {
+                }else if (j < 100) {
                     System.out.println("Inside CD");
                     List<Policy> policyList = findAll();
                     for (Policy p : policyList) {
                         if (j < p.getMaxAge() && j > p.getMinAge()) {
                             addPolicy.add(p);
+                            searchvalue2 = saveSearch(p);
+//
                         }
                     }
 
                 }
                 return addPolicy;
             } else if (strings[0].contains("NN")) {
-                System.out.println("Added to tokenList");
+//                System.out.println("Added to tokenList");
                 tokenList.add(strings[0].split("_")[0]);
-                System.out.println("Added " + tokenList.get(0));
+//                System.out.println("Added " + tokenList.get(0));
 
                 if (policyString.contains(tokenList.get(0))) {
                     System.out.println(strings[0].split("_")[0]);
                     List<Policy> policies2 = findByPolicyName(tokenList.get(0));
+                    for (Policy p : policies2) {
+                        searchvalue2 = saveSearch(p);
+                    }
                     return policies2;
                 } else if (companyString.contains(tokenList.get(0))) {
                     List<Policy> policies2 = findByInsurerName(tokenList.get(0));
+                    for (Policy t : policies2) {
+                        searchvalue2 = saveSearch(t);
+                    }
                     return policies2;
-                } else if (diseaseString.contains(tokenList.get(0))) {
-                    System.out.println("Am here!!");
-                    List<Policy> policies2 = findByDiseasesListDiseaseName(strings[0].split("_")[0]);
-                    return policies2;
+                }
+                else if (diseaseString.contains(tokenList.get(0))) {
+//                    System.out.println("DiseaseString "+tokenList.get(0));
+                    policies = searchRepository.findAll();
+
+                    for (int i=0;i<policies.size();i++) {
+//                        System.out.println("In the loop");
+                        List<String> str=policies.get(i).getDiseasesCovered();
+                        System.out.println(str);
+                        if(str.size() > 0) {
+                            if(str.contains(tokenList.get(0)))
+                            {
+                                policies3.add(policies.get(i));
+                            }
+                        }else{
+
+                        }
+                        //searchvalue2 = saveSearch(pol);
+                    }
+//                    System.out.println("printing the final result");
+                    System.out.println(policies3);
+                    return policies3;
                 }
             }
         } else if (len == 2) {
-            System.out.println("Entered else if");
+//            System.out.println("Entered else if");
             for (int in = 0; in < strings.length; in++) {
                 System.out.println(strings[in]);
                 if (strings[in].contains("NN") && strings[1].contains("CD")) {
                     newpolicy1.add(strings[in].split("_")[0]);
                     newpolicy1.add(strings[1].split("_")[0]);
                     System.out.println(newpolicy1.toString());
-
+                    List<Policy> addPolicy = new ArrayList<>();
                     for (int t = 0; t < newpolicy1.size(); t++) {
                         for (int b = t + 1; b < newpolicy1.size(); b++) {
                             int num = Integer.parseInt(newpolicy1.get(b));
                             if (policyString.contains(newpolicy1.get(t)) && num < 100) {
-                                List<Policy> addPolicy = new ArrayList<>();
+
                                 List<Policy> arrayPolicy = findByPolicyName(newpolicy1.get(t));
                                 for (Policy pol : arrayPolicy) {
                                     if (pol.getMinAge() < num && pol.getMaxAge() > num) {
                                         addPolicy.add(pol);
-                                    }
-                                }
-                                return addPolicy;
-                            } else if (policyString.contains(newpolicy1.get(t)) && num >= 1000) {
-                                List<Policy> addPolicy = new ArrayList<>();
-                                List<Policy> arrayPolicy = findByPolicyName(newpolicy1.get(t));
-                                for (Policy pol : arrayPolicy) {
-                                    if (pol.getSumInsured() == num) {
-                                        addPolicy.add(pol);
-                                    }
-                                }
-                                return addPolicy;
-                            } else if (diseaseString.contains(newpolicy1.get(t)) && num > 1000) {
-                                List<Policy> addPolicy = new ArrayList<>();
-                                List<Policy> arrayPolicy = findByDiseasesListDiseaseName(newpolicy1.get(t));
-                                for (Policy pol : arrayPolicy) {
-                                    System.out.println(pol.toString());
-                                    if (pol.getSumInsured() == num) {
-                                        addPolicy.add(pol);
-                                    }
-                                }
-                                return addPolicy;
-                            } else if (diseaseString.contains(newpolicy1.get(t)) && num < 100) {
-                                List<Policy> addPolicy = new ArrayList<>();
-                                List<Policy> arrayPolicy = findByDiseasesListDiseaseName(newpolicy1.get(t));
-                                for (Policy pol : arrayPolicy) {
-                                    if (pol.getMinAge() < num && pol.getMaxAge() > num) {
-                                        addPolicy.add(pol);
+                                        searchvalue2 = saveSearch(pol);
                                     }
                                 }
                                 return addPolicy;
                             }
-
+                            else if (policyString.contains(newpolicy1.get(t)) && num >= 1000) {
+                                List<Policy> arrayPolicy = findByPolicyName(newpolicy1.get(t));
+                                for (Policy pol : arrayPolicy) {
+                                    if (pol.getMinSumInsured()<num && pol.getMaxSumInsured()>num) {
+                                        addPolicy.add(pol);
+                                        searchvalue2=saveSearch(pol);
+                                    }
+                                }
+                                return addPolicy;
+                            } else if (diseaseString.contains(newpolicy1.get(t)) && num > 1000) {
+                                policies=searchRepository.findAll();
+                                for(Policy p:policies) {
+                                    if (p.getDiseasesCovered().contains(newpolicy1.get(t))) {
+                                        if (p.getMinSumInsured() < num && p.getMaxSumInsured() > num) {
+                                            addPolicy.add(p);
+                                            searchvalue2 = saveSearch(p);
+                                        }
+                                    }
+                                }
+                                return addPolicy;
+                            }
+                            else if (diseaseString.contains(newpolicy1.get(t)) && num < 100) {
+                                System.out.println("Disease name:"+newpolicy1.get(t));
+                                policies = searchRepository.findAll();
+                                for (Policy p : policies) {
+                                    if (p.getDiseasesCovered().contains(newpolicy1.get(t))) {
+                                        if (p.getMinAge() < num && p.getMaxAge() > num) {
+                                            addPolicy.add(p);
+                                            searchvalue2 = saveSearch(p);
+                                        }
+                                    }
+                                }
+                                return addPolicy;
+                            }
+                            else if (companyString.contains(newpolicy1.get(t)) && num < 100) {
+//                                System.out.println("Company name:"+newpolicy1.get(t));
+                                policies = searchRepository.findAll();
+                                for (Policy p : policies) {
+                                    if (p.getInsurerName().contains(newpolicy1.get(t))) {
+                                        if (p.getMinAge() < num && p.getMaxAge() > num) {
+                                            addPolicy.add(p);
+                                            searchvalue2 = saveSearch(p);
+                                        }
+                                    }
+                                }
+                                return addPolicy;
+                            }
+                            else if (companyString.contains(newpolicy1.get(t)) && num > 1000) {
+                                policies=searchRepository.findAll();
+                                for(Policy p:policies) {
+                                    if (p.getInsurerName().contains(newpolicy1.get(t))) {
+                                        if (p.getMinSumInsured() < num && p.getMaxSumInsured() > num) {
+                                            addPolicy.add(p);
+                                            searchvalue2 = saveSearch(p);
+                                        }
+                                    }
+                                }
+                                return addPolicy;
+                            }
                         }
-
                     }
                 } else if (strings[in].contains("CD") && strings[1].contains("NN")) {
                     newpolicy1.add(strings[in].split("_")[0]);
                     newpolicy1.add(strings[1].split("_")[0]);
                     System.out.println(newpolicy1.toString());
-
+                    List<Policy> addPolicy = new ArrayList<>();
                     for (int t = 0; t < newpolicy1.size(); t++) {
                         for (int b = t + 1; b < newpolicy1.size(); b++) {
                             int num = Integer.parseInt(newpolicy1.get(t));
                             if (policyString.contains(newpolicy1.get(b)) && num < 100) {
-                                List<Policy> addPolicy = new ArrayList<>();
+
                                 List<Policy> arrayPolicy = findByPolicyName(newpolicy1.get(b));
                                 for (Policy pol : arrayPolicy) {
                                     if (pol.getMinAge() < num && pol.getMaxAge() > num) {
                                         addPolicy.add(pol);
+                                        searchvalue2 = saveSearch(pol);
                                     }
                                 }
                                 return addPolicy;
-                            } else if (policyString.contains(newpolicy1.get(b)) && num >= 1000) {
-                                List<Policy> addPolicy = new ArrayList<>();
+                            }
+                            if (companyString.contains(newpolicy1.get(b)) && num < 100) {
+                                List<Policy> arrayPolicy = findByInsurerName(newpolicy1.get(b));
+                                for (Policy pol : arrayPolicy) {
+                                    if (pol.getMinAge() < num && pol.getMaxAge() > num) {
+                                        addPolicy.add(pol);
+                                        searchvalue2 = saveSearch(pol);
+                                    }
+                                }
+                                return addPolicy;
+                            }
+                            else if (policyString.contains(newpolicy1.get(b)) && num >= 1000) {
                                 List<Policy> arrayPolicy = findByPolicyName(newpolicy1.get(b));
                                 for (Policy pol : arrayPolicy) {
-                                    if (pol.getSumInsured() == num) {
+                                    if (pol.getMinSumInsured() < num && pol.getMaxSumInsured() >num) {
                                         addPolicy.add(pol);
+                                        searchvalue2=saveSearch(pol);
+                                    }
+                                }
+                                return addPolicy;
+                            }
+                            else if (companyString.contains(newpolicy1.get(b)) && num >= 1000) {
+                                List<Policy> arrayPolicy = findByInsurerName(newpolicy1.get(b));
+                                for (Policy pol : arrayPolicy) {
+                                    if (pol.getMinSumInsured() < num && pol.getMaxSumInsured() >num) {
+                                        addPolicy.add(pol);
+                                        searchvalue2=saveSearch(pol);
                                     }
                                 }
                                 return addPolicy;
                             } else if (diseaseString.contains(newpolicy1.get(b)) && num > 1000) {
-                                List<Policy> addPolicy = new ArrayList<>();
-                                List<Policy> arrayPolicy = findByDiseasesListDiseaseName(newpolicy1.get(b));
-                                for (Policy pol : arrayPolicy) {
-                                    System.out.println(pol.toString());
-                                    if (pol.getSumInsured() == num) {
-                                        addPolicy.add(pol);
-                                    }
-                                }
-                                return addPolicy;
-                            } else if (diseaseString.contains(newpolicy1.get(b)) && num < 100) {
-                                List<Policy> addPolicy = new ArrayList<>();
-                                List<Policy> arrayPolicy = findByDiseasesListDiseaseName(newpolicy1.get(b));
-                                for (Policy pol : arrayPolicy) {
-                                    if (pol.getMinAge() < num && pol.getMaxAge() > num) {
-                                        addPolicy.add(pol);
-                                    }
+                                policies=searchRepository.findAll();
+                                for(Policy p:policies) {
+                                    if (p.getDiseasesCovered().contains(newpolicy1.get(b)))
+                                        if (p.getMinSumInsured() < num && p.getMaxSumInsured() > num) {
+                                            addPolicy.add(p);
+                                            searchvalue2 = saveSearch(p);
+                                        }
                                 }
                                 return addPolicy;
                             }
+                            else if (diseaseString.contains(newpolicy1.get(b)) && num < 100) {
+                                policies = searchRepository.findAll();
+                                for (Policy p : policies) {
+                                    if (p.getDiseasesCovered().contains(newpolicy1.get(b))) {
+                                        if (p.getMinAge() < num && p.getMaxAge() > num) {
+                                            addPolicy.add(p);
+                                            searchvalue2 = saveSearch(p);
+                                        }
+                                    }
 
+                                }
+                                return addPolicy;
+
+                            }
                         }
 
                     }
                 } else if (strings[in].contains("NN")) {
-                    System.out.println("Added to tokenList");
+//                    System.out.println("Added to tokenList");
                     tokenList.add(strings[in].split("_")[0]);
                 }
-            }
+                for (String t : tokenList) {
+//                    System.out.println("tokenList " + t);
+                }
+                for (int i = 0; i < tokenList.size(); i++) {
+                    for (int k = i + 1; k < tokenList.size(); k++) {
+                        List<Policy> addPolicy = new ArrayList<>();
+                        if (policyString.contains(tokenList.get(i)) && diseaseString.contains(tokenList.get(i + 1))) {
+//                            System.out.println("Found " + tokenList.get(k));
 
-            for (String t : tokenList) {
-                System.out.println("tokenList " + t);
-            }
-            for (int i = 0; i < tokenList.size(); i++) {
-                for (int k = i + 1; k < tokenList.size(); k++) {
-                    if (policyString.contains(tokenList.get(i)) && diseaseString.contains(tokenList.get(i + 1))) {
-                        System.out.println("Found " + tokenList.get(k));
-                        List<Policy> addPolicy = new ArrayList<>();
-                        List<Policy> poly = findByDiseasesListDiseaseName(tokenList.get(k));
-                        System.out.println(poly.size());
-                        for (Policy s : poly) {
-                            if (s.getPolicyName().equals(tokenList.get(i))) {
-                                System.out.println("Before adding");
-                                addPolicy.add(s);
-                                System.out.println("Added");
-                                return addPolicy;
+                            policies = searchRepository.findAll();
+                            for (Policy p : policies) {
+                                if (p.getDiseasesCovered().contains(tokenList.get(k))) {
+                                    if (p.getPolicyName().equals(tokenList.get(i))) {
+//                                        System.out.println("Before adding");
+                                        addPolicy.add(p);
+                                        searchvalue2 = saveSearch(p);
+//                                        System.out.println("Added");
+                                    }
+
+                                }
                             }
-                        }
-                    } else if (diseaseString.contains(tokenList.get(i)) && policyString.contains(tokenList.get(k))) {
-                        List<Policy> poly = findByDiseasesListDiseaseName(tokenList.get(i));
-                        List<Policy> addPolicy = new ArrayList<>();
-                        for (Policy s : poly) {
-                            if (tokenList.get(k).equals(s.getPolicyName()))
-                                addPolicy.add(s);
                             return addPolicy;
-                        }
-                    } else if (diseaseString.contains(tokenList.get(i)) && companyString.contains(tokenList.get(k))) {
-                        System.out.println(tokenList.get(i));
-                        List<Policy> addPolicy = new ArrayList<>();
-                        List<Policy> pol = findByDiseasesListDiseaseName(tokenList.get(i));
-                        for (Policy s1 : pol) {
-                            System.out.println(tokenList.get(k));
-                            System.out.println(s1.getInsurerName());
-                            if (tokenList.get(k).equals(s1.getInsurerName())) {
-                                addPolicy.add(s1);
-                                System.out.println(s1.getInsurerName());
-                                System.out.println(s1.toString());
-                                return addPolicy;
-                            }
-                        }
-                    } else if (companyString.contains(tokenList.get(i)) && diseaseString.contains(tokenList.get(k))) {
-                        List<Policy> addPolicy = new ArrayList<>();
-                        List<Policy> poly = findByDiseasesListDiseaseName(tokenList.get(k));
-                        for (Policy s : poly) {
-                            System.out.println("In Company disease");
-                            if (tokenList.get(i).equals(s.getInsurerName())) {
-                                addPolicy.add(s);
-                                System.out.println(s.toString());
-                                return addPolicy;
-                            }
-                        }
-                    } else if (companyString.contains(tokenList.get(i))) {
-                        List<Policy> addPolicy = new ArrayList<>();
-                        List<Policy> policies1 = searchRepository.findByInsurerName(tokenList.get(i));
-                        for (Policy p : policies1) {
-                            System.out.println("Policy:: " + p.getPolicyName());
-                            if (p.getPolicyName().equals(tokenList.get(k))) {
-                                System.out.println("TokenList :" + tokenList.get(k));
-                                addPolicy.add(p);
-                                System.out.println("Entered into company and policy");
+                        } else if (diseaseString.contains(tokenList.get(i)) && policyString.contains(tokenList.get(k))) {
+                            policies = searchRepository.findAll();
+                            for (Policy p : policies) {
+                                if (p.getDiseasesCovered().contains(tokenList.get(i))) {
+                                    if (tokenList.get(k).equals(p.getPolicyName())) {
+                                        addPolicy.add(p);
+                                        searchvalue2 = saveSearch(p);
+                                    }
 
+                                }
                             }
-
-                        }
-                        return addPolicy;
-                    } else if (policyString.contains(tokenList.get(i))) {
-                        List<Policy> addPolicy = new ArrayList<>();
-                        List<Policy> policies1 = searchRepository.findByPolicyName(tokenList.get(i));
-                        System.out.println(policies1.size());
-                        for (Policy p : policies1) {
+                            return addPolicy;
+                        } else if (diseaseString.contains(tokenList.get(i)) && companyString.contains(tokenList.get(k))) {
                             System.out.println(tokenList.get(i));
-                            System.out.println("Policy:: " + p.getInsurerName());
-                            if (tokenList.get(k).equals(p.getInsurerName())) {
-                                System.out.println("TokenList :" + tokenList.get(k));
-                                addPolicy.add(p);
-                                System.out.println("Entered into company and policy");
+                            List<Policy> newPolicy = new ArrayList<>();
+                            newPolicy = searchRepository.findAll();
+                            for (Policy t : newPolicy) {
+                                if (t.getDiseasesCovered().contains(tokenList.get(i))) {
+                                    System.out.println(tokenList.get(k));
+                                    System.out.println(t.getInsurerName());
+                                    if (tokenList.get(k).equals(t.getInsurerName())) {
+                                        addPolicy.add(t);
+                                        searchvalue2 = saveSearch(t);
+                                        System.out.println(t.getInsurerName());
+                                        System.out.println(t.toString());
+
+                                    }
+                                }
+                            }
+                            return addPolicy;
+                        } else if (companyString.contains(tokenList.get(i)) && diseaseString.contains(tokenList.get(k))) {
+                            List<Policy> newPolicy = new ArrayList<>();
+                            newPolicy = searchRepository.findAll();
+                            for (Policy t : newPolicy) {
+                                if (tokenList.get(i).equals(t.getInsurerName())) {
+                                    System.out.println(tokenList.get(k));
+                                    System.out.println(t.getInsurerName());
+                                    if (t.getDiseasesCovered().contains(tokenList.get(k))) {
+                                        addPolicy.add(t);
+                                        searchvalue2 = saveSearch(t);
+                                        System.out.println(t.getInsurerName());
+                                        System.out.println(t.toString());
+
+                                    }
+                                }
 
                             }
+                            return addPolicy;
+
+                        } else if (companyString.contains(tokenList.get(i))) {
+                            List<Policy> policies2 = searchRepository.findByInsurerName(tokenList.get(i));
+                            for (Policy p : policies2) {
+//                                System.out.println("Policy:: " + p.getPolicyName());
+                                if (p.getPolicyName().equals(tokenList.get(k))) {
+//                                    System.out.println("TokenList :" + tokenList.get(k));
+                                    addPolicy.add(p);
+                                    searchvalue2 = saveSearch(p);
+//                                    System.out.println("Entered into company and policy");
+
+                                }
+
+                            }
+                            return addPolicy;
+                        } else if (policyString.contains(tokenList.get(i))) {
+                            List<Policy> policies2 = searchRepository.findByPolicyName(tokenList.get(i));
+                            System.out.println(policies2.size());
+                            for (Policy p : policies2) {
+//                                System.out.println(tokenList.get(i));
+//                                System.out.println("Policy:: " + p.getInsurerName());
+                                if (tokenList.get(k).equals(p.getInsurerName())) {
+//                                    System.out.println("TokenList :" + tokenList.get(k));
+                                    addPolicy.add(p);
+                                    searchvalue2 = saveSearch(p);
+//                                    System.out.println("Entered into company and policy");
+
+                                }
+                                System.out.println("123");
+                            }
+                            return addPolicy;
+
                         }
-                        return addPolicy;
+
+
                     }
 
                 }
+
             }
+
+
         }
-        return null;
+        else if(len==3) {
+            System.out.println("Inside len 3");
+            StringBuilder res = new StringBuilder();
+            List<Policy> addPolicy = new ArrayList<>();
+
+            for (int i = 0; i < 3; i++) {
+                if (strings[i].contains("NN")) {
+                    System.out.println("Added to tokenList");
+                    res.append(strings[i].split("_")[0]);
+
+                }
+                System.out.println(res);
+            }
+            String s1 = res.toString();
+            if (policyString.contains(s1)) {
+                System.out.println("Inside....");
+                addPolicy = findByPolicyName(s1);
+            }
+            return addPolicy;
+
+        }
+        return  null;
     }
 }
+
 
 
 
