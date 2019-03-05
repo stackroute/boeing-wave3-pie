@@ -12,33 +12,33 @@ export class OutgoingPortingRequestsComponent implements OnInit {
   insurerLicense: any;
   requests: any;
   currentCompanyName: string;
-  rasieGrievanceButtonIsClicked: boolean;
+  raiseGrievanceButtonIsClicked: boolean;
   idForGrievances: number;
-  constructor(private route:ActivatedRoute, private incoming: InsurerOutgoingportingrequestService,private portrequest: InsurerAcceptoutgoingportingrequestService) { }
+  constructor(private route: ActivatedRoute, private incoming: InsurerOutgoingportingrequestService, private portrequest: InsurerAcceptoutgoingportingrequestService) { }
 
   ngOnInit() {
-  this.rasieGrievanceButtonIsClicked  =false;
+    this.raiseGrievanceButtonIsClicked = false;
     console.log("inside outgoing");
     this.insurerLicense = this.route.snapshot.paramMap.get('insurerLicense');
     console.log(this.insurerLicense);
-    this.requests = this.incoming.getSearch(this.insurerLicense).subscribe(data =>
-      {
-        this.requests = data;
-        console.log(data);
-        console.log("after service method");
+    this.requests = this.incoming.getSearch(this.insurerLicense).subscribe(data => {
+      this.requests = data;
+      console.log(data);
+      console.log("after service method");
     });
 
   }
   port(request) {
-    this.portrequest.getSearch(request).subscribe(data=>console.log(data));
+    this.portrequest.getSearch(request).subscribe(data => console.log(data));
     this.reloadData();
   }
-  reloadData(){
+  reloadData() {
     window.location.reload();
   }
-  raiseGrievanceButtonClicked(portrequestId: number): void {
-    this.rasieGrievanceButtonIsClicked = true;
+  raiseGrievanceButtonClicked(portrequestId: number): boolean{
+    this.raiseGrievanceButtonIsClicked = true;
     this.idForGrievances = portrequestId;
+    return true;
   }
 
 }

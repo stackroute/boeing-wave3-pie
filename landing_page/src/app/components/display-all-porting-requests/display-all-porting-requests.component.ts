@@ -60,4 +60,6 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
   modifyStatusOfTask(taskStatus: boolean, taskName: string, pendingTasksId: number): void{
     this.fetchPendingTasksService.modifyStatusOfTask(!taskStatus, pendingTasksId, taskName).subscribe();
   }
+  getPendingTasksById(portingRequestId: number): void {
+  }
 }

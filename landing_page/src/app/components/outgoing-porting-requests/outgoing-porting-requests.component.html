@@ -21,9 +21,10 @@
           <td>{{ request.insuredName }}</td>
           <td>{{ request.insurerName }}</td>
           <button class="btn btn-primary" (click)="port(request)">Accept Porting</button>
-          <button class="btn btn-primary" (click)='raiseGrievanceButtonClicked()'>Raise
+          <button class="btn btn-primary" (click)='raiseGrievanceButtonClicked(request.portingRequestId)'>Raise
             Grievence</button>
-            <app-display-all-porting-requests *ngIf="raiseGrievanceButtonIsClicked && request.portingRequestId === idForGrievances" [portingRequestId]="request.portingRequestId"></app-display-all-porting-requests>
+          <app-all-porting-requests *ngIf="raiseGrievanceButtonIsClicked" [currentCompanyName]="request.insurerName" [portingRequestId]="request.portingRequestId">
+          </app-all-porting-requests>
           <!-- <td>20000</td>  -->
           <!-- <td> 
               <div class="btn-group" role="group" aria-label="...">
