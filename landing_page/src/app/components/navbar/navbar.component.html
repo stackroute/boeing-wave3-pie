@@ -200,33 +200,6 @@
           My profile
         </a>
       </mat-nav-list>
-      <mat-accordion multi="true" [displayMode]="displayMode">
-        <mat-expansion-panel class="no-shadow">
-          <mat-expansion-panel-header
-            fxLayout="row"
-            [expandedHeight]="expandHeight"
-            [collapsedHeight]="collapseHeight"
-          >
-            <mat-panel-title>
-              Porting Request
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <mat-nav-list class="ml-0" dense>            
-            <a
-              mat-list-item
-              [routerLink]="['/porting']"
-          routerLinkActive="active"
-             >
-              Apply  for porting request</a
-            >
-            <a
-              mat-list-item
-              href='https://economictimes.indiatimes.com/wealth/insure/all-you-need-to-know-about-porting-your-health-insurance-policy/articleshow/67393982.cms'
-            >Things to Check</a
-            >
-          </mat-nav-list>
-        </mat-expansion-panel>
-      </mat-accordion>
     </div>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -270,6 +243,23 @@
           <mat-icon>money</mat-icon>
           <span>Billing</span>
         </button>
+        <form class="form-inline" (ngSubmit)="search()">
+          <input
+            class="form-control"
+            type="search"
+            name="message"
+            [(ngModel)]="message"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button
+            class="btn btn-outline-success my-2 my-sm-0"
+            type="submit"
+            style="font-size: 16px;display: inline;"
+          >
+            <i class="glyphicon glyphicon-search"></i>Search
+          </button>
+        </form>
       </mat-menu>
       <mat-icon class="ml-3" title="Logout" (click)="logout()">exit_to_app</mat-icon>
     </mat-toolbar> 

@@ -34,7 +34,7 @@ public class PortingRequest {
     @NotBlank
     private String addOns;
     @NotBlank
-    private int policyNumber;
+    private long policyNumber;
     @NotBlank
     private String newInsurerName;
     @NotBlank
