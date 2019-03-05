@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
  isLoginFailed = false;
  errorMessage = '';
  roles: string[] ;
- flag :boolean = false;
+ 
  private loginInfo: AuthLoginInfo;
 
  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router) { }
@@ -30,11 +30,7 @@ export class LoginComponent implements OnInit {
  onSubmit() {
    console.log(this.form);
 
-if(!this.flag)
-{
 
-  
-}
    this.loginInfo = new AuthLoginInfo(
      this.form.username,
      this.form.password);
