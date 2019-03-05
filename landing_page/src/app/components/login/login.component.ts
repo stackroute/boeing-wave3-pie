@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
  isLoginFailed = false;
  errorMessage = '';
  roles: string[] ;
+ 
  private loginInfo: AuthLoginInfo;
 
  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router) { }
@@ -28,6 +29,7 @@ export class LoginComponent implements OnInit {
  }
  onSubmit() {
    console.log(this.form);
+
 
    this.loginInfo = new AuthLoginInfo(
      this.form.username,
@@ -64,6 +66,10 @@ export class LoginComponent implements OnInit {
        this.isLoginFailed = true;
      }
    });
+
+
+
+   
  }
 
  reloadPage() {
