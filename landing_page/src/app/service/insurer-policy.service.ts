@@ -36,7 +36,7 @@ export class InsurerPolicyService {
 
  getPremium(premium : PolicyPremium):Observable<Object> {
   console.log('adadsasdas')
- return this.http.post('http://localhost:8097/api/auth'+ '/policy/premium/calculator',premium);
+ return this.http.post('http://13.126.73.190:8092/calculator/api/auth'+ '/policy/premium/calculator',premium);
 }
 
 

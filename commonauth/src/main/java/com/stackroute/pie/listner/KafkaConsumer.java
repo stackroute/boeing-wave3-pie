@@ -29,7 +29,7 @@ public class KafkaConsumer {
         Set<Role> roles = new HashSet<>();
 
 
-        Role insurerRole = roleRepository.findByName(RoleName.ROLE_USER)
+        Role insurerRole = roleRepository.findByName(RoleName.ROLE_ADMIN)
                 .orElseThrow(() -> new RuntimeException("Fail! -> Cause: Insured Role not find."));
         roles.add(insurerRole);
         user.setRoles(roles);
