@@ -42,4 +42,10 @@ public localMongoUrl = 'http://13.126.73.190:8092/porting/api/auth/requests/';
      console.log('after');
      return profile;
    }
+   public familyMembers(username, form): any {
+    console.log('service' + username);
+    const profile = this.http.put(this.profileUrl + 'familymembers',form);
+    console.log('after');
+    return profile;
+  }
 }

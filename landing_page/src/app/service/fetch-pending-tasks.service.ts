@@ -9,7 +9,7 @@ import { Task } from "../components//task";
   providedIn: "root"
 })
 export class FetchPendingTasksService {
-  settlementUrl = "http://localhost:8092/settlement/api/v1/";
+  settlementUrl = "http://13.126.73.190:8092/settlement/api/v1/";
   fetchAllPortingRequestsUrl = "pendingtasks/";
   addANewPendingTaskUrl = "pendingtask/";
   modifyStatusOfPendingTaskUrl = "pendingtask/";

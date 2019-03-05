@@ -36,7 +36,7 @@ public class PolicyServiceImpl implements PolicyService {
         Policy policy1 = new Policy(policy.getInsurerName(),policy.getInsurerLicense(),policy.getPolicyName(),
                 policy.getPolicyId(),policy.getMinAge(),policy.getMaxAge(),policy.getMinSumInsured(),
                 policy.getMaxSumInsured(), policy.getPolicyDescription(), policy.getPolicyType(),
-                policy.getGenderAvail(), policy.getWaitingPeriod(),policy.getPolicyTerm());
+                policy.getGenderAvail(), policy.getWaitingPeriod(),policy.getPolicyTerm(), new ArrayList<>());
         policyRepository.save(policy1);
         Policy policy2 = policyRepository.findByUniqueId(policy1.getUniqueId()).get();
         System.out.println(policy2);
