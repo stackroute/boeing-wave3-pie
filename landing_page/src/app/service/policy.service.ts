@@ -14,21 +14,21 @@ export class PolicyService {
       // 'Authorization': 'my-auth-token'
     })
   };
-  // public policyDetailsUrl = 'http://localhost:8097/api/v1/policy/';
+  public policyDetailsUrl = 'http://13.126.73.190:8092/policy/api/v1/policy/';
   policyDetails:any;
   constructor(private http: HttpClient) {
     console.log('http service got called');
   }
   public getPolicyDetails(insurerName,policyName): any {
     console.log("inside service");
-    // this.policyDetails = this.http.get('http://localhost:8097/api/v1/policy/MaxBupa/CancerPolicy');
-    return this.http.get('http://localhost:8097/api/v1/policy/reliance1234/CancerPolicy', this.httpOptions);
+   
+    return this.http.get(this.policyDetailsUrl + insurerName + policyName, this.httpOptions);
 }
 
   public buyPolicy(insurername,policyname,insuredname): any {
     console.log('inside buy policy');
-    console.log('http://localhost:8097/api/v1/policy/reliance1234/CancerPolicy/Mahanth');
-    let as = this.http.put('http://localhost:8097/api/v1/policy/reliance1234/CancerPolicy/Mahanth',0);
+   
+    let as = this.http.put(this.policyDetailsUrl + insurername + policyname + insuredname,0);
     return as;
   } 
 }

@@ -5,6 +5,7 @@ import { JwtResponse } from './jwt-response';
 import { AuthLoginInfo } from './login-info';
 import { SignUpInfo } from './signup-info';
 import { Router } from '@angular/router';
+import { ipaddressvalue } from '../../service/ipaddressvalue';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
