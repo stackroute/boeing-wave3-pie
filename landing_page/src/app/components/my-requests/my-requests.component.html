@@ -16,10 +16,9 @@
         <mat-card-header >
           <p style="margin-left: 20%;margin-top: 2%;">My Requests</p>
             </mat-card-header>
-            <mat-card-content>
-              <div >
-                <p>InsuredId : {{requestObj.insuredId}}</p>
-                <div *ngFor="let item of requestObj.requests">
+            <mat-card-content >
+              <div>
+                <div *ngFor="let item of requestObj.requests" style="width: 50%; margin-left: 15%;">
                     <ul class="list-unstyled components">
                       <li>Request Id : {{item.requestId}}</li>
                       <li>Request Status : {{item.requestStatus}}</li>
