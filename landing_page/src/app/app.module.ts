@@ -91,6 +91,7 @@ import { DisplayAllPortingRequestsComponent } from './components/display-all-por
 import { DialogbotComponent } from './components/dialogbot/dialogbot.component';
 import { BuyPolicyComponent } from './components/buy-policy/buy-policy.component';
 import { ReviewComponent } from './components/review/review.component';
+import { FamilyMembersComponent } from './components/family-members/family-members.component';
 
 
 const routes: Routes = [];
@@ -140,7 +141,8 @@ const routes: Routes = [];
     PolicyDetailsComponent,
     MyPoliciesComponent,
     BuyPolicyComponent,
-    ReviewComponent
+    ReviewComponent,
+    FamilyMembersComponent
   ],
   entryComponents: [CalculatorComponent,ReviewComponent,DialogbotComponent],
   
