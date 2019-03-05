@@ -142,14 +142,13 @@ const routes: Routes = [];
     BuyPolicyComponent,
     ReviewComponent
   ],
-  entryComponents: [CalculatorComponent,ReviewComponent],
+  entryComponents: [CalculatorComponent,ReviewComponent,DialogbotComponent],
   
   imports: [
     BrowserModule,
     AppRoutingModule,
     FlexLayoutModule,
     FormsModule,
-    RouterModule.forRoot(routes),
     CarouselModule,
     HttpClientModule,
     ReactiveFormsModule,
