@@ -22,7 +22,7 @@ export class InsurerPolicyService {
  //localUrl = 'http://13.126.73.190:8092/insurerregservice/api/v1/';
  policiesUrl = 'http://13.126.73.190:8092/policy/api/v1/';
  externalPolicyUrl = 'http://13.126.73.190:8092/externalinsurerdbservice/api/v1/';
- localUrl = 'http://172.23.239.82:8097/api/v1/';
+ localUrl = 'http://13.126.73.190:8092/policy/api/v1/';
 
 
 
