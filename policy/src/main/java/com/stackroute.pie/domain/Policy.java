@@ -49,7 +49,7 @@ public class Policy {
     //Custom Constructor for adding new policy
     public Policy( String insurerName, String insurerLicense, String policyName, long policyId, int minAge, int maxAge,
                   int minSumInsured, int maxSumInsured, String policyDescription, String policyType,
-                   String genderAvail, int waitingPeriod, int policyTerm) {
+                   String genderAvail, int waitingPeriod, int policyTerm, List<String> diseasesCovered ) {
         this.uniqueId = insurerName + policyName;
         this.insurerName = insurerName;
         this.policyName = policyName;
@@ -64,5 +64,6 @@ public class Policy {
         this.maxSumInsured = maxSumInsured;
         this.insurerLicense = insurerLicense;
         this.policyDescription = policyDescription;
+        this.diseasesCovered = diseasesCovered;
     }
 }
