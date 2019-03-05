@@ -26,7 +26,7 @@ public class SettlementController {
 //        return (ResponseEntity<List<PendingTasks>>) settlementServices.getAllPendingTasksForInsurer(insurerName);
         return new ResponseEntity<List<PendingTasks>>(settlementServices.getAllPendingTasksForInsurer(insurerName), HttpStatus.OK);
     }
-    @GetMapping
+    @GetMapping("pendingtasks/{insurerName}/{insuredName}")
     public ResponseEntity<PendingTasks> getAllPendingTasksForAInsured(@PathVariable String insurerName, @PathVariable String insuredName) {
         return new ResponseEntity<PendingTasks>(settlementServices.getAllPendingTasksForInsured(insurerName, insuredName), HttpStatus.OK);
     }
@@ -38,12 +38,8 @@ public class SettlementController {
     public ResponseEntity<PendingTasks> appendAPendingTask(@RequestBody Task task, @PathVariable int pendingTasksId) {
         return new ResponseEntity<PendingTasks>(settlementServices.appendTask(pendingTasksId, task), HttpStatus.OK);
     }
-    @DeleteMapping("pendingtask/{pendingTasksId}/{taskName}")
-    public ResponseEntity<PendingTasks> deleteAPendingTask(@PathVariable int pendingTasksId, @PathVariable String taskName) {
-        return new ResponseEntity<PendingTasks>(settlementServices.deleteTask(pendingTasksId, taskName), HttpStatus.OK);
-    }
-    @PutMapping("pendingtask/{pendingTasksId}/{taskName}/{status}")
-    public ResponseEntity<PendingTasks> changeAPendingTaskStatus(@PathVariable int pendingTasksId, @PathVariable String taskName,@PathVariable boolean status) {
-        return new ResponseEntity<PendingTasks>(settlementServices.changePendingTaskStatus(pendingTasksId, taskName, status), HttpStatus.OK);
+    @GetMapping("pendingtasks/portingRequestId={portingRequestsId}")
+    public ResponseEntity<List<PendingTasks>> getPendingTasksByPortingRequestId(@PathVariable int portingRequestsId) {
+        return new ResponseEntity<List<PendingTasks>>(settlementServices.getPendingTasksByPortingRequestId(portingRequestsId), HttpStatus.OK);
     }
 }
