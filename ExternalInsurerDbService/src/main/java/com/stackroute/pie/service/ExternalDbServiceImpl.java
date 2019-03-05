@@ -1,8 +1,7 @@
 package com.stackroute.pie.service;
 
 import com.mongodb.DBObject;
-import com.stackroute.pie.domain.Insurer;
-import com.stackroute.pie.domain.Policy;
+import com.stackroute.pie.domain.InsurerPolicy;
 import com.stackroute.pie.repository.ExternalDbRepository;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,11 +13,7 @@ import org.springframework.stereotype.Service;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Scanner;
-
+import java.util.*;
 
 
 @Service
@@ -35,18 +30,23 @@ public class ExternalDbServiceImpl implements ExternalDbService {
 
 
     @Override
-    public Insurer getPolicies(String insurerName) throws ClassNotFoundException, SQLException, UnsupportedEncodingException, JSONException {
+    public List<InsurerPolicy> getPolicies(String insurerName) throws ClassNotFoundException, SQLException, UnsupportedEncodingException, JSONException {
 
         String origFile = null;
 
-        String dbURL = "jdbc:mysql://172.23.239.178:3306/insurerFinal";
-        String dbUser = "fish";
-        String dbPass = "12345";
+//        String dbURL = "jdbc:mysql://172.23.239.178:3306/insurerFinal";
+//        String dbUser = "fish";
+//        String dbPass = "12345";
+
+        String dbURL = "jdbc:mysql://172.17.0.2:3306/insurerFinal";
+        String dbUser = "root";
+        String dbPass = "root123";
 
         Class.forName("com.mysql.cj.jdbc.Driver");
         DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
         Connection conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
 
+        System.out.println(conn);
 
         Statement st = conn.createStatement();
 
@@ -59,7 +59,7 @@ public class ExternalDbServiceImpl implements ExternalDbService {
         InputStream binaryStream = null;
         while (rs.next()) {
             System.out.println("###########");
-            xmlfile = rs.getBlob(11);
+            xmlfile = rs.getBlob(1);
            // System.out.println(xmlfile);
             binaryStream = xmlfile.getBinaryStream(1, xmlfile.length());
             //System.out.println(binaryStream + "**********");
@@ -76,27 +76,34 @@ public class ExternalDbServiceImpl implements ExternalDbService {
 
         JSONObject obj = XML.toJSONObject(result);
         String stringToBeInserted = obj.toString(4);
-        List<Policy> policies = new ArrayList<Policy>();
+        System.out.println("%%%%%%%%%%%%"+stringToBeInserted);
+        List<InsurerPolicy> policies = new ArrayList<InsurerPolicy>();
         Iterator<String> keys = obj.keys();
         String key = keys.next();
         JSONArray name=(JSONArray)obj.get("policy");
 
-        ArrayList<Policy> police = new ArrayList<Policy>();
+        ArrayList<InsurerPolicy> police = new ArrayList<InsurerPolicy>();
 
         for(int i=0;i<name.length();i++) {
 
             String[] policystr = name.getJSONObject(i).toString().split(",");
 
-            Policy policy1 = new Policy();
-            policy1.setPolicyId(Long.parseLong(policystr[0].split(":")[1]));
-            policy1.setPolicyName(policystr[1].split(":")[1].replace("\"",""));
-            policy1.setMaxAge(Integer.parseInt(policystr[2].split(":")[1]));
-            policy1.setMinAge(Integer.parseInt(policystr[3].split(":")[1]));
-            policy1.setWaitingPeriod(Integer.parseInt(policystr[4].split(":")[1]));
-            policy1.setMinSumInsured(Long.parseLong(policystr[5].split(":")[1]));
-            policy1.setMaxSumInsured(Long.parseLong(policystr[6].split(":")[1]));
-            policy1.setNoOfCashLessHospitals(Integer.parseInt(policystr[7].split(":")[1]));
-            policy1.setInsurerName(policystr[8].split(":")[1].replace("\"","").replace("}",""));
+            InsurerPolicy policy1 = new InsurerPolicy();
+            policy1.setPolicyName(policystr[0].split(":")[1].replace("\"",""));
+            policy1.setPolicyTerm(Integer.parseInt(policystr[1].split(":")[1]));
+            policy1.setWaitingPeriod(Integer.parseInt(policystr[2].split(":")[1]));
+            policy1.setMaxSumInsured(Integer.parseInt(policystr[3].split(":")[1]));
+            policy1.setInsurerName(policystr[4].split(":")[1].replace("\"",""));
+            policy1.setGenderAvail(policystr[5].split(":")[1].replace("\"",""));
+            policy1.setPolicyDescription(policystr[6].split(":")[1].replace("\"",""));
+            policy1.setInsurerLicense(policystr[7].split(":")[1].replace("\"",""));
+            policy1.setPolicyId(Integer.parseInt(policystr[8].split(":")[1]));
+            policy1.setMaxAge(Integer.parseInt(policystr[9].split(":")[1]));
+            policy1.setMinAge(Integer.parseInt(policystr[10].split(":")[1]));
+            policy1.setPolicyType(policystr[11].split(":")[1].replace("\"",""));
+            policy1.setMinSumInsured(Integer.parseInt(policystr[12].split(":")[1].replace("\"","").replace("}","")));
+            policy1.setUniqueId(policy1.getInsurerName()+policy1.getPolicyName());
+            policy1.setInsuredList(Arrays.asList(new String[]{"anusha", "manasa"}));
 
 
 
@@ -109,21 +116,24 @@ public class ExternalDbServiceImpl implements ExternalDbService {
             System.out.println(i.next());
         }
 
-        System.out.println("insname"+ insurerName);
-        Insurer insurer1 = externalDbRepository.findByInsurerName(insurerName).get();
-        System.out.println("@@@@@@@@@@@@@@@@"+insurer1);
+//        System.out.println("insname"+ insurerName);
 
-        if(insurer1.getPolicies() == null){
-            policies.addAll(police);
-        }
-        else {
-            policies.addAll(insurer1.getPolicies());
-            policies.addAll(police);
-        }
-        insurer1.setPolicies(policies);
-        externalDbRepository.deleteByInsurerName(insurerName);
-        externalDbRepository.save(insurer1);
-        return insurer1;
+//        List<InsurerPolicy> policyList = externalDbRepository.findByInsurerName(insurerName).get();
+//        System.out.println("@@@@@@@@@@@@@@@@"+insurer1);
+
+//        if(insurer1.getPolicies() == null){
+//            policies.addAll(police);
+//        }
+//        else {
+//            policies.addAll(insurer1.getPolicies());
+//            policies.addAll(police);
+//        }
+//        .setPolicies(policies);
+//        externalDbRepository.deleteByInsurerName(insurerName);
+//        externalDbRepository.save(insurer1);
+        for(InsurerPolicy policy: police)
+        externalDbRepository.save(policy);
+        return police;
 
     }
 

@@ -27,6 +27,10 @@ public class Policy {
     private int minAge;
     private int maxAge;
     private int waitingPeriod;
+    private int policyTerm;
+    private String genderAvail;
+    private String policyDescription;
+    private String policyType;
     // private Timestamp createdAt;
     //  private Timestamp updatedAt;
     //  private String createdBy;

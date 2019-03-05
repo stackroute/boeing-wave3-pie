@@ -15,8 +15,16 @@ eureka:         #tells about the Eureka server details and its refresh time
 
 spring:
   application:
-    name: ExternalInsurerDbService #current service name to be used by the eureka server
+    name: externalinsurerdbservice #current service name to be used by the eureka server
 
 management:
   security:
-    enabled: false
+    enabled: false  #disable the spring security on the management endpoints like /env, /refresh etc.
+
+#logging:
+#  level:
+#com.example.howtodoinjava: DEBUG
+#
+#  logging:
+#     level:
+#    root: ERROR
