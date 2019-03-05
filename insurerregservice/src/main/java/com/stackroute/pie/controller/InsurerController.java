@@ -1,9 +1,6 @@
 package com.stackroute.pie.controller;
 
-import com.stackroute.pie.domain.Insurer;
-import com.stackroute.pie.domain.Policy;
-import com.stackroute.pie.domain.Role;
-import com.stackroute.pie.domain.RoleName;
+import com.stackroute.pie.domain.*;
 import com.stackroute.pie.message.request.SignUpForm;
 import com.stackroute.pie.message.response.ResponseMessage;
 import com.stackroute.pie.repository.InsurerRepository;
@@ -89,5 +86,15 @@ public class InsurerController {
         System.out.println("InsurerLicence : "+insurerName + " " +"policyId : "+policyId);
         Insurer insurer = insurerService.deletePolicy(insurerName,policyId);
         return new ResponseEntity<Insurer>(insurer, HttpStatus.OK);
+    }
+
+    @PostMapping("/policy/premium/calculator")
+    public ResponseEntity<?> calculatePremium(@RequestBody PremiumCalci premiumCalci){
+        System.out.println("entered controller");
+        System.out.println(premiumCalci.toString());
+        long premium = insurerService.calculatePremium(premiumCalci);
+        String pr = Long.toString(premium);
+        return new ResponseEntity<String>(pr, HttpStatus.OK);
+
     }
 }

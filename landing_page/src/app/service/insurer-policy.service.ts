@@ -1,7 +1,9 @@
+import { PolicyPremium } from './../policy-premium';
 import { PolicyFormInfo } from './../components/policyStore/policy-form-info';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
+import { ipaddressvalue } from './ipaddressvalue';
 const httpOptions = {
  headers: new HttpHeaders({
    'Access-Control-Allow-Origin':'*',
@@ -19,6 +21,8 @@ export class InsurerPolicyService {
  constructor(private http: HttpClient) { }
 
  localUrl = 'http://13.126.73.190:8092/insurerregservice/api/v1/';
+ policiesUrl = 'http://13.126.73.190:8092/policy/api/v1/';
+
 
 
  addNewPolicy(policy : PolicyFormInfo):Observable<Object> {
@@ -28,8 +32,13 @@ export class InsurerPolicyService {
 
  getPolicies(insurerLicense : String):Observable<Object> {
    console.log('adadsasdas')
-  return this.http.get(this.localUrl+ 'policy/display/'+insurerLicense);
+  return this.http.get(this.policiesUrl+'policy/'+insurerLicense);
  }
+
+ getPremium(premium : PolicyPremium):Observable<Object> {
+  console.log('adadsasdas')
+ return this.http.post('http://13.126.73.190:8092/calculator/api/auth'+ '/policy/premium/calculator',premium);
+}
 
 
  deletePolicy(insurerName,policyId):Observable<Object>{

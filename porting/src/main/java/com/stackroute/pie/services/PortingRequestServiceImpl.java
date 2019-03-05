@@ -57,6 +57,11 @@ public class PortingRequestServiceImpl implements PortingRequestService{
             throw new RequestNotFoundException();
     }
 
+    @Override
+    public Optional<PortingRequest> getPortingRequestByPortingRequestId(int portingRequestId) {
+        return  requestRepository.findByPortingRequestId(portingRequestId);
+    }
+
     //To get incoming porting requests
     public List<PortingRequest> getIncomingPortingRequest(String newInsurerName) {
         List<PortingRequest>portingRequest1 = requestRepository.findByNewInsurerName(newInsurerName).get();

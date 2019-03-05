@@ -20,7 +20,7 @@ public class KafkaConsumer {
     CommonAuthRepository commonAuthRepository;
 
  //consuming data from kafka & setting it to commonauth
-    @KafkaListener(topics = "userregg_json", groupId = "group_json", containerFactory = "userKafkaListenerFactory")
+    @KafkaListener(topics = "userregg_json", groupId = "group2_json", containerFactory = "userKafkaListenerFactory")
     public void consumeJson(Insured user) {
         System.out.println("yoyoyoyoyo");
         System.out.println("Consumed JSON Message: " + user);
@@ -29,7 +29,7 @@ public class KafkaConsumer {
         Set<Role> roles = new HashSet<>();
 
 
-        Role insurerRole = roleRepository.findByName(RoleName.ROLE_USER)
+        Role insurerRole = roleRepository.findByName(RoleName.ROLE_ADMIN)
                 .orElseThrow(() -> new RuntimeException("Fail! -> Cause: Insured Role not find."));
         roles.add(insurerRole);
         user.setRoles(roles);
@@ -46,7 +46,7 @@ public class KafkaConsumer {
 
     }
 
-    @KafkaListener(topics = "company_1_json", groupId = "group_json", containerFactory = "userKafkaListenerFactory")
+    @KafkaListener(topics = "company_1_json", groupId = "group2_json", containerFactory = "userKafkaListenerFactory")
     public void consumeJson(Insurer user) {
         Set<Role> roles = new HashSet<>();
         Role insurerRole = roleRepository.findByName(RoleName.ROLE_INSURER)

@@ -1,6 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { UserDashboardService } from 'src/app/service/user-dashboard.service';
+import { UserDashboardService } from './../../service/user-dashboard.service';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-user-profile',
@@ -10,25 +11,27 @@ import { UserDashboardService } from 'src/app/service/user-dashboard.service';
 export class UserProfileComponent implements OnInit {
   public username;
   public profile:any;
+  profileForm: any;
   
-  constructor(private route: ActivatedRoute, private userService: UserDashboardService) { }
+  constructor(private formBuilder: FormBuilder,private route: ActivatedRoute, private userService: UserDashboardService) { }
  
  ngOnInit() {
-   
-   this.username = this.route.snapshot.paramMap.get('username');
+ this.profileForm=this.formBuilder.group({
+
+ })
+  this.username = this.route.snapshot.paramMap.get('username');
    console.log('ts' + this.username);
-   this.profile = this.userService.getProfile(this.username);
-   console.log("hIIII" + this.profile.username);
-//     data => {
-//       console.log("username: " + data.username);
-//       console.log('jell' + data.email);
-//       this.profile = data;
-//  },
-//     error => {
-//       console.log('some error occured');
-//       console.log(error.errorMessage);
+   this.profile = this.userService.getProfile(this.username).subscribe(
+    data => {
+      this.profile = data;
+      console.log(data);
+      console.log(this.profile);
+  },
+    error => {
+      console.log('some error occured');
+      console.log(error.errorMessage);
   
-//     }
-  
+    }
+  );
  }
 }

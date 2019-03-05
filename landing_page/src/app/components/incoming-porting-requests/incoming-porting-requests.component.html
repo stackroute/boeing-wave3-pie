@@ -35,6 +35,8 @@
             <td>{{ request.newInsurerName }}</td>
             <button class = "btn btn-primary" (click)="port(request)">Accept Porting</button>
   <button class = "btn btn-primary">Reject Porting</button>
+  <!-- <button mat-raised-button (click)="review(request.insuredName)">Review</button> -->
+  <button mat-raised-button (click)="openDialog(request.insuredName)" style="position: relative; right: 0;margin-top: 0px;">Review</button> 
 </tr> 
 
 </tbody>

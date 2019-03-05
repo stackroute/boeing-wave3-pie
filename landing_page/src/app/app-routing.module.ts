@@ -1,3 +1,5 @@
+import { BuyPolicyComponent } from './components/buy-policy/buy-policy.component';
+import { MyPoliciesComponent } from './components/my-policies/my-policies.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { AboutComponent } from './components/about/about.component';
 import { InsurerDashboardComponent } from './components/insurer-dashboard/insurer-dashboard.component';
@@ -15,7 +17,6 @@ import { OutgoingPortingRequestsComponent } from './components/outgoing-porting-
 import { IncomingPortingRequestsComponent } from './components/incoming-porting-requests/incoming-porting-requests.component';
 import { AddNewPolicyComponent } from './components/add-new-policy/add-new-policy.component';
 // import { LoginInsurerComponent } from './components/login-insurer/login-insurer.component';
-import { MyPoliciesComponent } from './my-policies/my-policies.component';
 import { RecommendationsComponent } from './components/recommendations/recommendations.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -25,6 +26,8 @@ import { SearchComponent } from './components/search/search.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsDashboardComponent } from './components/forms-dashboard/forms-dashboard.component';
+import {DisplayAllPortingRequestsComponent} from './components/display-all-porting-requests/display-all-porting-requests.component';
+import {AllPortingRequestsComponent} from './components/all-porting-requests/all-porting-requests.component';
 
 const routes: Routes = [
   {path: 'search/:value', component: SearchComponent},
@@ -51,7 +54,10 @@ const routes: Routes = [
    {path: 'myrequests/:username',component: DisplayRequestsComponent},
    {path: 'insurerDashboard/:insurerLicense',component:InsurerDashboardComponent},
    {path: 'about',component:AboutComponent},
-   {path: 'contact',component:ContactComponent}
+   {path: 'contact',component:ContactComponent},
+   {path: 'all-porting-requests', component:AllPortingRequestsComponent},
+   {path: 'display-all-porting-requests', component:DisplayAllPortingRequestsComponent},
+   {path: 'buyPolicy/:insurername/:policyname/:insuredname',component: BuyPolicyComponent}
 ];
 
 @NgModule({

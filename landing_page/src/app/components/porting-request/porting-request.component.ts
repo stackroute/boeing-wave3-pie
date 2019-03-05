@@ -1,6 +1,6 @@
 import { FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { RequestService } from 'src/app/service/request.service';
+import { RequestService } from './../../service/request.service';
 import { Router } from '@angular/router';
 
 @Component({

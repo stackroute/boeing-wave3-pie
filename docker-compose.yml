@@ -1,8 +1,8 @@
-version: "3"
+version: "2.1"
 services:
 
   mysqldb:
-    image: mysql
+    image: mysql:5.7
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -273,6 +273,30 @@ services:
       - 8094:8094
     expose:
       - 8094
+    healthcheck:
+      test: "exit 0"
+
+  policy:
+    image: policy
+    build: policy/
+    restart: always
+    network_mode: host
+    hostname: localhost
+    depends_on:
+      mongo:
+        condition: service_healthy
+      configserver:
+        condition: service_healthy
+      eurekaserver:
+        condition: service_healthy
+      apigateway:
+        condition: service_healthy
+      kafka:
+        condition: service_healthy
+    ports:
+      - 8097:8097
+    expose:
+      - 8097
     healthcheck:
       test: "exit 0"
 
