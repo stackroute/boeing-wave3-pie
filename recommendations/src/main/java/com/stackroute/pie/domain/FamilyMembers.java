@@ -16,7 +16,7 @@ public class FamilyMembers {
     @Id
     private String username;
     private  String memberName;
-    private int memberAge;
+    private Long memberAge;
     private String relation;
     private String memberGender;
 }

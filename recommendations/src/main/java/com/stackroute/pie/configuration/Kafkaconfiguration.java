@@ -1,10 +1,7 @@
 package com.stackroute.pie.configuration;
 
 
-import com.stackroute.pie.domain.FamilyMembers;
-import com.stackroute.pie.domain.Insured;
-import com.stackroute.pie.domain.Insurer;
-import com.stackroute.pie.domain.Policy;
+import com.stackroute.pie.domain.*;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;

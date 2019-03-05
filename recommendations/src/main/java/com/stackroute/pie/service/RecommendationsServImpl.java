@@ -28,7 +28,7 @@ public class RecommendationsServImpl implements RecommendationServ {
 
     @Override
     public Policy createPolicy(Policy policy) {
-        return recommendationsRepo.newPolicy(policy.getPolicyId(),policy.getInsurerName(),policy.getPolicyName(),policy.getMinAge(),policy.getMaxAge(),policy.getGender(),policy.getDiseases(),policy.getPolicyType());
+        return recommendationsRepo.newPolicy(policy.getUniqueId(),policy.getPolicyId(),policy.getInsurerName(),policy.getInsurerLicense(),policy.getPolicyName(),policy.getMinAge(),policy.getMaxAge(),policy.getGenderAvail(),policy.getDiseasesCovered(),policy.getPolicyType(),policy.getPolicyDescription());
     }
 
     @Override
@@ -59,7 +59,7 @@ public class RecommendationsServImpl implements RecommendationServ {
 
     @Override
     public Policy updatePolicy(Policy policy) {
-        return recommendationsRepo.updatePolicy(policy.getPolicyId(),policy.getInsurerName(),policy.getPolicyName(),policy.getMinAge(),policy.getMaxAge(),policy.getGender(),policy.getDiseases(),policy.getPolicyType());
+        return recommendationsRepo.updatePolicy(policy.getPolicyId(),policy.getInsurerName(),policy.getPolicyName(),policy.getMinAge(),policy.getMaxAge(),policy.getGenderAvail(),policy.getDiseasesCovered(),policy.getPolicyType());
 
     }
 
@@ -74,19 +74,19 @@ public class RecommendationsServImpl implements RecommendationServ {
     }
 
     @Override
-    public String insurerPolicy(String insurerName, int policyId) {
+    public String insurerPolicy(String insurerName, Long policyId) {
         recommendationsRepo.insurerPolicy(insurerName, policyId);
         return " ";
     }
 
     @Override
-    public String insuredPolicy(int policyId, String username) {
+    public String insuredPolicy(Long policyId, String username) {
         recommendationsRepo.insuredPolicy(policyId,username);
         return " ";
     }
 
     @Override
-    public String viewPolicy(int policyId, String username) {
+    public String viewPolicy(Long policyId, String username) {
         recommendationsRepo.viewedPolicy(policyId,username);
         return " ";
     }
@@ -100,10 +100,13 @@ public class RecommendationsServImpl implements RecommendationServ {
     @Override
     public List<Policy> getByAgeGender(String username) {
         Insured user=recommendationsRepo.findUser(username);
-        int age =user.getAge();
+        Long age =user.getAge();
+        System.out.println(age);
         String gender=user.getGender();
-        return recommendationsRepo.findByAgeGender(age,gender);
-
+        System.out.println(gender);
+        //return recommendationsRepo.findByAgeGender(age,gender);
+            List<Policy> policies = recommendationsRepo.findByAgeGender(age, gender);
+        return policies;
     }
 
     @Override
@@ -129,7 +132,7 @@ public class RecommendationsServImpl implements RecommendationServ {
     @Override
     public List<Policy> getByAgeGenderDisease(String username) {
         Insured user=recommendationsRepo.findUser(username);
-        int age=user.getAge();
+        Long age=user.getAge();
         String gender=user.getGender();
         String existingDisease=user.getExistingDisease();
         return recommendationsRepo.findByAgeGenderDisease(age,gender,existingDisease);
@@ -140,7 +143,7 @@ public class RecommendationsServImpl implements RecommendationServ {
     public List<Policy> policyForDependants(String username) {
         FamilyMembers familyMembers =recommendationsRepo.findDependants(username);
         String memberGender = familyMembers.getMemberGender();
-        int memberAge=familyMembers.getMemberAge();
+        Long memberAge=familyMembers.getMemberAge();
         return recommendationsRepo.findByAgeGender(memberAge,memberGender);
 
     }
@@ -158,7 +161,7 @@ public class RecommendationsServImpl implements RecommendationServ {
     @Override
     public List<Policy> getByAge(String username) {
         Insured user=recommendationsRepo.findUser(username);
-        int age =user.getAge();
+        Long age =user.getAge();
         return recommendationsRepo.findByAge(age);
 
     }

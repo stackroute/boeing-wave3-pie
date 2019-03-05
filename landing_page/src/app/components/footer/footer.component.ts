@@ -1,6 +1,7 @@
 import { CalculatorComponent } from './../calculator/calculator.component';
-import { MatDialog } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
+import { DialogbotComponent } from '../dialogbot/dialogbot.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-footer',
@@ -23,5 +24,13 @@ export class FooterComponent implements OnInit {
     });
   }
 
+  openDialog1(): void {
+    const dialogRef = this.dialog.open(DialogbotComponent, {
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
 
 }

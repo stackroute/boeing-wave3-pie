@@ -2,8 +2,12 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+
 export const environment = {
-  production: false
+  production: false,
+  dialogflow: {
+    angularBot: 'a3ae6614caae4be68bc7b9f44e69b4a8'
+  }
 };
 
 /*

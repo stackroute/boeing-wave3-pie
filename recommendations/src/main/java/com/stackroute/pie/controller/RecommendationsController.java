@@ -16,7 +16,7 @@ import java.util.List;
 import static java.util.Arrays.asList;
 
 @RestController
-@RequestMapping("rest/neo4j/recommendations/")
+@RequestMapping("api/v1/")
 @CrossOrigin("*")
 public class RecommendationsController {
 
@@ -34,7 +34,6 @@ public class RecommendationsController {
         ResponseEntity responseEntity;
         Insurer Insurer1=recommendationsServ.createInsurer(insurer);
         responseEntity= new ResponseEntity<Insurer>(Insurer1, HttpStatus.CREATED);
-        System.out.println((Insurer1));
         return responseEntity;
     }
 
@@ -46,7 +45,6 @@ public class RecommendationsController {
         ResponseEntity responseEntity;
         Policy Policy1=recommendationsServ.createPolicy(policy);
         responseEntity= new ResponseEntity<Policy>(Policy1, HttpStatus.CREATED);
-        System.out.println((Policy1));
         return responseEntity;
     }
 
@@ -55,7 +53,6 @@ public class RecommendationsController {
         ResponseEntity responseEntity;
         Insured Insured1=recommendationsServ.createInsured(insured);
         responseEntity= new ResponseEntity<Insured>(Insured1, HttpStatus.CREATED);
-        System.out.println((Insured1));
         return responseEntity;
     }
 
@@ -64,7 +61,6 @@ public class RecommendationsController {
         ResponseEntity responseEntity;
         FamilyMembers familyMembers1=recommendationsServ.createMembers(familyMembers);
         responseEntity= new ResponseEntity<FamilyMembers>(familyMembers1, HttpStatus.CREATED);
-        System.out.println((familyMembers1));
         return responseEntity;
     }
 
@@ -74,7 +70,6 @@ public class RecommendationsController {
         ResponseEntity responseEntity;
         Insurer Insurer1=recommendationsServ.deleteInsurer(insurer);
         responseEntity= new ResponseEntity<Insurer>(Insurer1, HttpStatus.ACCEPTED);
-        System.out.println((Insurer1));
         return responseEntity;
     }
 
@@ -99,22 +94,22 @@ public class RecommendationsController {
 
 
 
-    @PostMapping(value = "relationship/{insurerName}/{policyId}")
-    public ResponseEntity<?> linkpolicy(@PathVariable String insurerName,@PathVariable int policyId){
+    @PostMapping(value = "linkPolicy/{insurerName}/{policyId}")
+    public ResponseEntity<?> linkpolicy(@PathVariable String insurerName,@PathVariable Long policyId){
         ResponseEntity responseEntity;
         responseEntity= new ResponseEntity<String>(recommendationsServ.insurerPolicy(insurerName,policyId),HttpStatus.OK);
         return responseEntity;
     }
 
-    @PostMapping(value = "relation/{policyId}/{username}")
-    public ResponseEntity<?> linkinsured(@PathVariable int policyId,@PathVariable String username){
+    @PostMapping(value = "linkInsured/{policyId}/{username}")
+    public ResponseEntity<?> linkinsured(@PathVariable Long policyId,@PathVariable String username){
         ResponseEntity responseEntity;
         responseEntity= new ResponseEntity<String>(recommendationsServ.insuredPolicy(policyId,username),HttpStatus.OK);
         return responseEntity;
     }
 
     @PostMapping(value = "view/{policyId}/{username}")
-    public ResponseEntity<?> viewPolicy(@PathVariable int policyId,@PathVariable String username){
+    public ResponseEntity<?> viewPolicy(@PathVariable Long policyId,@PathVariable String username){
         ResponseEntity responseEntity;
         responseEntity= new ResponseEntity<String>(recommendationsServ.viewPolicy(policyId,username),HttpStatus.CREATED);
         return responseEntity;
@@ -135,63 +130,43 @@ public class RecommendationsController {
 
     @GetMapping("user/{username}")
     public Insured geUser(@PathVariable("username")String username){
-        System.out.println("in controller");
         Insured user=recommendationsServ.findUser(username);
-        System.out.println(user);
         return user;
     }
 
     @GetMapping("policyByAgeGender/{username}")
     public  List<Policy> getByAgeGender(@PathVariable("username")String username){
-        System.out.println("in controller");
-        List<Policy> policiyy=recommendationsServ.getByAgeGender(username);
-        kafkaTemplate.send("ageGenderPolicy", policiyy);
-        System.out.println(policiyy);
-        return policiyy;
+         List<Policy> policiyy=recommendationsServ.getByAgeGender(username);
+         return policiyy;
     }
     @GetMapping("policyByAge/{username}")
     public  List<Policy> getByAge(@PathVariable("username")String username){
-        System.out.println("in controller");
         List<Policy> policiyy=recommendationsServ.getByAge(username);
-        //kafkaTemplate.send("ageGenderPolicy", policiyy);
-        System.out.println(policiyy);
         return policiyy;
     }
 
     @GetMapping("policyByGender/{username}")
     public  List<Policy> getByGender(@PathVariable("username")String username){
-        System.out.println("in controller");
         List<Policy> policiyy=recommendationsServ.getByGender(username);
-        //kafkaTemplate.send("ageGenderPolicy", policiyy);
-        System.out.println(policiyy);
         return policiyy;
     }
 
     @GetMapping("policyByDisease/{username}")
     public  List<Policy> getByDisease(@PathVariable("username")String username){
-        System.out.println("in controller");
         List<Policy> policiyy=recommendationsServ.getByDisease(username);
-        //kafkaTemplate.send("ageGenderPolicy", policiyy);
-        System.out.println(policiyy);
         return policiyy;
     }
 
 
     @GetMapping("policyByAgeGenderDisease/{username}")
     public  List<Policy> getByAgeGenderDisease(@PathVariable("username")String username){
-        System.out.println("in controller");
         List<Policy> policiyy=recommendationsServ.getByAgeGenderDisease(username);
-
-        System.out.println(policiyy);
         return policiyy;
     }
 
     @GetMapping("policyForDependants/{username}")
     public  List<Policy> getForDependants(@PathVariable("username")String username){
-        System.out.println("in controller");
         List<Policy> policiyy=recommendationsServ.policyForDependants(username);
-
-        System.out.println(policiyy);
         return policiyy;
     }
 }
