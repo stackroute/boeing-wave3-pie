@@ -101,4 +101,11 @@ public class SettlementServicesImpl implements SettlementServices {
         settlementRepository.save(pendingTasks);
         return pendingTasks;
     }
+
+    @Override
+    public List<PendingTasks> getPendingTasksByPortingRequestId(int portingRequestId) {
+        List<PendingTasks> pendingTasks = new ArrayList<PendingTasks>();
+        pendingTasks.add(settlementRepository.findByPortingRequestId(portingRequestId));
+        return pendingTasks;
+    }
 }

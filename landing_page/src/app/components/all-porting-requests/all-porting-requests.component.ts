@@ -12,7 +12,7 @@ export class AllPortingRequestsComponent implements OnInit {
   @Input() currentCompanyName: string;
   @Input() portingRequestId: number;
   pendingTasks: PendingTasks[];
-
+  onePendingTask: PendingTasks;
   newPendingTask: Task;
   newPendingTaskName: string;
   newPendingTaskDescription: string;
@@ -28,6 +28,7 @@ export class AllPortingRequestsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getPendingTasksById();
     this.fetchAllPortingRequestsIsClicked = false;
     this.viewPendingTasksOfInsuredIsClicked = false;
     this.addANewPendingTaskIsClicked = false;
@@ -72,6 +73,8 @@ export class AllPortingRequestsComponent implements OnInit {
         console.log(task.taskStatus);
       }
     }
-    
+  }
+  getPendingTasksById(): void  {
+    this.fetchPendingTasksService.getPendingTasksById(this.portingRequestId).subscribe(PendingTasks => (this.pendingTasks = PendingTasks));
   }
 }
