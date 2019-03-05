@@ -75,7 +75,7 @@ public class UserController {
         Set<Request> requests = new HashSet<>();
 
 
-        userrRole.setName(RoleName.ROLE_USER);
+        userrRole.setName(RoleName.ROLE_ADMIN);
 
 
         roles.add(userrRole);
