@@ -20,6 +20,9 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
   newPendingTaskDescription: string;
   newPendingTaskDueDate: string;
 
+  displayedColumns: string[] = ['taskName', 'taskDescription', 'taskStatus', 'dueDate'];
+
+  dataSource: Task[];
   // currentInsuredName: string;
   fetchAllPortingRequestsIsClicked: Boolean;
   addANewPendingTaskIsClicked: Boolean;
@@ -28,6 +31,7 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
 
   ngOnInit() {
     this.viewPendingTasksOfInsuredClicked = false;
+    this.dataSource = this.pendingTasks.taskList;
   }
 
 

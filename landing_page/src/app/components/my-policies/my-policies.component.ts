@@ -36,7 +36,7 @@ next(insurerName,policyName,newInsurer){
   
   let as = window.localStorage.setItem("oldInsurer",insurerName);
   let policyname = window.localStorage.setItem("oldPolicy",policyName);
-  this.router.navigate(['/myCompanyPolicy',newInsurer]);
+  this.router.navigate(['/companyPolicy',newInsurer]);
 }
 
 }

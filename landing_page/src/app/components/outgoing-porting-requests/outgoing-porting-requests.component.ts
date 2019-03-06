@@ -4,7 +4,7 @@ import { InsurerOutgoingportingrequestService } from './../../service/insurer-ou
 import { InsurerAcceptoutgoingportingrequestService } from './../../service/insurer-acceptoutgoingportingrequest.service';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import { AllPortingRequestsComponent } from '../all-porting-requests/all-porting-requests.component';
-import { ReviewComponent } from '../review/review.component';
+import {ReviewComponent} from '../review/review.component';
 @Component({
   selector: 'app-outgoing-porting-requests',
   templateUrl: './outgoing-porting-requests.component.html',
