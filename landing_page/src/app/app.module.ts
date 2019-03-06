@@ -1,3 +1,4 @@
+import { PolicyDetailsComponent } from './components/policy-details/policy-details.component';
 import { MyPoliciesComponent } from './components/my-policies/my-policies.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { AboutComponent } from './components/about/about.component';
@@ -56,7 +57,7 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatTreeModule
+  MatTreeModule,
   
  } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
@@ -89,7 +90,9 @@ import { AllPortingRequestsComponent } from './components/all-porting-requests/a
 import { DisplayAllPortingRequestsComponent } from './components/display-all-porting-requests/display-all-porting-requests.component';
 import { DialogbotComponent } from './components/dialogbot/dialogbot.component';
 import { BuyPolicyComponent } from './components/buy-policy/buy-policy.component';
-import { PolicyDetailsComponent } from './components/policy-details/policy-details.component';
+import { ReviewComponent } from './components/review/review.component';
+import { FamilyMembersComponent } from './components/family-members/family-members.component';
+
 
 const routes: Routes = [];
 @NgModule({
@@ -137,17 +140,17 @@ const routes: Routes = [];
     DialogbotComponent,
     PolicyDetailsComponent,
     MyPoliciesComponent,
-    BuyPolicyComponent
+    BuyPolicyComponent,
+    ReviewComponent,
+    FamilyMembersComponent
   ],
-  entryComponents: [DialogbotComponent,CalculatorComponent],
-    
-
+  entryComponents: [CalculatorComponent,ReviewComponent,DialogbotComponent],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
     FlexLayoutModule,
     FormsModule,
-    RouterModule.forRoot(routes),
     CarouselModule,
     HttpClientModule,
     ReactiveFormsModule,
@@ -187,7 +190,7 @@ const routes: Routes = [];
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatTreeModule
+  MatTreeModule,
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],

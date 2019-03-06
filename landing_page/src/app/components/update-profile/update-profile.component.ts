@@ -11,6 +11,7 @@ import { UserDashboardService } from './../../service/user-dashboard.service';
 export class UpdateProfileComponent implements OnInit {
   firstForm: FormGroup;
   secondForm: FormGroup;
+  thirdForm: FormGroup;
   username;
   constructor(private _route: ActivatedRoute, private userService: UserDashboardService, private router: Router,private formBuilder: FormBuilder) { }
  
@@ -29,13 +30,13 @@ export class UpdateProfileComponent implements OnInit {
       fullName: ['', Validators.required],
       insuredId: ['',Validators.required]
       });
- 
+      
    }
  
    submitForm() {
     console.log("hi");
  
-     const signUpForm = Object.assign(this.firstForm.value, this.secondForm.value);
+     const signUpForm = Object.assign(this.firstForm.value, this.secondForm.value,this.thirdForm.value);
       console.log('registerForm.value : ', signUpForm);
  
     this.userService.updateProfile(this.username, signUpForm).subscribe(

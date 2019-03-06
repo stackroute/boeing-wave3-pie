@@ -1,3 +1,4 @@
+import { FamilyMembersComponent } from './components/family-members/family-members.component';
 import { BuyPolicyComponent } from './components/buy-policy/buy-policy.component';
 import { MyPoliciesComponent } from './components/my-policies/my-policies.component';
 import { ContactComponent } from './components/contact/contact.component';
@@ -49,7 +50,7 @@ const routes: Routes = [
    {path: 'updateProfile/:username', component:UpdateProfileComponent},
    {path:'newPolicyForm', component:AddNewPolicyComponent},
    {path:'myCompanyPolicy/:insurerLicense',component:GetCompanyPolicyComponent},
-   {path:'deletePolicy/:insurerName/:policyId',component:CompanyPolicyDeleteComponent},
+   {path:'deletePolicy/:insurerName/:policyName',component:CompanyPolicyDeleteComponent},
    {path: 'companyregister', component: CompanyregisterComponent},
    {path: 'myrequests/:username',component: DisplayRequestsComponent},
    {path: 'insurerDashboard/:insurerLicense',component:InsurerDashboardComponent},
@@ -57,7 +58,8 @@ const routes: Routes = [
    {path: 'contact',component:ContactComponent},
    {path: 'all-porting-requests', component:AllPortingRequestsComponent},
    {path: 'display-all-porting-requests', component:DisplayAllPortingRequestsComponent},
-   {path: 'buyPolicy/:insurername/:policyname/:insuredname',component: BuyPolicyComponent}
+   {path: 'buyPolicy/:insurername/:policyname/:insuredname',component: BuyPolicyComponent},
+   {path: 'familyMembers/:username',component: FamilyMembersComponent}
 ];
 
 @NgModule({

@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.List;
 
 @Service
@@ -18,8 +18,6 @@ public class RecommendationsServImpl implements RecommendationServ {
 
     @Autowired
     private RecommendationsRepo recommendationsRepo;
-    private Insurer insurer;
-    private Policy policy;
 
     @Override
     public Insurer createInsurer(Insurer insurer) {
@@ -101,27 +99,21 @@ public class RecommendationsServImpl implements RecommendationServ {
     public List<Policy> getByAgeGender(String username) {
         Insured user=recommendationsRepo.findUser(username);
         Long age =user.getAge();
-        System.out.println(age);
+
         String gender=user.getGender();
-        System.out.println(gender);
-        //return recommendationsRepo.findByAgeGender(age,gender);
-            List<Policy> policies = recommendationsRepo.findByAgeGender(age, gender);
-        return policies;
+
+            return recommendationsRepo.findByAgeGender(age, gender);
+
     }
 
     @Override
     public List<Policy> getByAgeDisease(int age, List<String> policyDisease) {
-        return null;
+        return recommendationsRepo.findByAgeDisease(age,policyDisease);
     }
 
     @Override
     public List<Policy> getByGenderDisease(String userGender, List<String> policyDisease) {
-        return null;
-    }
-
-    @Override
-    public List<Policy> getPolicy(int age, String gender) {
-        return null;
+        return recommendationsRepo.findByGenderDisease(userGender,policyDisease);
     }
 
     @Override

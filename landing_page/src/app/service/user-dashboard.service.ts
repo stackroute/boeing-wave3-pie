@@ -9,7 +9,7 @@ export class UserDashboardService {
 public localMongoUrl = 'http://13.126.73.190:8092/porting/api/auth/requests/';
  public recommendationsUrl = 'http://172.23.239.158:8086/rest/neo4j/recommendations/policyByAgeGender/';
  public profileUrl = 'http://13.126.73.190:8092/userreg/api/auth/profile/';
- public policiesUrl = 'http://13.126.73.190:8092/userreg/api/auth/policy/display/';
+ public policiesUrl = 'http://13.126.73.190:8092/policy/api/v1/policies/';
  constructor(private http: HttpClient) {
    console.log('http service got called');
  }
@@ -42,4 +42,10 @@ public localMongoUrl = 'http://13.126.73.190:8092/porting/api/auth/requests/';
      console.log('after');
      return profile;
    }
+   public familyMembers(username, form): any {
+    console.log('service' + username);
+    const profile = this.http.put(this.profileUrl + 'familymembers',form);
+    console.log('after');
+    return profile;
+  }
 }

@@ -9,28 +9,29 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 import java.util.List;
 
-@Document(collection = "Policy_")
+@Document(collection = "PolicyList")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Policy {
-    public int policyId;
-    public String policyName;
-    public String insurerName;
-    public String policyType;
-   public List<Diseases> diseasesList;
-    public int cashlessHospitals;
-    public int waitingPeriod;
-    public int monthlyPremium;
-    public int yearlyPremium;
-    public int sumInsured;
-    public int minAge;
-    public int maxAge;
-    public String location;
-    @JsonFormat(pattern="dd-MM-yyyy")
-    public Date createdAt;
-    @JsonFormat(pattern="dd-MM-yyyy")
-    public Date updatedAt;
-    public String createdBy;
-    public String updatedBy;
+    public long policyId;
+    private String policyName;
+    private String insurerName;
+    private String policyType;
+    private String insurerLicense;
+    private int policyTerm;
+    private List<String> diseasesCovered;
+    private List<String> cashlessHospitals;
+    private int waitingPeriod;
+    private String genderAvail;
+    private String uniqueId;
+    private String policyDescription;
+    private long minSumInsured;
+    private long maxSumInsured;
+    private List<String> insuredList;
+    private int minAge;
+    private int maxAge;
+    private List<String> termsAndConditions;
+    private List<String> paymentList;
+
 }

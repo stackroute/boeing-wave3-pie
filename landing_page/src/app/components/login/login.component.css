@@ -268,7 +268,7 @@ ul.subtext_data li {
 }  */ 
 
 
-.login-form {
+/* .login-form {
     width: 340px;
     margin: auto;
 }
@@ -287,4 +287,25 @@ ul.subtext_data li {
 .btn {        
     font-size: 15px;
     font-weight: bold;
-}
+} */
+
+ .container { 
+    background: url('/../assets/img/optima-restore-banner.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+   }
+   
+   .panel-default {
+    opacity: 0.8;
+    margin-top:30px;
+   }
+   .form-group.last {
+    margin-bottom:0px;
+   } 
+
+
+   
