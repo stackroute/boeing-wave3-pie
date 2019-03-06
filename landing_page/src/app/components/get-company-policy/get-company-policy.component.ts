@@ -61,7 +61,8 @@ port(insurername,policyname,exclusionperiod){
       console.log(error);
     }
   );
-  this.router.navigate(['/dashboard',this.insuredname]);
+  console.log(this.insuredname);
+  this.router.navigate(['/dashboard',window.localStorage.getItem('insuredname')]);
 }
 
 }

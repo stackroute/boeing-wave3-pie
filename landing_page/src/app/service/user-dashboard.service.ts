@@ -7,7 +7,7 @@ import { catchError, map } from 'rxjs/operators';
 })
 export class UserDashboardService {
 public localMongoUrl = 'http://13.126.73.190:8092/porting/api/auth/requests/';
- public recommendationsUrl = 'http://172.23.239.158:8086/rest/neo4j/recommendations/policyByAgeGender/';
+ public recommendationsUrl = 'http://13.126.73.190:8092/recommendations/api/v1/policyByAgeGender/';
  public profileUrl = 'http://13.126.73.190:8092/userreg/api/auth/profile/';
  public policiesUrl = 'http://13.126.73.190:8092/policy/api/v1/policies/';
  constructor(private http: HttpClient) {

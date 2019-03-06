@@ -2,8 +2,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { InsurerOutgoingportingrequestService } from './../../service/insurer-outgoingportingrequest.service';
 import { InsurerAcceptoutgoingportingrequestService } from './../../service/insurer-acceptoutgoingportingrequest.service';
+import {MatDialog, MatDialogConfig} from '@angular/material';
+import { AllPortingRequestsComponent } from '../all-porting-requests/all-porting-requests.component';
 import { ReviewComponent } from '../review/review.component';
-import { MatDialog } from '@angular/material';
 @Component({
   selector: 'app-outgoing-porting-requests',
   templateUrl: './outgoing-porting-requests.component.html',
@@ -15,7 +16,8 @@ export class OutgoingPortingRequestsComponent implements OnInit {
   currentCompanyName: string;
   raiseGrievanceButtonIsClicked: boolean;
   idForGrievances: number;
-  constructor(private route: ActivatedRoute, private incoming: InsurerOutgoingportingrequestService, private portrequest: InsurerAcceptoutgoingportingrequestService, public dialog: MatDialog) { }
+  grievancesComponent = AllPortingRequestsComponent;
+  constructor(private route: ActivatedRoute, private incoming: InsurerOutgoingportingrequestService, private portrequest: InsurerAcceptoutgoingportingrequestService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.raiseGrievanceButtonIsClicked = false;
@@ -46,7 +48,17 @@ export class OutgoingPortingRequestsComponent implements OnInit {
     });
   }
   raiseGrievanceButtonClicked(portrequestId: number): boolean{
-    this.raiseGrievanceButtonIsClicked = true;
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    dialogConfig.data = {
+      portingRequestId: portrequestId
+    };
+
+    this.dialog.open(AllPortingRequestsComponent, dialogConfig);
+    this.raiseGrievanceButtonIsClicked = false;
     this.idForGrievances = portrequestId;
     return true;
   }
