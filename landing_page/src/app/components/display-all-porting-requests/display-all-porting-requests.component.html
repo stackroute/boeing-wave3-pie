@@ -29,16 +29,14 @@
     </table>
     <button (click)="addANewPendingTask()">Add a new Task</button>
     <div *ngIf="
-          viewPendingTasksOfInsuredIsClicked &&
-          addANewPendingTaskIsClicked &&
-          Task.insuredName === currentInsuredName
+          addANewPendingTaskIsClicked
         ">
       <div>
         <input placeholder="Task Name" [(ngModel)]="newPendingTaskName" />
         <input placeholder="Task Description" [(ngModel)]="newPendingTaskDescription" />
         <input placeholder="Due Date" [(ngModel)]="newPendingTaskDueDate" />
       </div>
-      <button (click)="saveNewPendingTask(Task)">Save</button>
+      <button (click)="saveNewPendingTask(pendingTask)">Save</button>
     </div>
   </li>
 </ul>
