@@ -1,12 +1,12 @@
 <div class="container list-of-forms">
   <div class="row">
     <div class="col-2"></div>
-    <input class="search-input-box col-4" [(ngModel)]="searchTerm" placeholder="Search for a form">
-    <div class="col-1"></div>
-    <button class="search-button col-1" (click)="searchForForms(searchTerm)">Search</button>
-    <div class="col-1"></div>
-    <button class="clear-search-button col-1" (click)="clearSearch()">Clear Search</button>
-    <div class="col-1"></div>
+    <input [(ngModel)]="searchTerm" placeholder="Search for a form">
+    <div ></div>
+    <button class="search-button" (click)="searchForForms(searchTerm)">Search</button>
+    <div ></div>
+    <button class="clear-search-button" (click)="clearSearch()">Clear Search</button>
+    <div ></div>
   </div>
   <div class="add-new-form-component">
     <app-add-new-form [allFormFormats]="allFormFormats" (newFormCreated)="getAllFormFormatsOnEventClick($event)">
@@ -16,9 +16,9 @@
     <div class="row">
       <div class="col-2"></div>
       <p class="col-4 display-form-name">{{form.formName}}</p>
-      <button class="col-2" (click)="showFormDetails(form.formId)">View This Form</button>
-      <button class="col-2" (click)="deleteForm(form.formId)">DELETE</button>
-      <div class="col-2"></div>
+      <button (click)="showFormDetails(form.formId)">View This Form</button>
+      <button  (click)="deleteForm(form.formId)">DELETE</button>
+      <div ></div>
     </div>
     <div class="row" *ngIf="showFormDetailsComponent && form.formId === currentFormFormat.formId">
       <app-display-form [currentFormFormat]='currentFormFormat'

@@ -57,7 +57,7 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatTreeModule
+  MatTreeModule,
   
  } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
@@ -91,6 +91,9 @@ import { DisplayAllPortingRequestsComponent } from './components/display-all-por
 import { DialogbotComponent } from './components/dialogbot/dialogbot.component';
 import { BuyPolicyComponent } from './components/buy-policy/buy-policy.component';
 import { ReviewComponent } from './components/review/review.component';
+import { FamilyMembersComponent } from './components/family-members/family-members.component';
+import { ShowChatResultsComponent } from './components/show-chat-results/show-chat-results.component';
+import { CompanyPolicyComponent } from './components/company-policy/company-policy.component';
 
 
 const routes: Routes = [];
@@ -140,7 +143,10 @@ const routes: Routes = [];
     PolicyDetailsComponent,
     MyPoliciesComponent,
     BuyPolicyComponent,
-    ReviewComponent
+    ReviewComponent,
+    FamilyMembersComponent,
+    ShowChatResultsComponent,
+    CompanyPolicyComponent
   ],
   entryComponents: [CalculatorComponent,ReviewComponent,DialogbotComponent],
   
@@ -188,7 +194,7 @@ const routes: Routes = [];
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatTreeModule
+  MatTreeModule,
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],

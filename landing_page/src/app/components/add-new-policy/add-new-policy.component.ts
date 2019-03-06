@@ -12,7 +12,7 @@ import { FormBuilder, Validators } from '@angular/forms';
  styleUrls: ['./add-new-policy.component.css']
 })
 export class AddNewPolicyComponent implements OnInit {
-
+  formSubmitAttempt :any;
  firstForm;
 secondForm;
 thirdForm;
@@ -20,26 +20,36 @@ thirdForm;
  constructor(private formBuilder:FormBuilder,private router:Router,private service:InsurerPolicyService) {
 
  }
+ isFieldInvalid(field: string) {
+  return (
+    (!this.firstForm.get(field).valid && this.firstForm.get(field).touched) ||
+    (this.firstForm.get(field).untouched && this.formSubmitAttempt) 
+  );
+}
 
  ngOnInit() {
 this.firstForm = this.formBuilder.group({
  insurerName: ["", Validators.required],
+ insurerLicense:["", Validators.required],
  policyName: ["", Validators.required],
  policyId: ["", Validators.required]
 
 }
 );
-this.thirdForm = this.formBuilder.group({
- minSumInsured: ["", Validators.required],
- maxSumInsured: ["", Validators.required],
- hospitals: ["", Validators.required]
-
+this.secondForm = this.formBuilder.group({
+  policyType: ["", Validators.required],
+  genderAvail: ["", Validators.required],
+  minAge: ["", Validators.required],
+ maxAge: ["", Validators.required],
+//  hospitals: ["", Validators.required]
 }
 );
-this.secondForm = this.formBuilder.group({
- minAge: ["", Validators.required],
- maxAge: ["", Validators.required],
- waitingPeriod: ["", Validators.required]
+this.thirdForm = this.formBuilder.group({
+ policyTerm: ["", Validators.required],
+ minSumInsured: ["", Validators.required],
+ maxSumInsured: ["", Validators.required],
+ waitingPeriod: ["", Validators.required],
+ policyDescription: ["", Validators.required],
 
 }
 );

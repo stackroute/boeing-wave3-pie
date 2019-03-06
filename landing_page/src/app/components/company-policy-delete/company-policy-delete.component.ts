@@ -8,17 +8,17 @@ import { ActivatedRoute, Router } from '@angular/router';
  styleUrls: ['./company-policy-delete.component.css']
 })
 export class CompanyPolicyDeleteComponent implements OnInit {
-policyId;
+policyName;
 insurerName;
  constructor(private route: ActivatedRoute, private router: Router, public insurerPolicyService: InsurerPolicyService) { }
 
 
  ngOnInit() {
-   this.policyId = this.route.snapshot.paramMap.get('policyId');
-   this.insurerName = this.route.snapshot.paramMap.get('insurerName');
-   console.log(this.policyId)
+  this.insurerName = this.route.snapshot.paramMap.get('insurerName');
+   this.policyName = this.route.snapshot.paramMap.get('policyName');
+   console.log(this.policyName)
    console.log(this.insurerName)
-   this.insurerPolicyService.deletePolicy(this.insurerName,this.policyId).subscribe(policy => console.log(policy));  
+   this.insurerPolicyService.deletePolicy(this.insurerName,this.policyName).subscribe(policy => console.log(policy));  
  }
  
 }

@@ -39,6 +39,7 @@
         <module>ExternalInsurerDbService</module>
         <module>settlement</module>
         <module>policy</module>
+        <module>InsurerPolicies</module>
 
     </modules>
     <dependencies>

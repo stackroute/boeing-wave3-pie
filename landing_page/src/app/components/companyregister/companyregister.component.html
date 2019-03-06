@@ -1,3 +1,5 @@
+<div class="xyz">
+
 <mat-tab-group style = "margin-left: 0%;" mat-align-tabs="center">
   <mat-tab label="Authentication Details">
       <form [formGroup]="firstForm">
@@ -23,7 +25,7 @@
 </mat-form-field>
 <br>
 <mat-form-field style = "margin-left: 37%;">
-  <input matInput  placeholder="Password" formControlName="password" required>
+  <input type="password" matInput  placeholder="Password" formControlName="password" required>
   <!-- type="password" -->
   <mat-error *ngIf="isFieldInvalid('insurerName')">
     Password must be atleast 6 character long
@@ -66,3 +68,4 @@
   </mat-tab>
  
  </mat-tab-group>
+ </div>

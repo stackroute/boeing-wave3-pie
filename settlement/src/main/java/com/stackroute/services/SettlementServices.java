@@ -15,4 +15,5 @@ public interface SettlementServices {
     public PendingTasks putPendingTasks(PendingTasks pendingTasks);
     public PendingTasks deleteTask(int pendingTasksId, String taskName);
     public PendingTasks changePendingTaskStatus(int pendingTasksId, String taskName, boolean status);
+    public List<PendingTasks> getPendingTasksByPortingRequestId(int portingRequestId);
 }

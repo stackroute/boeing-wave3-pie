@@ -190,16 +190,36 @@
         >
           My Requests
         </a>
-        <a
-          mat-list-item
-          class="ml-2"
-          [routerLink]="['/myprofile', insuredName]"
-          routerLinkActive="active"
-          style="font-size:15px;"
-        >
-          My profile
-        </a>
       </mat-nav-list>
+      <mat-accordion multi="true" [displayMode]="displayMode">
+          <mat-expansion-panel class="no-shadow">
+            <mat-expansion-panel-header
+              fxLayout="row"
+              [expandedHeight]="expandHeight"
+              [collapsedHeight]="collapseHeight"
+            >
+              <mat-panel-title>
+                My Profile
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-nav-list class="ml-0" dense>            
+              <a
+                mat-list-item
+                [routerLink]="['/myprofile', insuredName]"
+            routerLinkActive="active"
+               >
+              Update profile</a
+              >
+              <a
+                mat-list-item
+                [routerLink]="['/familyMembers', insuredName]"
+            routerLinkActive="active"
+              >Add Family Members</a
+              >
+            </mat-nav-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+  
     </div>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -352,33 +372,6 @@
           Add New Policy
         </a>
       </mat-nav-list>
-      <mat-accordion multi="true" [displayMode]="displayMode">
-        <mat-expansion-panel class="no-shadow">
-          <mat-expansion-panel-header
-            fxLayout="row"
-            [expandedHeight]="expandHeight"
-            [collapsedHeight]="collapseHeight"
-          >
-            <mat-panel-title>
-              Porting Request
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <mat-nav-list class="ml-0" dense>            
-            <a
-              mat-list-item
-              [routerLink]="['/porting']"
-          routerLinkActive="active"
-             >
-              Apply  for porting request</a
-            >
-            <a
-              mat-list-item
-              href='https://economictimes.indiatimes.com/wealth/insure/all-you-need-to-know-about-porting-your-health-insurance-policy/articleshow/67393982.cms'
-            >Things to Check</a
-            >
-          </mat-nav-list>
-        </mat-expansion-panel>
-      </mat-accordion>
     </div>
   </mat-sidenav>
   <mat-sidenav-content>

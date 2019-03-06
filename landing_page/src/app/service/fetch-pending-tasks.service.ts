@@ -4,15 +4,17 @@ import { HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { PendingTasks } from "../components/pending-tasks";
 import { Task } from "../components//task";
+import {ipaddressvalue} from './ipaddressvalue';
 
 @Injectable({
   providedIn: "root"
 })
 export class FetchPendingTasksService {
-  settlementUrl = "http://localhost:8092/settlement/api/v1/";
+  settlementUrl = 'http://' + ipaddressvalue + ':8092/settlement/api/v1/';
   fetchAllPortingRequestsUrl = "pendingtasks/";
   addANewPendingTaskUrl = "pendingtask/";
   modifyStatusOfPendingTaskUrl = "pendingtask/";
+  fetchPendingTasksUrl = 'pendingtasks/';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -25,6 +27,9 @@ export class FetchPendingTasksService {
     return this.httpClient.get<PendingTasks[]>(
       this.settlementUrl + this.fetchAllPortingRequestsUrl + currentCompanyName
     );
+  }
+  getPendingTasksById(portingRequestId: number): Observable<PendingTasks[]> {
+    return this.httpClient.get<PendingTasks[]>(this.settlementUrl + this.fetchPendingTasksUrl + 'portingRequestId=' + portingRequestId);
   }
   addANewPendingTask(
     pendingtasksId: number,
