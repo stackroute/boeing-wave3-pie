@@ -19,8 +19,14 @@ public class PortingRequestServiceImpl implements PortingRequestService{
     }
     //To post a request
     public PortingRequest postRequest(PortingRequest request){
+
         List<PortingRequest> portingRequests = requestRepository.findAll();
-        request.setPortingRequestId(portingRequests.size()+1);
+        if(portingRequests.isEmpty()) {
+            request.setPortingRequestId(1);
+        }
+        else {
+            request.setPortingRequestId(portingRequests.size()+1);
+        }
         PortingRequest request1 = requestRepository.save(request);
         return request1;
     }
