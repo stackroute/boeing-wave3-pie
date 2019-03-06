@@ -5,6 +5,7 @@ import { Observable} from 'rxjs-compat/Observable';
 import 'rxjs/add/operator/scan';
 import { Message,ChatService } from '../../service/chat.service';
 import { SearchService } from './../../service/search.service';
+import { Router } from '@angular/router';
 
 @Component({
  selector: 'app-dialogbot',
@@ -17,11 +18,12 @@ export class DialogbotComponent implements OnInit {
  formValue: string;
  policies: any;
 
- constructor(public chat: ChatService, private search: SearchService) { }
+ constructor(public chat: ChatService, private search: SearchService, private router:Router) { }
 
  ngOnInit() {
    this.messages = this.chat.conversation.asObservable()
        .scan((acc, val) => acc.concat(val) );
+       this.chat.checkSearch().subscribe();
  }
  sendMessage() {
    // this.policies = this.search.getSearch(this.formValue).subscribe();
@@ -30,6 +32,8 @@ export class DialogbotComponent implements OnInit {
     this.formValue = '';
     console.log(this.messages);
   }
-
+  showResults(){
+  this.router.navigate(['/showChatResults']);
+  }
 
 }

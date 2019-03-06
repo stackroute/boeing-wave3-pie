@@ -92,6 +92,7 @@ import { DialogbotComponent } from './components/dialogbot/dialogbot.component';
 import { BuyPolicyComponent } from './components/buy-policy/buy-policy.component';
 import { ReviewComponent } from './components/review/review.component';
 import { FamilyMembersComponent } from './components/family-members/family-members.component';
+import { ShowChatResultsComponent } from './components/show-chat-results/show-chat-results.component';
 
 
 const routes: Routes = [];
@@ -142,7 +143,8 @@ const routes: Routes = [];
     MyPoliciesComponent,
     BuyPolicyComponent,
     ReviewComponent,
-    FamilyMembersComponent
+    FamilyMembersComponent,
+    ShowChatResultsComponent
   ],
   entryComponents: [CalculatorComponent,ReviewComponent,DialogbotComponent],
   

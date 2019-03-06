@@ -29,6 +29,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormsDashboardComponent } from './components/forms-dashboard/forms-dashboard.component';
 import {DisplayAllPortingRequestsComponent} from './components/display-all-porting-requests/display-all-porting-requests.component';
 import {AllPortingRequestsComponent} from './components/all-porting-requests/all-porting-requests.component';
+import { ShowChatResultsComponent } from './components/show-chat-results/show-chat-results.component';
 
 const routes: Routes = [
   {path: 'search/:value', component: SearchComponent},
@@ -59,7 +60,8 @@ const routes: Routes = [
    {path: 'all-porting-requests', component:AllPortingRequestsComponent},
    {path: 'display-all-porting-requests', component:DisplayAllPortingRequestsComponent},
    {path: 'buyPolicy/:insurername/:policyname/:insuredname',component: BuyPolicyComponent},
-   {path: 'familyMembers/:username',component: FamilyMembersComponent}
+   {path: 'familyMembers/:username',component: FamilyMembersComponent},
+   {path: 'showChatResults',component:ShowChatResultsComponent}
 ];
 
 @NgModule({

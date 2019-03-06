@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { ApiAiClient } from 'api-ai-javascript';
 import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { ShowChatResultsComponent } from '../components/show-chat-results/show-chat-results.component';
 
 export class Message {
   constructor(public content: string, public sentBy: string) {}
@@ -13,10 +15,24 @@ export class Message {
 
 export class ChatService {
 
+  variable:any;
+  public baseUrl = 'http://172.23.239.178:8094/ChatBotService';
+
+  constructor(private http: HttpClient) {
+    console.log("http search service is called");
+}
+
+  public checkSearch():any {
+
+    console.log("inside service");
+       
+       this.variable = this.http.get(this.baseUrl);
+       return this.variable;
+  }
+
   readonly token = environment.dialogflow.angularBot;
   readonly client = new ApiAiClient({accessToken: this.token});
   conversation = new BehaviorSubject<Message[]>([]);
-  constructor() { }
 
   // adds message to source
   update (msg: Message) {
@@ -48,5 +64,10 @@ this.conversation.next([msg]);
       this.update(botMessage);
 
     });
+    
+}
+showChatResults(): any {
+  console.log("inside chatfghj");
+  return this.http.get("http://172.23.239.171:8051/api/v1/chatpolicy");
 }
 }
