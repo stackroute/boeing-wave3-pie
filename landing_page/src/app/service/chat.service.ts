@@ -68,6 +68,6 @@ this.conversation.next([msg]);
 }
 showChatResults(): any {
   console.log("inside chatfghj");
-  return this.http.get("http://172.23.239.171:8051/api/v1/chatpolicy");
+  return this.http.get("http://13.126.73.190:8092/searchservice/api/v1/chatpolicy");
 }
 }
