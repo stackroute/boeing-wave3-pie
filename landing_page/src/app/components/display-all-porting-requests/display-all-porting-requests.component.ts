@@ -49,7 +49,6 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
   addANewPendingTask(): void {
     this.initNewPendingTask();
     this.addANewPendingTaskIsClicked = true;
-    console.log(this.addANewPendingTaskIsClicked);
   }
   saveNewPendingTask(pendingTasks: PendingTasks): void {
     this.newPendingTask.taskStatus = false;
