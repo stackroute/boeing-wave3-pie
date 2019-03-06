@@ -143,10 +143,10 @@ public class SearchServiceImpl implements SearchService {
         return searchRepository.findByDiseasesCovered(disease);
     }
 
-    @Cacheable(value = "diseases")
-    List<Policy> findByDiseasesListDiseaseName(String diseaseName) {
-        return searchRepository.findByDiseasesCovered(diseaseName);
-    }
+//    @Cacheable(value = "diseases")
+//    List<Policy> getByDiseasesCovered(String diseaseName) {
+//        return searchRepository.getBDiseasesCovered(diseaseName);
+//    }
 
     @Cacheable(value = "Insurer")
     List<Policy> findByInsurerName(String insurerName) {
