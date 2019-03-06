@@ -21,6 +21,9 @@
     width:100%;
     
 }
+.card-text{
+	font-size: 10px;
+}
   /* #about{
     background: url(/../assets/img/health-insurance-home-hero-banner.jpg) center center no-repeat;
     background-size: cover;
