@@ -21,7 +21,7 @@ export class UserProfileComponent implements OnInit {
  })
   this.username = this.route.snapshot.paramMap.get('username');
    console.log('ts' + this.username);
-   this.profile = this.userService.getProfile(this.username).subscribe(
+   this.userService.getProfile(this.username).subscribe(
     data => {
       this.profile = data;
       console.log(data);
