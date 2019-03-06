@@ -7,3 +7,7 @@ td {
 .marked-not-complete-text {
     color: red;
 }
+table {
+    width: 100%;
+    height: 50%;
+}
