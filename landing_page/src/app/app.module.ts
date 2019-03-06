@@ -92,6 +92,7 @@ import { DialogbotComponent } from './components/dialogbot/dialogbot.component';
 import { BuyPolicyComponent } from './components/buy-policy/buy-policy.component';
 import { ReviewComponent } from './components/review/review.component';
 import { FamilyMembersComponent } from './components/family-members/family-members.component';
+import { CompanyPolicyComponent } from './components/company-policy/company-policy.component';
 
 
 const routes: Routes = [];
@@ -142,7 +143,8 @@ const routes: Routes = [];
     MyPoliciesComponent,
     BuyPolicyComponent,
     ReviewComponent,
-    FamilyMembersComponent
+    FamilyMembersComponent,
+    CompanyPolicyComponent
   ],
   entryComponents: [CalculatorComponent,ReviewComponent,DialogbotComponent],
   
