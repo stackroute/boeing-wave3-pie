@@ -1,56 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
     <catalog>
 
-    <policy policyid="101">
+    <policy policyId="201">
 
         <insurerName>Apollo</insurerName>
+        <insurerLicense>Apollo License</insurerLicense>
         <policyName>Apollo Plan-1</policyName>
-        <minSumInsured>20000</minSumInsured>
-        <maxSumInsured>600000</maxSumInsured>
         <minAge>31</minAge>
         <maxAge>77</maxAge>
+        <policyType>Self</policyType>
+        <genderAvail>Male</genderAvail>
         <waitingPeriod>3</waitingPeriod>
-        <noOfCashLessHospitals>5</noOfCashLessHospitals>
+        <policyTerm>7</policyTerm>
+        <minSumInsured>200000</minSumInsured>
+        <maxSumInsured>3000000</maxSumInsured>
+        <policyDescription>Get Health coverage for Self by availing Insured amount up to Rs.3000000</policyDescription>
 
     </policy>
 
     <policy policyid="901">
 
         <insurerName>Apollo</insurerName>
+        <insurerLicense>Apollo License</insurerLicense>
         <policyName>Apollo Plan-2</policyName>
-        <minSumInsured>10000</minSumInsured>
-        <maxSumInsured>800000</maxSumInsured>
         <minAge>21</minAge>
         <maxAge>67</maxAge>
+        <policyType>Family</policyType>
+        <genderAvail>Female</genderAvail>
         <waitingPeriod>7</waitingPeriod>
-        <noOfCashLessHospitals>15</noOfCashLessHospitals>
+        <policyTerm>3</policyTerm>
+        <minSumInsured>300000</minSumInsured>
+        <maxSumInsured>900000</maxSumInsured>
+        <policyDescription>Get Health coverage for Family by availing Insured amount up to Rs.900000</policyDescription>
 
     </policy>
 
     <policy policyid="701">
 
         <insurerName>Apollo</insurerName>
+        <insurerLicense>Apollo License</insurerLicense>
         <policyName>Apollo Plan-3</policyName>
-        <minSumInsured>30000</minSumInsured>
-        <maxSumInsured>1500000</maxSumInsured>
         <minAge>40</minAge>
         <maxAge>80</maxAge>
+        <policyType>Group</policyType>
+        <genderAvail>Male</genderAvail>
         <waitingPeriod>6</waitingPeriod>
-        <noOfCashLessHospitals>21</noOfCashLessHospitals>
+        <policyTerm>9</policyTerm>
+        <minSumInsured>500000</minSumInsured>
+        <maxSumInsured>2500000</maxSumInsured>
+        <policyDescription>Get Health coverage for Group by availing Insured amount up to Rs.2500000</policyDescription>
 
     </policy>
 
-    <policy policyid="201">
+    <policy policyid="301">
 
         <insurerName>Apollo</insurerName>
+        <insurerLicense>Apollo License</insurerLicense>
         <policyName>Apollo Plan-4</policyName>
-        <minSumInsured>70000</minSumInsured>
-        <maxSumInsured>700000</maxSumInsured>
         <minAge>21</minAge>
         <maxAge>60</maxAge>
+        <policyType>Self</policyType>
+        <genderAvail>Female</genderAvail>
         <waitingPeriod>3</waitingPeriod>
-        <noOfCashLessHospitals>5</noOfCashLessHospitals>
-
+        <policyTerm>4</policyTerm>
+        <minSumInsured>250000</minSumInsured>
+        <maxSumInsured>1500000</maxSumInsured>
+        <policyDescription>Get Health coverage for Self by availing Insured amount up to Rs.1500000</policyDescription>
     </policy>
 
 </catalog>
