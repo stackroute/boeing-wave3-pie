@@ -51,10 +51,13 @@
             <p>Max Sum Insured: {{count.maxSumInsured}}</p>
             <p>Waiting Period: {{ count.waitingPeriod }}</p>
             <p>Policy Description: {{count.policyDescription}}</p>
-                
+            <!-- <p>
+              <label>Does the insured has Exclusion period?(True/false)</label>
+            <input type="text" [(ngModel)]="exclusionperiod">
+            </p>   -->
           <mat-card-footer>
             <a [routerLink]="['/deletePolicy', count.insurerName,count.policyName]" class="btn btn-primary" style ="margin-right: 5%;margin-left: 20%; margin-bottom: 2%;"onClick= "window.location.reload();">Delete</a>
-            <button mat-raised-button (click)="port(count.insurerName,count.policyName,exclusionperiod)">Port</button>
+            <!-- <button (click)="port(count.insurerName,count.policyName,exclusionperiod)">Port</button> -->
           </mat-card-footer>
         </div>
           </div>

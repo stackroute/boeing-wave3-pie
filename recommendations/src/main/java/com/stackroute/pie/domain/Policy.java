@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.UniqueElements;
 import org.neo4j.ogm.annotation.GraphId;
+import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
@@ -22,7 +23,7 @@ import java.util.List;
 public class Policy {
     @Relationship(type= "HAS_A_POLICY_IN" ,direction=Relationship.INCOMING)
 
-    @GraphId
+    @Id
     private long policyId;
     @UniqueElements
     private String uniqueId;

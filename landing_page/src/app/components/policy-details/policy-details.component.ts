@@ -14,8 +14,8 @@ export class PolicyDetailsComponent implements OnInit {
   constructor(public route: ActivatedRoute, private router: Router, private policyService: PolicyService ) { }
 
   ngOnInit() {
-    this.insurerName = this.route.snapshot.paramMap.get('insurername');
-    this.policyName = this.route.snapshot.paramMap.get('policyname');
+    this.insurerName = this.route.snapshot.paramMap.get('insurerName');
+    this.policyName = this.route.snapshot.paramMap.get('policyName');
     console.log("insurername"+ this.insurerName);
     console.log("policyname"+this.policyName);
   //  this.policyDetails= this.policyService.getPolicyDetails(this.insurerName, this.policyName).subscribe(data => {

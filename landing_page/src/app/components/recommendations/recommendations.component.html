@@ -42,10 +42,10 @@
                 
           <mat-card-footer>
             <a
-            [routerLink] = "['policyDetails', blog.insurerName, blog.policyName]"
+            [routerLink] = "['/policyDetails', blog.insurerName, blog.policyName]"
              class="btn btn-primary" style ="margin-right: 5%;margin-left: 20%; margin-bottom: 2%;" onClick="window.location.reload();"
              >Read more</a>
-           <a [routerLink] = "['buyPolicy',blog.insurerName,blog.policyName,username]" class ="btn btn-primary" style ="margin-right: 5%;margin-left: 20%; margin-bottom: 2%;"> Buy </a>
+           <a [routerLink] = "['/buyPolicy',blog.insurerName,blog.policyName,userName]" class ="btn btn-primary" style ="margin-right: 5%;margin-left: 20%; margin-bottom: 2%;"> Buy </a>
           </mat-card-footer>
         </div>
           </div>

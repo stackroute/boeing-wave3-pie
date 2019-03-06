@@ -22,13 +22,13 @@ export class PolicyService {
   public getPolicyDetails(insurerName,policyName): any {
     console.log("inside service");
    
-    return this.http.get(this.policyDetailsUrl + insurerName + policyName, this.httpOptions);
+    return this.http.get(this.policyDetailsUrl + insurerName +'/'+ policyName, this.httpOptions);
 }
 
   public buyPolicy(insurername,policyname,insuredname): any {
     console.log('inside buy policy');
    
-    let as = this.http.put(this.policyDetailsUrl + insurername + policyname + insuredname,0);
+    let as = this.http.put(this.policyDetailsUrl + insurername +'/' + policyname+'/' + insuredname,0);
     return as;
   } 
 }
