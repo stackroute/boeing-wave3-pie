@@ -276,6 +276,26 @@ services:
     healthcheck:
       test: "exit 0"
 
+  insurerpolicies:
+    image: InsurerPolicies
+    build: InsurerPolicies/
+    restart: always
+    network_mode: host
+    hostname: localhost
+    depends_on:
+      mysqldb:
+        condition: service_healthy
+      eurekaserver:
+        condition: service_healthy
+      apigateway:
+        condition: service_healthy
+    ports:
+      - 8079:8079
+    expose:
+      - 8079
+    healthcheck:
+      test: "exit 0"
+
   policy:
     image: policy
     build: policy/
