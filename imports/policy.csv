@@ -1,0 +1,16 @@
+policyId,insurerName,insurerLicense,policyName,policyType,maxAge,minAge,genderAvail,diseasesCovered,relationship,uniqueId
+1,Starhealth Insurance Company,1INS001,Starhealth Family Insurance,Family,60,1, male,Cancer,IS_POLICY_OF,P001
+2,Starhealth Insurance Company,1INS001,Star Comprehensive Insurance Policy,Individual,55,22,both,Stroke,IS_POLICY_OF,P002
+3,Starhealth Insurance Company,1INS001,Star Comprehensive Female Insurance Policy,Individual,55,20,female,Diabetics,IS_POLICY_OF,P003
+4,Starhealth Insurance Company,1INS001,Family Health Optima Insurance Plan,Family,65,2,male,Cancer,IS_POLICY_OF,P004
+5,Starhealth Insurance Company,1INS001,"Senior Citizens Red Carpet Health Insurance Policy
+",Individual,75,60,female,Kidney failure,IS_POLICY_OF,P005
+6,Religar Insurance Company,1INS002,Religar Comprehensive Insurance Policy,Individual,60,20,male,"Cancer,Kidney failure",IS_POLICY_OF,P006
+7,Religar Insurance Company,1INS002,Religar Enhance Insurance Policy,Family,55,3,female,"Cancer,Kidney failure",IS_POLICY_OF,P007
+8,Religar Insurance Company,1INS002,Religar Joy Insurance Policy,Individual,40,22,female,[“Maternity”],IS_POLICY_OF,P008
+9,Religar Insurance Company,1INS002,Religar Enhance Group Insurance Policy,Group,65,24,male,"[“Cancer”,”Diabetics”]",IS_POLICY_OF,P009
+10,MaxBupa Insurance Company,1INS003,GoActiveTM FAMILY FLOATER,Family,70,2,both,"[“Cancer”,”Diabetics”,”Kidney Failure”]",IS_POLICY_OF,P010
+11,MaxBupa Insurance Company,1INS003,"
+HEALTH COMPANION FAMILY FLOATER",Family,60,1,both,"[“Cancer”,”Diabetics”,”Kidney Failure”]",IS_POLICY_OF,P011
+12,MaxBupa Insurance Company,1INS003,MaxBupa CRITICARE Plan,Individual,65,21,male,"[“Cancer”,”Diabetics”,”Kidney Failure”]",IS_POLICY_OF,P012
+13,MaxBupa Insurance Company,1INS003,PERSONAL ACCIDENTCARE INSURANCE PLAN,Individual,55,20,female,[“accidental dealth”],IS_POLICY_OF,P013
