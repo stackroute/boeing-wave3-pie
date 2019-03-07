@@ -1,9 +1,13 @@
 <ul>
   <li *ngFor="let pendingTask of pendingTasks">
     <p>{{pendingTask.insuredName}}</p>
-    <table mat-table [dataSource]="pendingTask.taskList">
+    <table mat-table [dataSource]="pendingTask.taskList" matSort>
+      <ng-container matColumnDef="taskColorStatus" >
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let row" [ngClass]="row.taskStatus?'highlight-green':'highlight-red'">  </td>
+      </ng-container>
       <ng-container matColumnDef="taskName">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
         <td mat-cell *matCellDef="let row"> {{row.taskName}} </td>
       </ng-container>
       <ng-container matColumnDef="taskDescription">
@@ -11,7 +15,7 @@
         <td mat-cell *matCellDef="let row"> {{row.taskDescription}} </td>
       </ng-container>
       <ng-container matColumnDef="taskStatus">
-        <th mat-header-cell *matHeaderCellDef> Status</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Status</th>
         <td mat-cell *matCellDef="let row">
           <ng-container *ngIf="row.taskStatus == false">Not Complete</ng-container>
           <ng-container *ngIf="row.taskStatus == true">Complete</ng-container>
@@ -35,8 +39,8 @@
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="row.taskStatus?'highlight-green':'highlight-red'"></tr>
-      <!-- <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight-green': row.taskStatus}" [ngClass]="{'highlight-red': !row.taskStatus}"></tr> -->
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="row.taskStatus?'highlight-green-row':'highlight-red-row'"></tr>
+      <!-- <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
     </table>
     <button (click)="addANewPendingTask()">Add a new Task</button>
     <div *ngIf="

@@ -38,8 +38,20 @@ table {
     text-align: center;
 }
 .highlight-green {
-    background-color: green;
+    background-color: lightgreen;
+    border-bottom-left-radius: 25px;
+    border-top-left-radius: 25px;
 }
 .highlight-red {
     background-color: red;
+    border-bottom-left-radius: 25px;
+    border-top-left-radius: 25px;
+}
+.highlight-red-row {
+    border: 25px;
+    border-color: red;
+}
+.highlight-green-row {
+    border: 25px;
+    border-color: lightgreen;
 }
