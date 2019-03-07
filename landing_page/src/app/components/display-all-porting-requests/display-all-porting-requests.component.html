@@ -35,7 +35,8 @@
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="row.taskStatus?'highlight-green':'highlight-red'"></tr>
+      <!-- <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight-green': row.taskStatus}" [ngClass]="{'highlight-red': !row.taskStatus}"></tr> -->
     </table>
     <button (click)="addANewPendingTask()">Add a new Task</button>
     <div *ngIf="
