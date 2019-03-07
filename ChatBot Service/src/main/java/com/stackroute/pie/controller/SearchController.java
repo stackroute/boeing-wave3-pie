@@ -2,7 +2,6 @@ package com.stackroute.pie.controller;
 
 import com.stackroute.pie.domain.Search;
 import com.stackroute.pie.service.SearchService;
-import org.apache.kafka.clients.producer.KafkaProducer;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
