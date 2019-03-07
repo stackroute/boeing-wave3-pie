@@ -301,7 +301,7 @@ services:
       test: "exit 0"
 
   insurerpolicies:
-    image: InsurerPolicies
+    image: insurerpolicies
     build: InsurerPolicies/
     restart: always
     network_mode: host
