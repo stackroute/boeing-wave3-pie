@@ -25,7 +25,7 @@ public class PortingRequestServiceImpl implements PortingRequestService{
             request.setPortingRequestId(1);
         }
         else {
-            request.setPortingRequestId(portingRequests.size()+1);
+            request.setPortingRequestId(portingRequests.get(portingRequests.size()-1).getPortingRequestId() + 1);
         }
         PortingRequest request1 = requestRepository.save(request);
         return request1;

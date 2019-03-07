@@ -29,8 +29,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormsDashboardComponent } from './components/forms-dashboard/forms-dashboard.component';
 import {DisplayAllPortingRequestsComponent} from './components/display-all-porting-requests/display-all-porting-requests.component';
 import {AllPortingRequestsComponent} from './components/all-porting-requests/all-porting-requests.component';
-import { PolicyDetailsComponent } from './components/policy-details/policy-details.component';
+import { ShowChatResultsComponent } from './components/show-chat-results/show-chat-results.component';
 import { CompanyPolicyComponent } from './components/company-policy/company-policy.component';
+import { PolicyDetailsComponent } from './components/policy-details/policy-details.component';
 
 const routes: Routes = [
   {path: 'search/:value', component: SearchComponent},
@@ -63,6 +64,7 @@ const routes: Routes = [
    {path: 'display-all-porting-requests', component:DisplayAllPortingRequestsComponent},
    {path: 'buyPolicy/:insurername/:policyname/:insuredname',component: BuyPolicyComponent},
    {path: 'familyMembers/:username',component: FamilyMembersComponent},
+   {path: 'showChatResults',component:ShowChatResultsComponent},
    {path: 'policyDetails/:insurerName/:policyName',component: PolicyDetailsComponent}
 ];
 

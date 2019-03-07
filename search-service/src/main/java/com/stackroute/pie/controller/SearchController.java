@@ -2,6 +2,8 @@ package com.stackroute.pie.controller;
 
 import com.stackroute.pie.domain.Diseases;
 import com.stackroute.pie.domain.Policy;
+import com.stackroute.pie.domain.PolicyList;
+import com.stackroute.pie.repository.ChatBotRepository;
 import com.stackroute.pie.service.SearchServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +21,9 @@ public class SearchController {
     public  SearchController(SearchServiceImpl searchService){
         this.searchService = searchService;
     }
+
+    @Autowired
+    ChatBotRepository chatBotRepository;
     //save method (temporary purpose)
     @PostMapping(value = "policy")
     public ResponseEntity<?> savePolicy(@RequestBody Policy policy)
@@ -47,6 +52,22 @@ public class SearchController {
         catch(Exception ex){
             responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);
         }
+        return responseEntity;
+    }
+
+
+    @GetMapping(value="chatpolicy")
+    public ResponseEntity<?> getResults()
+    { ResponseEntity responseEntity;
+        System.out.println("in controller");
+        try {
+            List<PolicyList> policyLists = chatBotRepository.findAll();
+            responseEntity= new ResponseEntity<List<PolicyList>>(policyLists, HttpStatus.OK);
+        }
+        catch(Exception ex){
+            responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);
+        }
+        System.out.println("Return responseEntity"+responseEntity);
         return responseEntity;
     }
 }

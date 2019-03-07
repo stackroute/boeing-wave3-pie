@@ -14,13 +14,14 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
   @Input() currentCompanyName: string;
   @Input() currentInsuredName: string;
   @Input() portingRequestId: number;
+  newPendingTasks: PendingTasks;
   viewPendingTasksOfInsuredClicked: boolean;
   newPendingTask: Task;
   newPendingTaskName: string;
   newPendingTaskDescription: string;
   newPendingTaskDueDate: string;
 
-  displayedColumns: string[] = ['taskName', 'taskDescription', 'taskStatus', 'dueDate'];
+  displayedColumns: string[] = ['taskName', 'taskDescription', 'taskStatus', 'dueDate', 'modifyStatusButton'];
 
   dataSource: Task[];
   // currentInsuredName: string;
@@ -59,7 +60,6 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
     this.fetchPendingTasksService
       .addANewPendingTask(pendingTasks.pendingTasksId, this.newPendingTask)
       .subscribe();
-    this.ngOnInit();
   }
   modifyStatusOfTask(taskStatus: boolean, taskName: string, pendingTasksId: number): void{
     this.fetchPendingTasksService.modifyStatusOfTask(!taskStatus, pendingTasksId, taskName).subscribe();
