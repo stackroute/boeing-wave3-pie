@@ -4,15 +4,14 @@ import com.stackroute.pie.domain.FormFormat;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public interface AdminServices {
-    public FormFormat addNewFormFormat(FormFormat formFormat);
-    public List<FormFormat> getAllFormFormats();
-    public void deleteFormFormat(int formId);
-    public Optional<FormFormat> getFormFormat(int formId);
-    public FormFormat updateFormFormat(int formId, FormFormat updatedFormFormat);
-    public FormFormat getFormFormatByName(String formName);
-    public List<FormFormat> searchFormFormatByFormName(String formName);
+    FormFormat addNewFormFormat(FormFormat formFormat);
+    List<FormFormat> getAllFormFormats();
+    void deleteFormFormat(int formId);
+    FormFormat getFormFormat(int formId);
+    FormFormat updateFormFormat(int formId, FormFormat updatedFormFormat);
+    FormFormat getFormFormatByName(String formName);
+    List<FormFormat> searchFormFormatByFormName(String formName);
 }
