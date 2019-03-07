@@ -6,7 +6,9 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
 
-public interface ChatBotRepository extends MongoRepository<PolicyList,Integer> {
+
+public interface ChatBotRepository extends MongoRepository<PolicyList, Integer> {
+
     PolicyList save(List<Policy> chatPolicy);
 
     List<PolicyList> findAll();
