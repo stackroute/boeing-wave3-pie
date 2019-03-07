@@ -48,7 +48,7 @@ services:
       test: "exit 0"
 
   eurekaserver:
-    image: eureka-servcie:latest
+    image: eureka-service:latest
     build: eureka-server/
     restart: always
     network_mode: host
