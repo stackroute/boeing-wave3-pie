@@ -41,4 +41,8 @@ public class SettlementController {
     public ResponseEntity<List<PendingTasks>> getPendingTasksByPortingRequestId(@PathVariable int portingRequestsId) {
         return new ResponseEntity<>(settlementServices.getPendingTasksByPortingRequestId(portingRequestsId), HttpStatus.OK);
     }
+    @PutMapping("pendingtask/{pendingTasksId}/{taskName}/{taskStatus}")
+    public ResponseEntity<PendingTasks> changeStatusOfPendingTask(@PathVariable(value = "pendingTasksId") int pendingTasksId, @PathVariable(value = "taskName") String taskName, @PathVariable(value = "taskStatus") boolean taskStatus) {
+        return new ResponseEntity<>(settlementServices.changePendingTaskStatus(pendingTasksId, taskName, taskStatus), HttpStatus.OK);
+    }
 }
