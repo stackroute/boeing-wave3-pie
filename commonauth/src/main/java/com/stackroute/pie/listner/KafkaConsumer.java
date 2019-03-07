@@ -22,7 +22,7 @@ public class KafkaConsumer {
  //consuming data from kafka & setting it to commonauth
     @KafkaListener(topics = "userregg_json", groupId = "group2_json", containerFactory = "userKafkaListenerFactory")
     public void consumeJson(Insured user) {
-        System.out.println("yoyoyoyoyo");
+
         System.out.println("Consumed JSON Message: " + user);
 
 

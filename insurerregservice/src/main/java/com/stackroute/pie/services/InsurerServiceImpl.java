@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class InsurerServiceImpl implements  InsurerService{
+public class  InsurerServiceImpl implements  InsurerService{
 
     private InsurerRepository insurerRepository;
   
