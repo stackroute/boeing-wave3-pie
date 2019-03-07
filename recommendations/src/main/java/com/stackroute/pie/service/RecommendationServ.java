@@ -2,7 +2,7 @@ package com.stackroute.pie.service;
 
 import com.stackroute.pie.domain.*;
 
-import javax.persistence.criteria.CriteriaBuilder;
+
 import java.util.List;
 
 public interface RecommendationServ {
@@ -29,7 +29,7 @@ public interface RecommendationServ {
     List<Policy> getByAgeDisease(int age,List<String>policyDisease);
     List<Policy> getByGenderDisease(String userGender,List<String>policyDisease);
 
-   List<Policy> getPolicy(int age,String gender);
+
      Insured findUser(String username);
      List<Policy> getByAgeGenderDisease(String username);
      List<Policy> policyForDependants(String username);

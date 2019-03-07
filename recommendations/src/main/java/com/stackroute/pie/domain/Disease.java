@@ -11,5 +11,5 @@ import org.neo4j.ogm.annotation.NodeEntity;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Disease {
-    public String diseaseName;
+    String diseaseName;
 }
