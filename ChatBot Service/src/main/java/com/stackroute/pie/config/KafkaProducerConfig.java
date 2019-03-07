@@ -22,7 +22,7 @@ public class KafkaProducerConfig {
         config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "172.23.239.82:9092");
         config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
-        System.out.println("inside producer factory*************************");
+
         return new DefaultKafkaProducerFactory<>(config);
     }
     @Bean
