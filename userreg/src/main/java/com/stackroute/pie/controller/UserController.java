@@ -23,9 +23,15 @@ import java.util.Set;
 public class UserController {
 
     @Autowired
-    UserController(KafkaTemplate<String, Insured> kafkaTemplate,KafkaTemplate<String, FamilyMembers> kafkaTemplates,
-                   UserRepository userRepository,PasswordEncoder encoder,UserDetailsServiceImpl userService) {
-
+    UserController(KafkaTemplate<String, Insured> kafkaTemplate,
+                   UserRepository userRepository,
+                   PasswordEncoder encoder,
+                   UserDetailsServiceImpl userService)
+    {
+        this.kafkaTemplate = kafkaTemplate;
+        this.userRepository = userRepository;
+        this.encoder = encoder;
+        this.userService = userService;
     }
 
     private KafkaTemplate<String, Insured> kafkaTemplate;
