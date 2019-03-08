@@ -2,7 +2,7 @@ package com.stackroute.pie.services;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.stackroute.pie.domain.CommonAuth;
-import com.stackroute.pie.domain.Insured;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

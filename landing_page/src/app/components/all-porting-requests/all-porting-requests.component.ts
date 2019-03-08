@@ -11,7 +11,7 @@ import { MAT_DIALOG_DATA } from '@angular/material';
 })
 export class AllPortingRequestsComponent implements OnInit {
   @Input() currentCompanyName: string;
-  portingRequestId: number;
+  @Input() portingRequestId: number;
 
   pendingTasks: PendingTasks[];
   onePendingTask: PendingTasks;
@@ -29,6 +29,7 @@ export class AllPortingRequestsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.onePendingTask = {"portingRequestId": 1, "pendingTasksId": 1, "insuredName": 'temp', "insurerName": 'temp', "newInsurerName": 'temp', "taskList": []};
     this.getPendingTasksById();
     this.fetchAllPortingRequestsIsClicked = false;
     this.viewPendingTasksOfInsuredIsClicked = false;
@@ -75,7 +76,12 @@ export class AllPortingRequestsComponent implements OnInit {
       }
     }
   }
+
   getPendingTasksById(): void {
-    this.fetchPendingTasksService.getPendingTasksById(this.portingRequestId).subscribe(PendingTasks => (this.pendingTasks = PendingTasks));
+    this.fetchPendingTasksService.getPendingTasksById(this.portingRequestId).subscribe(data => { this.pendingTasks = data; this.blank()});
   }
+  blank(): void {
+    console.log(this.pendingTasks.length);
+  }
+
 }

@@ -11,7 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 @NoArgsConstructor
 @Document(collection = "roles")
-public class Role {
+public class  Role {
     @Id
     private Long id;
 

@@ -10,9 +10,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.Normalizer;
 import java.util.List;
-import java.util.Optional;
 
 @Data
 @Controller
@@ -30,7 +28,6 @@ public class AdminController {
     @PostMapping("formformat")
     public ResponseEntity<?> addNewFormFormat(@RequestBody FormFormat formFormat) {
         FormFormat savedFormFormat = adminServices.addNewFormFormat(formFormat);
-//        kafkaTemplate.send("formFormats", savedFormFormat);
         return new ResponseEntity<FormFormat>(savedFormFormat, HttpStatus.CREATED);
     }
     @GetMapping("formformats")
@@ -39,11 +36,11 @@ public class AdminController {
         return new ResponseEntity<List<FormFormat>>(listOfAllFormFormats, HttpStatus.OK);
     }
     @GetMapping("formformat/{formId}")
-    public ResponseEntity<Optional<FormFormat>> getFormFormat(@PathVariable(value = "formId", required = true) int formId) {
-        Optional<FormFormat> retreivedFormFormat = adminServices.getFormFormat(formId);
+    public ResponseEntity<FormFormat> getFormFormat(@PathVariable(value = "formId", required = true) int formId) {
+        FormFormat retreivedFormFormat = adminServices.getFormFormat(formId);
         if(retreivedFormFormat == null)
-            return new ResponseEntity<Optional<FormFormat>>(retreivedFormFormat, HttpStatus.OK);
-        return new ResponseEntity<Optional<FormFormat>>(retreivedFormFormat, HttpStatus.OK);
+            return new ResponseEntity<>(retreivedFormFormat, HttpStatus.OK);
+        return new ResponseEntity<>(retreivedFormFormat, HttpStatus.OK);
     }
     @DeleteMapping("formformat/{formId}")
     public ResponseEntity<?> deleteFormFormat(@PathVariable(value = "formId", required = true) int formId) {

@@ -1,7 +1,7 @@
 package com.stackroute.pie.services;
 
 import com.stackroute.pie.domain.CommonAuth;
-import com.stackroute.pie.domain.Insured;
+
 import com.stackroute.pie.repository.CommonAuthRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

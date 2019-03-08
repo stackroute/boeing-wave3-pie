@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
            return true;
           }
           else if(role === 'ROLE_ADMIN'){
-            this.router.navigate(['/admin',this.form.username])
+            this.router.navigate(['/admin']);
           }
      });
      window.location.reload();

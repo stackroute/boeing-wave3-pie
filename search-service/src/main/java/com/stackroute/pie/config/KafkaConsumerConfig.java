@@ -1,6 +1,7 @@
 package com.stackroute.pie.config;
 
 import com.stackroute.pie.domain.Policy;
+import com.stackroute.pie.domain.Search;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import com.stackroute.pie.domain.Policy;
@@ -54,6 +55,25 @@ public class KafkaConsumerConfig {
             factory.setConsumerFactory(userConsumerFactory());
             return factory;
         }
+
+    @Bean
+    public ConsumerFactory<String, Search> userConsumerFactory1() {
+        Map<String, Object> config = new HashMap<>();
+        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        config.put(ConsumerConfig.GROUP_ID_CONFIG, "group8_json");
+        config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
+        System.out.println("Inside consumer factory json of the Policy");
+        return new DefaultKafkaConsumerFactory<>(config, new StringDeserializer(),
+                new JsonDeserializer<>(Search.class));
+    }
+    //    @ConditionalOnMissingBean(ConsumerFactory.class)
+    @Bean
+    public ConcurrentKafkaListenerContainerFactory<String, Search> userKafkaListenerFactoryyy() {
+        ConcurrentKafkaListenerContainerFactory<String, Search> factory = new ConcurrentKafkaListenerContainerFactory<>();
+        factory.setConsumerFactory(userConsumerFactory1());
+        return factory;
+    }
 
     }
 

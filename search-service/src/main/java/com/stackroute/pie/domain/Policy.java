@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 import java.util.List;
 
-@Document(collection = "PolicyList")
+@Document(collection = "Policy")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

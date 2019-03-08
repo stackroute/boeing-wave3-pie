@@ -32,9 +32,11 @@ public class InsurerController {
     @Autowired
     private KafkaTemplate<String, Insurer> kafkaTemplate;
 
+    String  message="Insurer Not Found";
+
     //Method for registering a new Insurer
     @PostMapping("/signup")
-    public ResponseEntity<?> registerUser(@RequestBody SignUpForm signUpRequest) {
+    public ResponseEntity registerUser(@RequestBody SignUpForm signUpRequest) {
         if (insurerRepository.existsByInsurerLicense(signUpRequest.getInsurerLicense())) {
             return new ResponseEntity<>(new ResponseMessage("Fail -> Username is already taken!"),
                     HttpStatus.CONFLICT);
@@ -54,9 +56,9 @@ public class InsurerController {
 
     //Method for adding a new policy for existing insurer
     @PutMapping("/policy/newpolicy")
-    public ResponseEntity<?> addNewPolicy(@RequestBody Policy insurerPolicy){
+    public ResponseEntity addNewPolicy(@RequestBody Policy insurerPolicy){
         if (!insurerRepository.existsByInsurerName(insurerPolicy.getInsurerName())) {
-            return new ResponseEntity<>(new ResponseMessage("Insurer Not Found"),
+            return new ResponseEntity<>(new ResponseMessage(message),
                     HttpStatus.NOT_FOUND);
         }
         Insurer insurer = insurerService.addNewPolicy(insurerPolicy);
@@ -66,9 +68,9 @@ public class InsurerController {
 
     //Method for displaying the exiting policy
     @GetMapping("/policy/display/{insurerLicense}")
-    public ResponseEntity<?> getPolicies(@PathVariable(value = "insurerLicense") String insurerLicense){
+    public ResponseEntity getPolicies(@PathVariable(value = "insurerLicense") String insurerLicense){
         if (!insurerRepository.existsByInsurerLicense(insurerLicense)) {
-            return new ResponseEntity<>(new ResponseMessage("Insurer Not Found"),
+            return new ResponseEntity<>(new ResponseMessage(message),
                     HttpStatus.NOT_FOUND);
         }
         List<Policy> policies = insurerService.getPolicies(insurerLicense);
@@ -77,9 +79,9 @@ public class InsurerController {
 
     //Method for deleting an existing policy
     @PutMapping("/policy/delete/{insurerName}/{policyId}")
-    public ResponseEntity<?> deletePolicy(@PathVariable(value = "insurerName") String insurerName, @PathVariable(value = "policyId") long policyId){
+    public ResponseEntity deletePolicy(@PathVariable(value = "insurerName") String insurerName, @PathVariable(value = "policyId") long policyId){
         if (insurerRepository.existsByInsurerName(insurerName) == false) {
-            return new ResponseEntity<>(new ResponseMessage("Insurer Not Found"),
+            return new ResponseEntity<>(new ResponseMessage(message),
                     HttpStatus.NOT_FOUND);
         }
 
@@ -89,7 +91,7 @@ public class InsurerController {
     }
 
     @PostMapping("/policy/premium/calculator")
-    public ResponseEntity<?> calculatePremium(@RequestBody PremiumCalci premiumCalci){
+    public ResponseEntity calculatePremium(@RequestBody PremiumCalci premiumCalci){
         System.out.println("entered controller");
         System.out.println(premiumCalci.toString());
         long premium = insurerService.calculatePremium(premiumCalci);
