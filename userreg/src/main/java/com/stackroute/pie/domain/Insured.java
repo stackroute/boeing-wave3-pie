@@ -39,7 +39,7 @@ public class Insured {
     @Size(min = 6, max = 100)
     private String password;
 
-    private int age;
+    private long age;
 
 
     @NotBlank
@@ -67,7 +67,7 @@ public class Insured {
 
 
 
-    public Insured(String existingDisease, String username, String email, String password, String gender, Date createdDate, String securityAnswer, int age,List<FamilyMembers> familyMembers){
+    public Insured(String existingDisease, String username, String email, String password, String gender, Date createdDate, String securityAnswer, long age,List<FamilyMembers> familyMembers){
         this.username = username;
         this.email = email;
         this.password = password;
@@ -79,7 +79,7 @@ public class Insured {
         this.familyMembers = familyMembers;
     }
 
-    public Insured(int insuredId, @NotBlank @Size(min = 3, max = 50) String fullName, @NotBlank @UniqueElements @Size(min = 3, max = 50) String username, @UniqueElements @NotBlank @Size(max = 50) @Email String email, @NotBlank @Size(min = 6, max = 100) String password, int age, @NotBlank String gender, @NotBlank String securityAnswer) {
+    public Insured(int insuredId, @NotBlank @Size(min = 3, max = 50) String fullName, @NotBlank @UniqueElements @Size(min = 3, max = 50) String username, @UniqueElements @NotBlank @Size(max = 50) @Email String email, @NotBlank @Size(min = 6, max = 100) String password, long age, @NotBlank String gender, @NotBlank String securityAnswer) {
         this.insuredId = insuredId;
         this.fullName = fullName;
         this.username = username;
