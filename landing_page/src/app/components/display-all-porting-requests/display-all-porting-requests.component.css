@@ -65,3 +65,9 @@ table {
     border: 25px;
     border-color: lightgreen;
 }
+.functional-buttons {
+    justify-content: left;
+}
+.cancel-button {
+    justify-content: right;
+}
