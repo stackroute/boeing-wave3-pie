@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "policylist")
+@Document(collection = "policylist1")
 public class Policy {
     @Id
     @UniqueElements
@@ -64,5 +64,26 @@ public class Policy {
         this.maxSumInsured = maxSumInsured;
         this.insurerLicense = insurerLicense;
         this.policyDescription = policyDescription;
+    }
+
+    //Custom Constructor for adding new policy from external Database
+    public Policy( String insurerName, String insurerLicense, String policyName, long policyId, int minAge, int maxAge,
+                   int minSumInsured, int maxSumInsured, String policyDescription, String policyType,
+                   String genderAvail, int waitingPeriod, int policyTerm,List<String> insuredList) {
+        this.uniqueId = insurerName + policyName;
+        this.insurerName = insurerName;
+        this.policyName = policyName;
+        this.policyId = policyId;
+        this.minAge = minAge;
+        this.maxAge = maxAge;
+        this.policyType = policyType;
+        this.genderAvail = genderAvail;
+        this.waitingPeriod = waitingPeriod;
+        this.policyTerm = policyTerm;
+        this.minSumInsured = minSumInsured;
+        this.maxSumInsured = maxSumInsured;
+        this.insurerLicense = insurerLicense;
+        this.policyDescription = policyDescription;
+        this.insuredList = insuredList;
     }
 }

@@ -27,8 +27,7 @@ public class ExternalDbController {
 
 
     @GetMapping("/policy/external/{insurerName}")
-    public ResponseEntity<?> getPolicies(@PathVariable(value = "insurerName") String insurerName) throws UnsupportedEncodingException, SQLException, ClassNotFoundException {
-        System.out.println(insurerName + "####");
+    public ResponseEntity getPolicies(@PathVariable(value = "insurerName") String insurerName) throws UnsupportedEncodingException, SQLException, ClassNotFoundException {
        List<InsurerPolicy> insurer = externalDbService.getPolicies(insurerName);
         return new ResponseEntity<List<InsurerPolicy>>(insurer, HttpStatus.OK);
     }
