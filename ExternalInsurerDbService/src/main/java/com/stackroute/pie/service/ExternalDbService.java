@@ -1,4 +1,5 @@
 package com.stackroute.pie.service;
+import com.stackroute.pie.domain.BuyPolicy;
 import com.stackroute.pie.domain.InsurerPolicy;
 
 
@@ -9,6 +10,6 @@ import java.util.List;
  public interface ExternalDbService {
 
     List<InsurerPolicy> getPolicies(String insurerName) throws ClassNotFoundException, SQLException, UnsupportedEncodingException;
-
+    long buyPolicy(BuyPolicy buyPolicy) throws ClassNotFoundException, SQLException, UnsupportedEncodingException;
 
 }

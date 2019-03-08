@@ -1,6 +1,8 @@
 package com.stackroute.pie.service;
 
+import com.stackroute.pie.domain.BuyPolicy;
 import com.stackroute.pie.domain.InsurerPolicy;
+import com.stackroute.pie.repository.BuyPolicyRepository;
 import com.stackroute.pie.repository.ExternalDbRepository;
 import org.json.JSONArray;
 
@@ -19,6 +21,9 @@ import java.util.*;
 public class ExternalDbServiceImpl implements ExternalDbService {
 
 
+
+
+
     @Autowired
     public ExternalDbServiceImpl(ExternalDbRepository externalDbRepository) {
         this.externalDbRepository = externalDbRepository;
@@ -27,6 +32,8 @@ public class ExternalDbServiceImpl implements ExternalDbService {
     @Autowired
     private ExternalDbRepository externalDbRepository;
 
+    @Autowired
+    private BuyPolicyRepository buyPolicyRepository;
 
     @Override
     public List<InsurerPolicy> getPolicies(String insurerName) throws ClassNotFoundException, SQLException, UnsupportedEncodingException {
@@ -103,5 +110,14 @@ public class ExternalDbServiceImpl implements ExternalDbService {
             st.close();  // Multiple streams were opened. Only the last is closed.
         }
     }
+
+    @Override
+    public long buyPolicy(BuyPolicy buyPolicy) throws ClassNotFoundException, SQLException, UnsupportedEncodingException {
+
+        buyPolicyRepository.save(buyPolicy);
+
+        return buyPolicy.getPolicyId();
+    }
+
 
 }

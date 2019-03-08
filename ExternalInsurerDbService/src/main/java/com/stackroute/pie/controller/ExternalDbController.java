@@ -1,5 +1,6 @@
 package com.stackroute.pie.controller;
 
+import com.stackroute.pie.domain.BuyPolicy;
 import com.stackroute.pie.domain.InsurerPolicy;
 import com.stackroute.pie.service.ExternalDbService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,12 @@ public class ExternalDbController {
         return new ResponseEntity<List<InsurerPolicy>>(insurer, HttpStatus.OK);
     }
 
+    @PostMapping("/external/buypolicy/")
+    public ResponseEntity buypolicy(@RequestBody BuyPolicy buyPolicy){
+        long premium = insurerService.buypolicy(buyPolicy);
+        String pr = Long.toString(premium);
+        return new ResponseEntity<>(pr, HttpStatus.OK);
 
-
+    }
 
 }
