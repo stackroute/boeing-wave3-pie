@@ -1,6 +1,5 @@
 package com.stackroute.pie.services;
 
-import com.stackroute.pie.domain.Request;
 import com.stackroute.pie.domain.Insured;
 import com.stackroute.pie.repository.UserRepository;
 import com.stackroute.pie.exceptions.UserNotFoundException;
@@ -24,14 +23,11 @@ public class InsuredDetailsServiceImplTest {
     private UserRepository userRepository;
     @InjectMocks
     private UserDetailsServiceImpl userProfileService;
-    private List<Request> requestList = new ArrayList<>();
     private Insured insured;
     private int userId = 0;
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        requestList.add(0,new Request(2,"acc","xyz","abc"));
-        insured = new Insured(1,requestList);
         optional = Optional.of(insured);
     }
     @Test
