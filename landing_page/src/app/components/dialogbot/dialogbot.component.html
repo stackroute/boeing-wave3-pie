@@ -1,8 +1,8 @@
-<mat-dialog-content>
+  <mat-dialog-content>
   
   <div style="width:200px; margin:10px auto;">
     <div mat-dialog-actions>
-        <button mat-button [mat-dialog-close]="true" style="width:auto;color:wheat;background-color: red;position: relative;">Close</button>
+        <button mat-button [mat-dialog-close]="true" style="width:auto;color:wheat;background-color: red;">Close</button>
     </div>
   <ng-container *ngFor="let message of (messages | async)" #scrollMe (scroll)="onScroll()">
     <div
@@ -16,19 +16,26 @@
     </div>
   </ng-container>
 </div>
+
 </mat-dialog-content>
+
 <mat-dialog-action>
 <div class="bottom">
   <label for="nameField" style="margin:0 auto;"> Your message</label>
 
-  <input
+  <div mat-dialog-actions>
+    <mat-form-fields>
+    <input 
     [(ngModel)]="formValue"
     (keyup.enter)="sendMessage()"
-    type="text"
-  /><br />
+    type="text">
+    <br>
+    </mat-form-fields>
+  <br />
 
-  <button (click)="sendMessage()">Send</button>
-  <button (click)="showResults()" style="margin-left:3%;">Show Results</button>
+  <button mat-stroked-button (click)="sendMessage()">Send</button>
+  <button mat-stroked-button (click)="showResults()" style="margin-left:3%;">Show Results</button>
+</div>
 </div>
 <!-- </mat-dialog-content> -->
 </mat-dialog-action>

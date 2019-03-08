@@ -41,6 +41,7 @@
         <module>policy</module>
         <module>InsurerPolicies</module>
         <module>ChatBot Service</module>
+        <module>email</module>
 
     </modules>
     <dependencies>

@@ -1,5 +1,5 @@
 server:
-  port: 8070 #default port where the service will be started
+  port: 8053 #default port where the service will be started
 
 eureka:         #tells about the Eureka server details and its refresh time
   instance:
@@ -15,7 +15,7 @@ eureka:         #tells about the Eureka server details and its refresh time
 
 spring:
   application:
-    name: chatbot #current service name to be used by the eureka server
+    name: email #current service name to be used by the eureka server
 
 management:
   security:

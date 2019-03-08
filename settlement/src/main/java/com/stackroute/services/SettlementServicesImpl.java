@@ -89,14 +89,15 @@ public class SettlementServicesImpl implements SettlementServices {
     public PendingTasks changePendingTaskStatus(int pendingTasksId, String taskName, boolean status) {
         PendingTasks pendingTasks = settlementRepository.findByPendingTasksId(pendingTasksId);
         List<Task> taskList = pendingTasks.getTaskList();
-        if(taskList == null)
-            return null;
         for(Task task: taskList) {
+            if(task.getTaskName() == null)
+                continue;
             if(task.getTaskName().equals(taskName)) {
                 task.setTaskStatus(status);
                 break;
             }
         }
+        pendingTasks.setTaskList(taskList);
         settlementRepository.deleteById(pendingTasksId);
         settlementRepository.save(pendingTasks);
         return pendingTasks;
@@ -104,7 +105,7 @@ public class SettlementServicesImpl implements SettlementServices {
 
     @Override
     public List<PendingTasks> getPendingTasksByPortingRequestId(int portingRequestId) {
-        List<PendingTasks> pendingTasks = new ArrayList<PendingTasks>();
+        List<PendingTasks> pendingTasks = new ArrayList<>();
         pendingTasks.add(settlementRepository.findByPortingRequestId(portingRequestId));
         return pendingTasks;
     }

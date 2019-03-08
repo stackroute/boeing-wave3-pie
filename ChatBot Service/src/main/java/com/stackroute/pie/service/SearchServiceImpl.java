@@ -18,7 +18,7 @@ public class SearchServiceImpl implements SearchService{
     @Override
     public Search saveSearchText(Search search){
 
-        Search savedText=searchRepository.save(search);
-        return savedText;
+        return searchRepository.save(search);
+
     }
 }
