@@ -1,4 +1,4 @@
-.fa {
+/* .fa {
   padding: 20px;
   font-size: 30px;
   width: 30px;
@@ -90,7 +90,7 @@ footer{
 } */
 
 
-#footer-main{
+/* #footer-main{
   background: #222;
   color: white;
   font-size: 0.8rem;
@@ -111,4 +111,53 @@ footer{
 
 .linslist{
   font-size: 20px;
+}  */
+
+.stylish-color-dark {
+  background-color: #3E4551;
 }
+
+.font-weight-bold-1{
+  font-family: "Magra";
+  font-size: 3rem;
+  color: white;
+  font-weight: bold;
+}
+
+.head{
+  color:white;
+}
+
+.head:p{
+  font-size: 2rem;
+  font-family: "Magra";
+}
+
+.font-weight-bold{
+  font-family: "Magra";
+  font-size: 1.5rem;
+  color: white;
+  font-weight: bold;
+}
+.font-weight-bold-2{
+  font-family: "Magra";
+  font-size: 1.25rem;
+  color: white;
+  font-weight: bold;
+}
+
+.register{
+  font-family: "Magra";
+  font-size: 2rem;
+  color: white;
+  font-weight: bold;
+
+}
+
+.linkslist{
+  font-size: 35px;
+
+}
+
+
+
