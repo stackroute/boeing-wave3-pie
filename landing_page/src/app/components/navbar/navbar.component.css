@@ -36,6 +36,48 @@
 
 /* @import "~@angular/material/prebuilt-themes/indigo-pink.css"; */
 
+.mat-toolbar.mat-primary {
+  background: #071142;
+  color: #fff;
+}
+.search {
+  /* width: 100%; */
+  position: relative;
+  width: max-content;
+ }
+ 
+ .searchTerm {
+  float: left;
+  width: 100%;
+  border: 3px solid;
+  padding: 5px;
+  height: 40px;
+  border-radius: 5px;
+  outline: none;
+  color: #9DBFAF;
+  margin-top: 13px;
+  margin-left: 10px;
+  font-size: 15px;
+ }
+ 
+ .searchTerm:focus{
+  /* color: #00B4CC; */
+ }
+ 
+ .searchButton {
+  position: absolute;
+  right: -50px;
+  top: 15px;
+  width: 40px;
+  height: 35px;
+  /* border: 1px solid #00B4CC; */
+  /* background: #00B4CC; */
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+ }
 .spacer {
   flex: 1 1 auto;
 }
@@ -1436,7 +1478,7 @@ mat-sidenav {
 .lead {
   font-size: 2.50rem;
   font-weight: 300;
-  color: black;
+  color: whitesmoke;
 }
 
 .bg-primary {

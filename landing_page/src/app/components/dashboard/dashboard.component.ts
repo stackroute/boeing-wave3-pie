@@ -16,5 +16,5 @@ export class DashboardComponent implements OnInit {
     let as = window.localStorage.setItem("insuredname",this.username);
     this.router.navigate(['/recommendations',this.username]);
   }
-
+ 
 }
