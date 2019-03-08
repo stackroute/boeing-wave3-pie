@@ -15,12 +15,11 @@ import java.util.Date;
 @Document(collection = "portingrequest")
 public class PortingRequest {
     private int portingRequestId;
-    //    List<Field> formFields = new ArrayList<>();
     @NotBlank
     private String insuredName;
     @NotBlank
     private String insurerName;
-    //    @NotBlank
+    @NotBlank
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date dateOfBirth;
     @NotBlank

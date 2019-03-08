@@ -1,6 +1,5 @@
 package com.stackroute.pie.message.request;
 
-import com.stackroute.pie.domain.Policy;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,8 +7,6 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.util.List;
-import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -41,7 +38,5 @@ public class SignUpForm {
 
     @Size(min = 6, max = 50)
     private String insurerAddress;
-
-    private List<Policy> insurerPolicies;
 }
 

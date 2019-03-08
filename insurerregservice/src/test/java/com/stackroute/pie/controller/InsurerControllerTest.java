@@ -4,7 +4,7 @@ package com.stackroute.pie.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stackroute.pie.domain.Insurer;
-import com.stackroute.pie.domain.Policy;
+import com.stackroute.pie.domain.PremiumCalci;
 import com.stackroute.pie.repository.InsurerRepository;
 import com.stackroute.pie.services.InsurerServiceImpl;
 
@@ -21,7 +21,6 @@ import org.springframework.http.MediaType;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.ArrayList;
@@ -55,8 +54,8 @@ public class InsurerControllerTest {
 
     private Insurer insurer;
 
-    private Policy policy1;
-    List<Policy> policy = new ArrayList<>();
+    private PremiumCalci premiumCalci;
+
     List<String> insuredList = new ArrayList<>();
     List<String> diseases = new ArrayList<>();
 
@@ -64,8 +63,8 @@ public class InsurerControllerTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         mockMVC = MockMvcBuilders.standaloneSetup(insurerController).build();
-        insurer = new Insurer("maxbupa","maxbupa","maxbupa@gmail.com","maxbupa","bangalore","whats your favourite food","pizza",policy);
-        policy1 = new Policy(22,"maxbupa","alive",12,23,2,11,60,2);
+        insurer = new Insurer("maxbupa","maxbupa","maxbupa@gmail.com","maxbupa","bangalore","whats your favourite food","pizza");
+        premiumCalci = new PremiumCalci("maxbupa","noone",1000,"Bangalore",40,2,1,4);
     }
     private static String jsonToString(final Object obj) throws JsonProcessingException {
         String result;
@@ -95,33 +94,14 @@ public class InsurerControllerTest {
     }
 
     @Test
-    public void addNewPolicy() throws Exception {
-        String uri = "/api/v1/policy/newpolicy";
-        this.mockMVC.perform(put(uri)
+    public void calculatePremium() throws Exception {
+        this.mockMVC.perform(post("/api/v1/policy/premium/calculator")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .content(jsonToString(policy1)))
-                .andExpect(status().isNotFound());
+                .content(jsonToString(premiumCalci)))
+                .andExpect(status().isOk());
     }
 
-    @Test
-    public void deletePolicy() throws Exception {
-        String uri = "/api/v1/policy/delete/maxbupa/22";
-        this.mockMVC.perform(put(uri)
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-                .content(jsonToString(policy1)))
-                .andExpect(status().isNotFound());
-    }
 
-    @Test
-    public void getPolicies() throws Exception {
-        String uri = "/api/v1/policy/display/maxbupa";
-        mockMVC
-                .perform(get(uri)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .accept(MediaType.APPLICATION_JSON)
-                        .content(jsonToString(policy)))
-                .andExpect(status().isNotFound());
-    }
+
 }

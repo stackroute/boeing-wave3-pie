@@ -90,10 +90,6 @@ public class RecommendationsController {
     }
 
 
-
-
-
-
     @PostMapping(value = "linkPolicy/{insurerName}/{policyId}")
     public ResponseEntity linkpolicy(@PathVariable String insurerName,@PathVariable Long policyId){
         ResponseEntity responseEntity;

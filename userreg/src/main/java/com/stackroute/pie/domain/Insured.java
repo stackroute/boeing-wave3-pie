@@ -1,7 +1,5 @@
 package com.stackroute.pie.domain;
 
-
-//import org.hibernate.annotations.NaturalId;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +7,6 @@ import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
-//import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -20,9 +17,7 @@ import java.util.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Insured {
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    //    @Id
     private int insuredId;
 
     @NotBlank
@@ -34,15 +29,12 @@ public class Insured {
     @Size(min = 3, max = 50)
     private String username;
 
-    //    @NaturalId
     @UniqueElements
     @NotBlank
     @Size(max = 50)
     @Email
     private String email;
 
-
-    //    @Transactional
     @NotBlank
     @Size(min = 6, max = 100)
     private String password;
@@ -62,17 +54,11 @@ public class Insured {
 
     private Set<Role> roles = new HashSet<>();
 
-
-    private List<Policy> policies =new ArrayList<>();
-
-    private List<Request> requests= new ArrayList<>();
-
     private  List<FamilyMembers> familyMembers;
 
 
-    public Insured(int insuredId, List<Request> requests) {
+    public Insured(int insuredId) {
         this.insuredId = insuredId;
-        this.requests = requests;
     }
 
 
@@ -81,17 +67,16 @@ public class Insured {
 
 
 
-    public Insured(String fullName, String username, String email, String password, String gender, Date createdDate, String securityAnswer, int age,List<FamilyMembers> familyMembers){
+    public Insured(String existingDisease, String username, String email, String password, String gender, Date createdDate, String securityAnswer, int age,List<FamilyMembers> familyMembers){
         this.username = username;
         this.email = email;
         this.password = password;
         this.gender = gender;
         this.createdDate = createdDate;
         this.securityAnswer = securityAnswer;
-
         this.age = age;
-        this.existingDisease=existingDisease;
-        this.familyMembers=familyMembers;
+        this.existingDisease = existingDisease;
+        this.familyMembers = familyMembers;
     }
 
     public Insured(int insuredId, @NotBlank @Size(min = 3, max = 50) String fullName, @NotBlank @UniqueElements @Size(min = 3, max = 50) String username, @UniqueElements @NotBlank @Size(max = 50) @Email String email, @NotBlank @Size(min = 6, max = 100) String password, int age, @NotBlank String gender, @NotBlank String securityAnswer) {

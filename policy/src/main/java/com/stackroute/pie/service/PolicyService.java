@@ -5,10 +5,8 @@ import com.stackroute.pie.exceptions.InsuredPoliciesNotFoundException;
 import com.stackroute.pie.exceptions.InsurerNotFoundException;
 import com.stackroute.pie.exceptions.PolicyAlreadyExistsException;
 import com.stackroute.pie.exceptions.PolicyNotFoundException;
-import org.springframework.http.ResponseEntity;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 public interface PolicyService {

@@ -28,7 +28,7 @@ import javax.validation.Valid;
         JwtProvider jwtProvider;
 
         @PostMapping("/signin")
-        public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginForm loginRequest) {
+        public ResponseEntity authenticateUser(@Valid @RequestBody LoginForm loginRequest) {
 
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));

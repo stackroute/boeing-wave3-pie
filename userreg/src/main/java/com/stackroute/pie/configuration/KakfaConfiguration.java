@@ -1,6 +1,5 @@
 package com.stackroute.pie.configuration;
 
-import com.stackroute.pie.domain.FamilyMembers;
 import com.stackroute.pie.domain.Insured;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -22,27 +21,11 @@ public class KakfaConfiguration {
         config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
-        System.out.println("inside producer factory*************************");
         return new DefaultKafkaProducerFactory<>(config);
     }
     @Bean
     public KafkaTemplate<String, Insured> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
-
-    @Bean
-    public ProducerFactory<String, FamilyMembers> producerqFactory() {
-        Map<String, Object> config = new HashMap<>();
-        config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-        config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-        config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
-        System.out.println("inside producer factory*************************");
-        return new DefaultKafkaProducerFactory<>(config);
-    }
-    @Bean
-    public KafkaTemplate<String, FamilyMembers> kafkaTemplates() {
-        return new KafkaTemplate<>(producerqFactory());
-    }
-
 
 }
