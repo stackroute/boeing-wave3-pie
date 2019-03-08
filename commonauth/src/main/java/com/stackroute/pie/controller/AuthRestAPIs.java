@@ -4,7 +4,9 @@ import com.stackroute.pie.message.request.LoginForm;
 import com.stackroute.pie.message.response.JwtResponse;
 
 import com.stackroute.pie.security.jwt.JwtProvider;
+import com.stackroute.pie.services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -22,6 +24,9 @@ import javax.validation.Valid;
 
         @Autowired
         AuthenticationManager authenticationManager;
+
+    @Autowired
+    UserDetailsServiceImpl userDetailsServiceImpl;
 
 
         @Autowired
@@ -41,6 +46,20 @@ import javax.validation.Valid;
             return ResponseEntity.ok(new JwtResponse(jwt, userDetails.getUsername(), userDetails.getAuthorities()));
 
         }
+
+    @GetMapping("/count/{insurerName}")
+    public ResponseEntity<?> getCount(@PathVariable(value = "insurerName") String insurerName) {
+
+        Integer count  = userDetailsServiceImpl.getCount(insurerName);
+        return new ResponseEntity<Integer>(count, HttpStatus.OK);
+    }
+
+
+    @PostMapping("/count/update/{insurerName}")
+    public ResponseEntity<?> updateCount(@PathVariable(value = "insurerName") String insurerName) {
+        Integer count = userDetailsServiceImpl.updateCount(insurerName);
+        return new ResponseEntity<Integer>(count,HttpStatus.OK);
+    }
 
 
     }

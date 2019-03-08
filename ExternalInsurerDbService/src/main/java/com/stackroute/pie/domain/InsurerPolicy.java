@@ -20,7 +20,7 @@ public class InsurerPolicy {
     private String insurerName;
     private String insurerLicense;
     private String policyName;
-    private int policyId;
+    private long policyId;
     private int minAge;
     private int maxAge;
     private String policyType ;
@@ -37,7 +37,7 @@ public class InsurerPolicy {
     private List<String> paymentList = new ArrayList<>();
 
 
-    public InsurerPolicy( String insurerName, String insurerLicense, String policyName, int policyId, int minAge, int maxAge,
+    public InsurerPolicy( String insurerName, String insurerLicense, String policyName, long policyId, int minAge, int maxAge,
                    int minSumInsured, int maxSumInsured, String policyDescription, String policyType,
                    String genderAvail, int waitingPeriod, int policyTerm) {
         this.uniqueId = insurerName + policyName;

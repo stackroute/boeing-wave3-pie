@@ -41,6 +41,17 @@ public class PolicyServiceImpl implements PolicyService {
                 policy.getPolicyId(),policy.getMinAge(),policy.getMaxAge(),policy.getMinSumInsured(),
                 policy.getMaxSumInsured(), policy.getPolicyDescription(), policy.getPolicyType(),
                 policy.getGenderAvail(), policy.getWaitingPeriod(),policy.getPolicyTerm());
+        if(policy.getInsuredList().isEmpty()) {
+            List<String> insuredList = new ArrayList<>();
+            insuredList.add("manasa");
+            insuredList.add("anusha");
+            insuredList.add("sujan");
+            insuredList.add("abhishek");
+            insuredList.add("teja");
+        }
+        else {
+            policy1.setInsuredList(policy.getInsuredList());
+        }
         policyRepository.save(policy1);
         Optional<Policy> policy3 = policyRepository.findByUniqueId(policy1.getUniqueId());
         if(policy3.isPresent()) {
