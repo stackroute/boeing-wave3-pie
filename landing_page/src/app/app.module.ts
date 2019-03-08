@@ -150,7 +150,7 @@ const routes: Routes = [];
   ],
   entryComponents: [CalculatorComponent,ReviewComponent,DialogbotComponent],
   
-  exports: [MatSortModule],
+  exports: [MatSortModule, MatPaginatorModule],
   imports: [
     BrowserModule,
     AppRoutingModule,

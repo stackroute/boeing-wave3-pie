@@ -1,8 +1,8 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ViewChildren } from '@angular/core';
 import { PendingTasks } from '../pending-tasks';
 import {Task} from '../task';
 import {FetchPendingTasksService} from '../../service/fetch-pending-tasks.service';
-import { MatSort, MatTableDataSource } from '@angular/material';
+import { MatSort, MatTableDataSource, MatPaginator } from '@angular/material';
 
 @Component({
   selector: 'app-display-all-porting-requests',
@@ -11,7 +11,7 @@ import { MatSort, MatTableDataSource } from '@angular/material';
 })
 export class DisplayAllPortingRequestsComponent implements OnInit {
 
-@Input() pendingTasks: PendingTasks;
+@Input() pendingTasks: PendingTasks[];
 @Input() currentCompanyName: string;
 @Input() currentInsuredName: string;
 @Input() portingRequestId: number;
@@ -21,8 +21,10 @@ newPendingTask: Task;
 newPendingTaskName: string;
 newPendingTaskDescription: string;
 newPendingTaskDueDate: string;
+tasks: Task[];
 
-@ViewChild(MatSort) sort: MatSort;
+@ViewChildren(MatSort) sort: MatSort;
+@ViewChildren(MatPaginator) paginator : MatPaginator;
 displayedColumns: string[] = ['taskColorStatus', 'taskName', 'taskDescription', 'taskStatus', 'dueDate', 'modifyStatusButton'];
 
 dataSource = new MatTableDataSource<Task[]>();
@@ -30,14 +32,16 @@ dataSource = new MatTableDataSource<Task[]>();
 fetchAllPortingRequestsIsClicked: Boolean;
 addANewPendingTaskIsClicked: Boolean;
 viewPendingTasksOfInsuredIsClicked: Boolean;
+
+
+pendingTasksList: Task[];
 constructor(private fetchPendingTasksService: FetchPendingTasksService) {this.fetchPendingTasksService  = fetchPendingTasksService}
 
 ngOnInit() {
   this.viewPendingTasksOfInsuredClicked = false;
-  this.dataSource =   <MatTableDataSource<Task[]>> <any> this.pendingTasks.taskList;
+  this.dataSource =   <MatTableDataSource<Task[]>> <any> this.pendingTasks[0].taskList;
 }
 ngAfterViewInit() {
-  this.dataSource.sort = this.sort;
 }
 
 

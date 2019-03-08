@@ -1,6 +1,3 @@
-td {
-    border: 1px solid black;
-}
 .marked-complete-text {
     color: greenyellow;
 }
@@ -29,7 +26,20 @@ table {
 }
 
 .mat-cell {
-  border: none;
+    text-align: center;
+    padding: 2%;
+}
+.mat-cell-green {
+  /* border: none; */
+  border-top: 2px green;
+  border-bottom: 2px green;
+  text-align: center;
+  padding: 2%;
+}
+.mat-cell-red {
+  /* border: none; */
+  border-top: 2px red;
+  border-top: 2px red;
   text-align: center;
   padding: 2%;
 }
