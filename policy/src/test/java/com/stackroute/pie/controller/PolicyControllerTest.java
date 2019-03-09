@@ -65,7 +65,7 @@ public class PolicyControllerTest {
         policy = new Policy("maxbupacancer-policy","maxbupa","maxbupa","cancer-policy",
                 12,10,70,"family", "male",1,10,
                 1000, 10000,"this is cancer policy of maxbupa",
-                diseasesCovered,cashlessHospitals,termsAndConditions,insuredList,paymentList);
+                diseasesCovered,cashlessHospitals,termsAndConditions,insuredList,paymentList,"image1.jpg");
         insuredList.add("stackroute");
         policy.setInsuredList(insuredList);
     }

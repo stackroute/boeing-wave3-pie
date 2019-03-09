@@ -40,7 +40,7 @@ public class PolicyServiceImpl implements PolicyService {
         Policy policy1 = new Policy(policy.getInsurerName(),policy.getInsurerLicense(),policy.getPolicyName(),
                 policy.getPolicyId(),policy.getMinAge(),policy.getMaxAge(),policy.getMinSumInsured(),
                 policy.getMaxSumInsured(), policy.getPolicyDescription(), policy.getPolicyType(),
-                policy.getGenderAvail(), policy.getWaitingPeriod(),policy.getPolicyTerm());
+                policy.getGenderAvail(), policy.getWaitingPeriod(),policy.getPolicyTerm(),policy.getImageUrl());
         if(policy.getInsuredList().isEmpty()) {
             List<String> insuredList = new ArrayList<>();
             insuredList.add("manasa");
