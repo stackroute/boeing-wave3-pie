@@ -112,11 +112,11 @@ public class ExternalDbServiceImpl implements ExternalDbService {
     }
 
     @Override
-    public long buyPolicy(BuyPolicy buyPolicy) throws ClassNotFoundException, SQLException, UnsupportedEncodingException {
+    public BuyPolicy buyPolicy(BuyPolicy buyPolicy) throws ClassNotFoundException, SQLException, UnsupportedEncodingException {
 
         buyPolicyRepository.save(buyPolicy);
 
-        return buyPolicy.getPolicyId();
+        return buyPolicy;
     }
 
 

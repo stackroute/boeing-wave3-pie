@@ -44,12 +44,13 @@ public class Policy {
     private List<String> termsAndConditions = new ArrayList<>();
     private List<String> insuredList = new ArrayList<>();
     private List<String> paymentList = new ArrayList<>();
+    private String imageUrl;
 
 
     //Custom Constructor for adding new policy
     public Policy( String insurerName, String insurerLicense, String policyName, long policyId, int minAge, int maxAge,
                   int minSumInsured, int maxSumInsured, String policyDescription, String policyType,
-                   String genderAvail, int waitingPeriod, int policyTerm) {
+                   String genderAvail, int waitingPeriod, int policyTerm,String imageUrl) {
         this.uniqueId = insurerName + policyName;
         this.insurerName = insurerName;
         this.policyName = policyName;
@@ -64,6 +65,7 @@ public class Policy {
         this.maxSumInsured = maxSumInsured;
         this.insurerLicense = insurerLicense;
         this.policyDescription = policyDescription;
+        this.imageUrl=imageUrl;
     }
 
     //Custom Constructor for adding new policy from external Database
