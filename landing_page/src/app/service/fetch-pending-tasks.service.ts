@@ -29,7 +29,7 @@ export class FetchPendingTasksService {
     );
   }
   getPendingTasksById(portingRequestId: number): Observable<PendingTasks[]> {
-    return this.httpClient.get<PendingTasks[]>(this.settlementUrl + this.fetchPendingTasksUrl + 'portingRequestId=' + 14);
+    return this.httpClient.get<PendingTasks[]>(this.settlementUrl + this.fetchPendingTasksUrl + 'portingRequestId=' + portingRequestId);
   }
   addANewPendingTask(
     pendingtasksId: number,

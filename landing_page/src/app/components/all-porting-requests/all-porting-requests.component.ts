@@ -11,7 +11,7 @@ import { MAT_DIALOG_DATA } from '@angular/material';
 })
 export class AllPortingRequestsComponent implements OnInit {
   @Input() currentCompanyName: string;
-  @Input() portingRequestId: number;
+  portingRequestId: number;
 
   pendingTasks: PendingTasks[];
   onePendingTask: PendingTasks;
@@ -20,69 +20,62 @@ export class AllPortingRequestsComponent implements OnInit {
   newPendingTaskDescription: string;
   newPendingTaskDueDate: string;
 
-currentInsuredName: string;
-fetchAllPortingRequestsIsClicked: Boolean;
-addANewPendingTaskIsClicked: Boolean;
-viewPendingTasksOfInsuredIsClicked: Boolean;
-constructor(private fetchPendingTasksService: FetchPendingTasksService, @Inject(MAT_DIALOG_DATA) private data: any) {
-  this.portingRequestId = data.portingRequestId;
-}
-
-ngOnInit() {
-  this.pendingTasks = [{ "pendingTasksId": 1, "taskList": [], "portingRequestId": 1, "newInsurerName": "temp", "insuredName": "temp", "insurerName": "temp" }];
-  this.onePendingTask = { "portingRequestId": 1, "pendingTasksId": 1, "insuredName": 'temp', "insurerName": 'temp', "newInsurerName": 'temp', "taskList": [] };
-  this.getPendingTasksById();
-  this.fetchAllPortingRequestsIsClicked = false;
-  this.viewPendingTasksOfInsuredIsClicked = false;
-  this.addANewPendingTaskIsClicked = false;
-}
-reinitializeAllClickedVariables(): void {
-  this.addANewPendingTaskIsClicked = false;
-}
-initNewPendingTask(): void {
-  this.newPendingTask = { "taskName": "Temp", "taskDescription": "Temp", "dueDate": "53", "taskStatus": false };
-}
-fetchAllPortingRequests(currentCompanyName: string): void {
-  this.reinitializeAllClickedVariables();
-  this.fetchAllPortingRequestsIsClicked = true;
-  this.fetchPendingTasksService
-    .fetchAllPortingRequests(currentCompanyName)
-    .subscribe(pendingTasks => (this.pendingTasks = pendingTasks));
-}
-viewPendingTasksOfInsured(insuredName: string): void {
-  this.reinitializeAllClickedVariables();
-  this.currentInsuredName = insuredName;
-  this.viewPendingTasksOfInsuredIsClicked = true;
-}
-addANewPendingTask(): void {
-  this.initNewPendingTask();
-  this.addANewPendingTaskIsClicked = true;
-}
-saveNewPendingTask(pendingTasks: PendingTasks): void {
-  this.newPendingTask.taskStatus = false;
-  this.newPendingTask.taskName = this.newPendingTaskName;
-  this.newPendingTask.taskDescription = this.newPendingTaskDescription;
-  this.newPendingTask.dueDate = this.newPendingTaskDueDate;
-  this.ngOnInit();
-  this.fetchPendingTasksService
-    .addANewPendingTask(pendingTasks.pendingTasksId, this.newPendingTask)
-    .subscribe();
-}
-modifyStatusOfTask(taskStatus: boolean, taskName: string, pendingTasksId: number): void {
-  this.fetchPendingTasksService.modifyStatusOfTask(!taskStatus, pendingTasksId, taskName).subscribe();
-  for(let pendingtask of this.pendingTasks) {
-  console.log(pendingtask.pendingTasksId);
-  for (let task of pendingtask.taskList) {
-    console.log(task.taskStatus);
-  }
-}
+  currentInsuredName: string;
+  fetchAllPortingRequestsIsClicked: Boolean;
+  addANewPendingTaskIsClicked: Boolean;
+  viewPendingTasksOfInsuredIsClicked: Boolean;
+  constructor(private fetchPendingTasksService: FetchPendingTasksService, @Inject(MAT_DIALOG_DATA) private data: any) {
+    this.portingRequestId = data.portingRequestId;
   }
 
-getPendingTasksById(): void {
-  this.fetchPendingTasksService.getPendingTasksById(this.portingRequestId).subscribe(data => { this.pendingTasks = data; this.blank() });
-}
-blank(): void {
-  console.log(this.pendingTasks[0].insuredName);
-}
-
+  ngOnInit() {
+    this.getPendingTasksById();
+    this.fetchAllPortingRequestsIsClicked = false;
+    this.viewPendingTasksOfInsuredIsClicked = false;
+    this.addANewPendingTaskIsClicked = false;
+  }
+  reinitializeAllClickedVariables(): void {
+    this.addANewPendingTaskIsClicked = false;
+  }
+  initNewPendingTask(): void {
+    this.newPendingTask = { "taskName": "Temp", "taskDescription": "Temp", "dueDate": "53", "taskStatus": false };
+  }
+  fetchAllPortingRequests(currentCompanyName: string): void {
+    this.reinitializeAllClickedVariables();
+    this.fetchAllPortingRequestsIsClicked = true;
+    this.fetchPendingTasksService
+      .fetchAllPortingRequests(currentCompanyName)
+      .subscribe(pendingTasks => (this.pendingTasks = pendingTasks));
+  }
+  viewPendingTasksOfInsured(insuredName: string): void {
+    this.reinitializeAllClickedVariables();
+    this.currentInsuredName = insuredName;
+    this.viewPendingTasksOfInsuredIsClicked = true;
+  }
+  addANewPendingTask(): void {
+    this.initNewPendingTask();
+    this.addANewPendingTaskIsClicked = true;
+  }
+  saveNewPendingTask(pendingTasks: PendingTasks): void {
+    this.newPendingTask.taskStatus = false;
+    this.newPendingTask.taskName = this.newPendingTaskName;
+    this.newPendingTask.taskDescription = this.newPendingTaskDescription;
+    this.newPendingTask.dueDate = this.newPendingTaskDueDate;
+    this.ngOnInit();
+    this.fetchPendingTasksService
+      .addANewPendingTask(pendingTasks.pendingTasksId, this.newPendingTask)
+      .subscribe();
+  }
+  modifyStatusOfTask(taskStatus: boolean, taskName: string, pendingTasksId: number): void {
+    this.fetchPendingTasksService.modifyStatusOfTask(!taskStatus, pendingTasksId, taskName).subscribe();
+    for (let pendingtask of this.pendingTasks) {
+      console.log(pendingtask.pendingTasksId);
+      for (let task of pendingtask.taskList) {
+        console.log(task.taskStatus);
+      }
+    }
+  }
+  getPendingTasksById(): void {
+    this.fetchPendingTasksService.getPendingTasksById(this.portingRequestId).subscribe(PendingTasks => (this.pendingTasks = PendingTasks));
+  }
 }

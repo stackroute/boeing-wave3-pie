@@ -1,4 +1,3 @@
-import { InsurerPolicyService } from './../../service/insurer-policy.service';
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 
@@ -16,13 +15,11 @@ export class LoginComponent implements OnInit {
  isLoggedIn = false;
  isLoginFailed = false;
  errorMessage = '';
- loginDetails: any;
  roles: string[] ;
- requestObj 
  
  private loginInfo: AuthLoginInfo;
 
- constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router,private service:InsurerPolicyService) { }
+ constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router) { }
 
  ngOnInit() {
    if (this.tokenStorage.getToken()) {
@@ -30,42 +27,10 @@ export class LoginComponent implements OnInit {
      this.roles = this.tokenStorage.getAuthorities();
    }
  }
- onSubmit(username) {
+ onSubmit() {
    console.log(this.form);
-   console.log('xzxm');
-   console.log('User Name :' + username);
 
-      this.authService.getCount(username).subscribe(
-      data => {
-        this.loginDetails = data;
-        console.log("asdadakdkahdhkjadhkjad")
-        console.log('data is ', data);
-        if(this.loginDetails == 0)
-        {
-          console.log("enterrd if condition")
-          this.authService.updateCount(username).subscribe(
-            data1 => {
-              console.log(data1);
-            },
-            error => {
-              console.log(error);
-            }
-          );
-          this.service.getExternalPolicy(username).subscribe(
-            data => {
-              console.log(data);
-            },
-            error => {
-              console.log(error);
-            }
-          );
-        }
-      },
-      error => {
-        console.log('we are getting some errors');
 
-      }
-    );
    this.loginInfo = new AuthLoginInfo(
      this.form.username,
      this.form.password);
@@ -90,7 +55,7 @@ export class LoginComponent implements OnInit {
            return true;
           }
           else if(role === 'ROLE_ADMIN'){
-            this.router.navigate(['/admin',this.form.username])
+            this.router.navigate(['/admin']);
           }
      });
      window.location.reload();
