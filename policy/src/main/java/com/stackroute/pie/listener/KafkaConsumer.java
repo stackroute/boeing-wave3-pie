@@ -16,7 +16,7 @@ public class KafkaConsumer {
     KafkaConsumer(PolicyService policyService) {
         this.policyService = policyService;
     }
-    @KafkaListener(topics = "incomingporting", groupId = "group1_json", containerFactory = "userKafkaListenerFactory")
+    @KafkaListener(topics = "incomingporting", groupId = "group_porting_json", containerFactory = "userKafkaListenerFactory")
     public void consumeJson(PortingRequest portingRequest) throws InsurerNotFoundException, PolicyNotFoundException {
         String insurerX = portingRequest.getInsurerName();
         String insurerY = portingRequest.getNewInsurerName();
@@ -29,14 +29,11 @@ public class KafkaConsumer {
 
     }
 
-    @KafkaListener(topics = "Buy_Policy", groupId = "group_2_json", containerFactory = "buyKafkaListenerFactory")
+    @KafkaListener(topics = "Buy_Policy", groupId = "group_buypolicy_json", containerFactory = "buyKafkaListenerFactory")
     public void consumeJsonBuyPolicy(BuyPolicy buyPolicy) throws InsurerNotFoundException, PolicyNotFoundException {
         System.out.println(buyPolicy);
         if(!buyPolicy.getUsername().isBlank()) {
             policyService.addInsured(buyPolicy.getInsurerName(),buyPolicy.getPolicyName(),buyPolicy.getUsername());
-        }
-        else {
-            System.out.println("Didnt find anything");
         }
     }
 }

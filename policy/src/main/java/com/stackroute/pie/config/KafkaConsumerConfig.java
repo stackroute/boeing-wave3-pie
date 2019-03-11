@@ -21,8 +21,8 @@ public class KafkaConsumerConfig {
     @ConditionalOnMissingBean(ConsumerFactory.class)
     public ConsumerFactory<String, PortingRequest> consumerFactory() {
         Map<String, Object> config = new HashMap<>();
-        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "172.23.239.82:9092");
-        config.put(ConsumerConfig.GROUP_ID_CONFIG, "group1_json");
+        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        config.put(ConsumerConfig.GROUP_ID_CONFIG, "group_porting_json");
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
         return new DefaultKafkaConsumerFactory<>(config, new StringDeserializer(),
@@ -32,8 +32,8 @@ public class KafkaConsumerConfig {
     @ConditionalOnMissingBean(ConsumerFactory.class)
     public ConsumerFactory<String, BuyPolicy> consumerFactory1() {
         Map<String, Object> config = new HashMap<>();
-        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "172.23.239.82:9092");
-        config.put(ConsumerConfig.GROUP_ID_CONFIG, "group_2_json");
+        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        config.put(ConsumerConfig.GROUP_ID_CONFIG, "group_buypolicy_json");
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
         return new DefaultKafkaConsumerFactory<>(config, new StringDeserializer(),
