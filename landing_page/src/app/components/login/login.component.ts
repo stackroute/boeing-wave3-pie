@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { TokenStorageService } from '../auth/token-storage.service';
 import { AuthLoginInfo } from '../auth/login-info';
+import { InsurerPolicyService } from './../../service/insurer-policy.service';
 
 @Component({
  selector: 'app-login',
@@ -98,12 +99,7 @@ export class LoginComponent implements OnInit {
       this.isLoginFailed = true;
     }
   });
-
-
-
-
 }
-
  reloadPage() {
    window.location.reload();
  }
