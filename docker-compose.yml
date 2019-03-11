@@ -364,3 +364,11 @@ services:
     ports:
       - 8073:8073
     network_mode: host
+
+  email:
+    image: email:latest
+    restart: always
+    build: email/
+    ports:
+      - 8055:8055
+    network_mode: host
