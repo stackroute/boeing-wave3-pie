@@ -1,6 +1,7 @@
 import { SearchService } from './../../service/search.service';
 import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TokenStorageService } from '../auth/token-storage.service';
 
 @Component({
   selector: 'app-search',
@@ -11,19 +12,29 @@ export class SearchComponent implements OnInit {
   message: any;
   policies: any;
   policyName: string;
-  diseasesList: any;
+  diseasesCovered: any;
   premium: any;
+  username: any;
   agegroup: any;
   flag = 0;
   result;
-  public policy = {
-    policyName : this.policyName,
-    diseasesList: this.diseasesList,
-    premium: this.premium,
-    agegroup: this.agegroup
-  };
-  constructor(private route: ActivatedRoute, private searchService: SearchService) { }
+  info: any;
+  emailId: any;
+  // public policy = {
+  //   policyName : this.policyName,
+  //   diseasesCovered: this.diseasesCovered,
+  //   premium: this.premium,
+  //   agegroup: this.agegroup
+  // };
+  constructor(private route: ActivatedRoute, private searchService: SearchService, private token: TokenStorageService) { }
   ngOnInit() {
+    this.info = {
+      token: this.token.getToken(),
+      username: this.token.getUsername(),
+      authorities: this.token.getAuthorities()
+    };
+    this.username = window.localStorage.getItem("username");
+    this.emailId = window.localStorage.getItem("emailId");
     console.log("in search");
     this.message = this.route.snapshot.paramMap.get('value');
     console.log( "abd" + this.message);

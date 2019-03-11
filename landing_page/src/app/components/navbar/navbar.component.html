@@ -74,7 +74,7 @@
           type="submit"
           style="font-size: 16px;display: inline;"
         >
-          <i class="glyphicon glyphicon-search"></i>Search
+          <i class="glyphicon glyphicon-search"></i>
         </button>
       </form>
     </div>
@@ -232,6 +232,23 @@
       >
         <mat-icon>menu</mat-icon>
       </button>
+      <form class="form-inline" (ngSubmit)="search()">
+          <input
+            class="form-control"
+            type="search"
+            name="message"
+            [(ngModel)]="message"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button
+            class="btn btn-outline-success my-2 my-sm-0"
+            type="submit"
+            style="font-size: 16px;display: inline;"
+          >
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
+        </form>
       <span class="spacer"></span>
       <button
         mat-button
