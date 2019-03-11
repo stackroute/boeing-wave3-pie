@@ -13,13 +13,15 @@ export class BuyPolicyComponent implements OnInit {
   policyName: any;
   insuredName: any;
   updatedPolicy: any;
+  emailId: any;
   constructor(public route: ActivatedRoute, private router: Router, private policyService: PolicyService ) { }
   ngOnInit() {
       this.insurerName= this.route.snapshot.paramMap.get('insurername');
       this.policyName= this.route.snapshot.paramMap.get('policyname');
       this.insuredName= this.route.snapshot.paramMap.get('insuredname');
-      console.log(this.insurerName +" "+this.policyName+" "+this.insuredName);
-      this.updatedPolicy = this.policyService.buyPolicy(this.insurerName,this.policyName,this.insuredName).subscribe(
+      this.emailId = this.route.snapshot.paramMap.get('emailId');
+      console.log(this.insurerName +" "+this.policyName+" "+this.insuredName +" "+this.emailId.emailId);
+      this.updatedPolicy = this.policyService.buyPolicy(this.insurerName,this.policyName,this.insuredName, this.emailId).subscribe(
         data => {
           console.log(data);
           console.log(this.updatedPolicy);
