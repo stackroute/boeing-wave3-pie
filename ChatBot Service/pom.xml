@@ -9,7 +9,7 @@
 		<relativePath>../pom.xml</relativePath><!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.stackroute.pie</groupId>
-	<artifactId>demo</artifactId>
+	<artifactId>chatbot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ChatBot</name>
 	<description>ChatBot Service to receive JSON data from Dialogflow Webhook </description>
