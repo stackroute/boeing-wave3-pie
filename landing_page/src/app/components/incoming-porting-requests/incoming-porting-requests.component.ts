@@ -20,7 +20,7 @@ import { InsurerRejectincomingportingrequestService } from './../../service/Insu
 export class IncomingPortingRequestsComponent implements OnInit {
   insurerLicense: any;
   requests: any;
-  displayedColumns: string[] = ['requestID', 'userName', 'oldInsurerName'];
+  displayedColumns: string[] = ['requestID', 'userName', 'oldInsurerName','modifyStatusButton'];
   dataSource = new MatTableDataSource<Request[]>();
   // request: any;
   // public reviewComponent: ReviewComponent;
@@ -41,6 +41,7 @@ export class IncomingPortingRequestsComponent implements OnInit {
         console.log(data);
         console.log("after service method");
     });
+    console.log(this.requests);
   }
 
   port(request) {

@@ -1,6 +1,7 @@
 import { UserDashboardService } from './../../service/user-dashboard.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, SimpleChanges } from '@angular/core';
+// import * as aos from 'aos';
 
 @Component({
   selector: 'app-recommendations',
@@ -15,6 +16,7 @@ export class RecommendationsComponent implements OnInit {
   ngOnInit() {
     this.userName = this.route.snapshot.paramMap.get('username');
     console.log('recommendations : ' + this.userName);
+    
     this.recommendations = this.userService.getRecommendations(this.userName).subscribe(
       data => {
         this.recommendations = data;
@@ -23,10 +25,7 @@ export class RecommendationsComponent implements OnInit {
         console.log('some error occured');
         console.log(error.errorMessage);
       }
-
-
    );
-  
     }
     ngOnChanges(changes: SimpleChanges) {
       this.router.navigate(['/dashboard',this.userName]);
