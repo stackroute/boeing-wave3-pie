@@ -1,5 +1,5 @@
 <mat-dialog-content>
-  <table mat-table [dataSource]="dataSource" *ngIf="dataIsLoaded">
+  <table mat-table [dataSource]="dataSource" *ngIf="dataIsLoaded == true">
     <ng-container matColumnDef="taskName">
       <th mat-header-cell *matHeaderCellDef> Name </th>
       <td mat-cell *matCellDef="let row"> {{row.taskName}} </td>
@@ -39,17 +39,9 @@
   <div *ngIf="
           addANewPendingTaskIsClicked == true
         ">
-    <div>
-      <form>
-        <input placeholder="Task Name" [(ngModel)]="newPendingTaskName" />
-        <input placeholder="Task Description" [(ngModel)]="newPendingTaskDescription" />
-        <!-- <input placeholder="Due Date" [(ngModel)]="newPendingTaskDueDate" /> -->
-        <!-- <mat-form-field class="example-full-width">
-          <input type="date" value="01/01/2019" matInput>
-        </mat-form-field> -->
-        <md-datepicker [(ngModel)]="newPendingTaskDueDate" md-placeholder="Enter date"></md-datepicker>
-      </form>
-    </div>
+      <input placeholder="Task Name" [(ngModel)]="newPendingTaskName" />
+      <input placeholder="Task Description" [(ngModel)]="newPendingTaskDescription" />
+      <input placeholder="Due Date" [(ngModel)]="newPendingTaskDueDate" />
     <button mat-raised-button (click)="saveNewPendingTask()">Save</button>
   </div>
 </mat-dialog-content>
