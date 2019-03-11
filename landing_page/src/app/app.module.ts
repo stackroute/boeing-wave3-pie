@@ -95,6 +95,7 @@ import { FamilyMembersComponent } from './components/family-members/family-membe
 import { ShowChatResultsComponent } from './components/show-chat-results/show-chat-results.component';
 import { CompanyPolicyComponent } from './components/company-policy/company-policy.component';
 import { ComponentsComponent } from './components/components.component';
+import { PolicybuymailComponent } from './components/policybuymail/policybuymail.component';
 
 
 const routes: Routes = [];
@@ -148,7 +149,8 @@ const routes: Routes = [];
     FamilyMembersComponent,
     ShowChatResultsComponent,
     CompanyPolicyComponent,
-    ComponentsComponent
+    ComponentsComponent,
+    PolicybuymailComponent
   ],
   entryComponents: [CalculatorComponent,ReviewComponent,DialogbotComponent],
   
