@@ -27,11 +27,9 @@ export class GuestUserComponent implements OnInit {
     console.log("guest user "+ this.guestUser);
     console.log("insurername "+ this.object.insurername);
   }
-  submitForm(email, phone){
-    console.log("email "+ email);
-    console.log("phone "+phone);
+  submitForm(){
     const signUpForm = Object.assign(this.guestUser.value, this.object);
     console.log("sign "+ signUpForm);
-    
+
   }
 }
