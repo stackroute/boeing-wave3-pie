@@ -1,3 +1,6 @@
+td {
+    border: 1px solid black;
+}
 .marked-complete-text {
     color: greenyellow;
 }
@@ -26,42 +29,11 @@ table {
 }
 
 .mat-cell {
-    text-align: center;
-    padding: 2%;
-}
-.mat-cell-green {
-  /* border: none; */
-  border-top: 2px green;
-  border-bottom: 2px green;
-  text-align: center;
-  padding: 2%;
-}
-.mat-cell-red {
-  /* border: none; */
-  border-top: 2px red;
-  border-top: 2px red;
+  border: none;
   text-align: center;
   padding: 2%;
 }
 
 .mat-checkbox {
     text-align: center;
-}
-.highlight-green {
-    background-color: lightgreen;
-    border-bottom-left-radius: 25px;
-    border-top-left-radius: 25px;
-}
-.highlight-red {
-    background-color: red;
-    border-bottom-left-radius: 25px;
-    border-top-left-radius: 25px;
-}
-.highlight-red-row {
-    border: 25px;
-    border-color: red;
-}
-.highlight-green-row {
-    border: 25px;
-    border-color: lightgreen;
 }

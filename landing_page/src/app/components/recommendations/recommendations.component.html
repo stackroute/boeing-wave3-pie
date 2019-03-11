@@ -45,7 +45,7 @@
             [routerLink] = "['/policyDetails', blog.insurerName, blog.policyName]"
              class="btn btn-primary" style ="margin-right: 5%;margin-left: 20%; margin-bottom: 2%;" onClick="window.location.reload();"
              >Read more</a>
-           <a [routerLink] = "['/buyPolicy',blog.insurerName,blog.policyName,userName]" class ="btn btn-primary" style ="margin-right: 5%;margin-left: 20%; margin-bottom: 2%;"> Buy </a>
+             <button mat-raised-button (click)="openDialog(blog.insurerName,blog.policyName,username)" style="position: relative; right: 0;margin-top: 0px;">Buy</button> 
           </mat-card-footer>
         </div>
           </div>

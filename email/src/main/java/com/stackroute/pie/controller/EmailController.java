@@ -23,7 +23,8 @@ public class EmailController {
 
     @PostMapping("email/")
     public ResponseEntity<?> sendEmail(@RequestBody Email email) {
-        return new ResponseEntity<>(emailService.sendSimpleMessage(email.getTo(), email.getSubject(), email.getBody()), HttpStatus.OK);
+        System.out.println("Reached REST end point");
+        return new ResponseEntity<Email>(emailService.sendSimpleMessage(email.getTo(), email.getSubject(), email.getBody()), HttpStatus.OK);
 
     }
 }

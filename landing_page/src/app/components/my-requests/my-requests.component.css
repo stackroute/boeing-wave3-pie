@@ -1,5 +1,7 @@
-
-
-.xyzc{
-    margin-left: 0px;
+.container {
+    margin-left: 25%;
 }
+/* mat-card-content {
+    margin-left: 20%;
+    width: 40%;
+} */

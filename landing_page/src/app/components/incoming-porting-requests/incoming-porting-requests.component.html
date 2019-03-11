@@ -21,6 +21,7 @@
           <th>Request ID</th>
           <th>User Name</th>
           <th>Old Insurer Name</th>
+           <th>Sum Insured</th>
           
           <th>Action</th> 
         </tr>
@@ -30,6 +31,7 @@
             <td>{{ request.portingRequestId }}</td>
             <td>{{ request.insuredName }}</td>
             <td>{{ request.newInsurerName }}</td>
+           <button mat-raised-button (click)="openDialog(request.insuredName)" style="position: relative; right: 0;margin-top: 0px;">Review</button> 
             <button class = "btn btn-primary" (click)="openDialog(request.insuredName)" style="position: relative; right: 0;margin-top: 0px;">Review</button>
            <br>
             <button class = "btn btn-primary" (click)="port(request)">Accept</button>
@@ -51,7 +53,7 @@
 </div>
 <br/>
 <br/>
-<br/>  -->
+<br/>   -->
 
  <table mat-table [dataSource]="dataSource" matSort>
   <ng-container matColumnDef="requestID">

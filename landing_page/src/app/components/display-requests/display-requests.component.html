@@ -1,13 +1,13 @@
 
-<div class="container" style="text-align:center; margin-left: 0%;">
+<div class="container" style="text-align:center; margin-left: 25%;">
     <div class="row" style="text-align:center">
       <div class="col-md-12" style="font-size:18px">My Requests</div>
       <br /><br /><br /><br />
     </div>
-    <div class="row" style="text-align:center;font-size : large">
+    <div class="row" style="text-align:center">
       <div *ngFor="let count of requests" class="col-md-4">
         <div class="panel panel-default">
-          <!-- <div class="panel-heading">Insurer Name: {{ count.insuredName }}</div> -->
+          <div class="panel-heading">Insurer Name: {{ count.insuredName }}</div>
           <div class="panel-body">
             <p>Approval Status of X: Pending</p>
             <p>Created Date: {{count.createDate}}</p>

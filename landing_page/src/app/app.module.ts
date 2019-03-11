@@ -94,6 +94,9 @@ import { ReviewComponent } from './components/review/review.component';
 import { FamilyMembersComponent } from './components/family-members/family-members.component';
 import { ShowChatResultsComponent } from './components/show-chat-results/show-chat-results.component';
 import { CompanyPolicyComponent } from './components/company-policy/company-policy.component';
+import { TermsAndConditionsComponent } from './components/terms-and-conditions/terms-and-conditions.component';
+import { GuestUserComponent } from './components/guest-user/guest-user.component';
+
 
 
 const routes: Routes = [];
@@ -146,11 +149,12 @@ const routes: Routes = [];
     ReviewComponent,
     FamilyMembersComponent,
     ShowChatResultsComponent,
-    CompanyPolicyComponent
+    CompanyPolicyComponent,
+    TermsAndConditionsComponent,
+    GuestUserComponent
   ],
   entryComponents: [CalculatorComponent,ReviewComponent,DialogbotComponent],
   
-  exports: [MatSortModule, MatPaginatorModule],
   imports: [
     BrowserModule,
     AppRoutingModule,

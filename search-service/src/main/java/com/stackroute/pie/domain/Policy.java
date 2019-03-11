@@ -1,12 +1,10 @@
 package com.stackroute.pie.domain;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.util.Date;
 import java.util.List;
 
 @Document(collection = "Policy")
@@ -14,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Policy {
-    public long policyId;
+    private long policyId;
     private String policyName;
     private String insurerName;
     private String policyType;

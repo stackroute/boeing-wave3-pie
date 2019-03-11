@@ -42,7 +42,7 @@ public class SignUpForm {
     @NotBlank
     private  String gender;
 
-    private int age;
+    private long age;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date createdDate = new Date();

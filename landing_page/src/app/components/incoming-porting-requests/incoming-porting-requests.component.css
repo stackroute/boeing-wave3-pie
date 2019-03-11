@@ -1,5 +1,4 @@
 
-
 .card{
     background-color: aqua;
     padding-right: 20px;
@@ -80,8 +79,4 @@ table {
 .highlight-red-row {
     border: 25px;
     border-color: red;
-}
-.highlight-green-row {
-    border: 25px;
-    border-color: lightgreen;
 }

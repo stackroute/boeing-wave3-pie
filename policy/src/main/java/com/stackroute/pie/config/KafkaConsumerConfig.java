@@ -1,5 +1,6 @@
 package com.stackroute.pie.config;
 
+import com.stackroute.pie.domain.BuyPolicy;
 import com.stackroute.pie.domain.PortingRequest;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -20,17 +21,37 @@ public class KafkaConsumerConfig {
     @ConditionalOnMissingBean(ConsumerFactory.class)
     public ConsumerFactory<String, PortingRequest> consumerFactory() {
         Map<String, Object> config = new HashMap<>();
-        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "172.23.239.82:9092");
         config.put(ConsumerConfig.GROUP_ID_CONFIG, "group1_json");
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
         return new DefaultKafkaConsumerFactory<>(config, new StringDeserializer(),
                 new JsonDeserializer<>(PortingRequest.class));
     }
+
+    @ConditionalOnMissingBean(ConsumerFactory.class)
+    public ConsumerFactory<String, BuyPolicy> consumerFactory1() {
+        Map<String, Object> config = new HashMap<>();
+        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "172.23.239.82:9092");
+        config.put(ConsumerConfig.GROUP_ID_CONFIG, "group_2_json");
+        config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
+        return new DefaultKafkaConsumerFactory<>(config, new StringDeserializer(),
+                new JsonDeserializer<>(BuyPolicy.class));
+    }
+
     @Bean
     public ConcurrentKafkaListenerContainerFactory<String, PortingRequest> userKafkaListenerFactory() {
         ConcurrentKafkaListenerContainerFactory<String, PortingRequest> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
+        return factory;
+    }
+
+
+    @Bean
+    public ConcurrentKafkaListenerContainerFactory<String, BuyPolicy> buyKafkaListenerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, BuyPolicy> factory = new ConcurrentKafkaListenerContainerFactory<>();
+        factory.setConsumerFactory(consumerFactory1());
         return factory;
     }
 }

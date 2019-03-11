@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-    <catalog>
+<catalog>
 
     <policy policyId="201">
 
         <insurerName>Apollo</insurerName>
-        <insurerLicense>Apollo License</insurerLicense>
+        <insurerLicense>Apollo</insurerLicense>
         <policyName>Apollo Plan-1</policyName>
         <minAge>31</minAge>
         <maxAge>77</maxAge>
@@ -18,10 +18,10 @@
 
     </policy>
 
-    <policy policyid="901">
+    <policy policyId="901">
 
         <insurerName>Apollo</insurerName>
-        <insurerLicense>Apollo License</insurerLicense>
+        <insurerLicense>Apollo</insurerLicense>
         <policyName>Apollo Plan-2</policyName>
         <minAge>21</minAge>
         <maxAge>67</maxAge>
@@ -35,10 +35,10 @@
 
     </policy>
 
-    <policy policyid="701">
+    <policy policyId="701">
 
         <insurerName>Apollo</insurerName>
-        <insurerLicense>Apollo License</insurerLicense>
+        <insurerLicense>Apollo</insurerLicense>
         <policyName>Apollo Plan-3</policyName>
         <minAge>40</minAge>
         <maxAge>80</maxAge>
@@ -52,10 +52,10 @@
 
     </policy>
 
-    <policy policyid="301">
+    <policy policyId="301">
 
         <insurerName>Apollo</insurerName>
-        <insurerLicense>Apollo License</insurerLicense>
+        <insurerLicense>Apollo</insurerLicense>
         <policyName>Apollo Plan-4</policyName>
         <minAge>21</minAge>
         <maxAge>60</maxAge>

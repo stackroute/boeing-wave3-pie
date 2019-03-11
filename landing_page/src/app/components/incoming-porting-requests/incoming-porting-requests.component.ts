@@ -29,21 +29,21 @@ export class IncomingPortingRequestsComponent implements OnInit {
     private portrequest: InsurerAcceptincomingportingrequestService, 
     private portrequest1: InsurerRejectincomingportingrequestService, 
     public dialog: MatDialog) { }
-  
+
   ngOnInit() {
     console.log("inside Incoming");
     this.insurerLicense = this.route.snapshot.paramMap.get('insurerLicense');
     console.log(this.insurerLicense);
-    this.incoming.getSearch(this.insurerLicense).subscribe(data =>
+    this.requests = this.incoming.getSearch(this.insurerLicense).subscribe(data =>
       {
         this.requests = data;
-        this.dataSource = <MatTableDataSource<Request[]>> <any> this.requests;
         console.log(data);
         console.log("after service method");
     });
     console.log(this.requests);
   }
 
+  
   port(request) {
     this.portrequest.getSearch(request).subscribe(data=>console.log(data));
     this.reloadData();
