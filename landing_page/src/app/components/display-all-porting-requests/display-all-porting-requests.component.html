@@ -27,8 +27,7 @@
       <th mat-header-cell *matHeaderCellDef> </th>
       <td mat-cell *matCellDef="let row">
         <ng-container *ngIf="!row.taskStatus">
-          <button mat-raised-button
-            (click)="modifyStatusOfTask(row.taskStatus, row.taskName)">Mark as
+          <button mat-raised-button (click)="modifyStatusOfTask(row.taskStatus, row.taskName)">Mark as
             Complete</button>
         </ng-container>
       </td>
@@ -41,16 +40,23 @@
           addANewPendingTaskIsClicked == true
         ">
     <div>
-      <input placeholder="Task Name" [(ngModel)]="newPendingTaskName" />
-      <input placeholder="Task Description" [(ngModel)]="newPendingTaskDescription" />
-      <input placeholder="Due Date" [(ngModel)]="newPendingTaskDueDate" />
+      <form>
+        <input placeholder="Task Name" [(ngModel)]="newPendingTaskName" />
+        <input placeholder="Task Description" [(ngModel)]="newPendingTaskDescription" />
+        <!-- <input placeholder="Due Date" [(ngModel)]="newPendingTaskDueDate" /> -->
+        <!-- <mat-form-field class="example-full-width">
+          <input type="date" value="01/01/2019" matInput>
+        </mat-form-field> -->
+        <md-datepicker [(ngModel)]="newPendingTaskDueDate" md-placeholder="Enter date"></md-datepicker>
+      </form>
     </div>
+    <button mat-raised-button (click)="saveNewPendingTask()">Save</button>
   </div>
-  <button (click)="saveNewPendingTask()">Save</button>
 </mat-dialog-content>
 <div mat-dialog-actions fxLayoutAlign="space-around center">
-
-  <button mat-raised-button (click)="addANewPendingTask()">Add a new task</button>
+  <button mat-raised-button (click)="addANewPendingTask()">
+    Add a new task
+  </button>
   <button mat-raised-button>Send a reminder</button>
   <button mat-raised-button mat-dialog-close md-raised-button>Close</button>
 
