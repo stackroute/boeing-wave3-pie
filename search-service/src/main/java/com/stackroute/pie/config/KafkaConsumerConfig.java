@@ -18,7 +18,7 @@ import java.util.Map;
 @EnableKafka
 @Configuration
 public class KafkaConsumerConfig {
-    String ip="172.23.239.82:9092";
+    String ip="localhost:9092";
         @Bean
         public ConsumerFactory<String, String> consumerFactory() {
             Map<String, Object> config = new HashMap<>();
