@@ -61,18 +61,38 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
     this.initNewPendingTask();
     this.addANewPendingTaskIsClicked = true;
   }
-  saveNewPendingTask(pendingTasks: PendingTasks): void {
+  saveNewPendingTask(): void {
     this.newPendingTask.taskStatus = false;
     this.newPendingTask.taskName = this.newPendingTaskName;
     this.newPendingTask.taskDescription = this.newPendingTaskDescription;
     this.newPendingTask.dueDate = this.newPendingTaskDueDate;
 
     this.fetchPendingTasksService
-      .addANewPendingTask(pendingTasks.pendingTasksId, this.newPendingTask)
-      .subscribe();
+      .addANewPendingTask(this.pendingTasks.pendingTasksId, this.newPendingTask)
+      .subscribe(data => {
+        this.dataIsLoaded = true;
+        this.fetchPendingTasksService.getPendingTasksById(this.portingRequestId).subscribe(pendingTasks => {
+          this.pendingTasks = pendingTasks[0];
+          this.dataSource = this.pendingTasks.taskList;
+          this.dataIsLoaded = true;
+        })
+        this.addANewPendingTaskIsClicked = false;
+        // $route.reload();
+      }
+
+      );
   }
-  modifyStatusOfTask(taskStatus: boolean, taskName: string, pendingTasksId: number): void {
-    this.fetchPendingTasksService.modifyStatusOfTask(!taskStatus, pendingTasksId, taskName).subscribe();
+  modifyStatusOfTask(taskStatus: boolean, taskName: string): void {
+    this.fetchPendingTasksService.modifyStatusOfTask(!taskStatus, this.pendingTasks.pendingTasksId, taskName).subscribe(data => {
+
+      this.dataIsLoaded = true;
+      this.fetchPendingTasksService.getPendingTasksById(this.portingRequestId).subscribe(pendingTasks => {
+        this.pendingTasks = pendingTasks[0];
+        this.dataSource = this.pendingTasks.taskList;
+        this.dataIsLoaded = true;
+      })
+    }
+    );
   }
   getPendingTasksById(portingRequestId: number): void {
   }
