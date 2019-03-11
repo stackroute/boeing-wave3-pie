@@ -1,5 +1,6 @@
 package com.stackroute.pie.listener;
 
+import com.stackroute.pie.domain.BuyPolicy;
 import com.stackroute.pie.domain.PortingRequest;
 import com.stackroute.pie.exceptions.InsurerNotFoundException;
 import com.stackroute.pie.exceptions.PolicyNotFoundException;
@@ -26,5 +27,16 @@ public class KafkaConsumer {
         policyService.deleteInsured(insurerX,policyX,insuredName);
         policyService.addInsured(insurerY,policyY,insuredName);
 
+    }
+
+    @KafkaListener(topics = "Buy_Policy", groupId = "group_2_json", containerFactory = "buyKafkaListenerFactory")
+    public void consumeJsonBuyPolicy(BuyPolicy buyPolicy) throws InsurerNotFoundException, PolicyNotFoundException {
+        System.out.println(buyPolicy);
+        if(!buyPolicy.getUsername().isBlank()) {
+            policyService.addInsured(buyPolicy.getInsurerName(),buyPolicy.getPolicyName(),buyPolicy.getUsername());
+        }
+        else {
+            System.out.println("Didnt find anything");
+        }
     }
 }

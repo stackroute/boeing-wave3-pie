@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "policylist1")
+@Document(collection = "policylist")
 public class Policy {
     @Id
     @UniqueElements
