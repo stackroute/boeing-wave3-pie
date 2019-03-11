@@ -9,7 +9,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 public class InsurerPoliciesApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(InsurerPoliciesApplication.class, args);
+		SpringApplication.run(XMLtoJSON.class, args);
 	}
 
 }

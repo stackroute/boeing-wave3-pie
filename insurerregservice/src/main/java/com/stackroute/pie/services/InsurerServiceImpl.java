@@ -22,9 +22,16 @@ public class InsurerServiceImpl implements  InsurerService{
     //Method to add insurer to the Database
     @Override
     public Insurer addInsurer(SignUpForm signUpRequest) {
+        List<Insurer> insurerList = insurerRepository.findAll();
         Insurer insurer = new Insurer(signUpRequest.getInsurerName(),signUpRequest.getInsurerLicense(),
                 signUpRequest.getInsurerEmail(),signUpRequest.getPassword(),signUpRequest.getInsurerAddress(),
                 signUpRequest.getSecurityQuestion(),signUpRequest.getSecurityAnswer());
+        if(insurerList.isEmpty()) {
+            insurer.setInsurerId((long) 1);
+        }
+        else {
+            insurer.setInsurerId((long) (insurerList.size()+1));
+        }
         Set<Role> roles = new HashSet<>();
         Role userrRole = new Role();
         userrRole.setName(RoleName.ROLE_INSURER);

@@ -16,6 +16,7 @@ public interface PolicyRepository extends MongoRepository<Policy, String> {
     boolean existsByPolicyIdAndInsurerName(long policyId,String insurerName);
     boolean existsByPolicyNameAndInsurerName(String policyName,String insurerName);
     Optional<List<Policy>> findByInsurerLicense(String insurerLicense);
+    Optional<List<Policy>> findByInsurerName(String insurerName);
     Optional<Policy> findByInsurerNameAndPolicyName(String insurerName, String policyName);
     Optional<Policy> findByUniqueId(String uniqueId);
 }

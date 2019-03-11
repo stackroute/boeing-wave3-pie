@@ -35,13 +35,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     public Integer updateCount(String insurerName) throws UsernameNotFoundException{
         CommonAuth commonAuth = commonAuthRepository.findByUsername(insurerName).get();
-        System.out.println("@@2@@@@@@@@@"+commonAuth.getCount());
-
         int c1= commonAuth.getCount()+1;
         commonAuth.setCount(c1);
-        System.out.println("********"+commonAuth.getCount());
         commonAuthRepository.save(commonAuth);
-
         return (commonAuth.getCount());
     }
 }
