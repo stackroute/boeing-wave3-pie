@@ -23,7 +23,7 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
   newPendingTaskDescription: string;
   newPendingTaskDueDate: string;
 
-  displayedColumns: string[] = ['taskName', 'taskDescription', 'taskStatus', 'dueDate'];
+  displayedColumns: string[] = ['taskName', 'taskDescription', 'taskStatus', 'dueDate', 'modifyStatusButton'];
 
   dataSource: Task[];
   // currentInsuredName: string;

@@ -37,3 +37,9 @@ table {
 .mat-checkbox {
     text-align: center;
 }
+.no-highlight {
+    background-color: white;
+}
+.red-highlight {
+    background-color: red;
+}
