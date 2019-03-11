@@ -52,6 +52,7 @@ public class InsurerController {
         return new ResponseEntity<>(responseMessage, HttpStatus.CREATED);
     }
 
+    //Method to calculate the premium
     @PostMapping("/policy/premium/calculator")
     public ResponseEntity calculatePremium(@RequestBody PremiumCalci premiumCalci){
         long premium = insurerService.calculatePremium(premiumCalci);

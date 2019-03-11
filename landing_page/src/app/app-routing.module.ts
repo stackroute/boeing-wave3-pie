@@ -32,11 +32,13 @@ import {AllPortingRequestsComponent} from './components/all-porting-requests/all
 import { ShowChatResultsComponent } from './components/show-chat-results/show-chat-results.component';
 import { CompanyPolicyComponent } from './components/company-policy/company-policy.component';
 import { PolicyDetailsComponent } from './components/policy-details/policy-details.component';
+import { GuestUserComponent } from './components/guest-user/guest-user.component';
 
 const routes: Routes = [
   {path: 'search/:value', component: SearchComponent},
   {path: 'login', component: LoginComponent },
   {path: 'home', component: HomeComponent},
+  {path: 'guestUser/:insurername/:policyname', component: GuestUserComponent},
   {path:'register', component:RegisterComponent},
   { path: 'dashboard/:username', component: DashboardComponent},
   {path: 'recommendations/:username', component: RecommendationsComponent},
@@ -62,7 +64,7 @@ const routes: Routes = [
    {path: 'companyPolicy/:insurerLicense', component:CompanyPolicyComponent},
    {path: 'all-porting-requests', component:AllPortingRequestsComponent},
    {path: 'display-all-porting-requests', component:DisplayAllPortingRequestsComponent},
-   {path: 'buyPolicy/:insurername/:policyname/:insuredname',component: BuyPolicyComponent},
+   {path: 'buyPolicy/:insurername/:policyname/:insuredname/:emailId',component: BuyPolicyComponent},
    {path: 'familyMembers/:username',component: FamilyMembersComponent},
    {path: 'showChatResults',component:ShowChatResultsComponent},
    {path: 'policyDetails/:insurerName/:policyName',component: PolicyDetailsComponent}

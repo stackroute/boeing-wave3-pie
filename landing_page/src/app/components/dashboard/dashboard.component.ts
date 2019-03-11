@@ -1,5 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { UserDashboardService } from './../../service/user-dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,13 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
  username: any;
+ getUser: any;
  
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private userService: UserDashboardService) { }
 
   ngOnInit() {
     this.username = this.route.snapshot.paramMap.get('username');
     let as = window.localStorage.setItem("insuredname",this.username);
-
+    this.getUser = this.userService.getProfile(this.username).subscribe(
+      data=>{
+        this.getUser = data;
+        console.log(data);
+        let bs = window.localStorage.setItem("emailId",data.email);
+      }
+    );
+ 
   }
-
 }

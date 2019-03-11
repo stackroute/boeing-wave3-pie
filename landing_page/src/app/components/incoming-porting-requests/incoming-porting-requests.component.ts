@@ -4,7 +4,7 @@ import { InsurerIncomingportingrequestService } from './../../service/InsurerInc
 import { InsurerOutgoingportingrequestService } from './../../service/insurer-outgoingportingrequest.service';
 import { ActivatedRoute } from '@angular/router';
 
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatTableDataSource } from '@angular/material';
 import { ReviewComponent } from '../review/review.component';
 
 import { Component, OnInit } from '@angular/core';
@@ -20,6 +20,8 @@ import { InsurerRejectincomingportingrequestService } from './../../service/Insu
 export class IncomingPortingRequestsComponent implements OnInit {
   insurerLicense: any;
   requests: any;
+  displayedColumns: string[] = ['requestID', 'userName', 'oldInsurerName','modifyStatusButton'];
+  dataSource = new MatTableDataSource<Request[]>();
   // request: any;
   // public reviewComponent: ReviewComponent;
   public insuredName: any;
@@ -38,8 +40,10 @@ export class IncomingPortingRequestsComponent implements OnInit {
         console.log(data);
         console.log("after service method");
     });
-
+    console.log(this.requests);
   }
+
+  
   port(request) {
     this.portrequest.getSearch(request).subscribe(data=>console.log(data));
     this.reloadData();

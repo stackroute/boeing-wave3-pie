@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,8 +17,8 @@ import java.util.List;
 @AllArgsConstructor
 @Document(collection = "portingrequest")
 public class PortingRequest {
+    @Id
     private int portingRequestId;
-    List<Field> formFields = new ArrayList<>();
     @NotBlank
     private String insuredName;
     @NotBlank
