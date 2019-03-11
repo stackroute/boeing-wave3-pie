@@ -1,4 +1,4 @@
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,12 +9,12 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardComponent implements OnInit {
  username: any;
  
-  constructor(private route: ActivatedRoute, private router:Router) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.username = this.route.snapshot.paramMap.get('username');
     let as = window.localStorage.setItem("insuredname",this.username);
-    this.router.navigate(['/recommendations',this.username]);
+
   }
- 
+
 }

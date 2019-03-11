@@ -41,10 +41,10 @@ export class InsurerPolicyService {
  return this.http.post('http://13.126.73.190:8092/insurerregservice/api/v1'+ '/policy/premium/calculator',premium);
  }
 
- getExternalPolicy(insurerName:String):Observable<Object> {
-  console.log('externalPolicy')
-  return this.http.get(this.externalPolicyUrl+ 'policy/external/' + insurerName)
-}
+// getExternalPolicy(insurerName:String):Observable<Object> {
+//   console.log('externalPolicy')
+//   return this.http.post(this.localUrl+ 'policy/external/' + insurerName)
+// }
 
 
 

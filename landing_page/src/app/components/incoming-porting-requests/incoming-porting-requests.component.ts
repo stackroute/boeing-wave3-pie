@@ -4,7 +4,7 @@ import { InsurerIncomingportingrequestService } from './../../service/InsurerInc
 import { InsurerOutgoingportingrequestService } from './../../service/insurer-outgoingportingrequest.service';
 import { ActivatedRoute } from '@angular/router';
 
-import { MatDialog, MatTableDataSource } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { ReviewComponent } from '../review/review.component';
 
 import { Component, OnInit } from '@angular/core';
@@ -20,8 +20,6 @@ import { InsurerRejectincomingportingrequestService } from './../../service/Insu
 export class IncomingPortingRequestsComponent implements OnInit {
   insurerLicense: any;
   requests: any;
-  displayedColumns: string[] = ['requestID', 'userName', 'oldInsurerName'];
-  dataSource = new MatTableDataSource<Request[]>();
   // request: any;
   // public reviewComponent: ReviewComponent;
   public insuredName: any;
@@ -29,20 +27,19 @@ export class IncomingPortingRequestsComponent implements OnInit {
     private portrequest: InsurerAcceptincomingportingrequestService, 
     private portrequest1: InsurerRejectincomingportingrequestService, 
     public dialog: MatDialog) { }
-  
+
   ngOnInit() {
     console.log("inside Incoming");
     this.insurerLicense = this.route.snapshot.paramMap.get('insurerLicense');
     console.log(this.insurerLicense);
-    this.incoming.getSearch(this.insurerLicense).subscribe(data =>
+    this.requests = this.incoming.getSearch(this.insurerLicense).subscribe(data =>
       {
         this.requests = data;
-        this.dataSource = <MatTableDataSource<Request[]>> <any> this.requests;
         console.log(data);
         console.log("after service method");
     });
-  }
 
+  }
   port(request) {
     this.portrequest.getSearch(request).subscribe(data=>console.log(data));
     this.reloadData();
