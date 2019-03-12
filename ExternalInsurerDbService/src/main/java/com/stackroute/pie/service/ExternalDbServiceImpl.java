@@ -114,9 +114,16 @@ public class ExternalDbServiceImpl implements ExternalDbService {
     @Override
     public BuyPolicy buyPolicy(BuyPolicy buyPolicy) throws ClassNotFoundException, SQLException, UnsupportedEncodingException {
 
-        buyPolicyRepository.save(buyPolicy);
 
-        return buyPolicy;
+        List<BuyPolicy> buyPolicies = buyPolicyRepository.findAll();
+        if(buyPolicies.isEmpty()) {
+            buyPolicy.setId(1);
+        }
+        else {
+            buyPolicy.setId(buyPolicies.get(buyPolicies.size()-1).getId() + 1);
+        }
+        return  buyPolicyRepository.save(buyPolicy);
+
     }
 
 

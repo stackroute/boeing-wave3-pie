@@ -1,3 +1,4 @@
+import { PolicybuymailComponent } from './components/policybuymail/policybuymail.component';
 import { FamilyMembersComponent } from './components/family-members/family-members.component';
 import { BuyPolicyComponent } from './components/buy-policy/buy-policy.component';
 import { MyPoliciesComponent } from './components/my-policies/my-policies.component';
@@ -41,6 +42,7 @@ const routes: Routes = [
   {path: 'guestUser/:insurername/:policyname', component: GuestUserComponent},
   {path:'register', component:RegisterComponent},
   { path: 'dashboard/:username', component: DashboardComponent},
+  {path: 'policyBuyMail', component: PolicybuymailComponent},
   {path: 'recommendations/:username', component: RecommendationsComponent},
   {path: 'mypolicies/:username', component: MyPoliciesComponent},
   // {path:'companylogin', component: LoginInsurerComponent},
