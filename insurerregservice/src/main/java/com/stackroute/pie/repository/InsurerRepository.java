@@ -12,6 +12,4 @@ public interface InsurerRepository extends MongoRepository<Insurer,Long> {
     Boolean existsByInsurerLicense(String insurerLicense);
     Boolean existsByInsurerName(String insurerName);
     Boolean existsByInsurerEmail(String insurerEmail);
-    Optional<Insurer> findByInsurerName(String insurerName);
-    void deleteByInsurerName(String insurerName);
 }
