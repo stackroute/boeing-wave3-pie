@@ -232,7 +232,7 @@ services:
     healthcheck:
       test: "exit 0"
 
-  searchservice:
+  search-service:
     image: search-service
     build: search-service/
     restart: always
@@ -246,6 +246,8 @@ services:
       apigateway:
         condition: service_healthy
       mongo:
+        condition: service_healthy
+      kafka:
         condition: service_healthy
     ports:
       - 8095:8095
