@@ -30,9 +30,9 @@ public class PortingRequestServiceImplTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        portingRequest = new PortingRequest(12, "sourabhi", "anusha1", "abcd", "apollo", 25000, 200000, "bonus", 123, "manasa", "maxBupa", 30000, 250000, "plan change", 2, false, 0, 0);
+        portingRequest = new PortingRequest(12, "sourabhi", "anusha1", "abcd", "apollo", 25000, 200000, "bonus", 123, "manasa", "maxBupa", 30000, 250000, "plan change", 2, false, 0, 0,"dumb@gmail.com");
         portingRequestList.add(portingRequest);
-        portingRequestList.add(1, new PortingRequest(22, "sourabhi", "anusha1", "bangalore", "max bupa", 25000, 20000, "bonus", 1223, "manasa", "religare", 30000, 25000, "plan change", 3, true, 0, 0));
+        portingRequestList.add(1, new PortingRequest(22, "sourabhi", "anusha1", "bangalore", "max bupa", 25000, 20000, "bonus", 1223, "manasa", "religare", 30000, 25000, "plan change", 3, true, 0, 0,"dumb@gmail.com"));
 
         optional = Optional.of(portingRequest);
     }
