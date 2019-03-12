@@ -16,11 +16,12 @@ export class LoginComponent implements OnInit {
  isLoggedIn = false;
  isLoginFailed = false;
  errorMessage = '';
+ loginDetails: any;
  roles: string[] ;
  
  private loginInfo: AuthLoginInfo;
 
- constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router) { }
+ constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router, private service: InsurerPolicyService) {}
 
  ngOnInit() {
    if (this.tokenStorage.getToken()) {

@@ -150,13 +150,9 @@ const routes: Routes = [];
     FamilyMembersComponent,
     ShowChatResultsComponent,
     CompanyPolicyComponent,
-<<<<<<< HEAD
-    ComponentsComponent,
-    AddNewTaskComponent
-=======
+    AddNewTaskComponent,
     TermsAndConditionsComponent,
     GuestUserComponent
->>>>>>> 5afc8eab8a422148447a52f577a38ab10b2b2f58
   ],
   entryComponents: [CalculatorComponent,ReviewComponent,DialogbotComponent],
   
