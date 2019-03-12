@@ -29,7 +29,7 @@
   </div>
  </div> -->
 
- <div class="xyz">
+ <!-- <div class="xyz">
  <mat-card-header >
   <p style="margin-left: 20%;margin-top: 2">My Policies</p>
     </mat-card-header>
@@ -53,4 +53,26 @@
         </div>
           </div>
     </mat-card-content>
+    </div> -->
+
+    <div class="container" style="text-align:center; margin-left: 0%;">
+      <div class="row" style="text-align:center">
+        <div class="col-md-12" style="font-size:18px">My Policies</div>
+        <br /><br /><br /><br />
+      </div>
+      <div class="row" style="text-align:center;font-size : large">
+        <div *ngFor="let count of policies" class="col-md-4">
+          <div class="panel panel-default">
+              <div class="panel-heading">Policy Name: {{ count.policyName }}</div>
+ 
+            <div class="panel-body">
+ 
+          <p>PolicyId: {{ count.policyId }}</p>
+          <p>InsurerName: {{count.insurerName}}</p>
+          <p>Monthly Premium: {{ count.monthlyPremium }}</p>
+          <p>Waiting Period: {{ count.waitingPeriod }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
