@@ -9,5 +9,5 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class SearchPDM {
     @Id
     public String searchValue;
-    public int count = 0;
+    int count = 0;
 }

@@ -5,6 +5,7 @@ import { InsurerAcceptoutgoingportingrequestService } from './../../service/insu
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import { AllPortingRequestsComponent } from '../all-porting-requests/all-porting-requests.component';
 import {ReviewComponent} from '../review/review.component';
+import {DisplayAllPortingRequestsComponent} from '../display-all-porting-requests/display-all-porting-requests.component';
 @Component({
   selector: 'app-outgoing-porting-requests',
   templateUrl: './outgoing-porting-requests.component.html',
@@ -56,8 +57,7 @@ export class OutgoingPortingRequestsComponent implements OnInit {
     dialogConfig.data = {
       portingRequestId: portrequestId
     };
-
-    this.dialog.open(AllPortingRequestsComponent, dialogConfig);
+    this.dialog.open(DisplayAllPortingRequestsComponent, dialogConfig);
     this.raiseGrievanceButtonIsClicked = false;
     this.idForGrievances = portrequestId;
     return true;

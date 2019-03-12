@@ -37,3 +37,23 @@ table {
 .mat-checkbox {
     text-align: center;
 }
+.no-highlight {
+    background-color: white;
+}
+.red-highlight {
+    background-color: red;
+}
+@media screen and (max-width: 960px) {
+    .mat-table {
+        border: 0;
+        vertical-align: center;
+    }
+    .mat-row {
+        border-bottom: solid white;
+        display: block;
+    }
+    .mat-cell {
+        display: block;
+        border: 5px;
+    }
+}

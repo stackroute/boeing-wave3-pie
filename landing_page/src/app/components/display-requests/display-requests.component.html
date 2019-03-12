@@ -12,7 +12,7 @@
             <p>Approval Status of X: Pending</p>
             <p>Created Date: {{count.createDate}}</p>
             <p>New Policy Name: {{count.newInsurerProduct}}</p>
-          </div>
+          </div>    
           <div class="panel-footer">
             <a [routerLink]="['/deleteRequest', count.portingRequestId]" class="btn btn-primary" style ="margin-right: 5%;"onClick= "window.location.reload();">Delete</a>
             <a [routerLink]="['/updateRequest', count.portingRequestId]" class="btn btn-primary"onClick= "window.location.reload();">Update</a>

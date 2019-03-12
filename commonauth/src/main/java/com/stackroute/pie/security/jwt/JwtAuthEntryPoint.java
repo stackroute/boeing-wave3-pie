@@ -14,7 +14,7 @@ import java.io.IOException;
 @Component
 public class JwtAuthEntryPoint implements AuthenticationEntryPoint {
 
-    private static final Logger logger = LoggerFactory.getLogger(JwtAuthEntryPoint.class);
+    private static final Logger logger1 = LoggerFactory.getLogger(JwtAuthEntryPoint.class);
 
     @Override
     public void commence(HttpServletRequest request,
@@ -22,7 +22,7 @@ public class JwtAuthEntryPoint implements AuthenticationEntryPoint {
                          AuthenticationException e)
             throws IOException, ServletException {
 
-        logger.error("Unauthorized error. Message - {}", e.getMessage());
+        logger1.error("Unauthorized error. Message - {}", e.getMessage());
         response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Error -> Unauthorized");
     }
 }
