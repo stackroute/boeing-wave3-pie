@@ -16,7 +16,7 @@ eureka:         #tells about the Eureka server details and its refresh time
       duration: 5
 spring:
   application:
-    name: searchservice
+    name: search-service
 
 management:
   security:

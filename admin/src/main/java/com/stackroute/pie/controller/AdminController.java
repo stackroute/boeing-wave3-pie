@@ -26,14 +26,14 @@ public class AdminController {
         this.adminServices = adminServices;
     }
     @PostMapping("formformat")
-    public ResponseEntity<?> addNewFormFormat(@RequestBody FormFormat formFormat) {
+    public ResponseEntity<FormFormat> addNewFormFormat(@RequestBody FormFormat formFormat) {
         FormFormat savedFormFormat = adminServices.addNewFormFormat(formFormat);
-        return new ResponseEntity<FormFormat>(savedFormFormat, HttpStatus.CREATED);
+        return new ResponseEntity<>(savedFormFormat, HttpStatus.CREATED);
     }
     @GetMapping("formformats")
-    public ResponseEntity<?> getAllFormFormats() {
+    public ResponseEntity<List<FormFormat>> getAllFormFormats() {
         List<FormFormat> listOfAllFormFormats = adminServices.getAllFormFormats();
-        return new ResponseEntity<List<FormFormat>>(listOfAllFormFormats, HttpStatus.OK);
+        return new ResponseEntity<>(listOfAllFormFormats, HttpStatus.OK);
     }
     @GetMapping("formformat/{formId}")
     public ResponseEntity<FormFormat> getFormFormat(@PathVariable(value = "formId", required = true) int formId) {
@@ -43,23 +43,24 @@ public class AdminController {
         return new ResponseEntity<>(retreivedFormFormat, HttpStatus.OK);
     }
     @DeleteMapping("formformat/{formId}")
-    public ResponseEntity<?> deleteFormFormat(@PathVariable(value = "formId", required = true) int formId) {
+    public ResponseEntity<FormFormat> deleteFormFormat(@PathVariable(value = "formId", required = true) int formId) {
+        FormFormat formFormat = adminServices.getFormFormat(formId);
         adminServices.deleteFormFormat(formId);
-        return new ResponseEntity<>(null, HttpStatus.OK);
+        return new ResponseEntity<>(formFormat, HttpStatus.OK);
     }
     @PutMapping("formformat/{formId}")
     public ResponseEntity<FormFormat> updateFormFormat(@PathVariable(value = "formId", required = true) int formId, @RequestBody FormFormat updatedFormFormat) {
         FormFormat newFormFormat = adminServices.updateFormFormat(formId, updatedFormFormat);
-        return new ResponseEntity<FormFormat>(newFormFormat, HttpStatus.OK);
+        return new ResponseEntity<>(newFormFormat, HttpStatus.OK);
     }
     @GetMapping("formformat/name={formName}")
     public ResponseEntity<FormFormat> getFormByName(@PathVariable(value = "formName", required = true) String formName) {
         FormFormat formFormat = adminServices.getFormFormatByName(formName);
-        return new ResponseEntity<FormFormat>(formFormat, HttpStatus.OK);
+        return new ResponseEntity<>(formFormat, HttpStatus.OK);
     }
     @GetMapping("formformat/search={formName}")
     public ResponseEntity<List<FormFormat>> searchFormByName(@PathVariable(value = "formName", required = true) String formName) {
         List<FormFormat> formFormat = adminServices.searchFormFormatByFormName(formName);
-        return new ResponseEntity<List<FormFormat>>(formFormat, HttpStatus.OK);
+        return new ResponseEntity<>(formFormat, HttpStatus.OK);
     }
 }

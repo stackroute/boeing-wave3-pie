@@ -17,13 +17,12 @@ public class AdminServicesImpl implements AdminServices{
         this.adminRepository = adminRepository;
     }
     public FormFormat addNewFormFormat(FormFormat formFormat) {
-        FormFormat savedFormFormat = adminRepository.save(formFormat);
-        return savedFormFormat;
+        return adminRepository.save(formFormat);
+
     }
     @Override
     public List<FormFormat> getAllFormFormats() {
-        List<FormFormat> allFormFormats = adminRepository.findAll();
-        return allFormFormats;
+        return adminRepository.findAll();
     }
 
     @Override
@@ -33,7 +32,7 @@ public class AdminServicesImpl implements AdminServices{
 
     @Override
     public FormFormat getFormFormat(int formId) {
-        if(adminRepository.existsById(formId) == false)
+        if(!adminRepository.existsById(formId))
             return null;
         return adminRepository.findById(formId);
     }
@@ -42,14 +41,12 @@ public class AdminServicesImpl implements AdminServices{
     public FormFormat updateFormFormat(int formId, FormFormat updatedFormFormat) {
         adminRepository.deleteById(formId);
         updatedFormFormat.setFormId(formId);
-        FormFormat newFormFormat = adminRepository.save(updatedFormFormat);
-        return newFormFormat;
+        return adminRepository.save(updatedFormFormat);
     }
 
     @Override
     public FormFormat getFormFormatByName(String formName) {
-        FormFormat formFormat = adminRepository.findByFormName(formName);
-        return formFormat;
+        return adminRepository.findByFormName(formName);
     }
 
     @Override
