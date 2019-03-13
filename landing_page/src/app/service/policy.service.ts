@@ -15,6 +15,7 @@ export class PolicyService {
     })
   };
   public policyDetailsUrl = 'http://13.126.73.190:8092/policy/api/v1/policy/';
+  public buypolicy = 'http://13.126.73.190:8092/externalinsurerdbservice/api/v1/policy/external/buypolicy';
   policyDetails:any;
   constructor(private http: HttpClient) {
     console.log('http service got called');
