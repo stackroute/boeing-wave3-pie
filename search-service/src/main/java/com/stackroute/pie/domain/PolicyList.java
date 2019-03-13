@@ -31,5 +31,6 @@ public class PolicyList {
     private int minAge;
     private int maxAge;
     private List<String> termsAndConditions;
+    private int minimumPremium;
 
 }

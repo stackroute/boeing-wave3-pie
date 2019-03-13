@@ -1,9 +1,6 @@
 package com.stackroute.zuulgatewayservice;
 
 import com.netflix.zuul.ZuulFilter;
-import com.netflix.zuul.context.RequestContext;
-
-import javax.servlet.http.HttpServletRequest;
 
 public class PreFilter extends ZuulFilter {
     @Override
@@ -23,8 +20,6 @@ public class PreFilter extends ZuulFilter {
 
     @Override
     public Object run() {
-        RequestContext ctx = RequestContext.getCurrentContext();
-        HttpServletRequest request = ctx.getRequest();
         return null;
     }
 }
