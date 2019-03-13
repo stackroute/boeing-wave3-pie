@@ -94,9 +94,24 @@ public class ExternalDbServiceImpl implements ExternalDbService {
                 policy1.setMinSumInsured(Integer.parseInt(policystr[12].split(":")[1].replace("\"","").replace("}","")));
                 policy1.setUniqueId(policy1.getInsurerName()+policy1.getPolicyName());
                 policy1.setInsuredList(Arrays.asList(new String[]{"anusha", "manasa","sujan","abhishek","teja"}));
-
+                List<String> hospitalList = new ArrayList<>();
+                hospitalList.add("Fortis Hospital");
+                hospitalList.add("Aster CMI Hospital");
+                hospitalList.add("Narayana Multispecialily Hospital");
+                hospitalList.add("Fortis La Femme");
+                hospitalList.add("Fortis Hospital");
+                hospitalList.add("Manipal North Side Hospital");
+                hospitalList.add("Sakra World Hospital");
+                hospitalList.add("Columbia Asia Hospital");
+                hospitalList.add("Apollo Speciality Hospital");
+                hospitalList.add("Prashanth Hospital");
+                hospitalList.add("Sakra World Hospital");
+                hospitalList.add("Columbia Asia Hospital");
+                hospitalList.add("GVG Invivo Hospitals");
+                hospitalList.add("Ananya Hospital Pvt Ltd");
+                hospitalList.add("Anugraha Vittala Hospital");
+                policy1.setCashlessHospitals(hospitalList);
                 policy.add(policy1);
-
 
             }
 

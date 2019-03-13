@@ -42,41 +42,36 @@ public class PolicyServiceImpl implements PolicyService {
                 policy.getPolicyId(),policy.getMinAge(),policy.getMaxAge(),policy.getMinSumInsured(),
                 policy.getMaxSumInsured(), policy.getPolicyDescription(), policy.getPolicyType(),
                 policy.getGenderAvail(), policy.getWaitingPeriod(),policy.getPolicyTerm(),policy.getImageUrl());
-        if(policy.getInsuredList().isEmpty()) {
-            List<String> insuredList = new ArrayList<>();
-            insuredList.add("manasa");
-            insuredList.add("anusha");
-            insuredList.add("sujan");
-            insuredList.add("abhishek");
-            insuredList.add("teja");
+        if(policy.getCashlessHospitals().isEmpty()) {
+            List<String> hospitalList = new ArrayList<>();
+            hospitalList.add("Fortis Hospital");
+            hospitalList.add("Aster CMI Hospital");
+            hospitalList.add("Narayana Multispecialily Hospital");
+            hospitalList.add("Fortis La Femme");
+            hospitalList.add("Fortis Hospital");
+            hospitalList.add("Manipal North Side Hospital");
+            hospitalList.add("Sakra World Hospital");
+            hospitalList.add("Columbia Asia Hospital");
+            hospitalList.add("Apollo Speciality Hospital");
+            hospitalList.add("Prashanth Hospital");
+            hospitalList.add("Sakra World Hospital");
+            hospitalList.add("Columbia Asia Hospital");
+            hospitalList.add("GVG Invivo Hospitals");
+            hospitalList.add("Ananya Hospital Pvt Ltd");
+            hospitalList.add("Anugraha Vittala Hospital");
+            policy1.setCashlessHospitals(hospitalList);
         }
         else {
-            policy1.setInsuredList(policy.getInsuredList());
+            policy1.setCashlessHospitals(policy.getCashlessHospitals());
         }
-        List<String> hospitalList = new ArrayList<>();
-        hospitalList.add("Fortis Hospital");
-        hospitalList.add("Aster CMI Hospital");
-        hospitalList.add("Narayana Multispecialily Hospital");
-        hospitalList.add("Fortis La Femme");
-        hospitalList.add("Fortis Hospital");
-        hospitalList.add("Manipal North Side Hospital");
-        hospitalList.add("Sakra World Hospital");
-        hospitalList.add("Columbia Asia Hospital");
-        hospitalList.add("Apollo Speciality Hospital");
-        hospitalList.add("Prashanth Hospital");
-        hospitalList.add("Sakra World Hospital");
-        hospitalList.add("Columbia Asia Hospital");
-        hospitalList.add("GVG Invivo Hospitals");
-        hospitalList.add("Ananya Hospital Pvt Ltd");
-        hospitalList.add("Anugraha Vittala Hospital");
-        policy1.setCashlessHospitals(hospitalList);
+        if(!policy.getDiseasesCovered().isEmpty())
+            policy1.setDiseasesCovered(policy.getDiseasesCovered());
         policyRepository.save(policy1);
         Optional<Policy> policy3 = policyRepository.findByUniqueId(policy1.getUniqueId());
         if(policy3.isPresent()) {
             kafkaTemplate.send("policy_added",policy3.get());
             policyGlobal =  policy3.get();
         }
-        System.out.println("about to finish");
         return policyGlobal;
     }
 
