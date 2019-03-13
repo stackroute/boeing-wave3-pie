@@ -90,4 +90,25 @@ public class Policy {
         this.diseasesCovered = diseasesCovered;
         this.cashlessHospitals = cashlessHospitals;
     }
+
+    //Custom Constructor for adding new policy
+    public Policy( String insurerName, String insurerLicense, String policyName, long policyId, int minAge, int maxAge,
+                   int minSumInsured, int maxSumInsured, String policyDescription, String policyType,
+                   String genderAvail, int waitingPeriod, int policyTerm,String imageUrl) {
+        this.uniqueId = insurerName + policyName;
+        this.insurerName = insurerName;
+        this.policyName = policyName;
+        this.policyId = policyId;
+        this.minAge = minAge;
+        this.maxAge = maxAge;
+        this.policyType = policyType;
+        this.genderAvail = genderAvail;
+        this.waitingPeriod = waitingPeriod;
+        this.policyTerm = policyTerm;
+        this.minSumInsured = minSumInsured;
+        this.maxSumInsured = maxSumInsured;
+        this.insurerLicense = insurerLicense;
+        this.policyDescription = policyDescription;
+        this.imageUrl=imageUrl;
+    }
 }
