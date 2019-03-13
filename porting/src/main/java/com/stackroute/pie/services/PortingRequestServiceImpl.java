@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,8 +29,7 @@ public class PortingRequestServiceImpl implements PortingRequestService{
         else {
             request.setPortingRequestId(portingRequests.get(portingRequests.size()-1).getPortingRequestId() + 1);
         }
-        PortingRequest request1 = requestRepository.save(request);
-        return request1;
+        return requestRepository.save(request);
     }
 
     //To edit the request details
@@ -62,9 +62,7 @@ public class PortingRequestServiceImpl implements PortingRequestService{
     //To display requests
     public List<PortingRequest> getRequests(String insuredName) throws RequestNotFoundException {
         if(requestRepository.existsByInsuredName(insuredName)) {
-
-            List<PortingRequest> request1 = requestRepository.findByInsuredName(insuredName);
-            return request1;
+            return requestRepository.findByInsuredName(insuredName);
         }
         else
             throw new RequestNotFoundException();
@@ -123,19 +121,26 @@ public class PortingRequestServiceImpl implements PortingRequestService{
 
     //To accept outgoing requests
     public PortingRequest acceptOutgoingPortingRequest(PortingRequest portingRequest) {
-        PortingRequest portingRequest2 = requestRepository.findByPortingRequestId(portingRequest.getPortingRequestId()).get();
-        portingRequest2.setFromApproval(1);
-        requestRepository.save(portingRequest2);
-        return portingRequest2;
+        Optional<PortingRequest> portingRequest1 = requestRepository.findByPortingRequestId(portingRequest.getPortingRequestId());
+        if(portingRequest1.isPresent()) {
+            request2 = portingRequest1.get();
+            request2.setFromApproval(1);
+            Date d = new Date();
+            request2.setAcceptedDateofPreviousInsurer(d);
+            requestRepository.save(request2);
+        }
+        return request2;
     }
 
     //To accept incoming requests
     public PortingRequest acceptIncomingPortingRequest(PortingRequest portingRequest) {
         Optional<PortingRequest> portingRequest1 = requestRepository.findByPortingRequestId(portingRequest.getPortingRequestId());
-        PortingRequest portingRequest2 = requestRepository.findByPortingRequestId(portingRequest.getPortingRequestId()).get();
-        portingRequest2.setToApproval(1);
-        requestRepository.save(portingRequest2);
-        return portingRequest2;
+        if(portingRequest1.isPresent()) {
+            request2 = portingRequest1.get();
+            request2.setToApproval(1);
+            requestRepository.save(request2);
+        }
+        return request2;
     }
 
     //To delete a request
@@ -145,9 +150,12 @@ public class PortingRequestServiceImpl implements PortingRequestService{
 
     //To reject incoming request
     public PortingRequest rejectIncomingPortingRequest(PortingRequest portingRequest) {
-        PortingRequest portingRequest2 = requestRepository.findByPortingRequestId(portingRequest.getPortingRequestId()).get();
-        portingRequest2.setToApproval(2);
-        requestRepository.save(portingRequest2);
-        return portingRequest2;
+        Optional<PortingRequest> portingRequest1 = requestRepository.findByPortingRequestId(portingRequest.getPortingRequestId());
+        if (portingRequest1.isPresent()) {
+            request2 = portingRequest1.get();
+            request2.setToApproval(2);
+            requestRepository.save(request2);
+        }
+        return request2;
     }
 }

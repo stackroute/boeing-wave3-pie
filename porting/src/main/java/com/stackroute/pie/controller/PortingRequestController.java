@@ -9,12 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
-import springfox.documentation.service.ResponseMessage;
+
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1/")
@@ -51,14 +49,11 @@ public class PortingRequestController {
         ResponseEntity responseEntity;
 
         try {
-
             PortingRequest request1 = requestService.updateRequest(request);
-            responseEntity =  new ResponseEntity<PortingRequest>(request1, HttpStatus.OK);
-
+            responseEntity =  new ResponseEntity(request1, HttpStatus.OK);
         }
         catch (RequestNotFoundException ex) {
-            responseEntity = new ResponseEntity<String>(ex.getMessage(),HttpStatus.CONFLICT);
-            ex.printStackTrace();
+            responseEntity = new ResponseEntity(ex.getMessage(),HttpStatus.CONFLICT);
         }
         return responseEntity;
 
@@ -77,7 +72,6 @@ public class PortingRequestController {
         }
         catch (RequestNotFoundException ex) {
             responseEntity = new ResponseEntity(ex.getMessage(),HttpStatus.CONFLICT);
-            ex.printStackTrace();
         }
         return responseEntity;
 
@@ -92,7 +86,7 @@ public class PortingRequestController {
             return new ResponseEntity(allRequests, HttpStatus.OK);
         }
         catch (RequestNotFoundException ex) {
-            responseEntity = new ResponseEntity<String>(ex.getMessage(),HttpStatus.CONFLICT);
+            responseEntity = new ResponseEntity(ex.getMessage(),HttpStatus.CONFLICT);
         }
         return responseEntity;
     }
@@ -100,7 +94,7 @@ public class PortingRequestController {
     //Method to display incoming porting requests
     @GetMapping("/incomingportingrequest/{newInsurerName}")
     public ResponseEntity incomingPortingRequest( @PathVariable("newInsurerName") String newInsurerName) {
-        if (portingRequestRepository.existsByNewInsurerName(newInsurerName) == false) {
+        if (!portingRequestRepository.existsByNewInsurerName(newInsurerName)) {
             return new ResponseEntity(insurerNotFoundMessage,
                     HttpStatus.NOT_FOUND);
         }
@@ -117,7 +111,7 @@ public class PortingRequestController {
     //Method to display outgoing porting requests
     @GetMapping("/outgoingportingrequest/{insurerName}")
     public ResponseEntity outgoingPortingRequest(@PathVariable("insurerName") String insurerName) {
-        if (portingRequestRepository.existsByInsurerName(insurerName) == false) {
+        if (!portingRequestRepository.existsByInsurerName(insurerName)) {
             return new ResponseEntity(insurerNotFoundMessage,
                     HttpStatus.NOT_FOUND);
         }
@@ -128,55 +122,41 @@ public class PortingRequestController {
                 outgoingPortingRequests1.add(outgoingPortingRequests.get(i));
             }
         }
-
         return new ResponseEntity(outgoingPortingRequests1, HttpStatus.OK);
     }
 
     //Method to accept outgoing requests
     @PutMapping("/acceptoutgoingportingrequest")
     public ResponseEntity acceptOutgoingPortingRequest(@RequestBody PortingRequest portingRequest) {
-        if (portingRequestRepository.existsByInsurerName(portingRequest.getInsurerName()) == false) {
+        if (!portingRequestRepository.existsByInsurerName(portingRequest.getInsurerName())) {
             return new ResponseEntity(insurerNotFoundMessage,
                     HttpStatus.NOT_FOUND);
         }
         PortingRequest acceptOutgoingPortingRequest = requestService.acceptOutgoingPortingRequest(portingRequest);
-        requestService.deletePortingRequest(portingRequest);
-        acceptOutgoingPortingRequest.setFromApproval(1);
-        Date d = new Date();
-        acceptOutgoingPortingRequest.setAcceptedDateofPreviousInsurer(d);
-        PortingRequest portingRequest1 = requestService.postRequest(acceptOutgoingPortingRequest);
-        return new ResponseEntity(portingRequest1, HttpStatus.OK);
+        return new ResponseEntity(acceptOutgoingPortingRequest, HttpStatus.OK);
     }
 
     //Method to accept outgoing requests
     @PutMapping("/acceptincomingportingrequest")
     public ResponseEntity acceptIncomingPortingRequest(@RequestBody PortingRequest portingRequest) {
-        if (portingRequestRepository.existsByNewInsurerName(portingRequest.getNewInsurerName()) == false) {
+        if (!portingRequestRepository.existsByNewInsurerName(portingRequest.getNewInsurerName())) {
             return new ResponseEntity(insurerNotFoundMessage,
                     HttpStatus.NOT_FOUND);
         }
         PortingRequest acceptIncomingPortingRequest = requestService.acceptIncomingPortingRequest(portingRequest);
-        requestService.deletePortingRequest(portingRequest);
-        acceptIncomingPortingRequest.setFromApproval(1);
-        acceptIncomingPortingRequest.setToApproval(1);
-        PortingRequest portingRequest1 = requestService.postRequest(acceptIncomingPortingRequest);
-        kafkaTemplate.send("incomingporting", portingRequest1);
-        return new ResponseEntity(portingRequest1, HttpStatus.OK);
+        kafkaTemplate.send("incomingporting", acceptIncomingPortingRequest);
+        return new ResponseEntity(acceptIncomingPortingRequest, HttpStatus.OK);
     }
 
     //Method to reject incoming requests
     @PutMapping("/rejectincomingportingrequest")
     public ResponseEntity rejectIncomingPortingRequest(@RequestBody PortingRequest portingRequest) {
-        if (portingRequestRepository.existsByNewInsurerName(portingRequest.getNewInsurerName()) == false) {
+        if (!portingRequestRepository.existsByNewInsurerName(portingRequest.getNewInsurerName())) {
             return new ResponseEntity(insurerNotFoundMessage,
                     HttpStatus.NOT_FOUND);
         }
         PortingRequest rejectIncomingPortingRequest = requestService.rejectIncomingPortingRequest(portingRequest);
-        requestService.deletePortingRequest(portingRequest);
-        rejectIncomingPortingRequest.setFromApproval(1);
-        rejectIncomingPortingRequest.setToApproval(2);
-        PortingRequest portingRequest1 = requestService.postRequest(rejectIncomingPortingRequest);
-        return new ResponseEntity(portingRequest1, HttpStatus.OK);
+        return new ResponseEntity(rejectIncomingPortingRequest, HttpStatus.OK);
     }
 
     //Get portingrequest based on porting request ID
@@ -188,7 +168,7 @@ public class PortingRequestController {
     //Get the history of porting request for Insurer
     @GetMapping("requests/{insurerName}")
     public ResponseEntity getPortingRequestsByInsurerName(@PathVariable("insurerName") String insurerName) {
-        if (portingRequestRepository.existsByNewInsurerName(insurerName) == false) {
+        if (!portingRequestRepository.existsByNewInsurerName(insurerName)) {
             return new ResponseEntity(insurerNotFoundMessage,
                     HttpStatus.NOT_FOUND);
         }
