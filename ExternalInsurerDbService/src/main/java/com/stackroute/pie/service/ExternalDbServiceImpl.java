@@ -96,7 +96,6 @@ public class ExternalDbServiceImpl implements ExternalDbService {
                 policy1.setPolicyType(policystr[11].split(":")[1].replace("\"",""));
                 policy1.setMinSumInsured(Integer.parseInt(policystr[12].split(":")[1].replace("\"","").replace("}","")));
                 policy1.setUniqueId(policy1.getInsurerName()+policy1.getPolicyName());
-                policy1.setInsuredList(Arrays.asList("anusha", "manasa","sujan","abhishek","teja"));
                 policy1.setInsuredList(insuredList);
                 List<String> hospitalList = new ArrayList<>();
                 hospitalList.add("Fortis Hospital");
