@@ -8,12 +8,12 @@ import java.util.List;
 
 @Service
 public interface SettlementServices {
-    public List<PendingTasks> getAllPendingTasksForInsurer(String insurerName);
-    public PendingTasks appendTask(int pendingTasksId, Task task);
-    public PendingTasks modifyTask(int pendingTasksId, Task oldTask, Task newTask);
-    public PendingTasks getAllPendingTasksForInsured(String insurerName, String insuredName);
-    public PendingTasks putPendingTasks(PendingTasks pendingTasks);
-    public PendingTasks deleteTask(int pendingTasksId, String taskName);
-    public PendingTasks changePendingTaskStatus(int pendingTasksId, String taskName, boolean status);
-    public List<PendingTasks> getPendingTasksByPortingRequestId(int portingRequestId);
+    List<PendingTasks> getAllPendingTasksForInsurer(String insurerName);
+    PendingTasks appendTask(int pendingTasksId, Task task);
+    PendingTasks modifyTask(int pendingTasksId, Task oldTask, Task newTask);
+    PendingTasks getAllPendingTasksForInsured(String insurerName, String insuredName);
+    PendingTasks putPendingTasks(PendingTasks pendingTasks);
+    PendingTasks deleteTask(int pendingTasksId, String taskName);
+    PendingTasks changePendingTaskStatus(int pendingTasksId, String taskName, boolean status);
+    List<PendingTasks> getPendingTasksByPortingRequestId(int portingRequestId);
 }

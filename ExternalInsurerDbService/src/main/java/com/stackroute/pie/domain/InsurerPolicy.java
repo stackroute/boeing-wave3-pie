@@ -35,6 +35,7 @@ public class InsurerPolicy {
     private List<String> termsAndConditions = new ArrayList<>();
     private List<String> insuredList = new ArrayList<>();
     private List<String> paymentList = new ArrayList<>();
+    private String imageUrl;
 
 
     public InsurerPolicy( String insurerName, String insurerLicense, String policyName, long policyId, int minAge, int maxAge,

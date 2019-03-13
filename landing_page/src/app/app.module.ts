@@ -151,15 +151,10 @@ const routes: Routes = [];
     FamilyMembersComponent,
     ShowChatResultsComponent,
     CompanyPolicyComponent,
-<<<<<<< HEAD
-    ComponentsComponent,
-    UploadFileComponent
-=======
     PolicybuymailComponent,
     AddNewTaskComponent,
     TermsAndConditionsComponent,
     GuestUserComponent
->>>>>>> 1e6df0504ba12ffd863f374b68e4aecba0ea32ae
   ],
   entryComponents: [CalculatorComponent,ReviewComponent,DialogbotComponent],
   

@@ -68,13 +68,18 @@ public class ExternalDbServiceImpl implements ExternalDbService {
         JSONArray name = (JSONArray) obj.get("policy");
 
         try{
-            ArrayList<InsurerPolicy> policy = new ArrayList<InsurerPolicy>();
+            ArrayList<InsurerPolicy> policy = new ArrayList<>();
 
             for (int i = 0; i < name.length(); i++) {
 
                 String[] policystr = name.getJSONObject(i).toString().split(",");
 
-
+                List<String> insuredList = new ArrayList<>();
+                insuredList.add("anusha");
+                insuredList.add("manasa");
+                insuredList.add("sujan");
+                insuredList.add("abhishek");
+                insuredList.add("teja");
 
                 InsurerPolicy policy1 = new InsurerPolicy();
                 policy1.setPolicyName(policystr[0].split(":")[1].replace("\"",""));
@@ -92,10 +97,26 @@ public class ExternalDbServiceImpl implements ExternalDbService {
                 policy1.setMinSumInsured(Integer.parseInt(policystr[12].split(":")[1].replace("\"","").replace("}","")));
                 policy1.setUniqueId(policy1.getInsurerName()+policy1.getPolicyName());
                 policy1.setInsuredList(Arrays.asList("anusha", "manasa","sujan","abhishek","teja"));
+                policy1.setInsuredList(insuredList);
+                List<String> hospitalList = new ArrayList<>();
+                hospitalList.add("Fortis Hospital");
+                hospitalList.add("Aster CMI Hospital");
+                hospitalList.add("Narayana Multispecialily Hospital");
+                hospitalList.add("Fortis La Femme");
+                hospitalList.add("Fortis Hospital");
+                hospitalList.add("Manipal North Side Hospital");
+                hospitalList.add("Sakra World Hospital");
+                hospitalList.add("Columbia Asia Hospital");
+                hospitalList.add("Apollo Speciality Hospital");
+                hospitalList.add("Prashanth Hospital");
+                hospitalList.add("Sakra World Hospital");
+                hospitalList.add("Columbia Asia Hospital");
+                hospitalList.add("GVG Invivo Hospitals");
+                hospitalList.add("Ananya Hospital Pvt Ltd");
+                hospitalList.add("Anugraha Vittala Hospital");
+                policy1.setCashlessHospitals(hospitalList);
 
                 policy.add(policy1);
-
-
             }
 
 

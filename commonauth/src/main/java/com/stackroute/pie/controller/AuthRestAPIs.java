@@ -11,11 +11,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Collection;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -43,22 +45,22 @@ public class AuthRestAPIs {
         String jwt = jwtProvider.generateJwtToken(authentication);
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 
-        return ResponseEntity.ok(new JwtResponse(jwt, userDetails.getUsername(), userDetails.getAuthorities()));
+        return ResponseEntity.ok(new JwtResponse(jwt, userDetails.getUsername(), (Collection<GrantedAuthority>) userDetails.getAuthorities()));
 
     }
 
     @GetMapping("/count/{insurerName}")
-    public ResponseEntity<?> getCount(@PathVariable(value = "insurerName") String insurerName) {
+    public ResponseEntity getCount(@PathVariable(value = "insurerName") String insurerName) {
 
         Integer count  = userDetailsServiceImpl.getCount(insurerName);
-        return new ResponseEntity<Integer>(count, HttpStatus.OK);
+        return new ResponseEntity(count, HttpStatus.OK);
     }
 
 
     @PostMapping("/count/update/{insurerName}")
-    public ResponseEntity<?> updateCount(@PathVariable(value = "insurerName") String insurerName) {
+    public ResponseEntity updateCount(@PathVariable(value = "insurerName") String insurerName) {
         Integer count = userDetailsServiceImpl.updateCount(insurerName);
-        return new ResponseEntity<Integer>(count,HttpStatus.OK);
+        return new ResponseEntity(count,HttpStatus.OK);
     }
 
 

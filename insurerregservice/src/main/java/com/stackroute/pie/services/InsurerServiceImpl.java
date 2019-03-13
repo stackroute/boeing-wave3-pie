@@ -89,8 +89,11 @@ public class InsurerServiceImpl implements  InsurerService{
         String policyName = premiumCalci.getPolicyName();
 
         int index = policyList.indexOf(policyName);
-        premium *= policyValue.get(index);
-
+        if(index >= 0)
+            premium *= policyValue.get(index);
+        else {
+            premium *= (float) 1.01;
+        }
 
         premium *= 1 + (premiumCalci.getSumInsured()/1000000);
 

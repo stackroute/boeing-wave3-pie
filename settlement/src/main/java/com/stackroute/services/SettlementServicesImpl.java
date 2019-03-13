@@ -16,15 +16,14 @@ public class SettlementServicesImpl implements SettlementServices {
     public SettlementServicesImpl(SettlementRepository settlementRepository) {this.settlementRepository = settlementRepository;}
     @Override
     public List<PendingTasks> getAllPendingTasksForInsurer(String insurerName) {
-        List<PendingTasks> allPendingTasks = settlementRepository.findAllByInsurerNameOrderByInsuredNameAsc(insurerName);
-        return allPendingTasks;
+        return settlementRepository.findAllByInsurerNameOrderByInsuredNameAsc(insurerName);
     }
     @Override
     public PendingTasks appendTask(int pendingTasksId, Task task) {
         PendingTasks pendingTasks = settlementRepository.findByPendingTasksId(pendingTasksId);
         List<Task> currentListOfTasks = pendingTasks.getTaskList();
         if(currentListOfTasks == null) {
-            List<Task> newTaskList = new ArrayList<Task>();
+            List<Task> newTaskList = new ArrayList<>();
             newTaskList.add(task);
             pendingTasks.setTaskList(newTaskList);
             settlementRepository.deleteById(pendingTasksId);
@@ -46,7 +45,6 @@ public class SettlementServicesImpl implements SettlementServices {
         List<Task> currentListOfTasks = pendingTasks.getTaskList();
         for(Task task : currentListOfTasks) {
             if(task.equals(oldTask)) {
-                task = newTask;
                 break;
             }
         }
@@ -58,12 +56,16 @@ public class SettlementServicesImpl implements SettlementServices {
 
     @Override
     public PendingTasks getAllPendingTasksForInsured(String insurerName, String insuredName) {
-        PendingTasks allPendingTasksForInsured = settlementRepository.findAllByInsurerNameAndInsuredName(insurerName, insuredName);
-        return allPendingTasksForInsured;
+        return settlementRepository.findAllByInsurerNameAndInsuredName(insurerName, insuredName);
     }
 
     @Override
     public PendingTasks putPendingTasks(PendingTasks pendingTasks) {
+        PendingTasks pendingTasks1= settlementRepository.findTopByOrderByPendingTasksIdDesc();
+        if(pendingTasks1 != null)
+            pendingTasks.setPendingTasksId(pendingTasks1.getPendingTasksId() + 1);
+        else
+            pendingTasks.setPendingTasksId(0);
         settlementRepository.save(pendingTasks);
         return pendingTasks;
     }
@@ -72,7 +74,7 @@ public class SettlementServicesImpl implements SettlementServices {
     public PendingTasks deleteTask(int pendingTasksId, String taskName) {
         PendingTasks pendingTasks = settlementRepository.findByPendingTasksId(pendingTasksId);
         settlementRepository.deleteById(pendingTasksId);
-        List<Task> newTaskList = new ArrayList<Task>();
+        List<Task> newTaskList = new ArrayList<>();
         List<Task> currentTaskList = pendingTasks.getTaskList();
         for(Task task: currentTaskList) {
             if(task.getTaskName().equals(taskName)) {
@@ -90,9 +92,7 @@ public class SettlementServicesImpl implements SettlementServices {
         PendingTasks pendingTasks = settlementRepository.findByPendingTasksId(pendingTasksId);
         List<Task> taskList = pendingTasks.getTaskList();
         for(Task task: taskList) {
-            if(task.getTaskName() == null)
-                continue;
-            if(task.getTaskName().equals(taskName)) {
+            if(task.getTaskName() != null && task.getTaskName().equals(taskName)) {
                 task.setTaskStatus(status);
                 break;
             }
@@ -107,6 +107,20 @@ public class SettlementServicesImpl implements SettlementServices {
     public List<PendingTasks> getPendingTasksByPortingRequestId(int portingRequestId) {
         List<PendingTasks> pendingTasks = new ArrayList<>();
         pendingTasks.add(settlementRepository.findByPortingRequestId(portingRequestId));
+        if(pendingTasks.get(0) == null) {
+            pendingTasks.clear();
+            PendingTasks pendingTasks1 = new PendingTasks();
+            pendingTasks1.setPortingRequestId(portingRequestId);
+            pendingTasks1.setTaskList(new ArrayList<>());
+            PendingTasks pendingTasks2= settlementRepository.findTopByOrderByPendingTasksIdDesc();
+            if(pendingTasks2 != null)
+                pendingTasks1.setPendingTasksId(pendingTasks2.getPendingTasksId() + 1);
+            else
+                pendingTasks1.setPendingTasksId(0);
+            settlementRepository.save(pendingTasks1);
+            pendingTasks.add(pendingTasks1);
+        }
         return pendingTasks;
     }
+
 }
