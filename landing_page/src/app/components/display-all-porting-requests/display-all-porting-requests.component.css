@@ -18,7 +18,8 @@ table {
 }
 
 .matTable {
-    width: 40em;
+    width: 100%;
+    /* width: 40em; */
     overflow: scroll;
 }
 
@@ -42,18 +43,4 @@ table {
 }
 .red-highlight {
     background-color: red;
-}
-@media screen and (max-width: 960px) {
-    .mat-table {
-        border: 0;
-        vertical-align: center;
-    }
-    .mat-row {
-        border-bottom: solid white;
-        display: block;
-    }
-    .mat-cell {
-        display: block;
-        border: 5px;
-    }
 }
