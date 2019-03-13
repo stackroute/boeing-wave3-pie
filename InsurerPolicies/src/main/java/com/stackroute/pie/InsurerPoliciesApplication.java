@@ -2,7 +2,7 @@ package com.stackroute.pie;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+//import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 
 import java.io.BufferedReader;
@@ -14,7 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 
-@EnableEurekaClient
+//@EnableEurekaClient
 @SpringBootApplication
 
 public class InsurerPoliciesApplication  {
