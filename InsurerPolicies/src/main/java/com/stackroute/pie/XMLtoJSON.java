@@ -13,7 +13,6 @@ public class XMLtoJSON {
         String[] link = {"MaxBupa.xml","Apollo.xml"}; //url of xml file that is storing the data
         String[] insurers = {"MaxBupa","Apollo"};
         String[] strr = new String[2];
-        String origFile=null;
 
         for(int i=0;i<insurers.length;i++){
 

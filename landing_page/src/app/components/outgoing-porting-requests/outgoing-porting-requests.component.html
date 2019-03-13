@@ -25,7 +25,7 @@
           <!-- <button mat-raised-button (click)="openDialog(request.insuredName)" style="position: relative; right: 0;margin-top: 0px;">Review</button> -->
           <button class="btn btn-primary" (click)="port(request)">Accept Porting</button>
 
-          <button class="btn btn-primary" (click)='raiseGrievanceButtonClicked(request.portingRequestId)'>Raise
+          <button class="btn btn-primary" (click)='raiseGrievanceButtonClicked(request.portingRequestId, request.insuredName)'>Raise
             Grievence</button>
           <!-- <app-display-all-porting-requests *ngIf="raiseGrievanceButtonIsClicked"
             [portingRequestId]="request.portingRequestId">
