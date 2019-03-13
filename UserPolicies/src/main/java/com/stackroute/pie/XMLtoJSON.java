@@ -3,7 +3,6 @@ package com.stackroute.pie;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.sql.*;
 
 public class XMLtoJSON {
@@ -16,8 +15,6 @@ public class XMLtoJSON {
         String[] link = {"UserAnusha.xml", "Userkavya.xml"}; //url of xml file that is storing the data
         String[] users = {"Anusha", "kavya"};
         String[] strr = new String[2];
-
-        String origFile = null;
 
         for (int i = 0; i < users.length; i++) {
 
@@ -35,9 +32,6 @@ public class XMLtoJSON {
 
             }
 
-            System.out.println(link[i]);
-
-            byte[] byteData = strr[i].getBytes(StandardCharsets.UTF_8);//Better to specify encoding
 
             //setting up the JDBC connection for the mysql database
             String dbURL = "jdbc:mysql://localhost:3306/policyDB";
