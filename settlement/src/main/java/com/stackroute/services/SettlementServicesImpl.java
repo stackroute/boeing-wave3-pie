@@ -45,7 +45,6 @@ public class SettlementServicesImpl implements SettlementServices {
         List<Task> currentListOfTasks = pendingTasks.getTaskList();
         for(Task task : currentListOfTasks) {
             if(task.equals(oldTask)) {
-                task = newTask;
                 break;
             }
         }
