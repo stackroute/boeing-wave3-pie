@@ -5,4 +5,5 @@ export class PendingTasks {
     newInsurerName: string;
     insuredName: string;
     insurerName: string;
+    portingRequestId: number;
 }
