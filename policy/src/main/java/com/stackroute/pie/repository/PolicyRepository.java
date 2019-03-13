@@ -19,4 +19,5 @@ public interface PolicyRepository extends MongoRepository<Policy, String> {
     Optional<List<Policy>> findByInsurerName(String insurerName);
     Optional<Policy> findByInsurerNameAndPolicyName(String insurerName, String policyName);
     Optional<Policy> findByUniqueId(String uniqueId);
+    Optional<Policy> findByPolicyName(String policyName);
 }

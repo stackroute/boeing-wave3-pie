@@ -31,4 +31,9 @@ export class PolicyService {
     let as = this.http.put(this.policyDetailsUrl + insurername +'/' + policyname+'/' + insuredname+'/'+emailId, 0);
     return as;
   } 
+  public getPolicyByPolicyName(policyName): any {
+    console.log("inside service");
+   
+    return this.http.get(this.policyDetailsUrl +'policyByName/' + policyName);
+   }
 }
