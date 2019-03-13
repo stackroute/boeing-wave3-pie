@@ -18,8 +18,6 @@ import java.util.List;
 @CrossOrigin("*")
 public class AdminController {
 
-    @Autowired
-    private KafkaTemplate<String, FormFormat> kafkaTemplate;
     private AdminServices adminServices;
     @Autowired
     public AdminController(AdminServices adminServices) {
