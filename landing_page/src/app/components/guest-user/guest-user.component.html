@@ -1,6 +1,6 @@
 <form [formGroup]="guestUser">
   <mat-form-field  style = "margin-left: 28%;">
-  <input  matInput placeholder="Email" formControlName="email" required/>
+  <input  matInput placeholder="Email" [(ngModel)] ="email" formControlName="email" required/>
 </mat-form-field>
 <mat-form-field  style = "margin-left: 28%;">
   <input matInput placeholder="Phone number" formControlName="phone" required/>
@@ -8,6 +8,6 @@
 <br>
 
 <div style = "margin-left: 50%; margin-bottom:20%;">
-    <button class="btn btn-success btn-outline-rounded" (click)="submitForm()"> Submit <span style="margin-left:10px;"></span></button>
+    <button class="btn btn-success btn-outline-rounded" (click)="submitForm(email)"> Submit <span style="margin-left:10px;"></span></button>
 </div>
 </form>

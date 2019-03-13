@@ -86,7 +86,8 @@ export class PortingRequestComponent implements OnInit {
   }
 reach(insurerProduct)
 {
-  console.log("abcd");
+  console.log("abcd "+ insurerProduct);
+
   this.policyService.getPolicyByPolicyName(insurerProduct).subscribe(
     data=> {
       this.policy = data;
