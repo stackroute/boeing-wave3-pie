@@ -11,7 +11,6 @@ import opennlp.tools.postag.POSTaggerME;
 import opennlp.tools.tokenize.SimpleTokenizer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
-//import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import springfox.documentation.annotations.Cacheable;
 import java.io.InputStream;
@@ -22,8 +21,6 @@ import java.util.*;
 @CacheConfig(cacheNames = "Policy")
 public class SearchServiceImpl implements SearchService {
 
-//    @Autowired
-//    private KafkaTemplate<String, SearchPDM> kafkaTemplate;
 
     @Autowired
     public SearchServiceImpl(SearchRepository searchRepository, SearchValueRepository searchValueRepository) {
@@ -81,7 +78,6 @@ public class SearchServiceImpl implements SearchService {
             searchvalue.setCount(++count);
         }
               saveCount(searchvalue);
-//              kafkaTemplate.send("searchFrequency",searchvalue);
         return searchvalue;
     }
 
@@ -301,9 +297,7 @@ public class SearchServiceImpl implements SearchService {
                 resPolicy=checkValue(j);
 
             } else if (strings[0].contains("NN")) {
-                System.out.println("Here "+strings[0].toLowerCase());
                 tokenList.add(strings[0].toLowerCase().split("_")[0]);
-                System.out.println(" "+strings[0].split("_")[0].toLowerCase());
                 resPolicy = checkString(tokenList.get(0));
             }
             return resPolicy;

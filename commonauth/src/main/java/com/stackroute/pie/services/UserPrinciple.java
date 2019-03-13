@@ -103,4 +103,8 @@ public class UserPrinciple implements UserDetails {
         UserPrinciple user = (UserPrinciple) o;
         return Objects.equals(insuredId, user.insuredId);
     }
+    @Override
+    public int hashCode() {
+        return Objects.hash(username,insuredId,password);
+    }
 }

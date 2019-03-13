@@ -2,7 +2,6 @@ package com.stackroute.pie.configuration;
 
 
 import com.stackroute.pie.domain.BuyPolicy;
-import com.stackroute.pie.domain.Policy;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.context.annotation.Bean;

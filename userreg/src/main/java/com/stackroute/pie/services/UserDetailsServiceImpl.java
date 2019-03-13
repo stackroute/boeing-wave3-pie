@@ -96,4 +96,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     }
 
+    public String getUserEmail(String username) {
+        Optional<Insured> insured =  userRepository.findByUsername(username);
+        return insured.get().getEmail();
+    }
 }

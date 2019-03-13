@@ -35,8 +35,6 @@ public class InsurerPoliciesApplication  {
 				count++;
 			}
 
-			System.out.println(link[i]);
-
 			//setting up the JDBC connection for the mysql database
 			String dbURL = "jdbc:mysql://localhost:3306/insurerFinal";
 			String dbUser = "root";
