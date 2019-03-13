@@ -64,8 +64,6 @@ public class ExternalDbServiceImpl implements ExternalDbService {
         String result = s.hasNext() ? s.next() : "";
 
         JSONObject obj = XML.toJSONObject(result);
-        String stringToBeInserted = obj.toString(4);
-        System.out.println("%%%%%%%%%%%%"+stringToBeInserted);
 
         JSONArray name = (JSONArray) obj.get("policy");
 
@@ -93,7 +91,7 @@ public class ExternalDbServiceImpl implements ExternalDbService {
                 policy1.setPolicyType(policystr[11].split(":")[1].replace("\"",""));
                 policy1.setMinSumInsured(Integer.parseInt(policystr[12].split(":")[1].replace("\"","").replace("}","")));
                 policy1.setUniqueId(policy1.getInsurerName()+policy1.getPolicyName());
-                policy1.setInsuredList(Arrays.asList(new String[]{"anusha", "manasa","sujan","abhishek","teja"}));
+                policy1.setInsuredList(Arrays.asList("anusha", "manasa","sujan","abhishek","teja"));
 
                 policy.add(policy1);
 
