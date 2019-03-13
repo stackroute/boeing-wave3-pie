@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @CrossOrigin(origins = "*")
@@ -51,10 +52,7 @@ public class SearchController {
             List<Policy> alltokens = searchService.tokenString(value);
             responseEntity= new ResponseEntity (alltokens, HttpStatus.OK);
         }
-        catch(PolicyNotFoundException ex){
-            responseEntity = new ResponseEntity(ex.getMessage(), HttpStatus.CONFLICT);
-        }
-        catch (Exception ex){
+        catch(PolicyNotFoundException | IOException ex){
             responseEntity = new ResponseEntity(ex.getMessage(), HttpStatus.CONFLICT);
         }
         return responseEntity;

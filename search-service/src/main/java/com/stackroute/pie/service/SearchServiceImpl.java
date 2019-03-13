@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.stereotype.Service;
 import springfox.documentation.annotations.Cacheable;
+
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
 
@@ -266,7 +268,7 @@ public class SearchServiceImpl implements SearchService {
     }
 
     @Cacheable("policies")
-    public List<Policy> tokenString(String value) throws Exception {
+    public List<Policy> tokenString(String value) throws IOException,PolicyNotFoundException {
         List<String> tokenList = new ArrayList<>();
         List<Policy> policies ;
         List<String> newpolicy1 = new ArrayList<>();

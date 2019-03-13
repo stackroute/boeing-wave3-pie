@@ -32,5 +32,6 @@ public class Policy {
     private List<String> termsAndConditions;
     private List<String> paymentList;
     private String imageUrl;
+    private int minimumPremium;
 
 }

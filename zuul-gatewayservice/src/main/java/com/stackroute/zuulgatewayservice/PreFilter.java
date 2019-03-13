@@ -1,7 +1,6 @@
 package com.stackroute.zuulgatewayservice;
 
 import com.netflix.zuul.ZuulFilter;
-import com.netflix.zuul.context.RequestContext;
 
 public class PreFilter extends ZuulFilter {
     @Override
