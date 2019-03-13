@@ -6,6 +6,7 @@ import com.stackroute.pie.repository.PortingRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,6 +69,24 @@ public class PortingRequestServiceImpl implements PortingRequestService{
     @Override
     public Optional<PortingRequest> getPortingRequestByPortingRequestId(int portingRequestId) {
         return  requestRepository.findByPortingRequestId(portingRequestId);
+    }
+
+    @Override
+    public List<PortingRequest> getRequestsforInsurer(String insurerName) {
+        List<PortingRequest> portingRequests = requestRepository.findByNewInsurerName(insurerName).get();
+        List<PortingRequest> portingRequests1 = requestRepository.findByInsurerName(insurerName).get();
+        List<PortingRequest> portingRequests2 = new ArrayList<>();
+        if(!portingRequests.isEmpty()) {
+            for(int i = 0; i < portingRequests.size(); i++) {
+                portingRequests2.add(portingRequests.get(i));
+            }
+        }
+        if(!portingRequests1.isEmpty()) {
+            for(int i = 0; i < portingRequests1.size(); i++) {
+                portingRequests2.add(portingRequests1.get(i));
+            }
+        }
+        return portingRequests2;
     }
 
     //To get incoming porting requests
