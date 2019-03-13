@@ -1,7 +1,6 @@
 package com.stackroute.pie;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.sql.*;
 
 public class XMLtoJSON {
@@ -28,10 +27,6 @@ public class XMLtoJSON {
                     strr[i] += line;
                 count++;
             }
-
-            System.out.println(link[i]);
-//            byte[] byteData = strr[i].getBytes(StandardCharsets.UTF_8);//Better to specify encoding
-
             //setting up the JDBC connection for the mysql database
             String dbURL = "jdbc:mysql://localhost:3306/insurerFinal";
             String dbUser = "root";
