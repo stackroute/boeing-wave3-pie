@@ -69,7 +69,7 @@ public class RecommendationsController {
     public ResponseEntity deleteInsurer(@RequestBody Insurer insurer){
         ResponseEntity responseEntity;
         Insurer insurer1=recommendationsServ.deleteInsurer(insurer);
-        responseEntity= new ResponseEntity<Insurer>(insurer1, HttpStatus.ACCEPTED);
+        responseEntity= new ResponseEntity<Insurer>(insurer1, HttpStatus.OK);
         return responseEntity;
     }
 
@@ -77,7 +77,7 @@ public class RecommendationsController {
     public ResponseEntity deletePolicy(@RequestBody Policy policy){
         ResponseEntity responseEntity;
         Policy policy1=recommendationsServ.deletePolicy(policy);
-        responseEntity= new ResponseEntity<Policy>(policy1, HttpStatus.ACCEPTED);
+        responseEntity= new ResponseEntity<Policy>(policy1, HttpStatus.OK);
         return responseEntity;
     }
 
@@ -85,7 +85,7 @@ public class RecommendationsController {
     public ResponseEntity deleteInsured(@RequestBody Insured insured){
         ResponseEntity responseEntity;
         Insured insured1=recommendationsServ.deleteInsured(insured);
-        responseEntity= new ResponseEntity<Insured>(insured1, HttpStatus.ACCEPTED);
+        responseEntity= new ResponseEntity<Insured>(insured1, HttpStatus.OK);
         return responseEntity;
     }
 

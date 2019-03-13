@@ -18,7 +18,7 @@ public class KafkaConsumer {
 
 
     //consuming data from kafka & setting it to commonauth
-    @KafkaListener(topics = "userregg_json", groupId = "group_json", containerFactory = "insuredKafkaListenerFactory")
+    @KafkaListener(topics = "userregg_json", groupId = "group_insured_json", containerFactory = "insuredKafkaListenerFactory")
     public void consumeJson(Insured insured) {
 
 
@@ -28,7 +28,7 @@ public class KafkaConsumer {
 
     }
 
-    @KafkaListener(topics = "company_1_json", groupId = "group_json", containerFactory = "insurerKafkaListenerFactory")
+    @KafkaListener(topics = "company_1_json", groupId = "group_insurer_json", containerFactory = "insurerKafkaListenerFactory")
     public void consumeJson(Insurer insurer) {
 
 
@@ -37,17 +37,17 @@ public class KafkaConsumer {
 
     }
 
-    @KafkaListener(topics = "policy_added", groupId = "group_json", containerFactory = "policyKafkaListenerFactory")
+    @KafkaListener(topics = "policy_added", groupId = "group_policy_json", containerFactory = "policyKafkaListenerFactory")
     public void consumeJson1(Policy policy) {
 
 
-        recommendationsRepo.newPolicy(policy.getUniqueId(),policy.getPolicyId(), policy.getInsurerName(),policy.getInsurerLicense(), policy.getPolicyName(), policy.getMinAge(), policy.getMaxAge(), policy.getGenderAvail(), policy.getDiseasesCovered(), policy.getPolicyType(),policy.getPolicyDescription());
+        recommendationsRepo.newPolicy(policy.getUniqueId(),policy.getPolicyId(), policy.getInsurerName(),policy.getInsurerLicense(), policy.getPolicyName(), policy.getMinAge(), policy.getMaxAge(), policy.getGenderAvail(), policy.getDiseasesCovered(), policy.getPolicyType(),policy.getPolicyDescription(),policy.getImageUrl());
 
         recommendationsRepo.insurerPolicy(policy.getInsurerName(), policy.getPolicyId());
     }
 
 
-    @KafkaListener(topics = "family_json", groupId = "group_json", containerFactory = "familyKafkaListenerFactory")
+    @KafkaListener(topics = "family_json", groupId = "group_family_json", containerFactory = "familyKafkaListenerFactory")
     public void consumeJson2(Insured insured) {
 
 

@@ -1,101 +1,6 @@
 
-<!-- <mat-toolbar color="warn"  style="opacity:0.5;">
-        <mat-toolbar-row >
-          <button
-            type="button"
-            aria-label="Toggle sidenav"
-            mat-icon-button
-            (click)="drawer.toggle()"
-            color="primary"
-          >
-            <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-          </button>
-          
-            <div class="navbar-header">
-              <a class="navbar-brand" href="#" style="margin-bottom: 3.8rem;">
-                <img
-                  src="./../../assets/img/logo1.png"
-                  alt="Logo"
-                  class="img-responsive"
-                  width="70px"
-                  height="80px"
-                />
-              </a>
-            </div>
-            <div
-              class="collapse navbar-collapse dropdown show"
-              id="collapsibleNavbar"
-            >
-              <ul class="nav navbar-nav">
-                <li></li>
-                <li>
-                  <a [routerLink]="['/home']" routerLinkActive="router-link-active"
-                    >Home</a
-                  >
-                </li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-              </ul>
-            </div>
-            <div>
-              <form
-                class="navbar-form navbar-left"
-                (ngSubmit)="search()"
-                style="margin-left:30%;margin-bottom: 1%;"
-              >
-                <div class="input-group" style="margin-bottom:1%;">
-                  <input type="text" class="form-control" placeholder="Search" />
-                  <div class="input-group-btn" >
-                    <button class="btn btn-success" type="submit">
-                      <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
-                    </button>
-                  </div>
-                </div>
-              </form>
-              
-            </div>
-            <div class="signin" style=" margin-top: 1%;margin-left: 30%;">
-              <ul class="nav navbar-nav navbar-right">
-                <li class="nav-link dropdown"></li>
-                  <a routerLink="/login" routerLinkActive="active"
-                    ><span class="glyphicon glyphicon-user"></span> Sign Out</a>
-              </ul>
-            </div>
-      
-        </mat-toolbar-row>
-      </mat-toolbar>
-      <mat-sidenav-container class="example-container" >
-        <mat-sidenav #drawer mode="side" opened role="navigation">
-          <mat-nav-list>
-            <a mat-list-item [routerLink]="['/mypolicies']" routerLinkActive="active"
-              >My Policies</a
-            >
-            <a mat-list-item [routerLink]="['/recommendations', username]" routerLinkActive="active"
-            >Recommendations</a
-          >
-            <a
-              mat-list-item
-              [routerLink]="['/myrequests', username]"
-              routerLinkActive="active"
-              >My Requests</a
-            >
-            <a mat-list-item [routerLink]="['/porting']" routerLinkActive="active"
-              >Porting Request</a
-            >
-            <a mat-list-item [routerLink]="['/myprofile',username]" routerLinkActive = "active">My profile</a>
-            <a mat-list-item [routerLink]="['/myCompanyPolicy',insurerLicense]" routerLinkActive = "active" >My Policies</a>
-            <a mat-list-item [routerLink]="['/incomingPortingRequest',insurerLicense]" routerLinkActive = "active" > Incomming Poritng Requests</a>
-            <a mat-list-item [routerLink]="['/outgoingPortingRequest',insurerLicense]" routerLinkActive = "active" > Outing Poritng Requests</a>
-            <a mat-list-item [routerLink]="['/newPolicyForm']" routerLinkActive = "active" >Add New Policy</a>
-          </mat-nav-list>
-        </mat-sidenav>
-        <mat-sidenav-content>
-          <router-outlet></router-outlet>
-        </mat-sidenav-content>
-      </mat-sidenav-container>
-       -->
 
-<form [formGroup]="portingForm" class="normal" >
+<!-- <form [formGroup]="portingForm" class="normal" >
     <mat-form-field  style = "margin-left: 28%;">
     <input  matInput placeholder="Insured Name" formControlName="insuredName" required/>
   </mat-form-field>
@@ -143,6 +48,36 @@
   <div style = "margin-left: 50%; margin-bottom:20%;">
       <button class="btn btn-success btn-outline-rounded" (click)="submitForm()"> Submit <span style="margin-left:10px;"></span></button>
   </div>
- </form>
+ </form> -->
+ <br><br>
+ <input type="text" placeholder="Insured Name"[(ngModel)] = "insuredName" value="{{insuredName}}" required/><br><br>
+ <!-- <input type="text" placeholder="Existing policy name" [(ngModel)] = "insurerProduct" (keyup) = "reach(insurerProduct)" required/> -->
+ <label style="margin-left: 5%;">Existing policy name:</label><br>
+ <select placeholder="Existing Policy Name" [(ngModel)] = "insurerProduct" (change) = "reach(insurerProduct)">
+     <option value="CancerPolicy1">cancer policy</option>
+     <option value="starhealth-2">starhealth-2</option>
+ </select>
+ <input type="text" placeholder="Existing insurer" [(ngModel)] = "policy.insurerName" readonly required/>
+ <input type="text" placeholder="Existing sum insured"  [(ngModel)] = "policy.maxSumInsured" readonly required/>
+ <input type="text" placeholder="Add-Ons" [(ngModel)] = "addon" required/>
+ <input type="text" placeholder="Existing PolicyNumber" [(ngModel)] = "policy.policyId" readonly required/><br><br>
+ <!-- <input type="text" placeholder="New Policy Name" [(ngModel)] = "newInsurerProduct" (keyup) = "reach1(newInsurerProduct)" required/> -->
+ <label style="margin-left: 5%;">New Policy name:</label><br>
+ <select placeholder="New Policy Name"  [(ngModel)] = "newInsurerProd" (change) = "reach1(newInsurerProd)">
+     <option value="CancerPolicy1">cancer policy</option>
+     <option value="starhealth-2">starhealth-2</option>
+ </select>
+ <input type="text" placeholder="New Insurer" [(ngModel)] = "policy1.insurerName" readonly required/>
+ <input type="text" placeholder="New Sum insured"  [(ngModel)] = "policy1.maxSumInsured" readonly required/>
+ <!-- <input type="text" placeholder="New PolicyNumber" [(ngModel)] = "policy1.policyId" readonly required/> -->
+ <input type="text" placeholder="Reason for portability" [(ngModel)] = "reason" required/>
+ <input type="text" placeholder="No of family members" [(ngModel)] = "familyMem" required/>
+ <label style="margin-left: 5%;">Is PED exclusion period longer than the existing policy period?(true/false)</label>
+ <input type="text" [(ngModel)] = "exclusion" required/><br><br>
+ 
+ <div style = "margin-left: 50%; margin-bottom:20%;">
+     <button class="btn btn-success btn-outline-rounded" (click)="submitForm(insuredName,insurerProduct,policy.insurerName,policy.maxSumInsured,addon,policy.policyId,newInsurerProd,policy1.insurerName,policy1.maxSumInsured,reason,familyMem,exclusion)"> Submit <span style="margin-left:10px;"></span></button>
+ </div>
+ 
 <!-- <app-footer></app-footer> 
 <router-outlet></router-outlet> -->

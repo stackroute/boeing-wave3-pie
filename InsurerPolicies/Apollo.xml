@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<catalog>
+    <catalog>
 
     <policy policyId="201">
 
@@ -18,7 +18,7 @@
 
     </policy>
 
-    <policy policyId="901">
+    <policy policyid="901">
 
         <insurerName>Apollo</insurerName>
         <insurerLicense>Apollo</insurerLicense>
@@ -35,7 +35,7 @@
 
     </policy>
 
-    <policy policyId="701">
+    <policy policyid="701">
 
         <insurerName>Apollo</insurerName>
         <insurerLicense>Apollo</insurerLicense>
@@ -52,7 +52,7 @@
 
     </policy>
 
-    <policy policyId="301">
+    <policy policyid="301">
 
         <insurerName>Apollo</insurerName>
         <insurerLicense>Apollo</insurerLicense>

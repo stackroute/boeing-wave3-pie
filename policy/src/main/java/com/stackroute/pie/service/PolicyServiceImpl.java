@@ -216,4 +216,14 @@ public class PolicyServiceImpl implements PolicyService {
         }
         return set;
     }
+
+    public Policy getPolicyByPolicyName(String policyName) throws PolicyNotFoundException {
+        Optional<Policy> policy= policyRepository.findByPolicyName(policyName);
+        if(policy.isPresent()) {
+            return policy.get();
+        }
+        else {
+            throw new PolicyNotFoundException();
+        }
+    }
 }

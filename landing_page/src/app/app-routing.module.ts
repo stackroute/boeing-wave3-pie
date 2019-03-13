@@ -1,3 +1,4 @@
+import { PolicybuymailComponent } from './components/policybuymail/policybuymail.component';
 import { FamilyMembersComponent } from './components/family-members/family-members.component';
 import { BuyPolicyComponent } from './components/buy-policy/buy-policy.component';
 import { MyPoliciesComponent } from './components/my-policies/my-policies.component';
@@ -41,6 +42,7 @@ const routes: Routes = [
   {path: 'guestUser/:insurername/:policyname', component: GuestUserComponent},
   {path:'register', component:RegisterComponent},
   { path: 'dashboard/:username', component: DashboardComponent},
+  {path: 'policyBuyMail', component: PolicybuymailComponent},
   {path: 'recommendations/:username', component: RecommendationsComponent},
   {path: 'mypolicies/:username', component: MyPoliciesComponent},
   // {path:'companylogin', component: LoginInsurerComponent},
@@ -48,7 +50,7 @@ const routes: Routes = [
   {path: 'incomingPortingRequest/:insurerLicense', component: IncomingPortingRequestsComponent},
  {path:'outgoingPortingRequest/:insurerLicense', component: OutgoingPortingRequestsComponent},
   {path: 'admin', component:FormsDashboardComponent},
-    {path: 'porting', component:PortingRequestComponent},
+    {path: 'porting/:username', component:PortingRequestComponent},
    {path: 'deleteRequest/:requestId', component:DeleteRequestComponent},
    {path: 'updateRequest/:requestId', component:UpdateRequestComponent},
    {path: 'myprofile/:username', component:UserProfileComponent},
@@ -67,7 +69,8 @@ const routes: Routes = [
    {path: 'buyPolicy/:insurername/:policyname/:insuredname/:emailId',component: BuyPolicyComponent},
    {path: 'familyMembers/:username',component: FamilyMembersComponent},
    {path: 'showChatResults',component:ShowChatResultsComponent},
-   {path: 'policyDetails/:insurerName/:policyName',component: PolicyDetailsComponent}
+   {path: 'policyDetails/:insurerName/:policyName',component: PolicyDetailsComponent},
+   {path: 'uploadFile',component:UploadFileComponent}
 ];
 
 @NgModule({

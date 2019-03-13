@@ -136,4 +136,17 @@ public class PolicyController {
         responseEntity = new ResponseEntity<>(insurerList, HttpStatus.OK);
         return responseEntity;
     }
+
+    @GetMapping("policyByName/{policyName}")
+    public ResponseEntity getPolicyByPolicyName(@PathVariable(value = "policyName") String policyName){
+        ResponseEntity responseEntity;
+        try{
+            Policy policy = policyService.getPolicyByPolicyName(policyName);
+            responseEntity = new ResponseEntity(policy, HttpStatus.OK);
+        }
+        catch (PolicyNotFoundException ex){
+            responseEntity = new ResponseEntity(ex.getMessage(), HttpStatus.NOT_FOUND);
+        }
+        return responseEntity;
+    }
 }
