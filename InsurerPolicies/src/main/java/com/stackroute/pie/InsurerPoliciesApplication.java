@@ -2,9 +2,6 @@ package com.stackroute.pie;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -13,15 +10,13 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-
-@EnableEurekaClient
 @SpringBootApplication
 
 public class InsurerPoliciesApplication  {
 	static String line = "";
 	public static void main(String[] args)  throws IOException, SQLException, ClassNotFoundException{
 		SpringApplication.run(InsurerPoliciesApplication.class, args);
-		String[] link = {"MaxBupa.xml","Apollo.xml","Religare.xml","StarHealth.xml"}; //url of xml file that is storing the data
+		String[] link = {"src/main/resources/MaxBupa.xml","src/main/resources/Apollo.xml","src/main/resources/Religare.xml","src/main/resources/StarHealth.xml"}; //url of xml file that is storing the data
 		String[] insurers = {"MaxBupa","Apollo","Religare","StarHealth"};
 		String[] strr = new String[4];
 

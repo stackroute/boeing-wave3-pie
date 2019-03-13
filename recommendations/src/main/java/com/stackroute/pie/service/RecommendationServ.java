@@ -33,8 +33,4 @@ public interface RecommendationServ {
      Insured findUser(String username);
      List<Policy> getByAgeGenderDisease(String username);
      List<Policy> policyForDependants(String username);
-
-
-
-
 }

@@ -54,10 +54,16 @@ public class PolicyServiceImpl implements PolicyService {
         }
         policyRepository.save(policy1);
         Optional<Policy> policy3 = policyRepository.findByUniqueId(policy1.getUniqueId());
+        System.out.println("Found with optional");
+        System.out.println(policy3);
         if(policy3.isPresent()) {
+            System.out.println("It is present inside");
             kafkaTemplate.send("policy_added",policy3.get());
+            System.out.println("about to get");
             policyGlobal =  policy3.get();
+            System.out.println("Finished getting");
         }
+        System.out.println("about to finish");
         return policyGlobal;
     }
 
@@ -209,5 +215,15 @@ public class PolicyServiceImpl implements PolicyService {
             set.add(policies.get(i).getInsurerName());
         }
         return set;
+    }
+
+    public Policy getPolicyByPolicyName(String policyName) throws PolicyNotFoundException {
+        Optional<Policy> policy= policyRepository.findByPolicyName(policyName);
+        if(policy.isPresent()) {
+            return policy.get();
+        }
+        else {
+            throw new PolicyNotFoundException();
+        }
     }
 }

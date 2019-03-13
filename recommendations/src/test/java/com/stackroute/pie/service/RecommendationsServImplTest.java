@@ -67,7 +67,7 @@ public class RecommendationsServImplTest {
         //mockMvc= MockMvcBuilders.standaloneSetup(recommendationsController).build();
 //        mockMvc= MockMvcBuilders.standaloneSetup(recommendationsController).build();
         insurer1=new Insurer(1L,"Starhealth Insurance Company","1INS001","starhealth@gmail.com","starpass","Bangalore","what is ypur favourite food","cake");
-        policy1=new Policy(11L,"Starhealth Insurance Company+Starhealth Family Policy","Starhealth Insurance Company","INS001","Starhealth Family Policy",10,60,"Family","female",2,3,3455,2455,"This is the best policy for Family",diseases,cashlessHospitals,termsAndConditions,insuredList,paymentList);
+        policy1=new Policy(11L,"Starhealth Insurance Company+Starhealth Family Policy","Starhealth Insurance Company","INS001","Starhealth Family Policy",10,60,"Family","female",2,3,3455,2455,"This is the best policy for Family",diseases,cashlessHospitals,termsAndConditions,insuredList,paymentList,"image1.jpg");
       insured1=new Insured(1,"tejaswinisrinivas","teju","teju@gmail.com","teju1997","female","cake",22L,"Cancer",familyMembers,1);
        // insured1=new Insured(1,"tejaswinisrinivas","Starhealth Insurance Company+Starhealth Family Policy","teju@gmail.com","teju1997",22L,"female",)
 
@@ -105,8 +105,8 @@ public class RecommendationsServImplTest {
 
     @Test
     public void createPolicy() {
-        when(recommendationsRepo.newPolicy("Starhealth Insurance Company+Starhealth Family Policy",1L,"Starhealth Insurance Company","1INS001","Starhealth Family Policy",10,60,"female",diseases,"Family","This is the best policy in the family")).thenReturn(policy1);
-        Policy policy=recommendationsRepo.newPolicy("Starhealth Insurance Company+Starhealth Family Policy",1L,"Starhealth Insurance Company","1INS001","Starhealth Family Policy",10,60,"female",diseases,"Family","This is the best policy in the family");
+        when(recommendationsRepo.newPolicy("Starhealth Insurance Company+Starhealth Family Policy",1L,"Starhealth Insurance Company","1INS001","Starhealth Family Policy",10,60,"female",diseases,"Family","This is the best policy in the family","image1.jpg")).thenReturn(policy1);
+        Policy policy=recommendationsRepo.newPolicy("Starhealth Insurance Company+Starhealth Family Policy",1L,"Starhealth Insurance Company","1INS001","Starhealth Family Policy",10,60,"female",diseases,"Family","This is the best policy in the family","image1.jpg");
         assertEquals(policy.toString(),policy1.toString());
     }
 

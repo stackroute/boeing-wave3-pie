@@ -50,7 +50,7 @@ const routes: Routes = [
   {path: 'incomingPortingRequest/:insurerLicense', component: IncomingPortingRequestsComponent},
  {path:'outgoingPortingRequest/:insurerLicense', component: OutgoingPortingRequestsComponent},
   {path: 'admin', component:FormsDashboardComponent},
-    {path: 'porting', component:PortingRequestComponent},
+    {path: 'porting/:username', component:PortingRequestComponent},
    {path: 'deleteRequest/:requestId', component:DeleteRequestComponent},
    {path: 'updateRequest/:requestId', component:UpdateRequestComponent},
    {path: 'myprofile/:username', component:UserProfileComponent},
@@ -69,7 +69,8 @@ const routes: Routes = [
    {path: 'buyPolicy/:insurername/:policyname/:insuredname/:emailId',component: BuyPolicyComponent},
    {path: 'familyMembers/:username',component: FamilyMembersComponent},
    {path: 'showChatResults',component:ShowChatResultsComponent},
-   {path: 'policyDetails/:insurerName/:policyName',component: PolicyDetailsComponent}
+   {path: 'policyDetails/:insurerName/:policyName',component: PolicyDetailsComponent},
+   {path: 'uploadFile',component:UploadFileComponent}
 ];
 
 @NgModule({

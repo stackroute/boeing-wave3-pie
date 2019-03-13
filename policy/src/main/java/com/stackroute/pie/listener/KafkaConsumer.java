@@ -31,7 +31,6 @@ public class KafkaConsumer {
 
     @KafkaListener(topics = "Buy_Policy", groupId = "group_buypolicy_json", containerFactory = "buyKafkaListenerFactory")
     public void consumeJsonBuyPolicy(BuyPolicy buyPolicy) throws InsurerNotFoundException, PolicyNotFoundException {
-        System.out.println(buyPolicy);
         if(!buyPolicy.getUsername().isBlank()) {
             policyService.addInsured(buyPolicy.getInsurerName(),buyPolicy.getPolicyName(),buyPolicy.getUsername());
         }

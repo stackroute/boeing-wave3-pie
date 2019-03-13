@@ -48,17 +48,17 @@ public class AuthRestAPIs {
     }
 
     @GetMapping("/count/{insurerName}")
-    public ResponseEntity<?> getCount(@PathVariable(value = "insurerName") String insurerName) {
+    public ResponseEntity getCount(@PathVariable(value = "insurerName") String insurerName) {
 
         Integer count  = userDetailsServiceImpl.getCount(insurerName);
-        return new ResponseEntity<Integer>(count, HttpStatus.OK);
+        return new ResponseEntity(count, HttpStatus.OK);
     }
 
 
     @PostMapping("/count/update/{insurerName}")
-    public ResponseEntity<?> updateCount(@PathVariable(value = "insurerName") String insurerName) {
+    public ResponseEntity updateCount(@PathVariable(value = "insurerName") String insurerName) {
         Integer count = userDetailsServiceImpl.updateCount(insurerName);
-        return new ResponseEntity<Integer>(count,HttpStatus.OK);
+        return new ResponseEntity(count,HttpStatus.OK);
     }
 
 
