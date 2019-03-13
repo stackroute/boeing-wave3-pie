@@ -32,6 +32,7 @@ import {AllPortingRequestsComponent} from './components/all-porting-requests/all
 import { ShowChatResultsComponent } from './components/show-chat-results/show-chat-results.component';
 import { CompanyPolicyComponent } from './components/company-policy/company-policy.component';
 import { PolicyDetailsComponent } from './components/policy-details/policy-details.component';
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
 
 const routes: Routes = [
   {path: 'search/:value', component: SearchComponent},
@@ -65,7 +66,8 @@ const routes: Routes = [
    {path: 'buyPolicy/:insurername/:policyname/:insuredname',component: BuyPolicyComponent},
    {path: 'familyMembers/:username',component: FamilyMembersComponent},
    {path: 'showChatResults',component:ShowChatResultsComponent},
-   {path: 'policyDetails/:insurerName/:policyName',component: PolicyDetailsComponent}
+   {path: 'policyDetails/:insurerName/:policyName',component: PolicyDetailsComponent},
+   {path: 'uploadFile',component:UploadFileComponent}
 ];
 
 @NgModule({
