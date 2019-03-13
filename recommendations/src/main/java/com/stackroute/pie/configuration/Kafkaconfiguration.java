@@ -20,7 +20,7 @@ import java.util.Map;
 public class Kafkaconfiguration {
 
     String localhost = "localhost:9092";
-    String groupJson = "group_json";
+
 
 
 
@@ -28,7 +28,7 @@ public class Kafkaconfiguration {
     public ConsumerFactory<String, String> consumerFactory() {
         Map<String, Object> config = new HashMap<>();
         config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, localhost);
-        config.put(ConsumerConfig.GROUP_ID_CONFIG, groupJson);
+        config.put(ConsumerConfig.GROUP_ID_CONFIG, "group_json");
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
 
@@ -46,7 +46,7 @@ public class Kafkaconfiguration {
     public ConsumerFactory<String, Insured> insuredConsumerFactory() {
         Map<String, Object> config = new HashMap<>();
         config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, localhost);
-        config.put(ConsumerConfig.GROUP_ID_CONFIG, groupJson);
+        config.put(ConsumerConfig.GROUP_ID_CONFIG, "group_insured_json");
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
 
@@ -65,7 +65,7 @@ public class Kafkaconfiguration {
     public ConsumerFactory<String, Insurer> insurerConsumerFactory() {
         Map<String, Object> config = new HashMap<>();
         config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, localhost);
-        config.put(ConsumerConfig.GROUP_ID_CONFIG, groupJson);
+        config.put(ConsumerConfig.GROUP_ID_CONFIG, "group_insurer_json");
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
 
@@ -84,7 +84,7 @@ public class Kafkaconfiguration {
     public ConsumerFactory<String, Policy> policyConsumerFactory() {
         Map<String, Object> config = new HashMap<>();
         config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, localhost);
-        config.put(ConsumerConfig.GROUP_ID_CONFIG, groupJson);
+        config.put(ConsumerConfig.GROUP_ID_CONFIG, "group_policy_json");
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
 
@@ -103,7 +103,7 @@ public class Kafkaconfiguration {
     public ConsumerFactory<String, FamilyMembers> familyConsumerFactory() {
         Map<String, Object> config = new HashMap<>();
         config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,localhost);
-        config.put(ConsumerConfig.GROUP_ID_CONFIG, groupJson);
+        config.put(ConsumerConfig.GROUP_ID_CONFIG, "group_family_json");
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
 
