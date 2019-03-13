@@ -48,14 +48,15 @@ export class OutgoingPortingRequestsComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
-  raiseGrievanceButtonClicked(portrequestId: number): boolean {
+  raiseGrievanceButtonClicked(portrequestId: number, insuredName: string): boolean {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
 
     dialogConfig.data = {
-      portingRequestId: portrequestId
+      portingRequestId: portrequestId,
+      userName: insuredName
     };
     this.dialog.open(DisplayAllPortingRequestsComponent, dialogConfig);
     this.raiseGrievanceButtonIsClicked = false;

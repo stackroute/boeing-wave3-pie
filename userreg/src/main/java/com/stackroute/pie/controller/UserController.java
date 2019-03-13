@@ -105,6 +105,10 @@ public class UserController {
         kafkaTemplate.send("family_json", insured1);
         return responseEntity;
     }
+    @GetMapping("/email/{username}")
+    public ResponseEntity<String> getUserEmail(@PathVariable String username) {
+        return new ResponseEntity<>(userService.getUserEmail(username), HttpStatus.OK);
+    }
 }
 
 
