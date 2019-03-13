@@ -11,10 +11,8 @@ public interface RecommendationsRepo extends Neo4jRepository<Recommendation,Long
     @Query("CREATE (insurer:Insurer{insurerLicense:{insurerLicense},insurerName:{insurerName}})")
     Insurer newInsurer(@Param("insurerId")Long insurerId, @Param("insurerName")String insurerName, @Param("insurerLicense")String insurerLicense);
 
-
-
-    @Query("CREATE (policy:Policy{maxAge:{maxAge},minAge:{minAge},uniqueId:{uniqueId},policyId:{policyId},policyName:{policyName},insurerName:{insurerName},insurerLicense:{insurerLicense},genderAvail:{genderAvail},policyDescription:{policyDescription},diseasesCovered:[value in {diseasesCovered} | toString(value)],policyType: {policyType}})")
-    Policy newPolicy(@Param("uniqueId")String uniqueId,@Param("policyId")Long policyId, @Param("insurerName")String insurerName,@Param("insurerLicense")String insurerLicense, @Param("policyName")String policyName, @Param("minAge")int minAge, @Param("maxAge")int maxAge, @Param("genderAvail")String genderAvail, @Param("diseasesCovered")List<String> diseasesCovered, @Param("policyType")String policyType,@Param("policyDescription")String policyDescription);
+    @Query("CREATE (policy:Policy{maxAge:{maxAge},minAge:{minAge},uniqueId:{uniqueId},policyId:{policyId},policyName:{policyName},insurerName:{insurerName},insurerLicense:{insurerLicense},genderAvail:{genderAvail},policyDescription:{policyDescription},diseasesCovered:[value in {diseasesCovered} | toString(value)],policyType: {policyType},imageUrl:{imageUrl}})")
+    Policy newPolicy(@Param("uniqueId")String uniqueId,@Param("policyId")Long policyId, @Param("insurerName")String insurerName,@Param("insurerLicense")String insurerLicense, @Param("policyName")String policyName, @Param("minAge")int minAge, @Param("maxAge")int maxAge, @Param("genderAvail")String genderAvail, @Param("diseasesCovered")List<String> diseasesCovered, @Param("policyType")String policyType,@Param("policyDescription")String policyDescription,@Param("imageUrl") String imageUrl);
 
     @Query("CREATE (insured:Insured{insuredId:{insuredId},username:{username},gender:{gender},age:{age},existingDisease:{existingDisease},numberOfDependants:{numberOfDependants}})")
     Insured newInsured(@Param("insuredId")int insuredId,@Param("username")String username, @Param("gender")String gender,@Param("age")Long age,@Param("existingDisease")String existingDisease,@Param("numberOfDependants")int numberOfDependants );

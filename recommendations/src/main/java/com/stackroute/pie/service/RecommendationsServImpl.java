@@ -26,7 +26,7 @@ public class RecommendationsServImpl implements RecommendationServ {
 
     @Override
     public Policy createPolicy(Policy policy) {
-        return recommendationsRepo.newPolicy(policy.getUniqueId(),policy.getPolicyId(),policy.getInsurerName(),policy.getInsurerLicense(),policy.getPolicyName(),policy.getMinAge(),policy.getMaxAge(),policy.getGenderAvail(),policy.getDiseasesCovered(),policy.getPolicyType(),policy.getPolicyDescription());
+        return recommendationsRepo.newPolicy(policy.getUniqueId(),policy.getPolicyId(),policy.getInsurerName(),policy.getInsurerLicense(),policy.getPolicyName(),policy.getMinAge(),policy.getMaxAge(),policy.getGenderAvail(),policy.getDiseasesCovered(),policy.getPolicyType(),policy.getPolicyDescription(),policy.getImageUrl());
     }
 
     @Override

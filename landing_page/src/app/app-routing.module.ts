@@ -69,7 +69,8 @@ const routes: Routes = [
    {path: 'buyPolicy/:insurername/:policyname/:insuredname/:emailId',component: BuyPolicyComponent},
    {path: 'familyMembers/:username',component: FamilyMembersComponent},
    {path: 'showChatResults',component:ShowChatResultsComponent},
-   {path: 'policyDetails/:insurerName/:policyName',component: PolicyDetailsComponent}
+   {path: 'policyDetails/:insurerName/:policyName',component: PolicyDetailsComponent},
+   {path: 'uploadFile',component:UploadFileComponent}
 ];
 
 @NgModule({

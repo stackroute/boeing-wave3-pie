@@ -75,7 +75,7 @@ public class RecommendationsControllerTest {
         //mockMvc= MockMvcBuilders.standaloneSetup(recommendationsController).build();
         mockMvc=MockMvcBuilders.standaloneSetup(recommendationsController).build();
         insurer1=new Insurer(1L,"Starhealth Insurance Company","1INS001","starhealth@gmail.com","starpass","Bangalore","what is ypur favourite food","cake");
-        policy1=new Policy(11L,"Starhealth Insurance Company+Starhealth Family Policy","Starhealth Insurance Company","INS001","Starhealth Family Policy",10,60,"Family","female",2,3,3455,2455,"This is the best policy for Family",diseases,cashlessHospitals,termsAndConditions,insuredList,paymentList);
+        policy1=new Policy(11L,"Starhealth Insurance Company+Starhealth Family Policy","Starhealth Insurance Company","INS001","Starhealth Family Policy",10,60,"Family","female",2,3,3455,2455,"This is the best policy for Family",diseases,cashlessHospitals,termsAndConditions,insuredList,paymentList,"image1.jpg");
         insured1=new Insured(1,"tejaswinisrinivas","teju","teju@gmail.com","teju1997","female","cake",22L,"Cancer",familyMembers,1);
 
     }
@@ -128,6 +128,19 @@ public class RecommendationsControllerTest {
     @Test
     public void saveInsured() throws Exception {
         String uri = "/api/v1/insured";
+        this.mockMvc
+                .perform(post(uri)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON)
+                        .content(jsonToString(insured1)))
+                .andExpect(status().isCreated());
+
+
+    }
+
+    @Test
+    public void saveMember() throws Exception {
+        String uri = "/api/v1/members";
         this.mockMvc
                 .perform(post(uri)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -212,6 +225,28 @@ public class RecommendationsControllerTest {
                         .accept(MediaType.APPLICATION_JSON)
                         .content(jsonToString(policy1)));
 
+    }
+
+
+    @Test
+    public void linkDependants() throws Exception{
+        String uri ="/api/v1/dependants/kushi/tejaswini";
+        this.mockMvc
+                .perform(get(uri)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON));
+
+
+    }
+
+
+    @Test
+    public void getAll() throws Exception {
+        String uri="/api/v1/policies";
+        this.mockMvc
+                .perform(get(uri)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON));
     }
 
 
