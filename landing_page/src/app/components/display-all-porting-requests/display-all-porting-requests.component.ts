@@ -4,7 +4,7 @@ import { Task } from '../task';
 import { FetchPendingTasksService } from '../../service/fetch-pending-tasks.service';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { Email } from '../../service/email';
-import {EmailService} from '../../service/email.service';
+import { EmailService } from '../../service/email.service';
 
 @Component({
   selector: 'app-display-all-porting-requests',
@@ -32,7 +32,8 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
   fetchAllPortingRequestsIsClicked: Boolean;
   addANewPendingTaskIsClicked: Boolean;
   viewPendingTasksOfInsuredIsClicked: Boolean;
-  email = {"to": "apataskar780@gmail.com", "subject": "temp", "body": "temp"};
+  email = { "to": "apataskar780@gmail.com", "subject": "temp", "body": "temp" };
+  userName: string;
 
 
   toText = "achintya882@gmail.com";
@@ -43,7 +44,8 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
 
   constructor(private fetchPendingTasksService: FetchPendingTasksService, @Inject(MAT_DIALOG_DATA) private data: any, private emailService: EmailService) {
     this.fetchPendingTasksService = fetchPendingTasksService;
-    this.portingRequestId = data.portingRequestId
+    this.portingRequestId = data.portingRequestId;
+    this.userName = data.userName;
   }
 
   ngOnInit() {
@@ -111,13 +113,17 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
     this.email.to = this.toText;
     this.email.subject = this.subjectReminderText;
     for (let task of this.pendingTasks.taskList) {
-      if(task.status == true)
+      if (task.status == true)
         continue;
       this.bodyReminderText = this.bodyReminderText + "\t\nTask: " + task.taskName + "\t\nTask Description: " + task.taskDescription + "\t\nDue Date: " + task.dueDate
     }
     this.bodyReminderText = this.bodyReminderText + "\n" + this.salutationtText;
     this.email.body = this.bodyReminderText;
-    console.log(this.email.body);
-    this.emailService.sendEmail(this.email).subscribe();
+    this.emailService.getEmailId(this.userName).subscribe(data => {
+
+      this.email.to = data;
+
+      this.emailService.sendEmail(this.email).subscribe();
+    });
   }
 }
