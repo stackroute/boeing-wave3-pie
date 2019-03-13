@@ -1,6 +1,7 @@
 package com.stackroute.pie;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.sql.*;
 
 public class XMLtoJSON {
@@ -9,9 +10,10 @@ public class XMLtoJSON {
 
     public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
 
-        String[] link = {"MaxBupa.xml","Apollo.xml","Religare.xml","StarHealth.xml"}; //url of xml file that is storing the data
-        String[] insurers = {"MaxBupa","Apollo","Religare","StarHealth"};
-        String[] strr = new String[4];
+        String[] link = {"MaxBupa.xml","Apollo.xml"}; //url of xml file that is storing the data
+        String[] insurers = {"MaxBupa","Apollo"};
+        String[] strr = new String[2];
+        String origFile=null;
 
         for(int i=0;i<insurers.length;i++){
 
@@ -29,6 +31,7 @@ public class XMLtoJSON {
             }
 
             System.out.println(link[i]);
+//            byte[] byteData = strr[i].getBytes(StandardCharsets.UTF_8);//Better to specify encoding
 
             //setting up the JDBC connection for the mysql database
             String dbURL = "jdbc:mysql://localhost:3306/insurerFinal";
@@ -43,6 +46,7 @@ public class XMLtoJSON {
 
             String sql = "INSERT INTO " + insurers[i] +  "(Policy) values(?)";
             PreparedStatement statement = conn.prepareStatement(sql);
+            //statement.setString(1,insurers[i])
             statement.setString(1, strr[i].substring(0, strr[i].length() - 10));
             statement.executeUpdate();
 

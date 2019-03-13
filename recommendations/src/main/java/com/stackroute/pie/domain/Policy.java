@@ -51,10 +51,6 @@ public class Policy {
     private List<String> termsAndConditions = new ArrayList<>();
     private List<String> insuredList = new ArrayList<>();
     private List<String> paymentList = new ArrayList<>();
-
-
-
-
-
+    private String imageUrl;
 }
 

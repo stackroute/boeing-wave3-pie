@@ -64,6 +64,11 @@ public class SettlementServicesImpl implements SettlementServices {
 
     @Override
     public PendingTasks putPendingTasks(PendingTasks pendingTasks) {
+        PendingTasks pendingTasks1= settlementRepository.findTopByOrderByPendingTasksIdDesc();
+        if(pendingTasks1 != null)
+            pendingTasks.setPendingTasksId(pendingTasks1.getPendingTasksId() + 1);
+        else
+            pendingTasks.setPendingTasksId(0);
         settlementRepository.save(pendingTasks);
         return pendingTasks;
     }
@@ -107,6 +112,20 @@ public class SettlementServicesImpl implements SettlementServices {
     public List<PendingTasks> getPendingTasksByPortingRequestId(int portingRequestId) {
         List<PendingTasks> pendingTasks = new ArrayList<>();
         pendingTasks.add(settlementRepository.findByPortingRequestId(portingRequestId));
+        if(pendingTasks.get(0) == null) {
+            pendingTasks.clear();
+            PendingTasks pendingTasks1 = new PendingTasks();
+            pendingTasks1.setPortingRequestId(portingRequestId);
+            pendingTasks1.setTaskList(new ArrayList<>());
+            PendingTasks pendingTasks2= settlementRepository.findTopByOrderByPendingTasksIdDesc();
+            if(pendingTasks2 != null)
+                pendingTasks1.setPendingTasksId(pendingTasks2.getPendingTasksId() + 1);
+            else
+                pendingTasks1.setPendingTasksId(0);
+            settlementRepository.save(pendingTasks1);
+            pendingTasks.add(pendingTasks1);
+        }
         return pendingTasks;
     }
+
 }

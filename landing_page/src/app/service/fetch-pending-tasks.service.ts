@@ -9,10 +9,12 @@ import { Task } from "../components//task";
   providedIn: "root"
 })
 export class FetchPendingTasksService {
-  settlementUrl = 'http://13.126.73.190:8092/settlement/api/v1/';
+  // settlementUrl = 'http://13.126.73.190:8092/settlement/api/v1/';
+  settlementUrl = 'http://localhost:8092/settlement/api/v1/';
   fetchAllPortingRequestsUrl = "pendingtasks/";
   addANewPendingTaskUrl = "pendingtask/";
   modifyStatusOfPendingTaskUrl = "pendingtask/";
+  postNewPendingTaskUrl = "pendingtask/";
   fetchPendingTasksUrl = 'pendingtasks/';
 
   httpOptions = {
@@ -22,6 +24,9 @@ export class FetchPendingTasksService {
     })
   };
   constructor(private httpClient: HttpClient) {}
+  postANewPendingTasks(pendingTasks: PendingTasks): Observable<PendingTasks> {
+    return this.httpClient.post<PendingTasks>(this.settlementUrl + this.postNewPendingTaskUrl, pendingTasks);
+  }
   fetchAllPortingRequests(currentCompanyName): Observable<PendingTasks[]> {
     return this.httpClient.get<PendingTasks[]>(
       this.settlementUrl + this.fetchAllPortingRequestsUrl + currentCompanyName

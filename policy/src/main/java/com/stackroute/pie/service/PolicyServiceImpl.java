@@ -23,8 +23,9 @@ public class PolicyServiceImpl implements PolicyService {
     private InsuredPoliciesNotFoundException insuredPoliciesNotFoundException = new InsuredPoliciesNotFoundException("Insured policies not found exception");
     private InsurerNotFoundException insurerNotFoundException = new InsurerNotFoundException("Insurer not found exception");
 
-    Policy policyGlobal = new Policy();
-    List<Policy> policyListGlobal = new ArrayList<>();
+    private Policy policyGlobal = new Policy();
+    private List<Policy> policyListGlobal = new ArrayList<>();
+
 
     @Autowired
     PolicyServiceImpl(PolicyRepository policyRepository,KafkaTemplate<String, Policy> kafkaTemplate) {
@@ -52,12 +53,30 @@ public class PolicyServiceImpl implements PolicyService {
         else {
             policy1.setInsuredList(policy.getInsuredList());
         }
+        List<String> hospitalList = new ArrayList<>();
+        hospitalList.add("Fortis Hospital");
+        hospitalList.add("Aster CMI Hospital");
+        hospitalList.add("Narayana Multispecialily Hospital");
+        hospitalList.add("Fortis La Femme");
+        hospitalList.add("Fortis Hospital");
+        hospitalList.add("Manipal North Side Hospital");
+        hospitalList.add("Sakra World Hospital");
+        hospitalList.add("Columbia Asia Hospital");
+        hospitalList.add("Apollo Speciality Hospital");
+        hospitalList.add("Prashanth Hospital");
+        hospitalList.add("Sakra World Hospital");
+        hospitalList.add("Columbia Asia Hospital");
+        hospitalList.add("GVG Invivo Hospitals");
+        hospitalList.add("Ananya Hospital Pvt Ltd");
+        hospitalList.add("Anugraha Vittala Hospital");
+        policy1.setCashlessHospitals(hospitalList);
         policyRepository.save(policy1);
         Optional<Policy> policy3 = policyRepository.findByUniqueId(policy1.getUniqueId());
         if(policy3.isPresent()) {
             kafkaTemplate.send("policy_added",policy3.get());
             policyGlobal =  policy3.get();
         }
+        System.out.println("about to finish");
         return policyGlobal;
     }
 
@@ -78,7 +97,6 @@ public class PolicyServiceImpl implements PolicyService {
         }
         throw policyNotFoundException;
     }
-
     //Method for getting the policy for insurer
     @Override
     public List<Policy> getPolicy(String insurerName) throws InsurerNotFoundException{
@@ -209,5 +227,15 @@ public class PolicyServiceImpl implements PolicyService {
             set.add(policies.get(i).getInsurerName());
         }
         return set;
+    }
+
+    public Policy getPolicyByPolicyName(String policyName) throws PolicyNotFoundException {
+        Optional<Policy> policy= policyRepository.findByPolicyName(policyName);
+        if(policy.isPresent()) {
+            return policy.get();
+        }
+        else {
+            throw new PolicyNotFoundException();
+        }
     }
 }
