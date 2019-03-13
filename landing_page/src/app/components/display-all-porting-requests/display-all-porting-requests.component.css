@@ -1,3 +1,6 @@
+td {
+    border: 1px solid black;
+}
 .marked-complete-text {
     color: greenyellow;
 }
@@ -26,20 +29,7 @@ table {
 }
 
 .mat-cell {
-    text-align: center;
-    padding: 2%;
-}
-.mat-cell-green {
-  /* border: none; */
-  border-top: 2px green;
-  border-bottom: 2px green;
-  text-align: center;
-  padding: 2%;
-}
-.mat-cell-red {
-  /* border: none; */
-  border-top: 2px red;
-  border-top: 2px red;
+  border: none;
   text-align: center;
   padding: 2%;
 }
@@ -47,27 +37,23 @@ table {
 .mat-checkbox {
     text-align: center;
 }
-.highlight-green {
-    background-color: lightgreen;
-    border-bottom-left-radius: 25px;
-    border-top-left-radius: 25px;
+.no-highlight {
+    background-color: white;
 }
-.highlight-red {
+.red-highlight {
     background-color: red;
-    border-bottom-left-radius: 25px;
-    border-top-left-radius: 25px;
 }
-.highlight-red-row {
-    border: 25px;
-    border-color: red;
-}
-.highlight-green-row {
-    border: 25px;
-    border-color: lightgreen;
-}
-.functional-buttons {
-    justify-content: left;
-}
-.cancel-button {
-    justify-content: right;
+@media screen and (max-width: 960px) {
+    .mat-table {
+        border: 0;
+        vertical-align: center;
+    }
+    .mat-row {
+        border-bottom: solid white;
+        display: block;
+    }
+    .mat-cell {
+        display: block;
+        border: 5px;
+    }
 }

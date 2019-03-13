@@ -81,9 +81,9 @@ public class PolicyServiceImpl implements PolicyService {
 
     //Method for getting the policy for insurer
     @Override
-    public List<Policy> getPolicy(String insurerLicense) throws InsurerNotFoundException{
-        if(policyRepository.existsByInsurerLicense(insurerLicense)) {
-            Optional<List<Policy>> policy = policyRepository.findByInsurerLicense(insurerLicense);
+    public List<Policy> getPolicy(String insurerName) throws InsurerNotFoundException{
+        if(policyRepository.existsByInsurerName(insurerName)) {
+            Optional<List<Policy>> policy = policyRepository.findByInsurerName(insurerName);
             if(policy.isPresent())
             {
                 policyListGlobal= policy.get();
@@ -209,5 +209,15 @@ public class PolicyServiceImpl implements PolicyService {
             set.add(policies.get(i).getInsurerName());
         }
         return set;
+    }
+
+    public Policy getPolicyByPolicyName(String policyName) throws PolicyNotFoundException {
+        Optional<Policy> policy= policyRepository.findByPolicyName(policyName);
+        if(policy.isPresent()) {
+            return policy.get();
+        }
+        else {
+            throw new PolicyNotFoundException();
+        }
     }
 }

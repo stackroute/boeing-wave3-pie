@@ -1,8 +1,8 @@
-import { Component, OnInit, Input, ViewChild, ViewChildren } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { PendingTasks } from '../pending-tasks';
 import { Task } from '../task';
 import { FetchPendingTasksService } from '../../service/fetch-pending-tasks.service';
-import { MatSort, MatTableDataSource, MatPaginator } from '@angular/material';
+import { MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-display-all-porting-requests',
@@ -11,7 +11,8 @@ import { MatSort, MatTableDataSource, MatPaginator } from '@angular/material';
 })
 export class DisplayAllPortingRequestsComponent implements OnInit {
 
-  @Input() pendingTasks: PendingTasks[];
+  dataIsLoaded = false;
+  pendingTasks = { "pendingTasksId": 0, "taskList": [], "newInsurerName": "temp", "insurerName": "temp", "insuredName": "temp" };
   @Input() currentCompanyName: string;
   @Input() currentInsuredName: string;
   @Input() portingRequestId: number;
@@ -21,32 +22,27 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
   newPendingTaskName: string;
   newPendingTaskDescription: string;
   newPendingTaskDueDate: string;
-  tasks: Task[];
 
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
   displayedColumns: string[] = ['taskName', 'taskDescription', 'taskStatus', 'dueDate', 'modifyStatusButton'];
 
-  dataSource = new MatTableDataSource<Task[]>();
+  dataSource: Task[];
   // currentInsuredName: string;
   fetchAllPortingRequestsIsClicked: Boolean;
   addANewPendingTaskIsClicked: Boolean;
   viewPendingTasksOfInsuredIsClicked: Boolean;
-
-
-  pendingTasksList: Task[];
-  constructor(private fetchPendingTasksService: FetchPendingTasksService) { this.fetchPendingTasksService = fetchPendingTasksService }
+  constructor(private fetchPendingTasksService: FetchPendingTasksService, @Inject(MAT_DIALOG_DATA) private data: any) {
+    this.fetchPendingTasksService = fetchPendingTasksService;
+    this.portingRequestId = data.portingRequestId
+  }
 
   ngOnInit() {
+    this.dataIsLoaded = false;
     this.viewPendingTasksOfInsuredClicked = false;
-    this.fetchPendingTasksService.getPendingTasksById(this.portingRequestId).subscribe(data => {
-      this.pendingTasks = data;
-      this.dataSource = <MatTableDataSource<Task[]>><any>this.pendingTasks[0].taskList
-    });
-   }
-ngAfterViewInit() {
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
+    this.fetchPendingTasksService.getPendingTasksById(this.portingRequestId).subscribe(pendingTasks => {
+      this.pendingTasks = pendingTasks[0];
+      this.dataSource = this.pendingTasks.taskList;
+      this.dataIsLoaded = true;
+    })
   }
 
 
@@ -65,18 +61,38 @@ ngAfterViewInit() {
     this.initNewPendingTask();
     this.addANewPendingTaskIsClicked = true;
   }
-  saveNewPendingTask(pendingTasks: PendingTasks): void {
+  saveNewPendingTask(): void {
     this.newPendingTask.taskStatus = false;
     this.newPendingTask.taskName = this.newPendingTaskName;
     this.newPendingTask.taskDescription = this.newPendingTaskDescription;
     this.newPendingTask.dueDate = this.newPendingTaskDueDate;
 
     this.fetchPendingTasksService
-      .addANewPendingTask(pendingTasks.pendingTasksId, this.newPendingTask)
-      .subscribe();
+      .addANewPendingTask(this.pendingTasks.pendingTasksId, this.newPendingTask)
+      .subscribe(data => {
+        this.dataIsLoaded = true;
+        this.fetchPendingTasksService.getPendingTasksById(this.portingRequestId).subscribe(pendingTasks => {
+          this.pendingTasks = pendingTasks[0];
+          this.dataSource = this.pendingTasks.taskList;
+          this.dataIsLoaded = true;
+        })
+        this.addANewPendingTaskIsClicked = false;
+        // $route.reload();
+      }
+
+      );
   }
-  modifyStatusOfTask(taskStatus: boolean, taskName: string, pendingTasksId: number): void {
-    this.fetchPendingTasksService.modifyStatusOfTask(!taskStatus, pendingTasksId, taskName).subscribe();
+  modifyStatusOfTask(taskStatus: boolean, taskName: string): void {
+    this.fetchPendingTasksService.modifyStatusOfTask(!taskStatus, this.pendingTasks.pendingTasksId, taskName).subscribe(data => {
+
+      this.dataIsLoaded = true;
+      this.fetchPendingTasksService.getPendingTasksById(this.portingRequestId).subscribe(pendingTasks => {
+        this.pendingTasks = pendingTasks[0];
+        this.dataSource = this.pendingTasks.taskList;
+        this.dataIsLoaded = true;
+      })
+    }
+    );
   }
   getPendingTasksById(portingRequestId: number): void {
   }

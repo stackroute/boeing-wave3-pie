@@ -1,8 +1,7 @@
 package com.stackroute.pie.service;
 
-import com.stackroute.pie.domain.Diseases;
-import com.stackroute.pie.domain.Policy;
 
+import com.stackroute.pie.domain.Policy;
 import java.util.List;
 
 public interface SearchService {

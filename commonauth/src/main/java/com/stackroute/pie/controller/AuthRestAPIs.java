@@ -18,34 +18,34 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
-    @RestController
-    @RequestMapping("/api/auth")
-    public class AuthRestAPIs {
+@RestController
+@RequestMapping("/api/auth")
+public class AuthRestAPIs {
 
-        @Autowired
-        AuthenticationManager authenticationManager;
+    @Autowired
+    AuthenticationManager authenticationManager;
 
     @Autowired
     UserDetailsServiceImpl userDetailsServiceImpl;
 
 
-        @Autowired
-        JwtProvider jwtProvider;
+    @Autowired
+    JwtProvider jwtProvider;
 
-        @PostMapping("/signin")
-        public ResponseEntity authenticateUser(@Valid @RequestBody LoginForm loginRequest) {
+    @PostMapping("/signin")
+    public ResponseEntity authenticateUser(@Valid @RequestBody LoginForm loginRequest) {
 
-            Authentication authentication = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
-            SecurityContextHolder.getContext().setAuthentication(authentication);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
 
-            String jwt = jwtProvider.generateJwtToken(authentication);
-            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        String jwt = jwtProvider.generateJwtToken(authentication);
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 
-            return ResponseEntity.ok(new JwtResponse(jwt, userDetails.getUsername(), userDetails.getAuthorities()));
+        return ResponseEntity.ok(new JwtResponse(jwt, userDetails.getUsername(), userDetails.getAuthorities()));
 
-        }
+    }
 
     @GetMapping("/count/{insurerName}")
     public ResponseEntity<?> getCount(@PathVariable(value = "insurerName") String insurerName) {

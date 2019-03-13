@@ -26,4 +26,6 @@ public interface PolicyService {
     List<Policy> getPoliciesOfUser(String insuredName) throws InsuredPoliciesNotFoundException;
     //Method to get Insurer Names
     Set<String> getInsurerList();
+
+    Policy getPolicyByPolicyName(String policyName) throws PolicyNotFoundException;
 }

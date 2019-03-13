@@ -94,8 +94,10 @@ import { ReviewComponent } from './components/review/review.component';
 import { FamilyMembersComponent } from './components/family-members/family-members.component';
 import { ShowChatResultsComponent } from './components/show-chat-results/show-chat-results.component';
 import { CompanyPolicyComponent } from './components/company-policy/company-policy.component';
-import { ComponentsComponent } from './components/components.component';
-import { UploadFileComponent } from './components/upload-file/upload-file.component';
+import { PolicybuymailComponent } from './components/policybuymail/policybuymail.component';
+import { AddNewTaskComponent } from './components/add-new-task/add-new-task.component';
+import { TermsAndConditionsComponent } from './components/terms-and-conditions/terms-and-conditions.component';
+import { GuestUserComponent } from './components/guest-user/guest-user.component';
 
 
 const routes: Routes = [];
@@ -149,12 +151,18 @@ const routes: Routes = [];
     FamilyMembersComponent,
     ShowChatResultsComponent,
     CompanyPolicyComponent,
+<<<<<<< HEAD
     ComponentsComponent,
     UploadFileComponent
+=======
+    PolicybuymailComponent,
+    AddNewTaskComponent,
+    TermsAndConditionsComponent,
+    GuestUserComponent
+>>>>>>> 1e6df0504ba12ffd863f374b68e4aecba0ea32ae
   ],
   entryComponents: [CalculatorComponent,ReviewComponent,DialogbotComponent],
   
-  exports: [MatSortModule, MatPaginatorModule],
   imports: [
     BrowserModule,
     AppRoutingModule,

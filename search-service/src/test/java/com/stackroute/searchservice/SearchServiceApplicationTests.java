@@ -1,4 +1,4 @@
-package com.stackroute.pie;
+package com.stackroute.searchservice;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,4 +14,3 @@ public class SearchServiceApplicationTests {
 	}
 
 }
-

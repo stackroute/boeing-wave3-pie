@@ -57,11 +57,11 @@ public class PolicyController {
     }
 
     //Getting the policy for insurer
-    @GetMapping("policy/{insurerLicense}")
-    public ResponseEntity getPolicy(@PathVariable(value = "insurerLicense") String insurerLicense) {
+    @GetMapping("policy/{insurerName}")
+    public ResponseEntity getPolicy(@PathVariable(value = "insurerName") String insurerName) {
         ResponseEntity responseEntity;
         try {
-            List<Policy> policy = policyService.getPolicy(insurerLicense);
+            List<Policy> policy = policyService.getPolicy(insurerName);
             responseEntity = new ResponseEntity<>(policy, HttpStatus.OK);
         } catch (InsurerNotFoundException ex) {
             responseEntity = new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
@@ -134,6 +134,19 @@ public class PolicyController {
         insurerList = policyService.getInsurerList();
         ResponseEntity<?> responseEntity;
         responseEntity = new ResponseEntity<>(insurerList, HttpStatus.OK);
+        return responseEntity;
+    }
+
+    @GetMapping("policyByName/{policyName}")
+    public ResponseEntity getPolicyByPolicyName(@PathVariable(value = "policyName") String policyName){
+        ResponseEntity responseEntity;
+        try{
+            Policy policy = policyService.getPolicyByPolicyName(policyName);
+            responseEntity = new ResponseEntity(policy, HttpStatus.OK);
+        }
+        catch (PolicyNotFoundException ex){
+            responseEntity = new ResponseEntity(ex.getMessage(), HttpStatus.NOT_FOUND);
+        }
         return responseEntity;
     }
 }
