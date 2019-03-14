@@ -19,7 +19,7 @@
   </div>
    -->
 
-   <mat-card-header >
+   <!-- <mat-card-header >
     
       </mat-card-header>
       <mat-card-content>
@@ -43,6 +43,91 @@
             </mat-card-footer>
           </div>
             </div>
-      </mat-card-content>
+      </mat-card-content> -->
 
+       <div class="container" style="text-align:center; margin-left: 0%;">
+          <div class="row" style="text-align:center">
+            <div class="col-md-12" style="font-size:18px"></div>
+            <br /><br /><br /><br />
+          </div>
+          <div class="row" style="text-align:center;font-size : large">
+            <div *ngFor="let policy1 of policies" class="col-md-4">
+              <div class="panel panel-default">
+                  <div class="panel-heading">Policy Name: {{ policy1.policyName}}</div>
+                 
+                <div class="panel-body">
+                    <img class="card-img-top" src='{{policy1.imageUrl}}' alt="Card image cap">
+
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                      <span>Age-Group:</span> {{ policy1.minAge }} - {{ policy1.maxAge }}</li>
+                    <li class="list-group-item">
+                      <span>Sum Insured:</span> {{ policy1.minSumInsured }} -{{ policy1.maxSumInsured }} </li>
+                    
+                    <li class="list-group-item">
+                      <p>Diseases Covered:</p>
+                    
+                        <div *ngFor="let disease of policy1.diseasesCovered">
+                            <li>{{ disease }}</li>
+                    </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="panel-footer">
+                    <div *ngIf="!(info.token)">
+                        <a [routerLink] = "['/guestUser', policy1.insurerName, policy1.policyName]"
+                    class="btn btn-primary" style ="margin-right: 0%;margin-left: 0%; margin-bottom: 2%; font-size: 15px;" onClick="window.location.reload();"
+                    >Buy</a>   
+                    </div>  
+                    <div *ngIf="info.token;" >
+                        <a [routerLink] = "['/buyPolicy',policy1.insurerName,policy1.policyName,username,emailId]" class ="btn btn-primary" style ="margin-right: 5%;margin-left: 20%; margin-bottom: 2%; font-size: 15px;"> Buy </a>
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div> 
+        <!-- <section class="top-plans">
+            <div class="container2" style="width: 100%;">
+              <div class="top-plans-container clearfix">
+                <div class="title">
+               Search Results</div>
+                <div class="plans-container">
+     <div class="plan-wrap" *ngFor="let policy1 of policies">
+        <div class="bg" >
+            <img class="card-img-top" src='{{policy1.imageUrl}}' style="width:320px;" alt="Card image cap">
+            &nbsp;</div>
+        <div class="plan-content">
+          <div class="plan-tag">
+              Policy Name: {{ policy1.policyName }}</div>
+
+          <ul>
+            <li>
+              <span>Age-Group </span>{{ policy1.minAge }} - {{ policy1.maxAge }}
+            </li>
+            <li>
+              <span>Min Sum Insured:</span>  {{ policy1.minSumInsured }}
+            </li>
+            <li>
+              <span>Max Sum Insured:</span>&nbsp;{{ policy1.maxSumInsured }}<span style="color: rgb(102, 102, 102); font-size: 12px;"></span>
+              </li>
+            <li>
+              <span>Discounts at renewal </span>with the &quot;Stay Active&quot; Benefit</li>
+          </ul>
+          <div class="btn-wrap">
+              <div *ngIf="!(info.token)">
+                  <a [routerLink] = "['/guestUser', policy1.insurerName, policy1.policyName]"
+              class="btn btn-primary" style ="margin-right: 0%;margin-left: 0%; margin-bottom: 2%; font-size: 15px;" onClick="window.location.reload();"
+              >Buy</a>   
+              </div>  
+              <div *ngIf="info.token;" >
+                  <a [routerLink] = "['/buyPolicy',policy1.insurerName,policy1.policyName,username,emailId]" class ="btn btn-primary" style ="margin-right: 5%;margin-left: 20%; margin-bottom: 2%; font-size: 15px;"> Buy </a>
+              </div>
+          </div>
+      </div>
+      </div>
+      </div> 
+        </div>
+        </div>
+        </section> -->
       <app-footer></app-footer>

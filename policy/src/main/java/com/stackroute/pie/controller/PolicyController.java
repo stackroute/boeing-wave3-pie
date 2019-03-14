@@ -5,6 +5,7 @@ import com.stackroute.pie.exceptions.InsuredPoliciesNotFoundException;
 import com.stackroute.pie.exceptions.InsurerNotFoundException;
 import com.stackroute.pie.exceptions.PolicyAlreadyExistsException;
 import com.stackroute.pie.exceptions.PolicyNotFoundException;
+import com.stackroute.pie.message.PolicyForm;
 import com.stackroute.pie.service.PolicyServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,7 +30,7 @@ public class PolicyController {
 
     //Adding the policy for insurer
     @PostMapping("policy")
-    public ResponseEntity addPolicy(@RequestBody Policy policy) {
+    public ResponseEntity addPolicy(@RequestBody PolicyForm policy) {
         ResponseEntity responseEntity;
         try {
             Policy policy1 = policyService.addPolicy(policy);
@@ -153,7 +154,6 @@ public class PolicyController {
     //Method to get all policies
     @GetMapping("policies")
     public ResponseEntity getPolicies(){
-        ResponseEntity responseEntity;
         List<Policy> allPolicies = policyService.getAllPolicies();
         return new ResponseEntity(allPolicies, HttpStatus.OK);
     }

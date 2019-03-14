@@ -136,11 +136,12 @@
             <div class="col-md-12" style="font-size:18px">Recommendations</div>
             <br /><br /><br /><br />
           </div>
-          <div class="row" style="text-align:center;font-size : large">
+          <div class="row" style="text-align:center;font-size : large;">
             <div *ngFor="let blog of recommendations" class="col-md-4">
               <div class="panel panel-default">
                 <div class="panel-body">
-                   
+                    <img class="card-img-top" src='{{blog.imageUrl}}' style="width:280px;" alt="Card image cap">
+
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item">Policy Id: {{ blog.policyId }}</li>
                     <li class="list-group-item">Insurer Name: {{blog.insurerName}}</li>

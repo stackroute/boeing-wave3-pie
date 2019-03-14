@@ -5,6 +5,7 @@ import com.stackroute.pie.exceptions.InsuredPoliciesNotFoundException;
 import com.stackroute.pie.exceptions.InsurerNotFoundException;
 import com.stackroute.pie.exceptions.PolicyAlreadyExistsException;
 import com.stackroute.pie.exceptions.PolicyNotFoundException;
+import com.stackroute.pie.message.PolicyForm;
 import com.stackroute.pie.repository.PolicyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -34,7 +35,7 @@ public class PolicyServiceImpl implements PolicyService {
     }
     //Method for adding the policy for insurer
     @Override
-    public Policy addPolicy(Policy policy) throws PolicyAlreadyExistsException {
+    public Policy addPolicy(PolicyForm policy) throws PolicyAlreadyExistsException {
         if(policyRepository.existsByPolicyIdAndInsurerName(policy.getPolicyId(),policy.getInsurerName())) {
             throw policyAlreadyExistsException;
         }
@@ -64,14 +65,17 @@ public class PolicyServiceImpl implements PolicyService {
         else {
             policy1.setCashlessHospitals(policy.getCashlessHospitals());
         }
-        if(!policy.getDiseasesCovered().isEmpty()){
+        if(policy.getDiseasesCovered().isEmpty()){
             List<String> diseasesCovered = new ArrayList<>();
             diseasesCovered.add("Cancer");
             diseasesCovered.add("AIDS");
             diseasesCovered.add("Diabetes");
+            policy1.setDiseasesCovered(diseasesCovered);
         }
         else {
-            policy1.setDiseasesCovered(policy.getDiseasesCovered());
+            List<String> diseasesCovered;
+            diseasesCovered = Arrays.asList(policy.getDiseasesCovered().split(","));
+            policy1.setDiseasesCovered(diseasesCovered);
         }
 
         policyRepository.save(policy1);
@@ -243,7 +247,6 @@ public class PolicyServiceImpl implements PolicyService {
     }
     //Method to get all policies
     public List<Policy> getAllPolicies(){
-        List<Policy> policies = policyRepository.findAll();
-        return policies;
+        return policyRepository.findAll();
     }
 }

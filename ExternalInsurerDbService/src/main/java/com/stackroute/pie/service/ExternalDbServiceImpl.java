@@ -113,7 +113,7 @@ public class ExternalDbServiceImpl implements ExternalDbService {
                     hospitalList.add("Ananya Hospital Pvt Ltd");
                     hospitalList.add("Anugraha Vittala Hospital");
                     policy1.setCashlessHospitals(hospitalList);
-
+                    policy1.setImageUrl("http://www.medibroker.com/media/1256/family-bullets.jpg?anchor=center&mode=crop&width=358&height=246");
                     policy.add(policy1);
                 }
 
