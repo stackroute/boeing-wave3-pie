@@ -156,6 +156,6 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
 
 
   clearForPorting(): void {
-    this.showAcceptRequestButton.emit(this.userName);
+    this.showAcceptRequestButton.emit(this.portingRequestId);
   }
 }

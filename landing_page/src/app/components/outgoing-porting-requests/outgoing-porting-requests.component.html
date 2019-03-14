@@ -126,9 +126,9 @@
      
         <button mat-stroked-button (click)="openDialog(row.insuredName)">Review</button>
         <br><br>
-        <button mat-stroked-button *ngIf="isClearedRequest(row.insuredName) == true" (click)="port(row)">Accept</button>
+        <button mat-stroked-button *ngIf="isClearedRequest(row.portingRequestId) == true" (click)="port(row)">Accept</button>
         <br><br>
-        <button mat-stroked-button *ngIf="isClearedRequest(row.insuredName) == false" (click)='raiseGrievanceButtonClicked(row.portingRequestId, row.insuredName)'>Raise
+        <button mat-stroked-button *ngIf="isClearedRequest(row.portingRequestId) == false" (click)='raiseGrievanceButtonClicked(row.portingRequestId, row.insuredName)'>Raise
           Grievence</button>
 
 
