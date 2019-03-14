@@ -40,6 +40,7 @@ this.secondForm = this.formBuilder.group({
   policyType: ["", Validators.required],
   genderAvail: ["", Validators.required],
   minAge: ["", Validators.required],
+  diseasesCovered: ["",Validators.required],
  maxAge: ["", Validators.required],
 //  hospitals: ["", Validators.required]
 }
@@ -50,6 +51,7 @@ this.thirdForm = this.formBuilder.group({
  maxSumInsured: ["", Validators.required],
  waitingPeriod: ["", Validators.required],
  policyDescription: ["", Validators.required],
+ imageUrl : ["", Validators.required]
 
 }
 );
