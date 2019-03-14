@@ -37,19 +37,11 @@ policyId: ["", Validators.required]
 }
 );
 this.secondForm = this.formBuilder.group({
-<<<<<<< HEAD
-  policyType: ["", Validators.required],
-  genderAvail: ["", Validators.required],
-  minAge: ["", Validators.required],
-  diseasesCovered: ["",Validators.required],
- maxAge: ["", Validators.required],
-=======
  policyType: ["", Validators.required],
  genderAvail: ["", Validators.required],
  minAge: ["", Validators.required],
  diseasesCovered: ["",Validators.required],
 maxAge: ["", Validators.required],
->>>>>>> e8ab349052fea5adc4fc9dad242f6741ec5420a7
 //  hospitals: ["", Validators.required]
 }
 );
