@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.List;
 
-@Document(collection = "Policy")
+@Document(collection = "policysearch")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -31,5 +31,7 @@ public class Policy {
     private int maxAge;
     private List<String> termsAndConditions;
     private List<String> paymentList;
+    private String imageUrl;
+    private int minimumPremium;
 
 }

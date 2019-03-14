@@ -46,10 +46,9 @@ public class Policy {
     private List<String> paymentList = new ArrayList<>();
     private String imageUrl;
 
-
-    //Custom Constructor for adding new policy
+   //Custom Constructor for adding new policy
     public Policy( String insurerName, String insurerLicense, String policyName, long policyId, int minAge, int maxAge,
-                  int minSumInsured, int maxSumInsured, String policyDescription, String policyType,
+                   int minSumInsured, int maxSumInsured, String policyDescription, String policyType,
                    String genderAvail, int waitingPeriod, int policyTerm,String imageUrl) {
         this.uniqueId = insurerName + policyName;
         this.insurerName = insurerName;
@@ -68,10 +67,11 @@ public class Policy {
         this.imageUrl=imageUrl;
     }
 
-    //Custom Constructor for adding new policy from external Database
+    //Custom Constructor for adding new policy
     public Policy( String insurerName, String insurerLicense, String policyName, long policyId, int minAge, int maxAge,
                    int minSumInsured, int maxSumInsured, String policyDescription, String policyType,
-                   String genderAvail, int waitingPeriod, int policyTerm,List<String> insuredList) {
+                   String genderAvail, int waitingPeriod, int policyTerm,String imageUrl,List<String> diseasesCovered,
+                   List<String> cashlessHospitals) {
         this.uniqueId = insurerName + policyName;
         this.insurerName = insurerName;
         this.policyName = policyName;
@@ -86,6 +86,10 @@ public class Policy {
         this.maxSumInsured = maxSumInsured;
         this.insurerLicense = insurerLicense;
         this.policyDescription = policyDescription;
-        this.insuredList = insuredList;
+        this.imageUrl=imageUrl;
+        this.diseasesCovered = diseasesCovered;
+        this.cashlessHospitals = cashlessHospitals;
     }
+
+
 }

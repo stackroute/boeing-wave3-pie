@@ -2,10 +2,10 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { InsurerOutgoingportingrequestService } from './../../service/insurer-outgoingportingrequest.service';
 import { InsurerAcceptoutgoingportingrequestService } from './../../service/insurer-acceptoutgoingportingrequest.service';
-import {MatDialog, MatDialogConfig} from '@angular/material';
+import { MatDialog, MatDialogConfig } from '@angular/material';
 import { AllPortingRequestsComponent } from '../all-porting-requests/all-porting-requests.component';
-import {ReviewComponent} from '../review/review.component';
-import {DisplayAllPortingRequestsComponent} from '../display-all-porting-requests/display-all-porting-requests.component';
+import { ReviewComponent } from '../review/review.component';
+import { DisplayAllPortingRequestsComponent } from '../display-all-porting-requests/display-all-porting-requests.component';
 @Component({
   selector: 'app-outgoing-porting-requests',
   templateUrl: './outgoing-porting-requests.component.html',
@@ -40,7 +40,7 @@ export class OutgoingPortingRequestsComponent implements OnInit {
     window.location.reload();
   }
   openDialog(insuredname): void {
-    let as = window.localStorage.setItem("insuredname",insuredname);
+    let as = window.localStorage.setItem("insuredname", insuredname);
     const dialogRef = this.dialog.open(ReviewComponent, {
     });
 
@@ -48,14 +48,15 @@ export class OutgoingPortingRequestsComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
-  raiseGrievanceButtonClicked(portrequestId: number): boolean{
+  raiseGrievanceButtonClicked(portrequestId: number, insuredName: string): boolean {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
 
     dialogConfig.data = {
-      portingRequestId: portrequestId
+      portingRequestId: portrequestId,
+      userName: insuredName
     };
     this.dialog.open(DisplayAllPortingRequestsComponent, dialogConfig);
     this.raiseGrievanceButtonIsClicked = false;

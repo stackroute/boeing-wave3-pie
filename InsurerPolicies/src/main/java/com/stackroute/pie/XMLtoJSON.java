@@ -9,9 +9,9 @@ public class XMLtoJSON {
 
     public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
 
-        String[] link = {"MaxBupa.xml","Apollo.xml","Religare.xml","StarHealth.xml"}; //url of xml file that is storing the data
-        String[] insurers = {"MaxBupa","Apollo","Religare","StarHealth"};
-        String[] strr = new String[4];
+        String[] link = {"MaxBupa.xml","Apollo.xml"}; //url of xml file that is storing the data
+        String[] insurers = {"MaxBupa","Apollo"};
+        String[] strr = new String[2];
 
         for(int i=0;i<insurers.length;i++){
 
@@ -27,9 +27,6 @@ public class XMLtoJSON {
                     strr[i] += line;
                 count++;
             }
-
-            System.out.println(link[i]);
-
             //setting up the JDBC connection for the mysql database
             String dbURL = "jdbc:mysql://localhost:3306/insurerFinal";
             String dbUser = "root";
@@ -43,6 +40,7 @@ public class XMLtoJSON {
 
             String sql = "INSERT INTO " + insurers[i] +  "(Policy) values(?)";
             PreparedStatement statement = conn.prepareStatement(sql);
+            //statement.setString(1,insurers[i])
             statement.setString(1, strr[i].substring(0, strr[i].length() - 10));
             statement.executeUpdate();
 

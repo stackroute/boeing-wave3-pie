@@ -226,13 +226,13 @@ services:
       kafka:
         condition: service_healthy
     ports:
-      - 8094:8094
+      - 8070:8070
     expose:
-      - 8094
+      - 8070
     healthcheck:
       test: "exit 0"
 
-  search-service:
+  searchservice:
     image: search-service
     build: search-service/
     restart: always
@@ -246,6 +246,8 @@ services:
       apigateway:
         condition: service_healthy
       mongo:
+        condition: service_healthy
+      kafka:
         condition: service_healthy
     ports:
       - 8095:8095

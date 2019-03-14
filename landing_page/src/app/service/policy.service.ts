@@ -15,6 +15,7 @@ export class PolicyService {
     })
   };
   public policyDetailsUrl = 'http://13.126.73.190:8092/policy/api/v1/policy/';
+  public buypolicy = 'http://13.126.73.190:8092/externalinsurerdbservice/api/v1/policy/external/buypolicy';
   policyDetails:any;
   constructor(private http: HttpClient) {
     console.log('http service got called');
@@ -25,10 +26,14 @@ export class PolicyService {
     return this.http.get(this.policyDetailsUrl + insurerName +'/'+ policyName, this.httpOptions);
 }
 
-  public buyPolicy(insurername,policyname,insuredname,emailId): any {
-    console.log('inside buy policy');
+public buyPolicy(policy): any {
+  console.log('inside buy policy');
+  let as = this.http.post(this.buypolicy,policy);
+  return as;
+ }
+  public getPolicyByPolicyName(policyName): any {
+    console.log("inside service");
    
-    let as = this.http.put(this.policyDetailsUrl + insurername +'/' + policyname+'/' + insuredname+'/'+emailId, 0);
-    return as;
-  } 
+    return this.http.get(this.policyDetailsUrl +'policyByName/' + policyName);
+   }
 }
