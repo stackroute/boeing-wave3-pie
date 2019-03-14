@@ -64,7 +64,7 @@ public class PolicyServiceImpl implements PolicyService {
         else {
             policy1.setCashlessHospitals(policy.getCashlessHospitals());
         }
-        if(!policy.getDiseasesCovered().isEmpty()){
+        if(policy.getDiseasesCovered().isEmpty()){
             List<String> diseasesCovered = new ArrayList<>();
             diseasesCovered.add("Cancer");
             diseasesCovered.add("AIDS");

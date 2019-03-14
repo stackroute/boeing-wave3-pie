@@ -124,6 +124,7 @@ public class PortingRequestServiceImpl implements PortingRequestService{
         Optional<PortingRequest> portingRequest1 = requestRepository.findByPortingRequestId(portingRequest.getPortingRequestId());
         if(portingRequest1.isPresent()) {
             request2 = portingRequest1.get();
+            requestRepository.deleteByPortingRequestId(request2.getPortingRequestId());
             request2.setFromApproval(1);
             Date d = new Date();
             request2.setAcceptedDateofPreviousInsurer(d);
@@ -137,6 +138,7 @@ public class PortingRequestServiceImpl implements PortingRequestService{
         Optional<PortingRequest> portingRequest1 = requestRepository.findByPortingRequestId(portingRequest.getPortingRequestId());
         if(portingRequest1.isPresent()) {
             request2 = portingRequest1.get();
+            requestRepository.deleteByPortingRequestId(request2.getPortingRequestId());
             request2.setToApproval(1);
             requestRepository.save(request2);
         }
