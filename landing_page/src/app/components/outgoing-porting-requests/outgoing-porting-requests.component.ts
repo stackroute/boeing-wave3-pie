@@ -13,7 +13,7 @@ import { DisplayAllPortingRequestsComponent } from '../display-all-porting-reque
 })
 export class OutgoingPortingRequestsComponent implements OnInit {
   showAcceptRequestButton: boolean;
-  clearedRequests: string[] = [];
+  clearedRequests: number[] = [];
   dialogReference: any;
   insurerLicense: any;
   requests: any;
@@ -78,8 +78,8 @@ export class OutgoingPortingRequestsComponent implements OnInit {
     this.idForGrievances = portrequestId;
     return true;
   }
-  isClearedRequest(name: string): boolean {
-    if(this.clearedRequests.includes(name)) {
+  isClearedRequest(portingRequestId: number): boolean {
+    if(this.clearedRequests.includes(portingRequestId)) {
       return true;
     } else {
       return false;
