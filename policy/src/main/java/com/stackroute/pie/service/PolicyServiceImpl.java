@@ -73,7 +73,7 @@ public class PolicyServiceImpl implements PolicyService {
             policy1.setDiseasesCovered(diseasesCovered);
         }
         else {
-            List<String> diseasesCovered = new ArrayList<>();
+            List<String> diseasesCovered;
             diseasesCovered = Arrays.asList(policy.getDiseasesCovered().split(","));
             policy1.setDiseasesCovered(diseasesCovered);
         }
@@ -247,7 +247,6 @@ public class PolicyServiceImpl implements PolicyService {
     }
     //Method to get all policies
     public List<Policy> getAllPolicies(){
-        List<Policy> policies = policyRepository.findAll();
-        return policies;
+        return policyRepository.findAll();
     }
 }

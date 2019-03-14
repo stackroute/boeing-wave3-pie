@@ -154,7 +154,6 @@ public class PolicyController {
     //Method to get all policies
     @GetMapping("policies")
     public ResponseEntity getPolicies(){
-        ResponseEntity responseEntity;
         List<Policy> allPolicies = policyService.getAllPolicies();
         return new ResponseEntity(allPolicies, HttpStatus.OK);
     }
