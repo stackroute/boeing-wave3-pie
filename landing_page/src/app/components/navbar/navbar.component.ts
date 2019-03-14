@@ -36,7 +36,8 @@ export class NavbarComponent implements OnInit {
   constructor(
     private router: Router,
     private token: TokenStorageService,
-    media: ObservableMedia
+    media: ObservableMedia,
+    public dialog: MatDialog
     
   ) {
     this.watcher = media.subscribe((change: MediaChange) => {
@@ -89,5 +90,13 @@ export class NavbarComponent implements OnInit {
       this.logout1 = false;
       return true;
     }
+  }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(CalculatorComponent, {
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 }

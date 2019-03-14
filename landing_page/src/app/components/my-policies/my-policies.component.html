@@ -67,10 +67,17 @@
  
             <div class="panel-body">
  
-          <p>PolicyId: {{ count.policyId }}</p>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">PolicyId: {{ count.policyId }}</li>
+                <li class="list-group-item">InsurerName: {{count.insurerName}}</li>
+                <li class="list-group-item">Monthly Premium: {{ count.monthlyPremium }}</li>
+                <li class="list-group-item">Waiting Period: {{ count.waitingPeriod }}</li>
+  
+              </ul>
+          <!-- <p>PolicyId: {{ count.policyId }}</p>
           <p>InsurerName: {{count.insurerName}}</p>
           <p>Monthly Premium: {{ count.monthlyPremium }}</p>
-          <p>Waiting Period: {{ count.waitingPeriod }}</p>
+          <p>Waiting Period: {{ count.waitingPeriod }}</p> -->
             </div>
           </div>
         </div>

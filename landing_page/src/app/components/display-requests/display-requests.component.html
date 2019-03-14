@@ -4,19 +4,27 @@
       <div class="col-md-12" style="font-size:18px">My Requests</div>
       <br /><br /><br /><br />
     </div>
-    <div class="row" style="text-align:center">
-      <div *ngFor="let count of requests" class="col-md-4">
+    <div class="row" style="text-align:center;font-size : large">
+            <div *ngFor="let count of requests" class="col-md-4">
         <div class="panel panel-default">
-          <div class="panel-heading">Insurer Name: {{ count.insuredName }}</div>
+          <div class="panel-heading"> Policy Name: {{count.newInsurerProduct}}</div>
           <div class="panel-body">
-            <p>Approval Status of X: Pending</p>
-            <p>Created Date: {{count.createDate}}</p>
-            <p>New Policy Name: {{count.newInsurerProduct}}</p>
-          </div>    
-          <div class="panel-footer">
-            <a [routerLink]="['/deleteRequest', count.portingRequestId]" class="btn btn-primary" style ="margin-right: 5%;"onClick= "window.location.reload();">Delete</a>
-            <a [routerLink]="['/updateRequest', count.portingRequestId]" class="btn btn-primary"onClick= "window.location.reload();">Update</a>
+               <!-- <ul class="list-group list-group-flush"> -->
+
+            <div *ngIf="(count.fromApproval ==0) && (count.toApproval ==0)">
+              <p>Status : Pending</p>
            </div>
+           <div *ngIf="(count.fromApproval ==1) && (count.toApproval ==0)">
+              <p>Status : Approved by existing insurer</p>
+           </div>
+           <div *ngIf="(count.fromApproval ==1) && (count.toApproval ==1)">
+              <p>Status : Porting completed</p>
+           </div>
+            <!-- <li class="list-group-item">Request Id: {{count.portingRequestId}}</li>
+            <li class="list-group-item">New Policy Name: {{count.newInsurerProduct}}</li>     -->
+          <!-- </ul>  -->
+            <p>Request Id: {{count.portingRequestId}}</p>
+          </div>    
         </div>
         <br/>
       </div>

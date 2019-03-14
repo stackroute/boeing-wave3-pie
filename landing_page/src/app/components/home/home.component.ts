@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from '../auth/token-storage.service';
 import { DialogbotComponent } from '../dialogbot/dialogbot.component';
 import { MatDialog } from '@angular/material';
+import { CalculatorComponent } from '../calculator/calculator.component';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -28,6 +29,8 @@ export class HomeComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
+
+  
   // logout() {
   //   this.token.signOut();
   //   window.location.reload();

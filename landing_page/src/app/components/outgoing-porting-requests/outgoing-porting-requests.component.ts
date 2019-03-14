@@ -2,7 +2,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { InsurerOutgoingportingrequestService } from './../../service/insurer-outgoingportingrequest.service';
 import { InsurerAcceptoutgoingportingrequestService } from './../../service/insurer-acceptoutgoingportingrequest.service';
-import {MatDialog, MatDialogConfig} from '@angular/material';
+import {MatDialog, MatDialogConfig, MatTableDataSource} from '@angular/material';
 import { AllPortingRequestsComponent } from '../all-porting-requests/all-porting-requests.component';
 import {ReviewComponent} from '../review/review.component';
 import {DisplayAllPortingRequestsComponent} from '../display-all-porting-requests/display-all-porting-requests.component';
@@ -14,6 +14,8 @@ import {DisplayAllPortingRequestsComponent} from '../display-all-porting-request
 export class OutgoingPortingRequestsComponent implements OnInit {
   insurerLicense: any;
   requests: any;
+  displayedColumns: string[] = ['requestID', 'userName', 'oldInsurerName','modifyStatusButton'];
+  dataSource = new MatTableDataSource<Request[]>();
   currentCompanyName: string;
   raiseGrievanceButtonIsClicked: boolean;
   idForGrievances: number;
@@ -33,8 +35,13 @@ export class OutgoingPortingRequestsComponent implements OnInit {
 
   }
   port(request) {
+    console.log("xyz");
     this.portrequest.getSearch(request).subscribe(data => console.log(data));
+    console.log("xynz");
+
+    alert("successfull");
     this.reloadData();
+   
   }
   reloadData() {
     window.location.reload();
