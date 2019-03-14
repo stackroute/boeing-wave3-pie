@@ -11,7 +11,7 @@ export class DashboardComponent implements OnInit {
  username: any;
  getUser: any;
  
-  constructor(private route: ActivatedRoute, private router:Router, private userService: UserDashboardService) { }
+  constructor(private route: ActivatedRoute, private userService: UserDashboardService, private router: Router) { }
 
   ngOnInit() {
     this.username = this.route.snapshot.paramMap.get('username');

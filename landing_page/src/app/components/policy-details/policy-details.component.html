@@ -13,28 +13,53 @@
   <p>{{policyDetails.policyDescription}} </p>
 </mat-tab>
 <mat-tab label="Benefits"> 
-<!-- <p>{{policyDetails.benefits}}</p> Benefits -->
+<p>{{policyDetails.benefits}}</p> Benefits
 </mat-tab>
 <mat-tab label="Terms and conditions">
  <!-- <p>{{policyDetails.termsAndConditions}} </p> Terms -->
+ <h3>
+    General <span class="noboldtxt">Terms</span>
+  </h3> 
+  <p>This policy is on floater basis.<br>
+  Family : Proposer, spouse, dependent children from 16 days up to 25 years (those who are economically dependent on their parents)</p>
+  <p>&nbsp;</p>
+  <h5>Tax Benefits</h5>
+  
+  <p>  Amount paid by any mode other than by cash for  this insurance is eligible for relief under Section 80D of the Income Tax Act.</p>
+  <p>&nbsp;</p>
+  <p><strong>Free Look Period</strong> </p>
+  
+  <p>  A free look period of 15 days from the date of  receipt of the policy is available for reviewing the policy terms and  conditions. In case insured is not satisfied he can seek cancellation of the  policy and in such event the Company will allow refund of premium after  adjusting the cost of pre- acceptance of medical screening, stamp duty charges  and proportionate risk premium for the period concerned provided no claim has  been made until such cancellation. Free look&nbsp;cancellation is not  applicable at the time of renewal.</p>
+  <p>&nbsp;</p>
+  <p><strong>Guaranteed Lifetime Renewals</strong></p>
+  
+  <p>Life-long  renewals beyond 65 years are offered under this policy.</p>
+  <p>&nbsp;</p>
+  <p><strong>Co-Payment: </strong> 20% of each and every claim for persons above 60 years at entry level and their subsequent renewals.</p>
+  <p>&nbsp;</p>
+  <p><strong>Pre-Acceptance Medical Screening: </strong> Persons above 50 years will be required to undergo pre-acceptance medical screening at the Company nominated centres. Cost of screening is currently borne by the company.</p>
+  <p>&nbsp;</p>
+  <p><strong>Pre-Existing Diseases/Illness: </strong> Are covered after 48 months of continuous Insurance without break with any Indian Insurance Company.</p>
+  <p>&nbsp;</p>
+  <p><strong>NOTE:</strong> Renewal  premium, terms and conditions are subject to change with prior approval from IRDAI.</p>
 </mat-tab>
 <mat-tab label="General Details">
 <p>Policy Id : {{policyDetails.policyId}} </p>
-<!-- <p>Policy Type : {{policyDetails.policyType}}</p> -->
+<p>Policy Type : {{policyDetails.policyType}}</p>
 <p>Policy Tenure : {{policyDetails.policyTerm}}</p>
-<!-- <p>Gender : {{policyDetails.genderAvail}}</p> -->
+<p>Gender : {{policyDetails.genderAvail}}</p>
 <p>Waiting period : {{policyDetails.waitingPeriod}}</p>
-<!-- <p>Diseases covered : </p>
+<p>Diseases covered : </p>
   <div *ngFor = "let disease of policyDetails.diseasesCovered">
     <li>{{disease}}</li>
-  </div> -->
+  </div>
 </mat-tab>
 <mat-tab label="Cashless hospitals">
-<!-- <ul>
+<ul>
 <div *ngFor = "let hospital of policyDetails.cashlessHospitals">
  <li>{{hospital}}</li>
 </div>
-</ul> -->
+</ul>
  </mat-tab>
 </mat-tab-group>
 <!-- <p>{{policyDetails.policyName}}</p> -->

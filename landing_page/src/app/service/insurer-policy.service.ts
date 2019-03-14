@@ -33,7 +33,7 @@ addNewPolicy(policy : PolicyFormInfo):Observable<Object> {
 
 getPolicies(insurerLicense : String):Observable<Object> {
   console.log('adadsasdas')
- return this.http.get(this.policiesUrl+'policy/'+insurerLicense);
+ return this.http.get(this.policiesUrl+'policy/'+ insurerLicense);
 }
 
 getPremium(premium : PolicyPremium):Observable<Object> {

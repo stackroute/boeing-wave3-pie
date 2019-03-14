@@ -156,7 +156,7 @@ const routes: Routes = [];
     TermsAndConditionsComponent,
     GuestUserComponent
   ],
-  entryComponents: [CalculatorComponent,ReviewComponent,DialogbotComponent],
+  entryComponents: [CalculatorComponent,ReviewComponent,DialogbotComponent,BuyPolicyComponent,TermsAndConditionsComponent],
   
   imports: [
     BrowserModule,

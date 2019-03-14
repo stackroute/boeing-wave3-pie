@@ -26,18 +26,16 @@
       <p><strong>Pre-Existing Diseases/Illness: </strong> Are covered after 48 months of continuous Insurance without break with any Indian Insurance Company.</p>
       <p>&nbsp;</p>
       <p><strong>NOTE:</strong> Renewal  premium, terms and conditions are subject to change with prior approval from IRDAI.</p>
-      <!-- <div>
-          <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter" required>
-          <label for="subscribeNews">Subscribe to newsletter?</label>
-        </div> -->
-      <!-- <a [routerLink] = "['/buyPolicy',insurername,policyname,username]" class ="btn btn-primary" style ="margin-right: 5%;margin-left: 20%; margin-bottom: 2%;"> Buy </a> -->
-      <!-- </div>
+      <input type="checkbox" [(ngModel)]="theCheckbox"  data-md-icheck (change)="toggleVisibility($event)"/><p>I agree to the terms and conditions</p>
+      <div *ngIf="marked">
+          <div *ngIf="!(info.token)">
+              <a [routerLink] = "['/guestUser']" class ="btn btn-primary" class ="btn btn-primary" style ="margin-right: 5%;margin-left: 20%; margin-bottom: 2%;"> Buy </a>
+          </div>
+           <div *ngIf="info.token">
+             <a [routerLink] = "['/buyPolicy']" class ="btn btn-primary" style ="margin-right: 5%;margin-left: 20%; margin-bottom: 2%;"> Buy </a>
+        </div>
       </div>
-      </div> -->
       
-      <div *ngIf="!(info.token)">
-          <a [routerLink] = "['/guestUser',insurername,policyname]" class ="btn btn-primary" class ="btn btn-primary" style ="margin-right: 5%;margin-left: 20%; margin-bottom: 2%;"> Buy </a>
-       </div>
-       <div *ngIf="info.token;" >
-        <a [routerLink] = "['/buyPolicy',insurername,policyname,username,emailId]" class ="btn btn-primary" style ="margin-right: 5%;margin-left: 20%; margin-bottom: 2%;"> Buy </a>
-       </div>
+        <!-- <button class="btn btn-primary" (click)="openDialog(policy1.policyName,policy1.insurerName)"
+            style="margin-right: 5%;margin-left: 20%; margin-bottom: 2%;">Buy</button> -->
+     
