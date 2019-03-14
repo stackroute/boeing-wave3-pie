@@ -81,13 +81,11 @@
                   </ul>
                 </div>
                 <div class="panel-footer">
-                    <div *ngIf="!(info.token)">
-                        <a [routerLink] = "['/guestUser', policy1.insurerName, policy1.policyName]"
-                    class="btn btn-primary" style ="margin-right: 0%;margin-left: 0%; margin-bottom: 2%; font-size: 15px;" onClick="window.location.reload();"
-                    >Buy</a>   
-                    </div>  
-                    <div *ngIf="info.token;" >
-                        <a [routerLink] = "['/buyPolicy',policy1.insurerName,policy1.policyName,username,emailId]" class ="btn btn-primary" style ="margin-right: 5%;margin-left: 20%; margin-bottom: 2%; font-size: 15px;"> Buy </a>
+                  <a
+                  [routerLink] = "['/policyDetails', policy1.insurerName, policy1.policyName]"
+                  class="btn btn-primary" style ="margin-right: 5%;margin-left: 20%; margin-bottom: 2%;" onClick="window.location.reload();"
+                  >Read more</a>
+                  <button mat-raised-button (click)="openDialog(policy1.insurerName,policy1.policyName)" style="position: relative; right: 0;margin-top: 0px;">Buy</button>
                     </div>
               </div>
             </div>
