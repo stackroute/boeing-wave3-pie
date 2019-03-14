@@ -5,13 +5,14 @@ import com.stackroute.pie.exceptions.InsuredPoliciesNotFoundException;
 import com.stackroute.pie.exceptions.InsurerNotFoundException;
 import com.stackroute.pie.exceptions.PolicyAlreadyExistsException;
 import com.stackroute.pie.exceptions.PolicyNotFoundException;
+import com.stackroute.pie.message.PolicyForm;
 
 import java.util.List;
 import java.util.Set;
 
 public interface PolicyService {
     //Method for adding the policy for insurer
-    Policy addPolicy(Policy policy) throws PolicyAlreadyExistsException;
+    Policy addPolicy(PolicyForm policyForm) throws PolicyAlreadyExistsException;
     //Method for deleting the policy for insurer
     Policy deletePolicy(String insurerName, String policyName) throws PolicyNotFoundException;
     //Method for getting the policy for insurer
