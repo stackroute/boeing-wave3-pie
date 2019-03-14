@@ -32,9 +32,9 @@ export class RecommendationsComponent implements OnInit {
       this.router.navigate(['/dashboard',this.userName]);
     }
     openDialog(insurername,policyname,username): void {
-      let as = window.localStorage.setItem("insurername",insurername);
-      let data = window.localStorage.setItem("policyname",policyname);
-      let data1 = window.localStorage.setItem("username",username);
+      let as = window.localStorage.setItem("recoinsurername",insurername);
+      let data = window.localStorage.setItem("recopolicyname",policyname);
+      let data1 = window.localStorage.setItem("recousername",username);
       const dialogRef = this.dialog.open(TermsAndConditionsComponent, {
       });
   

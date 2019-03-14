@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { RequestService } from './../../service/request.service';
 import { Router } from '@angular/router';
 import { PolicyService } from './../../service/policy.service';
+import { UserService } from './../../service/user.service';
+import { UserDashboardService } from './../../service/user-dashboard.service';
 
 @Component({
   selector: 'app-porting-request',
@@ -12,10 +14,10 @@ import { PolicyService } from './../../service/policy.service';
 export class PortingRequestComponent implements OnInit {
 
   loggedIn: any;
-  policy: any;
+  anusha: any;
   policy1: any;
   insuredName: any;
-  insurerProduct: any;
+  insurerProd: any=null;
   insurerName: any;
   existingMaxSumInsured: any;
   addon: any=null;
@@ -26,10 +28,13 @@ export class PortingRequestComponent implements OnInit {
   reason: any=null;
   familyMem: any=null;
   exclusion: any=null;
-
+  policies: any ;
+  flag=false;
+  flag1=false;
+  newpolicies: any;
   portingForm = {
     insuredName: this.insuredName,
-    insurerProduct: this.insurerProduct,
+    insurerProduct: this.insurerProd,
     insurerName: this.insurerName,
     sumInsured: this.existingMaxSumInsured,
     addOns: this.addon,
@@ -45,12 +50,27 @@ export class PortingRequestComponent implements OnInit {
   //   {value: 'cancer', viewValue: 'CancerPolicy1'},
   //   {value: 'AIDS', viewValue: 'AIDSPolicy'}
   // ];
-  constructor(private formBuilder: FormBuilder, private requestService: RequestService,private router: Router, private policyService: PolicyService) { }
+  constructor(private formBuilder: FormBuilder, private requestService: RequestService,private router: Router, private policyService: PolicyService, private userService: UserDashboardService) { }
  
   ngOnInit() {
      this.insuredName = window.localStorage.getItem("insuredname"); 
- 
+    //  console.log("inside ngOninit");
+    this.policies = this.userService.getPolicies(this.insuredName).subscribe(data =>
+      {
+        console.log("inside subscribe", this.insuredName);
+        this.policies = data ;
+        console.log("data in oninit "+ data);
+        
+      });
+      this.newpolicies = this.policyService.getAllPolicies().subscribe(data =>
+        {
+          console.log("inside company policies");
+          this.newpolicies = data;
+          console.log(data);
+        })
+
   }
+  
   submitForm(insuredName,insurerProduct,insurerName,existingMaxSumInsured,addOns,existingPolicyId,newInsurerProduct,newInsurerName,newMaxSumInsured,reasonForPortability,familyMembers,exclusionPeriod) {
     console.log("hi");
     console.log(newInsurerProduct + " "+reasonForPortability+" "+familyMembers+" "+exclusionPeriod);
@@ -90,7 +110,8 @@ reach(insurerProduct)
 
   this.policyService.getPolicyByPolicyName(insurerProduct).subscribe(
     data=> {
-      this.policy = data;
+      this.anusha = data;
+      this.flag = true;
       console.log(data);
     }
   );
@@ -101,6 +122,7 @@ reach1(newInsurerProduct)
   this.policyService.getPolicyByPolicyName(newInsurerProduct).subscribe(
     data=> {
       this.policy1 = data;
+      this.flag1 = true;
       console.log(data);
     }
   );

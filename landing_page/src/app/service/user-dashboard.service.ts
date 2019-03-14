@@ -26,8 +26,9 @@ public localMongoUrl = 'http://13.126.73.190:8092/porting/api/auth/requests/';
    }
    public getPolicies(username): any {
     console.log(username);
-    const policies = this.http.get(this.policiesUrl + username);
-    return policies;
+    let getp =  this.http.get(this.policiesUrl + "manasa");
+    console.log("getp "+getp);
+    return getp;
   }
    public getProfile(username): any {
      console.log('service' + username);

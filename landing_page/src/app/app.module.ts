@@ -158,7 +158,7 @@ const routes: Routes = [];
     GuestUserComponent,
     DeletepopupComponent
   ],
-  entryComponents: [CalculatorComponent,ReviewComponent,DialogbotComponent,DeletepopupComponent],
+  entryComponents: [CalculatorComponent,ReviewComponent,DialogbotComponent,DeletepopupComponent,TermsAndConditionsComponent],
   
   imports: [
     BrowserModule,
