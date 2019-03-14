@@ -28,4 +28,6 @@ public interface PolicyService {
     Set<String> getInsurerList();
 
     Policy getPolicyByPolicyName(String policyName) throws PolicyNotFoundException;
+
+    List<Policy> getAllPolicies();
 }
