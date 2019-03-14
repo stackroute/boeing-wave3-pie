@@ -12,6 +12,9 @@ import { DisplayAllPortingRequestsComponent } from '../display-all-porting-reque
   styleUrls: ['./outgoing-porting-requests.component.css']
 })
 export class OutgoingPortingRequestsComponent implements OnInit {
+  showAcceptRequestButton: boolean;
+  clearedRequests: string[] = [];
+  dialogReference: any;
   insurerLicense: any;
   requests: any;
   currentCompanyName: string;
@@ -21,6 +24,7 @@ export class OutgoingPortingRequestsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private incoming: InsurerOutgoingportingrequestService, private portrequest: InsurerAcceptoutgoingportingrequestService, private dialog: MatDialog) { }
 
   ngOnInit() {
+    this.showAcceptRequestButton = false;
     this.raiseGrievanceButtonIsClicked = false;
     console.log("inside outgoing");
     this.insurerLicense = this.route.snapshot.paramMap.get('insurerLicense');
@@ -58,10 +62,21 @@ export class OutgoingPortingRequestsComponent implements OnInit {
       portingRequestId: portrequestId,
       userName: insuredName
     };
-    this.dialog.open(DisplayAllPortingRequestsComponent, dialogConfig);
+    this.dialogReference = this.dialog.open(DisplayAllPortingRequestsComponent, dialogConfig);
+    this.dialogReference.componentInstance.showAcceptRequestButton.subscribe((data) => {
+      this.clearedRequests.push(data);
+      this.showAcceptRequestButton = true;
+    });
     this.raiseGrievanceButtonIsClicked = false;
     this.idForGrievances = portrequestId;
     return true;
+  }
+  isClearedRequest(name: string): boolean {
+    if(this.clearedRequests.includes(name)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }

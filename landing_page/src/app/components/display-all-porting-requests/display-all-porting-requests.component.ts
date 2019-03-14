@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Component, OnInit, Input, Output, Inject, EventEmitter } from '@angular/core';
 import { PendingTasks } from '../pending-tasks';
 import { Task } from '../task';
 import { FetchPendingTasksService } from '../../service/fetch-pending-tasks.service';
@@ -18,6 +18,7 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
   @Input() currentCompanyName: string;
   @Input() currentInsuredName: string;
   @Input() portingRequestId: number;
+  @Output() showAcceptRequestButton = new EventEmitter();
   newPendingTasks: PendingTasks;
   viewPendingTasksOfInsuredClicked: boolean;
   newPendingTask: Task;
@@ -151,5 +152,10 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
 
       this.emailService.sendEmail(this.email).subscribe();
     });
+  }
+
+
+  clearForPorting(): void {
+    this.showAcceptRequestButton.emit(this.userName);
   }
 }
