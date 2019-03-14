@@ -38,8 +38,10 @@ import { GuestUserComponent } from './components/guest-user/guest-user.component
 const routes: Routes = [
   {path: 'search/:value', component: SearchComponent},
   {path: 'login', component: LoginComponent },
+  {path: '', redirectTo: 'home',  pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
-  {path: 'guestUser/:insurername/:policyname', component: GuestUserComponent},
+  {path: 'guestUser', component: GuestUserComponent},
+  // {path: 'guestUser/:insurername/:policyname', component: GuestUserComponent},
   {path:'register', component:RegisterComponent},
   { path: 'dashboard/:username', component: DashboardComponent},
   {path: 'policyBuyMail', component: PolicybuymailComponent},
@@ -66,7 +68,7 @@ const routes: Routes = [
    {path: 'companyPolicy/:insurerLicense', component:CompanyPolicyComponent},
    {path: 'all-porting-requests', component:AllPortingRequestsComponent},
    {path: 'display-all-porting-requests', component:DisplayAllPortingRequestsComponent},
-   {path: 'buyPolicy/:insurername/:policyname/:insuredname/:emailId',component: BuyPolicyComponent},
+   {path: 'buyPolicy',component: BuyPolicyComponent},
    {path: 'familyMembers/:username',component: FamilyMembersComponent},
    {path: 'showChatResults',component:ShowChatResultsComponent},
    {path: 'policyDetails/:insurerName/:policyName',component: PolicyDetailsComponent}

@@ -49,27 +49,29 @@
       <button class="btn btn-success btn-outline-rounded" (click)="submitForm()"> Submit <span style="margin-left:10px;"></span></button>
   </div>
  </form> -->
- <br><br>
- <input type="text" placeholder="Insured Name"[(ngModel)] = "insuredName" value="{{insuredName}}" required/><br><br>
- <!-- <input type="text" placeholder="Existing policy name" [(ngModel)] = "insurerProduct" (keyup) = "reach(insurerProduct)" required/> -->
+ 
+ <!-- <br><br>
+ <input type="text" placeholder="Insured Name"  value="{{insuredName}}" required/><br><br>
+ <input type="text" placeholder="Existing policy name" [(ngModel)] = "insurerProduct" (keyup) = "reach(insurerProduct)" required/>
+ <div>
  <label style="margin-left: 5%;">Existing policy name:</label><br>
- <select placeholder="Existing Policy Name" [(ngModel)] = "insurerProduct" (change) = "reach(insurerProduct)">
-     <option value="cancer policy">cancer policy</option>
-     <option value="starhealth-2">starhealth-2</option>
- </select>
+
+<select placeholder="Existing Policy Name" [(ngModel)] = "insurerProduct" (change) = "reach(insurerProduct)">
+        <option style = "color: white;" *ngFor="let policyy of policies" [ngValue] = "policyy.policyName">{{policyy.policyName}}</option>
+ </select> 
  <input type="text" placeholder="Existing insurer" [(ngModel)] = "policy.insurerName" readonly required/>
  <input type="text" placeholder="Existing sum insured"  [(ngModel)] = "policy.maxSumInsured" readonly required/>
  <input type="text" placeholder="Add-Ons" [(ngModel)] = "addon" required/>
  <input type="text" placeholder="Existing PolicyNumber" [(ngModel)] = "policy.policyId" readonly required/><br><br>
- <!-- <input type="text" placeholder="New Policy Name" [(ngModel)] = "newInsurerProduct" (keyup) = "reach1(newInsurerProduct)" required/> -->
  <label style="margin-left: 5%;">New Policy name:</label><br>
  <select placeholder="New Policy Name"  [(ngModel)] = "newInsurerProd" (change) = "reach1(newInsurerProd)">
      <option value="cancer policy">cancer policy</option>
      <option value="starhealth-2">starhealth-2</option>
+     <option value = "apollochildcare">apollochildcare</option>
  </select>
  <input type="text" placeholder="New Insurer" [(ngModel)] = "policy1.insurerName" readonly required/>
  <input type="text" placeholder="New Sum insured"  [(ngModel)] = "policy1.maxSumInsured" readonly required/>
- <!-- <input type="text" placeholder="New PolicyNumber" [(ngModel)] = "policy1.policyId" readonly required/> -->
+  <input type="text" placeholder="New PolicyNumber" [(ngModel)] = "policy1.policyId" readonly required/> 
  <input type="text" placeholder="Reason for portability" [(ngModel)] = "reason" required/>
  <input type="text" placeholder="No of family members" [(ngModel)] = "familyMem" required/>
  <label style="margin-left: 5%;">Is PED exclusion period longer than the existing policy period?(true/false)</label>
@@ -77,7 +79,41 @@
  
  <div style = "margin-left: 50%; margin-bottom:20%;">
      <button class="btn btn-success btn-outline-rounded" (click)="submitForm(insuredName,insurerProduct,policy.insurerName,policy.maxSumInsured,addon,policy.policyId,newInsurerProd,policy1.insurerName,policy1.maxSumInsured,reason,familyMem,exclusion)"> Submit <span style="margin-left:10px;"></span></button>
- </div>
+ </div> -->
  
 <!-- <app-footer></app-footer> 
-<router-outlet></router-outlet> -->
+<router-outlet></router-outlet> --> 
+ <br><br>
+  <input type="text" placeholder="Insured Name"  value="{{insuredName}}" required/><br><br>
+ <label style="margin-left: 5%;">Existing policy name:</label><br>
+<select placeholder="Existing Policy Name" [(ngModel)]="insurerProd"(change) = "reach(insurerProd)"> 
+    <option *ngFor="let policyy of policies" value="{{policyy.policyName}}">{{policyy.policyName}}</option>
+ </select> 
+
+ <div *ngIf = "flag">
+     <input type="text" placeholder="Existing insurer" [(ngModel)] = "anusha.insurerName" readonly required/>
+     <input type="text" placeholder="Existing sum insured"  [(ngModel)] = "anusha.maxSumInsured" readonly required/>
+     <input type="text" placeholder="Existing PolicyNumber" [(ngModel)] = "anusha.policyId" readonly required/>
+ </div>
+ <input type="text" placeholder="Add-Ons" [(ngModel)] = "addon" required/>
+
+ <label style="margin-left: 5%;">New Policy name:</label><br>
+ <select placeholder="New Policy Name"  [(ngModel)] = "newInsurerProd" (change) = "reach1(newInsurerProd)">
+        <option *ngFor="let policyy1 of newpolicies" value="{{policyy1.policyName}}">{{policyy1.policyName}}</option>
+ </select>
+<div *ngIf="flag1">
+        <input type="text" placeholder="New Insurer" [(ngModel)] = "policy1.insurerName" readonly required/>
+        <input type="text" placeholder="New Sum insured"  [(ngModel)] = "policy1.maxSumInsured" readonly required/>
+        <input type="text" placeholder="New PolicyNumber" [(ngModel)] = "policy1.policyId" readonly required/>
+</div>
+<input type="text" placeholder="Reason for portability" [(ngModel)] = "reason" required/>
+ <input type="text" placeholder="No of family members" [(ngModel)] = "familyMem" required/>
+ <label style="margin-left: 5%;">Is PED exclusion period longer than the existing policy period?(true/false)</label>
+ <input type="text" [(ngModel)] = "exclusion" required/><br><br>
+ 
+ <div style = "margin-left: 50%; margin-bottom:20%;">
+     <button class="btn btn-success btn-outline-rounded" (click)="submitForm(insuredName,insurerProduct,policy.insurerName,policy.maxSumInsured,addon,policy.policyId,newInsurerProd,policy1.insurerName,policy1.maxSumInsured,reason,familyMem,exclusion)"> Submit <span style="margin-left:10px;"></span></button>
+ </div
+ 
+
+ 

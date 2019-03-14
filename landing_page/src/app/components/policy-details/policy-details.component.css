@@ -12,11 +12,8 @@ h1 {
     align-items: center;
  }
  
- p {
-    margin-left: 45%;
-    margin-top: 4%;
- }
- /* #cover {
+
+ #cover {
     background-image: url("https://static-news.moneycontrol.com/static-mcnews/2018/10/critical-illness-health-insurance-1280x-720.jpg");
     background-repeat: no-repeat;
     opacity: 0.8;
@@ -25,4 +22,4 @@ h1 {
       width: 100%;
       height: 50%;
       overflow: hidden;
- } */
+ }

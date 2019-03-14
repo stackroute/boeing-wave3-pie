@@ -59,7 +59,7 @@ export class ChatService {
   showChatResults(): any {
     console.log("inside chatfghj");
     return this.http.get(
-      "http://13.126.73.190:8095/searchservice/api/v1/chatpolicy"
+      "http://13.126.73.190:8092/searchservice/api/v1/chatpolicy"
     );
   }
 }
