@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
         let bs = window.localStorage.setItem("emailId",data.email);
       }
     );
-    this.router.navigate(["/recommendations", this.username]);
- 
-  }
+ this.router.navigate(['recommendations',this.username]);
+  } 
+
 }

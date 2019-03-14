@@ -21,9 +21,6 @@ import java.util.*;
 public class ExternalDbServiceImpl implements ExternalDbService {
 
 
-
-
-
     @Autowired
     public ExternalDbServiceImpl(ExternalDbRepository externalDbRepository) {
         this.externalDbRepository = externalDbRepository;
@@ -41,23 +38,19 @@ public class ExternalDbServiceImpl implements ExternalDbService {
         String dbURL = "jdbc:mysql://localhost/insurerFinal";
         String dbUser = "root";
         String dbPass = "root";
-        Statement st = null;
-        Connection conn =null;
-        ResultSet rs =null;
+        ResultSet rs = null;
 
         Class.forName("com.mysql.cj.jdbc.Driver");
         DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
 
-        try {
-            conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
-            try {
+        try(Connection conn = DriverManager.getConnection(dbURL, dbUser, dbPass)) {
 
-                st = conn.createStatement();
+            try (Statement st = conn.createStatement()) {
 
                 Blob xmlfile = null;
                 String query = "Select * from " + insurerName;
-                try {
-                 rs = st.executeQuery(query);
+
+                rs = st.executeQuery(query);
 
                 InputStream binaryStream = null;
                 while (rs.next()) {
@@ -120,30 +113,24 @@ public class ExternalDbServiceImpl implements ExternalDbService {
                     hospitalList.add("Ananya Hospital Pvt Ltd");
                     hospitalList.add("Anugraha Vittala Hospital");
                     policy1.setCashlessHospitals(hospitalList);
-
+                    policy1.setImageUrl("http://www.medibroker.com/media/1256/family-bullets.jpg?anchor=center&mode=crop&width=358&height=246");
                     policy.add(policy1);
                 }
 
 
-                    for (InsurerPolicy policyy : policy) {
-                        externalDbRepository.save(policyy);
-                    }
-                    return policy;
-
-            } finally {
-                    rs.close();
+                for (InsurerPolicy policyy : policy) {
+                    externalDbRepository.save(policyy);
                 }
-            }
-            finally {
-                st.close();
-            }
-        }
+                return policy;
 
-        finally {
-            conn.close();
+            }
+        }finally {
+            if(rs!=null)
+                rs.close();
         }
-
     }
+
+
 
     @Override
     public BuyPolicy buyPolicy(BuyPolicy buyPolicy) throws ClassNotFoundException, SQLException, UnsupportedEncodingException {

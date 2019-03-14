@@ -47,6 +47,8 @@ table {
 .mat-cell {
     text-align: center;
     padding: 2%;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: large;
 }
 .mat-cell-green {
   /* border: none; */

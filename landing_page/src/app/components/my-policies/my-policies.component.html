@@ -66,11 +66,23 @@
               <div class="panel-heading">Policy Name: {{ count.policyName }}</div>
  
             <div class="panel-body">
- 
-          <p>PolicyId: {{ count.policyId }}</p>
+                <img class="card-img-top" src='{{count.imageUrl}}' style="width:280px;" alt="Card image cap">
+
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                 <span> PolicyId: </span>  {{ count.policyId }}</li>
+                <li class="list-group-item"> 
+                  <span>InsurerName:</span> {{count.insurerName}}</li>
+                <li class="list-group-item">
+                  <span>Monthly Premium:</span> {{ count.monthlyPremium }}</li>
+                <li class="list-group-item">
+                <span>Waiting Period:</span> {{ count.waitingPeriod }}</li>
+  
+              </ul>
+          <!-- <p>PolicyId: {{ count.policyId }}</p>
           <p>InsurerName: {{count.insurerName}}</p>
           <p>Monthly Premium: {{ count.monthlyPremium }}</p>
-          <p>Waiting Period: {{ count.waitingPeriod }}</p>
+          <p>Waiting Period: {{ count.waitingPeriod }}</p> -->
             </div>
             <div class="panel-footer">
             <a

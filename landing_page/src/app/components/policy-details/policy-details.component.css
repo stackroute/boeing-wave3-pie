@@ -10,9 +10,16 @@ h1 {
  
  .tabbed-pane {
     align-items: center;
+    font-size: 15px;
  }
  
 
+
+ p {
+    margin-left: 35%;
+    margin-top: 4%;
+    font-size: x-large;
+ }
  #cover {
     background-image: url("https://static-news.moneycontrol.com/static-mcnews/2018/10/critical-illness-health-insurance-1280x-720.jpg");
     background-repeat: no-repeat;
@@ -23,3 +30,16 @@ h1 {
       height: 50%;
       overflow: hidden;
  }
+ 
+
+
+ .mat-tab-body-content{
+   background: url('/../assets/img/dark.jpeg') no-repeat center center fixed; 
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+   width: 100%;
+   height: fit-content;
+
+}

@@ -36,6 +36,9 @@ import { PolicyDetailsComponent } from './components/policy-details/policy-detai
 import { GuestUserComponent } from './components/guest-user/guest-user.component';
 
 const routes: Routes = [
+  {path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'},
   {path: 'search/:value', component: SearchComponent},
   {path: 'login', component: LoginComponent },
   {path: '', redirectTo: 'home',  pathMatch: 'full'},
