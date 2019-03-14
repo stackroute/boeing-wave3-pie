@@ -1,6 +1,5 @@
 package com.stackroute.pie.controller;
 
-import com.netflix.ribbon.proxy.annotation.Http;
 import com.stackroute.pie.domain.Email;
 import com.stackroute.pie.services.EmailService;
 import lombok.Data;
@@ -22,9 +21,8 @@ public class EmailController {
     public EmailService emailService;
 
     @PostMapping("email/")
-    public ResponseEntity<?> sendEmail(@RequestBody Email email) {
-        System.out.println("Reached REST end point");
-        return new ResponseEntity<Email>(emailService.sendSimpleMessage(email.getTo(), email.getSubject(), email.getBody()), HttpStatus.OK);
+    public ResponseEntity sendEmail(@RequestBody Email email) {
+        return new ResponseEntity(emailService.sendSimpleMessage(email.getTo(), email.getSubject(), email.getBody()), HttpStatus.OK);
 
     }
 }

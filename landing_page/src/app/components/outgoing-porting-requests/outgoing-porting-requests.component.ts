@@ -4,14 +4,17 @@ import { InsurerOutgoingportingrequestService } from './../../service/insurer-ou
 import { InsurerAcceptoutgoingportingrequestService } from './../../service/insurer-acceptoutgoingportingrequest.service';
 import {MatDialog, MatDialogConfig, MatTableDataSource} from '@angular/material';
 import { AllPortingRequestsComponent } from '../all-porting-requests/all-porting-requests.component';
-import {ReviewComponent} from '../review/review.component';
-import {DisplayAllPortingRequestsComponent} from '../display-all-porting-requests/display-all-porting-requests.component';
+import { ReviewComponent } from '../review/review.component';
+import { DisplayAllPortingRequestsComponent } from '../display-all-porting-requests/display-all-porting-requests.component';
 @Component({
   selector: 'app-outgoing-porting-requests',
   templateUrl: './outgoing-porting-requests.component.html',
   styleUrls: ['./outgoing-porting-requests.component.css']
 })
 export class OutgoingPortingRequestsComponent implements OnInit {
+  showAcceptRequestButton: boolean;
+  clearedRequests: string[] = [];
+  dialogReference: any;
   insurerLicense: any;
   requests: any;
   displayedColumns: string[] = ['requestID', 'userName', 'oldInsurerName','modifyStatusButton'];
@@ -23,6 +26,7 @@ export class OutgoingPortingRequestsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private incoming: InsurerOutgoingportingrequestService, private portrequest: InsurerAcceptoutgoingportingrequestService, private dialog: MatDialog) { }
 
   ngOnInit() {
+    this.showAcceptRequestButton = false;
     this.raiseGrievanceButtonIsClicked = false;
     console.log("inside outgoing");
     this.insurerLicense = this.route.snapshot.paramMap.get('insurerLicense');
@@ -47,7 +51,7 @@ export class OutgoingPortingRequestsComponent implements OnInit {
     window.location.reload();
   }
   openDialog(insuredname): void {
-    let as = window.localStorage.setItem("insuredname",insuredname);
+    let as = window.localStorage.setItem("insuredname", insuredname);
     const dialogRef = this.dialog.open(ReviewComponent, {
     });
 
@@ -55,19 +59,31 @@ export class OutgoingPortingRequestsComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
-  raiseGrievanceButtonClicked(portrequestId: number): boolean{
+  raiseGrievanceButtonClicked(portrequestId: number, insuredName: string): boolean {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
 
     dialogConfig.data = {
-      portingRequestId: portrequestId
+      portingRequestId: portrequestId,
+      userName: insuredName
     };
-    this.dialog.open(DisplayAllPortingRequestsComponent, dialogConfig);
+    this.dialogReference = this.dialog.open(DisplayAllPortingRequestsComponent, dialogConfig);
+    this.dialogReference.componentInstance.showAcceptRequestButton.subscribe((data) => {
+      this.clearedRequests.push(data);
+      this.showAcceptRequestButton = true;
+    });
     this.raiseGrievanceButtonIsClicked = false;
     this.idForGrievances = portrequestId;
     return true;
+  }
+  isClearedRequest(name: string): boolean {
+    if(this.clearedRequests.includes(name)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }

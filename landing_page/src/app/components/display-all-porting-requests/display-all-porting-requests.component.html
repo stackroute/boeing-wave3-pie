@@ -1,4 +1,7 @@
 <mat-dialog-content>
+  <section class="mat-body-strong" *ngIf="dataIsLoaded == false">
+    There are no pending tasks. Click "Add a new task" to add tasks.
+  </section>
   <table mat-table [dataSource]="dataSource" *ngIf="dataIsLoaded == true">
     <ng-container matColumnDef="taskName">
       <th mat-header-cell *matHeaderCellDef> Name </th>
@@ -49,7 +52,7 @@
   <button mat-raised-button (click)="addANewPendingTask()">
     Add a new task
   </button>
-  <button mat-raised-button>Send a reminder</button>
+  <button mat-raised-button (click)="sendAReminder()">Send a reminder</button>
+  <button mat-raised-button mat-dialog-close class="clear-for-porting" (click)="clearForPorting()">Clear For Porting</button>
   <button mat-raised-button mat-dialog-close md-raised-button>Close</button>
-
 </div>

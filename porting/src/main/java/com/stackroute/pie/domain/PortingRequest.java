@@ -8,9 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
