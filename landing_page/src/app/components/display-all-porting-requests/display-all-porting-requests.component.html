@@ -1,4 +1,7 @@
 <mat-dialog-content>
+  <section class="mat-body-strong" *ngIf="dataIsLoaded == false">
+    There are no pending tasks. Click "Add a new task" to add tasks.
+  </section>
   <table mat-table [dataSource]="dataSource" *ngIf="dataIsLoaded == true">
     <ng-container matColumnDef="taskName">
       <th mat-header-cell *matHeaderCellDef> Name </th>
