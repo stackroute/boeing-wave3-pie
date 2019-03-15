@@ -98,6 +98,7 @@ import { PolicybuymailComponent } from './components/policybuymail/policybuymail
 import { AddNewTaskComponent } from './components/add-new-task/add-new-task.component';
 import { TermsAndConditionsComponent } from './components/terms-and-conditions/terms-and-conditions.component';
 import { GuestUserComponent } from './components/guest-user/guest-user.component';
+import { DeletepopupComponent } from './components/deletepopup/deletepopup.component';
 
 
 const routes: Routes = [];
@@ -154,9 +155,10 @@ const routes: Routes = [];
     PolicybuymailComponent,
     AddNewTaskComponent,
     TermsAndConditionsComponent,
-    GuestUserComponent
+    GuestUserComponent,
+    DeletepopupComponent
   ],
-  entryComponents: [CalculatorComponent,ReviewComponent,DialogbotComponent,BuyPolicyComponent,TermsAndConditionsComponent],
+  entryComponents: [CalculatorComponent,ReviewComponent,DialogbotComponent,DeletepopupComponent,TermsAndConditionsComponent],
   
   imports: [
     BrowserModule,

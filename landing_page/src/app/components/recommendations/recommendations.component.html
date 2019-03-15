@@ -150,21 +150,14 @@
       
                   </ul>
                   
-                  
-                  <!-- <p>Policy Id : {{ blog.policyId }}</p>
-                    <p>Insurer Name: {{blog.insurerName}}</p>
-                    <p>Monthly Premium: {{ blog.monthlyPremium }}</p>
-                    <p>Waiting Period: {{ blog.waitingPeriod }}</p>
-                    <p>PolicyName: {{blog.policyName}}</p>
-                </div>
-                <div class="panel-footer">
-                    <a
-                    [routerLink] = "['/policyDetails', blog.insurerName, blog.policyName]"
-                    class="btn btn-primary" style ="margin-right: 0%;margin-left: 0%; margin-bottom: 2%; font-size: 15px;" onClick="window.location.reload();"
-                    >Read more</a>       
-                   <a [routerLink] = "['/buyPolicy',blog.insurerName,blog.policyName,userName]" class ="btn btn-primary" style ="margin-right: 5%;margin-left: 20%; margin-bottom: 2%;"> Buy </a> -->
-                    <button mat-raised-button (click)="openDialog(blog.insurerName,blog.policyName,userName)" style="position: relative; right: 0;margin-top: 0px;">Buy</button>
-                    <a [routerLink] = "['/buyPolicy',blog.insurerName,blog.policyName,userName]" class ="btn btn-primary" style ="margin-right: 5%;margin-left: 20%; margin-bottom: 2%; font-size: 15px;"> Buy </a>
+                  <div class="panel-footer">
+                   <a
+                   [routerLink] = "['/policyDetails', blog.insurerName, blog.policyName]"
+                   class="btn btn-primary" style ="margin-right: 5%;margin-left: 20%; margin-bottom: 2%;" onClick="window.location.reload();"
+                   >Read more</a>       
+                   <!-- <a [routerLink] = "['/buyPolicy',blog.insurerName,blog.policyName,userName]" class ="btn btn-primary" style ="margin-right: 5%;margin-left: 20%; margin-bottom: 2%;"> Buy </a> -->
+                   <button mat-raised-button (click)="openDialog(blog.insurerName,blog.policyName,userName)" style="position: relative; right: 0;margin-top: 0px;">Buy</button>
+                    </div>
                     </div>
               </div>
               <br/>

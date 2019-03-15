@@ -1,7 +1,10 @@
+import { DeletepopupComponent } from './../deletepopup/deletepopup.component';
 import { InsurerPolicyService } from './../../service/insurer-policy.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { RequestService } from './../../service/request.service';
+import { MatDialog } from '@angular/material';
+
 
 @Component({
  selector: 'app-get-company-policy',
@@ -27,7 +30,7 @@ public portingRequest = {
    insurerProduct: this.oldpolicyname
 }
 
-constructor(public _route: ActivatedRoute, private router: Router, public insurerPolicyService: InsurerPolicyService, private requestService: RequestService) { }
+constructor(public _route: ActivatedRoute, private router: Router, public insurerPolicyService: InsurerPolicyService, private requestService: RequestService,public dialog: MatDialog) { }
 ngOnInit() {
 this.insurerLicense = this._route.snapshot.paramMap.get('insurerLicense');
   console.log('In delete component : ' + this.insurerLicense);
@@ -65,4 +68,18 @@ port(insurername,policyname,exclusionperiod){
   this.router.navigate(['/dashboard',window.localStorage.getItem('insuredname')]);
 }
 
+
+Delete(insurerName,policyName): void {
+  window.localStorage.setItem("insurername", insurerName);
+  window.localStorage.setItem("policyname", policyName);
+
+  const dialogRef = this.dialog.open(DeletepopupComponent,{});
+
+  dialogRef.componentInstance.insurerName =  insurerName;
+  dialogRef.componentInstance.policyName =  policyName;
+
+  dialogRef.afterClosed().subscribe(result =>{
+    console.log('The dialog was closed');
+  });
+}
 }
