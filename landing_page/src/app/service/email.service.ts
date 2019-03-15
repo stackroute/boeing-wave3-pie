@@ -25,6 +25,6 @@ export class EmailService {
    }
    getEmailId(userName: string): Observable<string> {
     //  return this.httpClient.get("http://localhost:8092/userreg/api/auth/email/" + userName, {responseType: 'text'});
-     return this.httpClient.get("http://13.126.73.190:8092/userreg/api/auth/email/" + userName, {responseType: 'text'});
+     return this.httpClient.get<string>("http://13.126.73.190:8092/userreg/api/auth/email/" + userName);
    }
 }
