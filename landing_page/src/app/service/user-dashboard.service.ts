@@ -6,10 +6,10 @@ import { catchError, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UserDashboardService {
-public localMongoUrl = 'http://13.126.73.190:8092/porting/api/auth/requests/';
- public recommendationsUrl = 'http://13.126.73.190:8086/api/v1/policyByAgeGender/';
- public profileUrl = 'http://13.126.73.190:8092/userreg/api/auth/profile/';
- public policiesUrl = 'http://13.126.73.190:8092/policy/api/v1/policies/';
+public localMongoUrl = 'https://13.126.73.190:8092/porting/api/auth/requests/';
+ public recommendationsUrl = 'https://13.126.73.190:8092/recommendations/api/v1/policyByAgeGender/';
+ public profileUrl = 'https://13.126.73.190:8092/userreg/api/auth/profile/';
+ public policiesUrl = 'https://13.126.73.190:8092/policy/api/v1/policies/';
  constructor(private http: HttpClient) {
    console.log('http service got called');
  }

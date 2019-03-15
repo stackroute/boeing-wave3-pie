@@ -14,9 +14,9 @@ export class PolicyService {
       // 'Authorization': 'my-auth-token'
     })
   };
-  public policyDetailsUrl = 'http://13.126.73.190:8092/policy/api/v1/policy/';
-  public portingpolicy = 'http://13.126.73.190:8092/policy/api/v1/';
-  public buypolicy = 'http://13.126.73.190:8092/externalinsurerdbservice/api/v1/external/buypolicy';
+  public policyDetailsUrl = 'https://13.126.73.190:8092/policy/api/v1/policy/';
+  public portingpolicy = 'https://13.126.73.190:8092/policy/api/v1/';
+  public buypolicy = 'https://13.126.73.190:8092/externalinsurerdbservice/api/v1/external/buypolicy';
   policyDetails:any;
   constructor(private http: HttpClient) {
     console.log('http service got called');

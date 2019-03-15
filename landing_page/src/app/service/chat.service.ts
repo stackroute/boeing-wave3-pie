@@ -14,7 +14,7 @@ export class Message {
 })
 export class ChatService {
   variable: any;
-  public baseUrl = "http://13.126.73.190:8070/ChatBotService";
+  public baseUrl = "https://13.126.73.190:8092/chatbot/ChatBotService";
   readonly token = environment.dialogflow.angularBot;
   readonly client = new ApiAiClient({ accessToken: this.token });
   conversation = new BehaviorSubject<Message[]>([]);
@@ -59,7 +59,7 @@ export class ChatService {
   showChatResults(): any {
     console.log("inside chatfghj");
     return this.http.get(
-      "http://13.126.73.190:8092/searchservice/api/v1/chatpolicy"
+      "https://13.126.73.190:8092/searchservice/api/v1/chatpolicy"
     );
   }
 }

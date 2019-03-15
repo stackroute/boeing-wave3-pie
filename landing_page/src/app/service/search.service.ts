@@ -12,7 +12,7 @@ export class SearchService {
     visible: boolean;
     v: any;
     
-    public baseUrl = 'http://13.126.73.190:8095/api/v1/';
+    public baseUrl = 'https://13.126.73.190:8092/searchservice/api/v1/';
     private messageSource = new BehaviorSubject('');
   currentMessage = this.messageSource.asObservable();
     constructor(private http: HttpClient) {

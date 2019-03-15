@@ -13,7 +13,7 @@ export class InsurerIncomingportingrequestService {
             this.visible = false;
         }
     
-        baseUrl = 'http://13.126.73.190:8092/porting/api/v1/';
+        baseUrl = 'https://13.126.73.190:8092/porting/api/v1/';
         changeMessage(message: string) {
             this.trackName = message;
             console.log('in service');
