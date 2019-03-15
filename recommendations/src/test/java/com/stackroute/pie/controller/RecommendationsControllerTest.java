@@ -75,7 +75,7 @@ public class RecommendationsControllerTest {
         //mockMvc= MockMvcBuilders.standaloneSetup(recommendationsController).build();
         mockMvc=MockMvcBuilders.standaloneSetup(recommendationsController).build();
         insurer1=new Insurer(1L,"Starhealth Insurance Company","1INS001","starhealth@gmail.com","starpass","Bangalore","what is ypur favourite food","cake");
-        policy1=new Policy(11L,"Starhealth Insurance Company+Starhealth Family Policy","Starhealth Insurance Company","INS001","Starhealth Family Policy",10,60,"Family","female",2,3,3455,2455,"This is the best policy for Family",diseases,cashlessHospitals,termsAndConditions,insuredList,paymentList,"image1.jpg");
+//        policy1=new Policy(11L,"Starhealth Insurance Company+Starhealth Family Policy","Starhealth Insurance Company","INS001","Starhealth Family Policy",10,60,"Family","female",2,3,3455,2455,"This is the best policy for Family",diseases,cashlessHospitals,termsAndConditions,insuredList,paymentList,"image1.jpg");
         insured1=new Insured(1,"tejaswinisrinivas","teju","teju@gmail.com","teju1997","female","cake",22L,"Cancer",familyMembers,1);
 
     }
