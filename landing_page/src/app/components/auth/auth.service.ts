@@ -15,8 +15,8 @@ const httpOptions = {
 export class AuthService {
   private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private loginUrl = 'http://13.126.73.190:8092/commonauth/api/auth/signin';
-  private countUrl = 'http://13.126.73.190:8092/commonauth/api/auth/count/';
-  private signupUrl = 'http://13.126.73.190:8092/userreg/api/auth/signup';
+  private countUrl = 'https://13.126.73.190:8092/commonauth/api/auth/count/';
+  private signupUrl = 'https://localhost:8092/userreg/api/auth/signup';
   // private loginUrl = 'http://13.126.73.190:8096/api/auth/signin';
   // private signupUrl = 'http://13.126.73.190:8093/api/auth/signup';
 
