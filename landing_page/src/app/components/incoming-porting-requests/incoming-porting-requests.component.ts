@@ -45,8 +45,18 @@ export class IncomingPortingRequestsComponent implements OnInit {
 
   
   port(request) {
-    this.portrequest.getSearch(request).subscribe(data=>console.log(data));
-    this.reloadData();
+    this.portrequest.getSearch(request).subscribe(data=>{
+
+      this.requests = this.incoming.getSearch(this.insurerLicense).subscribe(data =>
+        {
+          this.requests = data;
+          console.log(data);
+          console.log("after service2 method");
+      });
+
+      this.reloadData();
+
+    });
     
   }
 

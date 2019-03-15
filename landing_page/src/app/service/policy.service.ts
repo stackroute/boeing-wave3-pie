@@ -15,7 +15,8 @@ export class PolicyService {
     })
   };
   public policyDetailsUrl = 'http://13.126.73.190:8092/policy/api/v1/policy/';
-  public buypolicy = 'http://13.126.73.190:8092/externalinsurerdbservice/api/v1/policy/external/buypolicy';
+  public portingpolicy = 'http://13.126.73.190:8092/policy/api/v1/';
+  public buypolicy = 'http://13.126.73.190:8092/externalinsurerdbservice/api/v1/external/buypolicy';
   policyDetails:any;
   constructor(private http: HttpClient) {
     console.log('http service got called');
@@ -34,6 +35,10 @@ public buyPolicy(policy): any {
   public getPolicyByPolicyName(policyName): any {
     console.log("inside service");
    
-    return this.http.get(this.policyDetailsUrl +'policyByName/' + policyName);
+    return this.http.get(this.portingpolicy +'policyByName/' + policyName);
    }
+  public getAllPolicies(): any{
+    console.log("inside get all policies");
+    return this.http.get(this.portingpolicy + 'policies');
+  }
 }

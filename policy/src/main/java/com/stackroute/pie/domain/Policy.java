@@ -90,6 +90,4 @@ public class Policy {
         this.diseasesCovered = diseasesCovered;
         this.cashlessHospitals = cashlessHospitals;
     }
-
-
 }

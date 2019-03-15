@@ -6,6 +6,17 @@
     
 }
 
+ .top-plans .top-plans-container .plans-container .plan-wrap .plan-content > ul li:before {
+    position: absolute;
+    content: "";
+    top: 0px;
+    left: 0px;
+    width: 1em;
+    height: 1em;
+    background: transparent url(/../assets/img/tick.png) center no-repeat;
+    background-size: contain;
+}
+
 .carousel-caption {
     /* position: absolute; */
     bottom: 20%;
@@ -310,7 +321,7 @@
 
 .top-plans .top-plans-container .plans-container .plan-wrap .plan-content .plan-tag {
     font-family: worksans_regular;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1em;
     margin-bottom: 4px;
     color: #ffcc00;
@@ -325,7 +336,7 @@
 }
 
 .top-plans .top-plans-container .plans-container .plan-wrap .plan-content > ul {
-    font-family: worksans_regular;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
     margin-bottom: 18px;
     list-style: none;
     flex-grow: 1;
@@ -438,6 +449,31 @@ display: block;
 @media (max-width: 1200px){
  .top-plans .top-plans-container .plans-container .plan-wrap:nth-child(2) .bg {
     background-image: url(/../assets/img/easy-health-banner.jpg) !important;
+}
+}
+
+@media (max-width: 767px){
+ .claim-process .container {
+    background: inherit;
+}
+}
+
+@media (max-width: 767px){
+ .claim-process .claim-process-container .process-container {
+    flex-direction: column;
+    align-items: center;
+}
+}
+
+@media (max-width: 767px){
+ .claim-process .claim-process-container .process-container:after {
+    content: "";
+    position: absolute;
+    height: 70%;
+    width: 0;
+    border: 1px dashed #fff;
+    top: 15%;
+    left: 50%;
 }
 }
 

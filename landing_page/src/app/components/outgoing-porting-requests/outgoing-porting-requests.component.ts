@@ -2,7 +2,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { InsurerOutgoingportingrequestService } from './../../service/insurer-outgoingportingrequest.service';
 import { InsurerAcceptoutgoingportingrequestService } from './../../service/insurer-acceptoutgoingportingrequest.service';
-import { MatDialog, MatDialogConfig } from '@angular/material';
+import {MatDialog, MatDialogConfig, MatTableDataSource} from '@angular/material';
 import { AllPortingRequestsComponent } from '../all-porting-requests/all-porting-requests.component';
 import { ReviewComponent } from '../review/review.component';
 import { DisplayAllPortingRequestsComponent } from '../display-all-porting-requests/display-all-porting-requests.component';
@@ -12,8 +12,13 @@ import { DisplayAllPortingRequestsComponent } from '../display-all-porting-reque
   styleUrls: ['./outgoing-porting-requests.component.css']
 })
 export class OutgoingPortingRequestsComponent implements OnInit {
+  showAcceptRequestButton: boolean;
+  clearedRequests: number[] = [];
+  dialogReference: any;
   insurerLicense: any;
   requests: any;
+  displayedColumns: string[] = ['requestID', 'userName', 'oldInsurerName','modifyStatusButton'];
+  dataSource = new MatTableDataSource<Request[]>();
   currentCompanyName: string;
   raiseGrievanceButtonIsClicked: boolean;
   idForGrievances: number;
@@ -21,6 +26,7 @@ export class OutgoingPortingRequestsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private incoming: InsurerOutgoingportingrequestService, private portrequest: InsurerAcceptoutgoingportingrequestService, private dialog: MatDialog) { }
 
   ngOnInit() {
+    this.showAcceptRequestButton = false;
     this.raiseGrievanceButtonIsClicked = false;
     console.log("inside outgoing");
     this.insurerLicense = this.route.snapshot.paramMap.get('insurerLicense');
@@ -33,8 +39,13 @@ export class OutgoingPortingRequestsComponent implements OnInit {
 
   }
   port(request) {
+    console.log("xyz");
     this.portrequest.getSearch(request).subscribe(data => console.log(data));
+    console.log("xynz");
+
+    alert("successfull");
     this.reloadData();
+   
   }
   reloadData() {
     window.location.reload();
@@ -58,10 +69,21 @@ export class OutgoingPortingRequestsComponent implements OnInit {
       portingRequestId: portrequestId,
       userName: insuredName
     };
-    this.dialog.open(DisplayAllPortingRequestsComponent, dialogConfig);
+    this.dialogReference = this.dialog.open(DisplayAllPortingRequestsComponent, dialogConfig);
+    this.dialogReference.componentInstance.showAcceptRequestButton.subscribe((data) => {
+      this.clearedRequests.push(data);
+      this.showAcceptRequestButton = true;
+    });
     this.raiseGrievanceButtonIsClicked = false;
     this.idForGrievances = portrequestId;
     return true;
+  }
+  isClearedRequest(portingRequestId: number): boolean {
+    if(this.clearedRequests.includes(portingRequestId)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }

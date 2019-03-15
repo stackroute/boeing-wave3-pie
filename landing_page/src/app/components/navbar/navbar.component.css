@@ -40,6 +40,9 @@
   flex: 1 1 auto;
 }
 
+.lead{
+  color: white;
+}
 .container {
   position: absolute;
   top: 0;
@@ -68,6 +71,29 @@ mat-sidenav {
   max-height: 130px;
 }
 
+#add-button2{
+  display: inline-block;
+ top: auto;
+ right: 60px;
+ bottom: 70px;
+ position: fixed;
+ left: auto;
+ width: 50px;
+ height: 40px;
+ border-radius: 30px;
+ padding: 0;
+ border: 0;
+ background-size: 100%;
+ z-index: inherit;
+}
+
+#add-button2 img{
+  display: inline-block;
+  height: inherit;
+  width: 40px;
+  border-radius: 40px;
+} 
+
 .no-shadow {
   box-shadow: none !important;
 }
@@ -88,11 +114,24 @@ mat-sidenav {
   border-image:
   linear-gradient(to top, #c1c1c1, rgba(0, 0, 0, 0)) 1 100%
 }
-
+.btn-outline-success {
+  /* color: #5cb85c; */
+  background-image: none;
+  background-color: transparent;
+  border-color: white;
+}
+.glyphicon-search:before {
+  content: "\e003";
+  color: white;
+}
 .m-0 {
   margin: 0 !important;
 }
-
+.mat-toolbar.mat-primary {
+  /* background: #673ab7; */
+  color: #fff;
+  background-color: #071142;
+}
 .mt-0,
 .my-0 {
   margin-top: 0 !important;
@@ -1436,7 +1475,7 @@ mat-sidenav {
 .lead {
   font-size: 2.50rem;
   font-weight: 300;
-  color: black;
+  color: white;
 }
 
 .bg-primary {

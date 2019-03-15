@@ -22,8 +22,10 @@ export class GuestUserComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router, private policyService: PolicyService, private emailService: EmailService) { }
  
   ngOnInit() {
-    this.object.insurername = this.route.snapshot.paramMap.get('insurername');
-    this.object.policyname = this.route.snapshot.paramMap.get('policyname');
+    // this.object.insurername = this.route.snapshot.paramMap.get('insurername');
+    // this.object.policyname = this.route.snapshot.paramMap.get('policyname');
+    this.object.insurername = window.localStorage.getItem('recoinsurername');
+    this.object.policyname = window.localStorage.getItem('recopolicyname');
     this.guestUser = this.formBuilder.group({
       email:['',Validators.required],
       phone:['',Validators.required]
@@ -32,26 +34,33 @@ export class GuestUserComponent implements OnInit {
     console.log("insurername "+ this.object.insurername);
   }
   submitForm(email){
-    const signUpForm = Object.assign(this.guestUser.value, this.object);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-    console.log("sign "+ signUpForm);
-    // this.router.navigate(["/buyPolicy", signUpForm]);
-    this.requestId = this.policyService.buyPolicy(signUpForm).subscribe(
+    // const signUpForm = Object.assign(this.guestUser.value, this.object); 
+    const obj1 = Object.assign({},this.object);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+    console.log("sign "+ obj1.insurername);
+    const obj2 = Object.assign(obj1,this.guestUser.value);
+    console.log(obj2.insurername);
+
+    // this.router.navigate(["/buyPolicy", obj2]);
+    this.requestId = this.policyService.buyPolicy(obj2).subscribe(
       data => {
         this.requestId = data;
-        console.log(this.requestId);
+        console.log("inside subscribe");
+        console.log(this.requestId.id);
 
         this.sampleEmail = {"to": email, "subject": "New Policy Bought",
         "body": "Congratulations on your new  Health Insurance -"
-        + this.object.policyname+ "from" + this.object.insurername+
-        ".Your RequestId is" + this.requestId +
+        + this.object.policyname+ " from " + this.object.insurername+
+        ".Your RequestId is " + this.requestId.id +
          ".You can avail the services within 7 days."
       };
         this.emailService.sendEmail(this.sampleEmail).subscribe();
+        this.router.navigate(['/home']);
       },
       error => {
         console.log("error occured");
         console.log(error);
       }
+      
     );
   }
 }

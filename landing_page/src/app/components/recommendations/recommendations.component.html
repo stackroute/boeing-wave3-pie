@@ -133,24 +133,31 @@
 
       <div class="container" style="text-align:center; margin-left: 0%;">
           <div class="row" style="text-align:center">
-            <div class="col-md-12" style="font-size:18px">Recommendations</div>
+            <div class="col-md-12" style="font-size:18px">These are the Recommended Policies to buy</div>
             <br /><br /><br /><br />
           </div>
-          <div class="row" style="text-align:center;font-size : large">
+          <div class="row" style="text-align:center;font-size : large;">
             <div *ngFor="let blog of recommendations" class="col-md-4">
               <div class="panel panel-default">
                 <div class="panel-body">
-                    <p>Policy Id : {{ blog.policyId }}</p>
-                    <p>Insurer Name: {{blog.insurerName}}</p>
-                    <p>Monthly Premium: {{ blog.monthlyPremium }}</p>
-                    <p>Waiting Period: {{ blog.waitingPeriod }}</p>
-                </div>
-                <div class="panel-footer">
-                    <a
-                    [routerLink] = "['/policyDetails', blog.insurerName, blog.policyName]"
-                    class="btn btn-primary" style ="margin-right: 5%;margin-left: 20%; margin-bottom: 2%;" onClick="window.location.reload();"
-                    >Read more</a>       
-                    <a [routerLink] = "['/buyPolicy',blog.insurerName,blog.policyName,userName]" class ="btn btn-primary" style ="margin-right: 5%;margin-left: 20%; margin-bottom: 2%;"> Buy </a>
+                    <img class="card-img-top" src='{{blog.imageUrl}}' style="width:280px;" alt="Card image cap">
+
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Policy Id: {{ blog.policyId }}</li>
+                    <li class="list-group-item">Insurer Name: {{blog.insurerName}}</li>
+                    <li class="list-group-item">Monthly Premium: {{ blog.monthlyPremium }}</li>
+                    <li class="list-group-item">Waiting Period: {{ blog.waitingPeriod }}</li>
+      
+                  </ul>
+                  
+                  <div class="panel-footer">
+                   <a
+                   [routerLink] = "['/policyDetails', blog.insurerName, blog.policyName]"
+                   class="btn btn-primary" style ="margin-right: 5%;margin-left: 20%; margin-bottom: 2%;" onClick="window.location.reload();"
+                   >Read more</a>       
+                   <!-- <a [routerLink] = "['/buyPolicy',blog.insurerName,blog.policyName,userName]" class ="btn btn-primary" style ="margin-right: 5%;margin-left: 20%; margin-bottom: 2%;"> Buy </a> -->
+                   <button mat-raised-button (click)="openDialog(blog.insurerName,blog.policyName,userName)" style="position: relative; right: 0;margin-top: 0px;">Buy</button>
+                    </div>
                     </div>
               </div>
               <br/>
