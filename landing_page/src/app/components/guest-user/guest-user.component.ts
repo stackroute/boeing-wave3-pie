@@ -27,9 +27,8 @@ export class GuestUserComponent implements OnInit {
     this.object.insurername = window.localStorage.getItem('recoinsurername');
     this.object.policyname = window.localStorage.getItem('recopolicyname');
     this.guestUser = this.formBuilder.group({
-      email:['',Validators.required],
-      phone:['',Validators.required]
-    });
+      email:['',Validators.required]
+        });
     console.log("guest user "+ this.guestUser);
     console.log("insurername "+ this.object.insurername);
   }
@@ -51,7 +50,7 @@ export class GuestUserComponent implements OnInit {
         "body": "Congratulations on your new  Health Insurance -"
         + this.object.policyname+ " from " + this.object.insurername+
         ".Your RequestId is " + this.requestId.id +
-         ".You can avail the services within 7 days."
+         ".Representative from " + this.object.insurername + "will contact you within 7 days."
       };
         this.emailService.sendEmail(this.sampleEmail).subscribe();
         this.router.navigate(['/home']);
