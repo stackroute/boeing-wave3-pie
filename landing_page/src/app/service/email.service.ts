@@ -20,8 +20,8 @@ export class EmailService {
 
    }
    sendEmail(email: Email): Observable<Email> {
-      return this.httpClient.post<Email>("http://13.126.73.190:8092/email/api/v1/email/", email, this.httpOptions);
       // return this.httpClient.post<Email>("http://localhost:8092/email/api/v1/email/", email, this.httpOptions);
+      return this.httpClient.post<Email>("http://13.126.73.190:8092/email/api/v1/email/", email, this.httpOptions);
    }
    getEmailId(userName: string): Observable<string> {
     //  return this.httpClient.get("http://localhost:8092/userreg/api/auth/email/" + userName, {responseType: 'text'});
