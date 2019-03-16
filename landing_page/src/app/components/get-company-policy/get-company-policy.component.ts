@@ -72,9 +72,11 @@ port(insurername,policyname,exclusionperiod){
 Delete(insurerName,policyName): void {
   window.localStorage.setItem("insurername", insurerName);
   window.localStorage.setItem("policyname", policyName);
+  console.log("insurername"+ insurerName);
+  console.log("policyname"+ policyName);
+
 
   const dialogRef = this.dialog.open(DeletepopupComponent,{});
-
   dialogRef.componentInstance.insurerName =  insurerName;
   dialogRef.componentInstance.policyName =  policyName;
 

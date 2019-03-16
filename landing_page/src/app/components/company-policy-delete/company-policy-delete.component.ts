@@ -10,15 +10,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CompanyPolicyDeleteComponent implements OnInit {
 policyName;
 insurerName;
+insurerLicense;
  constructor(private route: ActivatedRoute, private router: Router, public insurerPolicyService: InsurerPolicyService) { }
 
 
  ngOnInit() {
   this.insurerName = this.route.snapshot.paramMap.get('insurerName');
    this.policyName = this.route.snapshot.paramMap.get('policyName');
+   this.insurerLicense = window.localStorage.getItem("insurername");
    console.log(this.policyName)
    console.log(this.insurerName)
-   this.insurerPolicyService.deletePolicy(this.insurerName,this.policyName).subscribe(policy => console.log(policy));  
- }
- 
+   this.insurerPolicyService.deletePolicy(this.insurerName,this.policyName).subscribe(policy => console.log(policy)); 
+   this.router.navigate(["/myCompanyPolicy", this.insurerLicense]);
+ } 
 }
