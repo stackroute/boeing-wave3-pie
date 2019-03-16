@@ -43,12 +43,16 @@ table {
     background-color: white;
 }
 .red-highlight {
-    background-color: red;
+    background-color: #e54e4e;
     font-weight: bold;
-    color: white;
-
 }
 button {
     background-color: blue;
-    text: blue;
+    color: white;
+}
+.mat-cell-completed {
+    color: black;
+}
+.mat-cell-not-completed {
+    color: white;
 }
