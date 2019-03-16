@@ -1,20 +1,20 @@
-# Stage 0, for downloading project’s npm dependencies, building and compiling the app.
-# Angular 6 requires node:8.9+
-FROM node:10 as node
-WORKDIR /app
-COPY package.json /app/
+#Stage 1
+FROM node:8.11.2-alpine as node
+WORKDIR /usr/src/app
+COPY package*.json ./
 RUN npm install
-COPY ./ /app/
-RUN npm run build --prod
-# Stage 1, for copying the compiled app from the previous step and making it ready for production with Nginx
-FROM nginx:alpine
-COPY --from=node /app/dist/landing /usr/share/nginx/html
-COPY nginx/nginx.conf /etc/nginx/nginx.conf
-RUN apk update
-RUN apk upgrade
-RUN apk add --no-cache bash
-RUN apk add openssl
-RUN /bin/bash -c "openssl req -x509 -out etc/ssl/localhost.crt -keyout etc/ssl/localhost.key \
-      -newkey rsa:2048 -nodes -sha256 \
-      -subj '/CN=localhost' -extensions EXT -config <( \
-       printf '[dn]\nCN=localhost\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:localhost\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth')"
+RUN npm install ngx-file-drop
+RUN npm install angular-bootstrap-md --save
+RUN npm install rxjs-compat
+RUN npm install api-ai-javascript
+RUN npm install stompjs
+RUN npm install sockjs
+RUN npm install jquery
+RUN npm install browser-sync --save-dev
+RUN npm i net -S
+COPY . .
+RUN npm run build
+# Stage 2
+FROM node
+RUN npm install http-server -g
+CMD ["http-server","-p","8063", "dist/landing","-S","--cert","ssl/cert.pem","--key","ssl/key.pem"]
