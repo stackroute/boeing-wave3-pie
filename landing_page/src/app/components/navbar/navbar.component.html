@@ -10,7 +10,7 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
   />
 
-  <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse sticky-top"  *ngIf = "!info.token">
+  <nav class="navbar navbar-toggleable-md navbar-inverse navbar-dark bg-dark bg-inverse sticky-top"  *ngIf = "!info.token">
     <button
       class="navbar-toggler navbar-toggler-right"
       type="button"
@@ -206,6 +206,7 @@
                 mat-list-item
                 [routerLink]="['/myprofile', insuredName]"
             routerLinkActive="active"
+            style="font-size:13px;"
                >
               Update profile</a
               >
@@ -214,6 +215,7 @@
                 mat-list-item
                 [routerLink]="['/familyMembers', insuredName]"
             routerLinkActive="active"
+            style="font-size:13px;"
               >Add Family Members</a
               >
             </mat-nav-list>
@@ -236,6 +238,7 @@
                 mat-list-item
                 [routerLink]="['/porting',insuredName]"
             routerLinkActive="active"
+            style="font-size:13px;"
                >
                 Apply  for porting request</a
               >
@@ -243,7 +246,8 @@
               <a
                 mat-list-item
                 href='https://economictimes.indiatimes.com/wealth/insure/all-you-need-to-know-about-porting-your-health-insurance-policy/articleshow/67393982.cms'
-              >Things to Check</a
+                style="font-size:13px;"
+                >Things to Check</a
               >
               <mat-divider></mat-divider>
             </mat-nav-list>

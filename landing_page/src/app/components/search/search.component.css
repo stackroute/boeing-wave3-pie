@@ -153,6 +153,7 @@ ul li {
     height: 1em;
     background: transparent url(/../assets/img/tick.png) center no-repeat;
     background-size: contain;
+
 }
 
 
@@ -164,9 +165,19 @@ ul li {
   }
 
   .card-img-top {
-    width:320px;
+    width:260px;
 }
 
 .col-md-4{
     height: 527px;
 }
+
+
+ .row{
+        margin-right: 0%;
+        margin-left:0%;
+    }
+    
+  .container {
+      overflow: hidden;
+  }
