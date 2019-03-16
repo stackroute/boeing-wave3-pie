@@ -145,7 +145,6 @@
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item">Policy Id: {{ blog.policyId }}</li>
                     <li class="list-group-item">Insurer Name: {{blog.insurerName}}</li>
-                    <li class="list-group-item">Monthly Premium: {{ blog.monthlyPremium }}</li>
                     <li class="list-group-item">Waiting Period: {{ blog.waitingPeriod }}</li>
       
                   </ul>
@@ -153,11 +152,13 @@
                   <div class="panel-footer">
                    <a
                    [routerLink] = "['/policyDetails', blog.insurerName, blog.policyName]"
-                   class="btn btn-primary" style ="margin-right: 5%;margin-left: 20%; margin-bottom: 2%;" onClick="window.location.reload();"
+                   class="btn btn-primary" style ="margin-right: 0%;margin-left:0%; margin-bottom: 2%; font-size: 15px;" onClick="window.location.reload();"
                    >Read more</a>       
                    <!-- <a [routerLink] = "['/buyPolicy',blog.insurerName,blog.policyName,userName]" class ="btn btn-primary" style ="margin-right: 5%;margin-left: 20%; margin-bottom: 2%;"> Buy </a> -->
-                   <button mat-raised-button (click)="openDialog(blog.insurerName,blog.policyName,userName)" style="position: relative; right: 0;margin-top: 0px;">Buy</button>
+                   <button class="btn btn-primary" (click)="openDialog(blog.insurerName,blog.policyName,userName)" style=" margin-right: 5%; margin-left:20%;margin-bottom:2%; font-size: 15px;">Buy</button>
                     </div>
+
+                    
                     </div>
               </div>
               <br/>

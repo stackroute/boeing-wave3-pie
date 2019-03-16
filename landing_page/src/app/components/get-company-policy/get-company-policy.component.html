@@ -44,17 +44,15 @@
             <div class="panel-heading">Policy Name: {{ count.policyName }}</div>
 
           <div class="panel-body">
-              <img class="card-img-top" src='{{count.imageUrl}}' style="width:280px;" alt="Card image cap">
+              <img class="card-img-top" src='{{count.imageUrl}}' style="width:260px; height: 174px;" alt="Card image cap">
 
             <ul class="list-group list-group-flush">
               <li class="list-group-item">PolicyId: {{ count.policyId }}</li>
               <li class="list-group-item">Policy Type: {{count.policyType}}</li>
               <li class="list-group-item">Genger Avail : {{count.genderAvail}}</li>
-              <li class="list-group-item">Min Sum Insured: {{count.minSumInsured}}</li>
-              <li class="list-group-item">Max Sum Insured: {{count.maxSumInsured}}</li>
+              <li class="list-group-item"> Sum Insured: {{count.minSumInsured}} - {{count.maxSumInsured}}</li>
               <li class="list-group-item">Policy Term: {{count.policyTerm}}</li>
               <li class="list-group-item">Waiting Period: {{ count.waitingPeriod }}</li>
-
             </ul>
 
             <!-- <p>PolicyId: {{ count.policyId }}</p>

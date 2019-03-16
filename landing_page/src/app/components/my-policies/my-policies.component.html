@@ -63,18 +63,16 @@
       <div class="row" style="text-align:center;font-size : large">
         <div *ngFor="let count of policies" class="col-md-4">
           <div class="panel panel-default">
-              <div class="panel-heading">Policy Name: {{ count.policyName }}</div>
+              <div class="panel-heading">Policy Name: {{ count.policyName | uppercase}}</div>
  
             <div class="panel-body">
-                <img class="card-img-top" src='{{count.imageUrl}}' style="width:280px;" alt="Card image cap">
+                <img class="card-img-top" src='{{count.imageUrl}}' style="width:280px; height: 180px;" alt="Card image cap">
 
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">
                  <span> PolicyId: </span>  {{ count.policyId }}</li>
                 <li class="list-group-item"> 
                   <span>InsurerName:</span> {{count.insurerName}}</li>
-                <li class="list-group-item">
-                  <span>Monthly Premium:</span> {{ count.monthlyPremium }}</li>
                 <li class="list-group-item">
                 <span>Waiting Period:</span> {{ count.waitingPeriod }}</li>
   
@@ -87,7 +85,7 @@
             <div class="panel-footer">
             <a
                     [routerLink] = "['/policyDetails', count.insurerName, count.policyName]"
-                    class="btn btn-primary" style ="margin-right: 5%;margin-left: 20%; margin-bottom: 2%;" onClick="window.location.reload();"
+                    class="btn btn-primary" style ="margin-right: 0%;margin-left: 00%; margin-bottom: 2%; font-size: 15px;" onClick="window.location.reload();"
                     >Read more</a> 
             </div>
           </div>
