@@ -62,7 +62,7 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
     this.fetchPendingTasksService.getPendingTasksById(this.portingRequestId).subscribe(pendingTasks => {
       this.pendingTasks = pendingTasks[0];
       this.dataSource = this.pendingTasks.taskList;
-      if(this.dataSource.length != 0)
+      if (this.dataSource.length != 0)
         this.dataIsLoaded = true;
     })
   }
@@ -111,6 +111,7 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
           this.email.to = data;
           this.emailService.sendEmail(this.email).subscribe();
         });
+        window.alert("Mail Sent.");
       }
       );
   }
@@ -130,6 +131,7 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
           this.emailService.sendEmail(this.email).subscribe();
         });
       })
+      window.alert("Mail Sent.");
     }
     );
   }
@@ -151,6 +153,7 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
       this.email.to = data;
 
       this.emailService.sendEmail(this.email).subscribe();
+      window.alert("Mail Sent.");
     });
   }
 
