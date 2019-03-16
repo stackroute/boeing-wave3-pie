@@ -25,8 +25,9 @@ table {
 
 .mat-header-cell{
   text-align: center;
-  background-color: lightgray;
+  background-color: blue;
   border: none;
+  color: white;
 }
 
 .mat-cell {
@@ -43,4 +44,11 @@ table {
 }
 .red-highlight {
     background-color: red;
+    font-weight: bold;
+    color: white;
+
+}
+button {
+    background-color: blue;
+    text: blue;
 }
