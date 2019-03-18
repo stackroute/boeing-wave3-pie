@@ -98,6 +98,8 @@ public class PolicyServiceImpl implements PolicyService {
                 Policy policy = policy2.get();
                 Policy policy1 = policy;
                 policyRepository.delete(policy);
+                kafkaTemplate.send("policy_deleted",policy1);
+
                 return policy1;
             }
 
