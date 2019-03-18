@@ -61,7 +61,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if (userRepository.existsByUsername(insured.getUsername())) {
             Optional<Insured> insured2 = userRepository.findByUsername(insured.getUsername());
             if(insured2.isPresent()) {
-                insured1 = userRepository.findByUsername(insured.getUsername()).get();
+                insured1 = insured2.get();
                 userRepository.deleteByUsername(insured.getUsername());
                 insured1.setEmail(insured.getEmail());
                 insured1.setFullName(insured.getFullName());
