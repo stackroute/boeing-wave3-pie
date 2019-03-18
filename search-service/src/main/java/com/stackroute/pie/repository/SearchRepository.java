@@ -17,5 +17,7 @@ public interface SearchRepository extends MongoRepository<Policy, Integer> {
     //To find policies by InsurerName
     List<Policy> findByInsurerName(String insurerName);
 
+    void deleteByPolicyId(Long policyId);
+
 }
 

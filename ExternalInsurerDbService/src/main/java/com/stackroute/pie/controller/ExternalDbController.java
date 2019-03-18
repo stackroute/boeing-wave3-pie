@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/v1")
 public class ExternalDbController {
