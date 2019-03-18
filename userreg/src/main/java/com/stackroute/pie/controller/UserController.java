@@ -82,7 +82,8 @@ public class UserController {
     public ResponseEntity user(@PathVariable("username") String username, @RequestBody Insured user) {
         ResponseEntity responseEntity;
         try {
-            Insured insured1 = userService.updateProfile(username, user);
+            user.setPassword(encoder.encode(user.getPassword()));
+            Insured insured1 = userService.updateProfile(user);
             responseEntity = new ResponseEntity(insured1, HttpStatus.OK);
 
         } catch (UserNotFoundException ex) {

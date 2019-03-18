@@ -158,16 +158,22 @@ ul li {
 
 
 
-@media (max-width: 575px) {
-    .card-img-top {
-     width:200px;
-}
+@media  (max-width: 768px) {
+   .panel-body .card-img-top {
+      width: 180px;
+    }
   }
 
   .card-img-top {
     width:260px;
 }
 
+@media (max-width: 1024px) and (min-width: 768px){
+    .panel-body .card-img-top {
+
+    width: 180px;
+     }
+   }
 .col-md-4{
     height: 527px;
 }
