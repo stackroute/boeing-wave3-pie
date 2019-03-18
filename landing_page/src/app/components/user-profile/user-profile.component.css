@@ -26,3 +26,14 @@
       label {
           font-size: 15px;
       }
+
+      .xyz {
+        background: url('/../assets/img/image1.jpg') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        width: 100%;
+        height: fit-content;
+        opacity: 0.8;
+       }
