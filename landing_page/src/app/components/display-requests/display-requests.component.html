@@ -1,8 +1,8 @@
 
 <div class="container" style="text-align:center;">
   <div class="row" style="text-align:center;font-size : large">
-      <div class="col-md-12" style="font-size:18px">My Requests</div>
-      <br /><br /><br /><br />
+      <div class="col-md-12" style="font-size:18px; z-index:1;"></div>
+      <br />
     </div>
     <div class="row" style="text-align:center;font-size : large">
             <div *ngFor="let count of requests" class="col-md-4">
@@ -10,8 +10,8 @@
           <div class="panel-heading"> Policy Name: {{count.newInsurerProduct}}</div>
           <div class="panel-body">
                <!-- <ul class="list-group list-group-flush"> -->
-
             <div *ngIf="(count.fromApproval ==0) && (count.toApproval ==0)">
+              
               <p>Status : Pending</p>
            </div>
            <div *ngIf="(count.fromApproval ==1) && (count.toApproval ==0)">

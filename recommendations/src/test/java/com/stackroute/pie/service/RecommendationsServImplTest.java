@@ -39,19 +39,6 @@ public class RecommendationsServImplTest {
 
     private Insured insured1;
 
-//    @Before
-//    public void setup(){
-//        MockitoAnnotations.initMocks(this);
-//        diseases.add("Cancer");
-//      policyList.add(policy1);
-//        insurer1=new Insurer(1L,"Starhealth Insurance Company","1INS001","starhealth@gmail.com","starpass","Bangalore","what is ypur favourite food","cake");
-////       policy1=new Policy(11,"Starhealth Insurance Company","Star Comprehensive Insurance Policy",279,1788,78,2,65,2,"female","Family",diseases);
-//        policyList.add(policy1);
-//
-//      //  policyList.add(new Policy());
-//       // insured1=new Insured(1,"tejaswinisrinivas","teju","teju@gmail.com","teju1997","female","cake",22);
-//
-//    }
 
 
     @Before
@@ -64,20 +51,15 @@ public class RecommendationsServImplTest {
         cashlessHospitals.add("Appolo Hospital");
         familyMembers1 = new FamilyMembers("teju","manasa",22L,"sister","female");
         familyMembers.add(familyMembers1);
-        //mockMvc= MockMvcBuilders.standaloneSetup(recommendationsController).build();
-//        mockMvc= MockMvcBuilders.standaloneSetup(recommendationsController).build();
+
         insurer1=new Insurer(1L,"Starhealth Insurance Company","1INS001","starhealth@gmail.com","starpass","Bangalore","what is ypur favourite food","cake");
-//        policy1=new Policy(11L,"Starhealth Insurance Company+Starhealth Family Policy","Starhealth Insurance Company","INS001","Starhealth Family Policy",10,60,"Family","female",2,3,3455,2455,"This is the best policy for Family",diseases,cashlessHospitals,termsAndConditions,insuredList,paymentList,"image1.jpg");
-      insured1=new Insured(1,"tejaswinisrinivas","teju","teju@gmail.com","teju1997","female","cake",22L,"Cancer",familyMembers,1);
-       // insured1=new Insured(1,"tejaswinisrinivas","Starhealth Insurance Company+Starhealth Family Policy","teju@gmail.com","teju1997",22L,"female",)
 
-    }
-    @Test
-    public void findUser() {
-       // when(recommendationsRepo.findUser(username));
+        policy1=new Policy(11L,"Starhealth Insurance Company+Starhealth Family Policy","Starhealth Insurance Company","INS001","Starhealth Family Policy",10,60,"family","female",2,5,1,2622,7383,"best policy",diseases,cashlessHospitals,termsAndConditions,insuredList,paymentList,"image1");
+        insured1=new Insured(1,"tejaswinisrinivas","teju","teju@gmail.com","teju1997","female","cake",22L,"Cancer",familyMembers,1);
 
 
     }
+
 
     @Test
     public void createInsurer() {

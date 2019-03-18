@@ -25,8 +25,9 @@ table {
 
 .mat-header-cell{
   text-align: center;
-  background-color: lightgray;
+  background-color: blue;
   border: none;
+  color: white;
 }
 
 .mat-cell {
@@ -42,5 +43,16 @@ table {
     background-color: white;
 }
 .red-highlight {
-    background-color: red;
+    background-color: #e54e4e;
+    font-weight: bold;
+}
+button {
+    background-color: blue;
+    color: white;
+}
+.mat-cell-completed {
+    color: black;
+}
+.mat-cell-not-completed {
+    color: white;
 }

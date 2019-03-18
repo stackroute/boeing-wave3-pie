@@ -9,8 +9,6 @@
   <div class = "card"> 
     <div class = "card-header"></div>
 
-
-
-<a [routerLink]="['/deletePolicy', insurerName, policyName]"
+<a (click) = "deletePop(insurerName, policyName)"
             class="btn btn-primary" style ="margin-right: 0%;margin-left: 0%; margin-bottom: 2%;" onClick="window.location.reload();"
             >Delete</a>
