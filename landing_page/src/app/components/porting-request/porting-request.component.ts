@@ -99,7 +99,8 @@ export class PortingRequestComponent implements OnInit {
         console.log(error);
       }
     );
-    this.router.navigate(['/dashboard',name]);
+    alert("Request is submitted sucessfully");
+    this.router.navigate(['/myrequests',insuredName]);
   }
   logged(){
     this.loggedIn=true;

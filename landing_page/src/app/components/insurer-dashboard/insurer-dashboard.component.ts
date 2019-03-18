@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,12 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InsurerDashboardComponent implements OnInit {
   insurerLicense: any;
+  insurerName:any;
   
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit() {
     this.insurerLicense = this.route.snapshot.paramMap.get('insurerLicense');
     let company = window.localStorage.setItem("insurername",this.insurerLicense);
+  
+    this.router.navigate(['myCompanyPolicy',this.insurerLicense]);
   }
 
 }

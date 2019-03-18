@@ -181,3 +181,28 @@ ul li {
   .container {
       overflow: hidden;
   }
+
+
+
+#add-button2{
+    display: inline-block;
+   top: auto;
+   right: 60px;
+   bottom: 70px;
+   position: fixed;
+   left: auto;
+   width: 50px;
+   height: 40px;
+   border-radius: 30px;
+   padding: 0;
+   border: 0;
+   background-size: 100%;
+   z-index: inherit;
+  }
+  
+  #add-button2 img{
+    display: inline-block;
+    height: inherit;
+    width: 40px;
+    border-radius: 40px;
+  } 
