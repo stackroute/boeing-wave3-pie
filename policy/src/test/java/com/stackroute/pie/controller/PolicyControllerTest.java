@@ -88,15 +88,6 @@ public class PolicyControllerTest {
     }
 
     @Test
-    public void addPolicy() throws Exception {
-        this.mockMVC.perform(post("/api/v1/policy")
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-                .content(jsonToString(policy)))
-                .andExpect(status().isOk());
-    }
-
-    @Test
     public void deletePolicy() throws Exception {
         this.mockMVC.perform(delete("/api/v1/policy/maxbupa/cancer-policy")
                 .contentType(MediaType.APPLICATION_JSON)

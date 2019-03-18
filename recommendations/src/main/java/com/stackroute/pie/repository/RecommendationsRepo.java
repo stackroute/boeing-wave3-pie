@@ -32,7 +32,7 @@ public interface RecommendationsRepo extends Neo4jRepository<Recommendation,Long
     @Query("MATCH (n:Insurer{insurerLicense:{insurerLicense}}) DELETE n")
     Insurer deleteInsurer(@Param("insurerLicense")String insurerLicense);
 
-    @Query("MATCH (p:Policy{policyId:{policyId}}) DELETE p")
+    @Query("MATCH (p:Policy{policyId:{policyId}}) DETACH DELETE p")
     Policy deletePolicy(@Param("policyId")Long policyId);
 
     @Query("MATCH (u:Insured{userId:{userId}}) DELETE u")

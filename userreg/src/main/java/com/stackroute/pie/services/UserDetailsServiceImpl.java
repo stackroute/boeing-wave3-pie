@@ -56,19 +56,20 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             throw new UserNotFoundException();
     }
 
-    public Insured updateProfile(String username, Insured insured) throws UserNotFoundException {
-        Insured insured1;
-        Insured insured2;
+    public Insured updateProfile(Insured insured) throws UserNotFoundException {
+        Insured insured1 = null;
         if (userRepository.existsByUsername(insured.getUsername())) {
-//      Optional<Insured> insured2 = userRepository.findByUsername(insured.getUsername());
-            insured1 = userRepository.findByUsername(insured.getUsername()).get();
-            userRepository.deleteByUsername(insured.getUsername());
-            insured1.setEmail(insured.getEmail());
-            insured1.setFullName(insured.getFullName());
-            insured1.setAge(insured.getAge());
-            insured1.setGender(insured.getGender());
-            insured1.setPassword(insured.getPassword());
-            userRepository.save(insured1);
+            Optional<Insured> insured2 = userRepository.findByUsername(insured.getUsername());
+            if(insured2.isPresent()) {
+                insured1 = insured2.get();
+                userRepository.deleteByUsername(insured.getUsername());
+                insured1.setEmail(insured.getEmail());
+                insured1.setFullName(insured.getFullName());
+                insured1.setAge(insured.getAge());
+                insured1.setGender(insured.getGender());
+                insured1.setPassword(insured.getPassword());
+                userRepository.save(insured1);
+            }
             return insured1;
         }
         else
