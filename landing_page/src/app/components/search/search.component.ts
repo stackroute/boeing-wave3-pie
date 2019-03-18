@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TokenStorageService } from '../auth/token-storage.service';
 import { MatDialog } from '@angular/material';
 import { BuyPolicyComponent } from '../buy-policy/buy-policy.component';
+import { CalculatorComponent } from '../calculator/calculator.component';
 
 @Component({
   selector: 'app-search',
@@ -71,6 +72,15 @@ export class SearchComponent implements OnInit {
     let data = window.localStorage.setItem("recopolicyname",policyname);
     // let data1 = window.localStorage.setItem("username",username);
     const dialogRef = this.dialog.open(TermsAndConditionsComponent, {
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
+  openDialog3(): void {
+    const dialogRef = this.dialog.open(CalculatorComponent, {
     });
 
     dialogRef.afterClosed().subscribe(result => {

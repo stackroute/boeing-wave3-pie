@@ -53,6 +53,8 @@ export class GuestUserComponent implements OnInit {
          ".Representative from " + this.object.insurername + "will contact you within 7 days."
       };
         this.emailService.sendEmail(this.sampleEmail).subscribe();
+        alert("Please check your E-mail for more information.");
+
         this.router.navigate(['/home']);
       },
       error => {

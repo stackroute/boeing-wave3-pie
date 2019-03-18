@@ -53,6 +53,7 @@ export class IncomingPortingRequestsComponent implements OnInit {
           console.log(data);
           console.log("after service2 method");
       });
+      alert("Request is accepted sucessfully");
 
       this.reloadData();
 

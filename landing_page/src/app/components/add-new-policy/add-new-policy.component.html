@@ -60,7 +60,7 @@
 <br/> -->
 <mat-tab-group style = "margin-left: 18%;" mat-align-tabs="center">
   <mat-tab label="Outline">
-      <form [formGroup]="firstForm">
+            <form [formGroup]="firstForm">
     <mat-form-field  style = "margin-left: 20%;">
     <input  matInput placeholder="Insurer Name" formControlName="insurerName">
   </mat-form-field>
@@ -142,7 +142,6 @@
 <div style = "margin-left: 60%;">
     <button class="btn btn-success btn-outline-rounded" (click)="onSubmit()"> Submit <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></button>
 </div>
-
   </mat-tab>
 
 </mat-tab-group>
