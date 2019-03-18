@@ -56,7 +56,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             throw new UserNotFoundException();
     }
 
-    public Insured updateProfile(String username, Insured insured) throws UserNotFoundException {
+    public Insured updateProfile(Insured insured) throws UserNotFoundException {
         Insured insured1 = null;
         if (userRepository.existsByUsername(insured.getUsername())) {
             Optional<Insured> insured2 = userRepository.findByUsername(insured.getUsername());

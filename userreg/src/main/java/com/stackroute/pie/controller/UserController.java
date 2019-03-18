@@ -83,7 +83,7 @@ public class UserController {
         ResponseEntity responseEntity;
         try {
             user.setPassword(encoder.encode(user.getPassword()));
-            Insured insured1 = userService.updateProfile(username, user);
+            Insured insured1 = userService.updateProfile(user);
             responseEntity = new ResponseEntity(insured1, HttpStatus.OK);
 
         } catch (UserNotFoundException ex) {
