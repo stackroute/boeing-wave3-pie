@@ -145,7 +145,7 @@ public class SearchServiceImpl implements SearchService {
     protected static final Set<String> policyString = new HashSet(Arrays.asList(policyArr));
 
     String companyString = "maxlife,starmax,futurelife,happylife,sunlife";
-    String diseaseString = " cancer, diabetes, aids, dengue, malaria, tuberculosis, cardiac, heartattack, surgery";
+    String diseaseString = " cancer, diabetes, aids, dengue, malaria, tuberculosis, cardiac, heartattack, surgery,cataract";
 
 
     public List<Policy>checkValue(int val){

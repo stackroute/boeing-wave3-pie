@@ -118,4 +118,23 @@ public class Kafkaconfiguration {
         return factory;
     }
 
+    @Bean
+    public ConsumerFactory<String, Policy> policyDeleteConsumerFactory() {
+        Map<String, Object> config = new HashMap<>();
+        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,localhost);
+        config.put(ConsumerConfig.GROUP_ID_CONFIG, "group_policy_json");
+        config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
+
+        return new DefaultKafkaConsumerFactory<>(config, new StringDeserializer(),
+                new JsonDeserializer<>(Policy.class));
+    }
+
+    @Bean
+    public ConcurrentKafkaListenerContainerFactory<String, Policy> policyDeleteKafkaListenerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, Policy> factory = new ConcurrentKafkaListenerContainerFactory<>();
+        factory.setConsumerFactory(policyDeleteConsumerFactory());
+        return factory;
+    }
+
 }

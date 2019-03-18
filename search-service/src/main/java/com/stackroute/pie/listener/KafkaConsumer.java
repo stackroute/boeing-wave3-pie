@@ -15,24 +15,24 @@ import java.util.*;
 @Service
 public class KafkaConsumer {
 
-        @Autowired
-        SearchRepository searchRepository;
+    @Autowired
+    SearchRepository searchRepository;
 
-        @Autowired
-        SearchServiceImpl searchService;
+    @Autowired
+    SearchServiceImpl searchService;
 
-        @Autowired
-        ChatBotRepository chatBotRepository;
+    @Autowired
+    ChatBotRepository chatBotRepository;
 
 
 //    @KafkaListener(topics = "Kafka_Example_json", groupId = "group_json",
 //            containerFactory = "userKafkaListenerFactory")
 
-        //consuming data from kafka & setting it to commonauth
-        @KafkaListener(topics = "policy_added", groupId = "group_json", containerFactory = "userKafkaListenerFactory")
-        public void consumeJson(Policy policy) {
-            searchRepository.save(policy);
-        }
+    //consuming data from kafka & setting it to commonauth
+    @KafkaListener(topics = "policy_added", groupId = "group_json", containerFactory = "userKafkaListenerFactory")
+    public void consumeJson(Policy policy) {
+        searchRepository.save(policy);
+    }
 
     @KafkaListener(topics = "searchJSON", groupId = "group8_json", containerFactory = "userKafkaListenerFactory")
     public void consumeJson1(Search search) {
@@ -61,14 +61,21 @@ public class KafkaConsumer {
 
         }catch (Exception e)
         {
-          e.getMessage();
+            e.getMessage();
         }
 
 
     }
 
 
+
+    @KafkaListener(topics = "policy_deleted", groupId = "policy_groupp_json", containerFactory = "userKafkaListenerFactory")
+    public void consumeJson2(Policy policy) {
+        searchRepository.deleteByPolicyId(policy.getPolicyId());
     }
+
+
+}
 
 
 

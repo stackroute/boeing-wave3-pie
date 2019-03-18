@@ -56,4 +56,11 @@ public class KafkaConsumer {
             recommendationsRepo.addDependant(familyMembers1.getMemberName(), insured.getUsername());
         }
     }
+
+
+@KafkaListener(topics = "policy_deleted", groupId = "group_policy_json", containerFactory = "policyKafkaListenerFactory")
+public void consumeJson3(Policy policy) {
+    recommendationsRepo.deletePolicy(policy.getPolicyId());
+}
+
 }

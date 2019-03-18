@@ -19,37 +19,37 @@ import java.util.Map;
 @Configuration
 public class KafkaConsumerConfig {
     String ip="localhost:9092";
-        @Bean
-        public ConsumerFactory<String, String> consumerFactory() {
-            Map<String, Object> config = new HashMap<>();
-            config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, ip);
-            config.put(ConsumerConfig.GROUP_ID_CONFIG, "group_id");
-            config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-            config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-            return new DefaultKafkaConsumerFactory<>(config);
-        }
-        @Bean
-        public ConcurrentKafkaListenerContainerFactory<String, String> kafkaListenerContainerFactory() {
-            ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory();
-            factory.setConsumerFactory(consumerFactory());
-            return factory;
-        }
-        @Bean
-        public ConsumerFactory<String, Policy> userConsumerFactory() {
-            Map<String, Object> config = new HashMap<>();
-            config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, ip);
-            config.put(ConsumerConfig.GROUP_ID_CONFIG, "group_json");
-            config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-            config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
-            return new DefaultKafkaConsumerFactory<>(config, new StringDeserializer(),
-                    new JsonDeserializer<>(Policy.class));
-        }
-        @Bean
-        public ConcurrentKafkaListenerContainerFactory<String,Policy> userKafkaListenerFactory() {
-            ConcurrentKafkaListenerContainerFactory<String, Policy> factory = new ConcurrentKafkaListenerContainerFactory<>();
-            factory.setConsumerFactory(userConsumerFactory());
-            return factory;
-        }
+    @Bean
+    public ConsumerFactory<String, String> consumerFactory() {
+        Map<String, Object> config = new HashMap<>();
+        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, ip);
+        config.put(ConsumerConfig.GROUP_ID_CONFIG, "group_id");
+        config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        return new DefaultKafkaConsumerFactory<>(config);
+    }
+    @Bean
+    public ConcurrentKafkaListenerContainerFactory<String, String> kafkaListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory();
+        factory.setConsumerFactory(consumerFactory());
+        return factory;
+    }
+    @Bean
+    public ConsumerFactory<String, Policy> userConsumerFactory() {
+        Map<String, Object> config = new HashMap<>();
+        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, ip);
+        config.put(ConsumerConfig.GROUP_ID_CONFIG, "group_json");
+        config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
+        return new DefaultKafkaConsumerFactory<>(config, new StringDeserializer(),
+                new JsonDeserializer<>(Policy.class));
+    }
+    @Bean
+    public ConcurrentKafkaListenerContainerFactory<String,Policy> userKafkaListenerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, Policy> factory = new ConcurrentKafkaListenerContainerFactory<>();
+        factory.setConsumerFactory(userConsumerFactory());
+        return factory;
+    }
 
     @Bean
     public ConsumerFactory<String, Search> userConsumerFactory1() {
@@ -69,6 +69,25 @@ public class KafkaConsumerConfig {
         return factory;
     }
 
+
+    @Bean
+    public ConsumerFactory<String, Policy> userConsumerFactory2() {
+        Map<String, Object> config = new HashMap<>();
+        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, ip);
+        config.put(ConsumerConfig.GROUP_ID_CONFIG, "policy_groupp_json");
+        config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
+        return new DefaultKafkaConsumerFactory<>(config, new StringDeserializer(),
+                new JsonDeserializer<>(Policy.class));
     }
+
+    @Bean
+    public ConcurrentKafkaListenerContainerFactory<String, Policy> userKafkaListenerFactoryyyyyyyy() {
+        ConcurrentKafkaListenerContainerFactory<String, Policy> factory = new ConcurrentKafkaListenerContainerFactory<>();
+        factory.setConsumerFactory(userConsumerFactory2());
+        return factory;
+    }
+
+}
 
 
