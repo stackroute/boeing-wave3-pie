@@ -139,6 +139,8 @@
           <div class="row" style="text-align:center;font-size : 16px;">
             <div *ngFor="let blog of recommendations" class="col-md-4">
               <div class="panel panel-default">
+                  <div class="panel-heading">Policy Name: {{ blog.policyName | uppercase}}</div>
+
                 <div class="panel-body">
                     <img class="card-img-top" src='{{blog.imageUrl}}' alt="Card image cap">
 

@@ -68,6 +68,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 insured1.setAge(insured.getAge());
                 insured1.setGender(insured.getGender());
                 insured1.setPassword(insured.getPassword());
+                insured1.setExistingDisease(insured.getExistingDisease());
                 userRepository.save(insured1);
             }
             return insured1;

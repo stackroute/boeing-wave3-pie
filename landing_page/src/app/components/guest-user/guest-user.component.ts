@@ -54,7 +54,7 @@ export class GuestUserComponent implements OnInit {
          ".Representative from " + this.object.insurername + "will contact you within 7 days."
       };
         this.emailService.sendEmail(this.sampleEmail).subscribe();
-        alert("Please check your E-mail for more information.");
+        alert("E-mail has been sent succesfully.");
 
         this.router.navigate(['/home']);
       },

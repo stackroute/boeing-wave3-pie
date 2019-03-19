@@ -47,7 +47,9 @@ export class BuyPolicyComponent implements OnInit {
           ".Your RequestId is " + this.requestId.id +
           ".Representative from" + this.object.insurerName + "will contact you within 7 days."
         };
+          alert("Email sent successfully");
           this.emailService.sendEmail(this.sampleEmail).subscribe();
+          
         },
         error => {
           console.log("error occured");
