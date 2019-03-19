@@ -38,7 +38,7 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
 
 
   toText = "achintya882@gmail.com";
-  subjectReminderText = "REMINDER: Pleas complete the following tasks to further your porting request."
+  subjectReminderText = "REMINDER: Please complete the following tasks to further your porting request."
   introReminderText = "Dear ";
   bodyReminderText = "Please complete the following tasks by the given deadlines: \n";
   salutationtText = "-The PIE team";
@@ -111,7 +111,7 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
           this.email.to = data;
           this.emailService.sendEmail(this.email).subscribe();
         });
-        window.alert("Mail Sent.");
+        window.alert("E - mail Sent.");
       }
       );
   }
@@ -131,7 +131,7 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
           this.emailService.sendEmail(this.email).subscribe();
         });
       })
-      window.alert("Mail Sent.");
+      window.alert("E - mail Sent.");
     }
     );
   }
@@ -153,12 +153,28 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
       this.email.to = data;
 
       this.emailService.sendEmail(this.email).subscribe();
-      window.alert("Mail Sent.");
+      window.alert("E - mail Sent.");
     });
   }
 
-
   clearForPorting(): void {
+    this.emailService.getEmailId(this.userName).subscribe(data => {
+
+      this.email.to = data;
+
+      this.email.subject = "Your porting request is cleared.";
+      this.email.body = "Hi " + this.userName + ",\n";
+      if(this.pendingTasks.taskList.length == 0)
+        this.email.body = this.email.body + "\tNO pending tasks were initiated for your request\n";
+      else
+        this.email.body = this.email.body + "\tAll your pending tasks have been completed.\n";
+
+      this.email.body = this.email.body + "\tYour request is now clear for porting.\n";
+      this.email.body = this.email.body + this.salutationtText;
+
+      this.emailService.sendEmail(this.email).subscribe();
+      window.alert("E - mail Sent.");
+    });
     this.showAcceptRequestButton.emit(this.portingRequestId);
   }
 }
