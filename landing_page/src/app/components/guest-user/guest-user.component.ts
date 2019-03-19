@@ -15,6 +15,7 @@ export class GuestUserComponent implements OnInit {
   policyname: any;
   requestId: any;
   sampleEmail: any;
+  email:any;
   public object = {
     insurername: this.insurername,
     policyname: this.policyname
