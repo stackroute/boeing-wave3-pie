@@ -476,6 +476,11 @@ display: block;
     left: 50%;
 }
 }
+@media (max-width:768px){
+    .carousel-caption .h3-responsive{
+font-size: 0.625rem;
+}
+}
 
 @media (max-width: 1200px) and (min-width: 992px){
  .top-plans .top-plans-container .plans-container .plan-wrap .bg {
