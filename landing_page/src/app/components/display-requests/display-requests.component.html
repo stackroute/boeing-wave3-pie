@@ -17,8 +17,12 @@
            <div *ngIf="(count.fromApproval ==1) && (count.toApproval ==0)">
               <p>Status : Approved by existing insurer</p>
            </div>
+
            <div *ngIf="(count.fromApproval ==1) && (count.toApproval ==1)">
               <p>Status : Porting completed</p>
+           </div>
+           <div *ngIf="(count.fromApproval ==1) && (count.toApproval ==2)">
+              <p>Status :Porting Rejected</p>
            </div>
             <!-- <li class="list-group-item">Request Id: {{count.portingRequestId}}</li>
             <li class="list-group-item">New Policy Name: {{count.newInsurerProduct}}</li>     -->

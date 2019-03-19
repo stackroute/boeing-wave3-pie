@@ -27,7 +27,7 @@ export class UpdateProfileComponent implements OnInit {
     });
     this.secondForm = this.formBuilder.group({
       gender: ['', Validators.required],
-      fullName: ['', Validators.required],
+      age: ['', Validators.required],
       existingDisease: ['',Validators.required]
       });
       

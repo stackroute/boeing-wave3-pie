@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatService } from '../../service/chat.service';
+import { MatDialog } from '@angular/material';
+import { CalculatorComponent } from '../calculator/calculator.component';
 
 @Component({
   selector: 'app-show-chat-results',
@@ -8,7 +10,7 @@ import { ChatService } from '../../service/chat.service';
 })
 export class ShowChatResultsComponent implements OnInit {
   policies: any;
-  constructor(private chat:ChatService) { }
+  constructor(private chat:ChatService,private dialog: MatDialog) { }
 
   ngOnInit() {
    this.chat.showChatResults().subscribe(
@@ -19,4 +21,12 @@ export class ShowChatResultsComponent implements OnInit {
     );
   }
 
+  openDialog3(): void {
+    const dialogRef = this.dialog.open(CalculatorComponent, {
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
 }
