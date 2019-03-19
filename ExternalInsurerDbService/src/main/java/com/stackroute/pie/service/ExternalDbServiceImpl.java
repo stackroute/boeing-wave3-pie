@@ -35,7 +35,7 @@ public class ExternalDbServiceImpl implements ExternalDbService {
     @Override
     public List<InsurerPolicy> getPolicies(String insurerName) throws ClassNotFoundException, SQLException, UnsupportedEncodingException {
 
-        String dbURL = "jdbc:mysql://localhost/insurerFinal";
+        String dbURL = "jdbc:mysql://localhost/insurerFinal1";
         String dbUser = "root";
         String dbPass = "root";
         ResultSet rs = null;
