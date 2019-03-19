@@ -41,13 +41,15 @@ export class BuyPolicyComponent implements OnInit {
           this.requestId = data;
           console.log(this.requestId);
           this.id = this.requestId.id;
-          this.sampleEmail = {"to": "anushavutti1@gmail.com", "subject": "New Policy Bought",
+          this.sampleEmail = {"to": this.object.emailId, "subject": "New Policy Bought",
           "body": "Congratulations on your new  Health Insurance -"
           + this.object.policyName+ " from " + this.object.insurerName+
           ".Your RequestId is " + this.requestId.id +
-           ".You can avail the services within 7 days."
+          ".Representative from" + this.object.insurerName + "will contact you within 7 days."
         };
+          alert("Email sent successfully");
           this.emailService.sendEmail(this.sampleEmail).subscribe();
+          
         },
         error => {
           console.log("error occured");

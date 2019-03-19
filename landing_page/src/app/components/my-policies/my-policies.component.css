@@ -8,3 +8,23 @@
     height: fit-content;
 
 }
+
+
+
+@media  (max-width: 768px) {
+    .panel-body .card-img-top {
+       width: 180px;
+     }
+   }
+
+   .card-img-top {
+    width:280px; 
+    height: 180px;
+   }
+
+   @media (max-width: 1024px) and (min-width: 768px){
+    .panel-body .card-img-top {
+
+    width: 180px;
+     }
+   }

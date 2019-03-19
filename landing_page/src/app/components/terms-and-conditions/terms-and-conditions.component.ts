@@ -13,8 +13,9 @@ export class TermsAndConditionsComponent implements OnInit {
   policyname;
   insurername;
   marked=false;
-  emailId;
+  emailId:any;
   info: any;
+  theCheckbox:any;
   constructor(private dialog: MatDialog, private token: TokenStorageService) { }
 
   ngOnInit() {

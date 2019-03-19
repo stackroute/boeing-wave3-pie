@@ -44,7 +44,8 @@ public class Policy {
     private int waitingPeriod;
     private int policyTerm;
     private int minimumPremium;
-    private int sumInsured;
+    private int minSumInsured;
+    private int maxSumInsured;
     private String policyDescription;
     private List<String> diseasesCovered=new ArrayList<>();
     private List<String> cashlessHospitals = new ArrayList<>();

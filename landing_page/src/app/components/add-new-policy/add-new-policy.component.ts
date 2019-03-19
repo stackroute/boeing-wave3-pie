@@ -66,6 +66,8 @@ console.log('registerForm.value : ',result);
      data => {
        console.log('data is ', data);
        // this.router.navigate(["/login"]);
+       alert("New policy added succesfully");
+
      },
      error => {
        console.log('we are getting some errors');

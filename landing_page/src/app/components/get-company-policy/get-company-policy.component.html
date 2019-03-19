@@ -35,26 +35,24 @@
   
    <div class="container" style="text-align:center; margin-left: 0%;">
     <div class="row" style="text-align:center">
-      <div class="col-md-12" style="font-size:18px">My Policies</div>
+      <div class="col-md-12" style="font-size:18px"></div>
       <br /><br /><br /><br />
     </div>
-    <div class="row" style="text-align:center;font-size : large">
+    <div class="row" style="text-align:center;font-size : 16px;">
       <div *ngFor="let count of requests" class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading">Policy Name: {{ count.policyName }}</div>
 
           <div class="panel-body">
-              <img class="card-img-top" src='{{count.imageUrl}}' style="width:280px;" alt="Card image cap">
+              <img class="card-img-top" src='{{count.imageUrl}}'  alt="Card image cap">
 
             <ul class="list-group list-group-flush">
               <li class="list-group-item">PolicyId: {{ count.policyId }}</li>
               <li class="list-group-item">Policy Type: {{count.policyType}}</li>
-              <li class="list-group-item">Genger Avail : {{count.genderAvail}}</li>
-              <li class="list-group-item">Min Sum Insured: {{count.minSumInsured}}</li>
-              <li class="list-group-item">Max Sum Insured: {{count.maxSumInsured}}</li>
+              <li class="list-group-item">Gender Avail : {{count.genderAvail}}</li>
+              <li class="list-group-item"> Sum Insured: {{count.minSumInsured}} - {{count.maxSumInsured}}</li>
               <li class="list-group-item">Policy Term: {{count.policyTerm}}</li>
               <li class="list-group-item">Waiting Period: {{ count.waitingPeriod }}</li>
-
             </ul>
 
             <!-- <p>PolicyId: {{ count.policyId }}</p>
@@ -73,7 +71,7 @@
             class="btn btn-primary" style ="margin-right: 0%;margin-left: 0%; margin-bottom: 2%;" onClick="window.location.reload();"
             >Delete</a> -->
 
-            <button id="add-button" (click)="Delete(count.insurerName,count.policyName)">Delete</button>
+            <button class="btn btn-primary" id="add-button" (click)="Delete(count.insurerName,count.policyName)">Delete</button>
 
             
         </div>

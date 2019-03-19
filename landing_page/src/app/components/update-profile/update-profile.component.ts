@@ -28,7 +28,7 @@ export class UpdateProfileComponent implements OnInit {
     this.secondForm = this.formBuilder.group({
       gender: ['', Validators.required],
       fullName: ['', Validators.required],
-      insuredId: ['',Validators.required]
+      existingDisease: ['',Validators.required]
       });
       
    }
@@ -36,8 +36,10 @@ export class UpdateProfileComponent implements OnInit {
    submitForm() {
     console.log("hi");
  
-     const signUpForm = Object.assign(this.firstForm.value, this.secondForm.value,this.thirdForm.value);
-      console.log('registerForm.value : ', signUpForm);
+     const signUpForm = Object.assign(this.firstForm.value, this.secondForm.value);
+     console.log("his");
+
+     console.log('registerForm.value : ', signUpForm);
  
     this.userService.updateProfile(this.username, signUpForm).subscribe(
       data => {

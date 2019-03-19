@@ -56,28 +56,26 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             throw new UserNotFoundException();
     }
 
-    public Insured updateProfile(String username, Insured insured) throws UserNotFoundException{
-
-        if(userRepository.existsByUsername(username)) {
-            Optional<Insured> insured2 = userRepository.findByUsername(username);
-            if(insured2.isPresent())
-            {
-                Insured insured1 = insured2.get();
+    public Insured updateProfile(Insured insured) throws UserNotFoundException {
+        Insured insured1 = null;
+        if (userRepository.existsByUsername(insured.getUsername())) {
+            Optional<Insured> insured2 = userRepository.findByUsername(insured.getUsername());
+            if(insured2.isPresent()) {
+                insured1 = insured2.get();
+                userRepository.deleteByUsername(insured.getUsername());
                 insured1.setEmail(insured.getEmail());
                 insured1.setFullName(insured.getFullName());
+                insured1.setAge(insured.getAge());
                 insured1.setGender(insured.getGender());
                 insured1.setPassword(insured.getPassword());
-                insured1.setUsername(insured.getUsername());
-                insured1.setSecurityAnswer(insured.getSecurityAnswer());
-                return userRepository.save(insured);
+                insured1.setExistingDisease(insured.getExistingDisease());
+                userRepository.save(insured1);
             }
-            else
-                throw new UserNotFoundException();
+            return insured1;
         }
         else
             throw new UserNotFoundException();
     }
-
     public Insured addFamilyMembers(FamilyMembers familyMembers) throws UserNotFoundException{
         String name = familyMembers.getUsername();
         Optional<Insured> insured2 = userRepository.findByUsername(name);

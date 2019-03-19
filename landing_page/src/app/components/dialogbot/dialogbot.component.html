@@ -1,7 +1,7 @@
 <mat-dialog-content>
-  <div style="width:400px;height:340px; margin:22px auto;">
-    <div mat-dialog-actions style="border-bottom:blue">
-        <button mat-button [mat-dialog-close]="true" style="width:auto;color:wheat;background-color: red;">Close</button>
+  <div class="abc">
+    <div mat-dialog-actions style="border-bottom:blue;">
+        <button mat-button [mat-dialog-close]="true" style="width:auto;color:wheat;background-color: red; ">Close</button>
     </div>
     
   <ng-container *ngFor="let message of (messages | async)" #scrollMe (scroll)="onScroll()">

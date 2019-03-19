@@ -5,6 +5,7 @@
    position: relative;
    font-weight: bold;
    clear: both;
+   background-image: url('/../assets/img/dark.jpeg')
 }
 .message.to {
    color:white;
@@ -13,14 +14,14 @@
    text-align: right;
    margin-top:30px;
    float: right;
-   font-size: 12px;
+   font-size: 15px;
 }
 .message.from {
-   color: black;
+   color: white;
    background-color: silver;
    margin-right: auto;
    float: left;
-   font-size: 12px;
+   font-size: 15px;
    margin-top: 20px;
 }
 .message.to + .message.to,
@@ -28,8 +29,25 @@
 margin-top: -5px;
 }
 
+.abc{
+ width:400px;
+ height:340px; 
+ margin:22px auto;
+}
+
+@media  (max-width: 768px) {
+   .abc {
+      width:200px;
+      height:240px; 
+      margin:22px auto;
+    }
+  }
+
+
+
+
 .ng-valid{
-   width: 20%;
+   width: 50%;
 }
 .bottom{
    margin-left: 3%;
@@ -42,6 +60,11 @@ h1{
    color: #787878;
    background-color: #fcf7f8;
    border: 1px solid rgba(0,0,0,.05);
+ }
+
+ input{
+   font-size: large;
+
  }
 
 .mat-dialog-actions {

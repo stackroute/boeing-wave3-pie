@@ -8,31 +8,22 @@ h1 {
     ;
  }
  
- .tabbed-pane {
+ /* .tabbed-pane {
     align-items: center;
     font-size: 15px;
- }
+ } */
  
 
 
- p {
+ /* p {
     margin-left: 35%;
     margin-top: 4%;
     font-size: x-large;
- }
- #cover {
-    background-image: url("https://static-news.moneycontrol.com/static-mcnews/2018/10/critical-illness-health-insurance-1280x-720.jpg");
-    background-repeat: no-repeat;
-    opacity: 0.8;
-    background-position: center;
-      background-size: cover;
-      width: 100%;
-      height: 50%;
-      overflow: hidden;
- }
+ } */
+
  
 
-
+/* 
  .mat-tab-body-content{
    background: url('/../assets/img/dark.jpeg') no-repeat center center fixed; 
    -webkit-background-size: cover;
@@ -42,4 +33,57 @@ h1 {
    width: 100%;
    height: fit-content;
 
+} */
+
+.display-flex {
+   display: flex;
 }
+
+.content-area{
+   font-size: 15px;
+   /* background: url('/../assets/img/dark.jpeg') no-repeat center center fixed; 
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+   width: 100%;
+   height: 100%; */
+}
+
+/* .innermost-content {
+    border-radius: 40px;
+    box-shadow: 1.2px 1.1px 0px 1.2px #95aab4;
+   -webkit-box-shadow: 1.2px 1.1px 0px 1.2px #f7e523;
+   -moz-box-shadow: 1.2px 1.1px 0px 1.2px #88c2de;
+   -o-box-shadow: 1.2px 1.1px 0px 1.2px #88c2de;
+    
+
+    border: 0px 1px 1px 1px solid;
+
+
+} */
+
+ .xyz{
+   font-size: 15px;
+   font-family: Roboto, "Helvetica Neue", sans-serif;
+   background: url('/../assets/img/backgroundreg.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    
+} 
+
+/* .inner-content{
+   background: url('/../assets/img/image1.jpg') no-repeat center center fixed;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+   width: 100%;
+   height: 100%;
+   opacity: 0.8;
+}
+ */
