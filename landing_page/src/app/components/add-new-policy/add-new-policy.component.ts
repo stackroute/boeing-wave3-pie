@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router,ActivatedRoute} from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { TokenStorageService } from './../companyauth/token-storage.service';
+import { MatSnackBar } from '@angular/material';
 
 
 
@@ -18,8 +19,10 @@ export class AddNewPolicyComponent implements OnInit {
 firstForm;
 secondForm;
 thirdForm;
+message1: any;
+action: any;
 
-constructor(private formBuilder:FormBuilder,private router:Router,private service:InsurerPolicyService,private token: TokenStorageService) {
+constructor(private formBuilder:FormBuilder,private router:Router,private service:InsurerPolicyService,private token: TokenStorageService,private snackBar: MatSnackBar) {
 
 }
 isFieldInvalid(field: string) {
@@ -67,14 +70,22 @@ imageUrl : ["", Validators.required]
 onSubmit() {
 console.log("hi");
 const result = Object.assign(this.firstForm.value,this.secondForm.value,this.thirdForm.value);
-
+this.message1 = "Policy added succesfully ";
+    this.action = "";
 console.log('registerForm.value : ',result);
    this.service.addNewPolicy(result).subscribe(
      data => {
        console.log('data is ', data);
-       // this.router.navigate(["/login"]);
-       alert("New policy added succesfully");
+       console.log("sdfghj");
 
+       // this.router.navigate(["/login"]);
+       //alert("New policy added succesfully");
+       this.snackBar.open(this.message1,this.action, {
+        duration: 4000,
+        
+        verticalPosition: 'top'
+        
+      });
      },
      error => {
        console.log('we are getting some errors');

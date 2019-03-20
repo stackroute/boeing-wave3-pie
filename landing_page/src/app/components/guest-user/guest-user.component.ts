@@ -3,12 +3,14 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PolicyService } from './../../service/policy.service';
 import { EmailService } from './../../service/email.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-guest-user',
   templateUrl: './guest-user.component.html',
   styleUrls: ['./guest-user.component.css']
 })
+
 export class GuestUserComponent implements OnInit {
   guestUser: FormGroup;
   insurername: any;
@@ -16,11 +18,13 @@ export class GuestUserComponent implements OnInit {
   requestId: any;
   sampleEmail: any;
   email:any;
+  message1: any;
+  action: any;
   public object = {
     insurername: this.insurername,
     policyname: this.policyname
   }
-  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router, private policyService: PolicyService, private emailService: EmailService) { }
+  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router, private policyService: PolicyService, private emailService: EmailService, private snackBar: MatSnackBar) { }
  
   ngOnInit() {
     // this.object.insurername = this.route.snapshot.paramMap.get('insurername');
@@ -39,6 +43,8 @@ export class GuestUserComponent implements OnInit {
     console.log("sign "+ obj1.insurername);
     const obj2 = Object.assign(obj1,this.guestUser.value);
     console.log(obj2.insurername);
+    this.message1 = "E-mail has been sent succesfully ";
+    this.action = "";
 
     // this.router.navigate(["/buyPolicy", obj2]);
     this.requestId = this.policyService.buyPolicy(obj2).subscribe(
@@ -54,7 +60,19 @@ export class GuestUserComponent implements OnInit {
          ".Representative from " + this.object.insurername + "will contact you within 7 days."
       };
         this.emailService.sendEmail(this.sampleEmail).subscribe();
-        alert("E-mail has been sent succesfully.");
+        // alert("E-mail has been sent succesfully.");
+        console.log("sdfghj");
+        this.snackBar.open(this.message1,this.action, {
+          duration: 4000,
+          
+          horizontalPosition: 'end'
+
+          
+        });
+      //   cc-snackBar{
+      //     position: relative;
+      //     top: -2px;;
+      // }
 
         this.router.navigate(['/home']);
       },

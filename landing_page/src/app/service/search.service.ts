@@ -31,6 +31,7 @@ export class SearchService {
         console.log("search url: "+ this.baseUrl + 'policies/' + searchValue);
         this.v = this.http.get(  this.baseUrl + 'policies/' + searchValue );
         console.log("search policy object "+this.v);
+
         return this.v;
     }
     show() {

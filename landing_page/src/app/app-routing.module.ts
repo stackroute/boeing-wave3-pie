@@ -76,7 +76,8 @@ const routes: Routes = [
    {path: 'familyMembers/:username',component: FamilyMembersComponent},
    {path: 'showChatResults',component:ShowChatResultsComponent},
    {path: 'policyDetails/:insurerName/:policyName',component: PolicyDetailsComponent},
-   {path: 'requests/:insurerName', component: PortingHistoryComponent}
+   {path: 'requests/:insurerName', component: PortingHistoryComponent},
+   {path: '**', component: HomeComponent}
 ];
 
 @NgModule({

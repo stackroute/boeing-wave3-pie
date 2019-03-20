@@ -12,6 +12,7 @@ import { Component, OnInit } from '@angular/core';
 import { InsurerAcceptoutgoingportingrequestService } from './../../service/insurer-acceptoutgoingportingrequest.service';
 import { InsurerRejectincomingportingrequestService } from './../../service/InsurerRejectincomingportingrequestService';
 
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-incoming-porting-requests',
@@ -28,10 +29,12 @@ export class IncomingPortingRequestsComponent implements OnInit {
   // request: any;
   // public reviewComponent: ReviewComponent;
   public insuredName: any;
+  message1: any;
+action: any;
   constructor(private route:ActivatedRoute, private incoming: InsurerIncomingportingrequestService,
     private portrequest: InsurerAcceptincomingportingrequestService, 
     private portrequest1: InsurerRejectincomingportingrequestService, 
-    public dialog: MatDialog,private token: TokenStorageService) { }
+    public dialog: MatDialog,private token: TokenStorageService,private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.info = {
@@ -53,6 +56,8 @@ export class IncomingPortingRequestsComponent implements OnInit {
 
   
   port(request) {
+    this.message1 = "Request is accepted sucessfully ";
+    this.action = "";
     this.portrequest.getSearch(request).subscribe(data=>{
 
       this.requests = this.incoming.getSearch(this.insurerLicense).subscribe(data =>
@@ -61,7 +66,13 @@ export class IncomingPortingRequestsComponent implements OnInit {
           console.log(data);
           console.log("after service2 method");
       });
-      alert("Request is accepted sucessfully");
+      // alert("Request is accepted sucessfully");
+      this.snackBar.open(this.message1,this.action, {
+        duration: 4000,
+        
+        verticalPosition: 'top'
+        
+      });
 
       this.reloadData();
 

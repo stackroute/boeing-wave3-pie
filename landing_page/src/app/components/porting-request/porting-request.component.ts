@@ -6,6 +6,7 @@ import { PolicyService } from './../../service/policy.service';
 import { UserService } from './../../service/user.service';
 import { UserDashboardService } from './../../service/user-dashboard.service';
 import { TokenStorageService } from './../companyauth/token-storage.service';
+import { MatSnackBar } from '@angular/material';
 
 
 @Component({
@@ -18,6 +19,8 @@ export class PortingRequestComponent implements OnInit {
   loggedIn: any;
   anusha: any;
   policy1: any;
+  message1: any;
+action: any;
   insuredName: any;
   insurerProd: any=null;
   insurerName: any;
@@ -53,7 +56,7 @@ export class PortingRequestComponent implements OnInit {
   //   {value: 'cancer', viewValue: 'CancerPolicy1'},
   //   {value: 'AIDS', viewValue: 'AIDSPolicy'}
   // ];
-  constructor(private formBuilder: FormBuilder, private requestService: RequestService,private router: Router, private policyService: PolicyService, private userService: UserDashboardService,private token: TokenStorageService) { }
+  constructor(private formBuilder: FormBuilder, private requestService: RequestService,private router: Router, private policyService: PolicyService, private userService: UserDashboardService,private token: TokenStorageService,private snackBar: MatSnackBar) { }
  
   ngOnInit() {
 
@@ -95,7 +98,8 @@ export class PortingRequestComponent implements OnInit {
     this.portingForm.reasonForPortability = reasonForPortability;
     this.portingForm.familyMembers = familyMembers;
     this.portingForm.exclusionPeriod = exclusionPeriod;
-
+    this.message1 = "Request is submitted sucessfully ";
+    this.action = "";
     console.log( "porting form  " + this.portingForm);
     const res = Object.assign(this.portingForm);
     console.log("hiii" + res);
@@ -103,12 +107,19 @@ export class PortingRequestComponent implements OnInit {
       data => {
         console.log('hel');
         console.log(data);
+        this.snackBar.open(this.message1,this.action, {
+          duration: 6000,
+          
+          verticalPosition: 'top'
+          
+        });
       },
       error => {
         console.log(error);
       }
     );
-    alert("Request is submitted sucessfully");
+  // alert("Request is submitted sucessfully");
+    
     this.router.navigate(['/myrequests',insuredName]);
   }
   logged(){

@@ -7,6 +7,7 @@ import { AllPortingRequestsComponent } from '../all-porting-requests/all-porting
 import { ReviewComponent } from '../review/review.component';
 import { DisplayAllPortingRequestsComponent } from '../display-all-porting-requests/display-all-porting-requests.component';
 import { TokenStorageService } from './../companyauth/token-storage.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-outgoing-porting-requests',
@@ -20,13 +21,15 @@ export class OutgoingPortingRequestsComponent implements OnInit {
   insurerLicense: any;
   requests: any;
   info: any;
+  message1: any;
+  action: any;
   displayedColumns: string[] = ['requestID', 'userName', 'oldInsurerName','modifyStatusButton'];
   dataSource = new MatTableDataSource<Request[]>();
   currentCompanyName: string;
   raiseGrievanceButtonIsClicked: boolean;
   idForGrievances: number;
   grievancesComponent = AllPortingRequestsComponent;
-  constructor(private route: ActivatedRoute, private incoming: InsurerOutgoingportingrequestService, private portrequest: InsurerAcceptoutgoingportingrequestService, private dialog: MatDialog,private token: TokenStorageService) { }
+  constructor(private route: ActivatedRoute, private incoming: InsurerOutgoingportingrequestService, private portrequest: InsurerAcceptoutgoingportingrequestService, private dialog: MatDialog,private token: TokenStorageService,private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.info = {
@@ -47,12 +50,20 @@ export class OutgoingPortingRequestsComponent implements OnInit {
 
   }
   port(request) {
+    this.message1 = "Request is accepted sucessfully ";
+    this.action = "";
     console.log("xyz");
-    this.portrequest.getSearch(request).subscribe(data => console.log(data));
+    this.portrequest.getSearch(request).subscribe(data => {console.log(data), this.reloadData()});
     console.log("xynz");
 
-    alert("successfull");
-    this.reloadData();
+    // alert("successfull");
+    this.snackBar.open(this.message1,this.action, {
+      duration: 6000,
+      
+      verticalPosition: 'top'
+      
+    });
+    // this.reloadData();
    
   }
   reloadData() {

@@ -5,6 +5,8 @@ import { FetchPendingTasksService } from '../../service/fetch-pending-tasks.serv
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { Email } from '../../service/email';
 import { EmailService } from '../../service/email.service';
+import { MatSnackBar } from '@angular/material';
+
 
 @Component({
   selector: 'app-display-all-porting-requests',
@@ -25,6 +27,8 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
   newPendingTaskName: string;
   newPendingTaskDescription: string;
   newPendingTaskDueDate: string;
+  message1: any;
+action: any;
 
   displayedColumns: string[] = ['taskName', 'taskDescription', 'taskStatus', 'dueDate', 'modifyStatusButton'];
 
@@ -50,7 +54,7 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
 
 
 
-  constructor(private fetchPendingTasksService: FetchPendingTasksService, @Inject(MAT_DIALOG_DATA) private data: any, private emailService: EmailService) {
+  constructor(private fetchPendingTasksService: FetchPendingTasksService, @Inject(MAT_DIALOG_DATA) private data: any, private emailService: EmailService,private snackBar: MatSnackBar) {
     this.fetchPendingTasksService = fetchPendingTasksService;
     this.portingRequestId = data.portingRequestId;
     this.userName = data.userName;
@@ -88,6 +92,8 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
     this.newPendingTask.taskName = this.newPendingTaskName;
     this.newPendingTask.taskDescription = this.newPendingTaskDescription;
     this.newPendingTask.dueDate = this.newPendingTaskDueDate;
+    this.message1 = "E-mail has been sent succesfully ";
+    this.action = "";
 
     this.fetchPendingTasksService
       .addANewPendingTask(this.pendingTasks.pendingTasksId, this.newPendingTask)
@@ -111,13 +117,20 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
           this.email.to = data;
           this.emailService.sendEmail(this.email).subscribe();
         });
-        window.alert("E - mail Sent.");
+        // window.alert("E - mail Sent.");
+        this.snackBar.open(this.message1,this.action, {
+          duration: 4000,
+          
+          verticalPosition: 'top'
+          
+        });
       }
       );
   }
   modifyStatusOfTask(taskStatus: boolean, taskName: string): void {
     this.fetchPendingTasksService.modifyStatusOfTask(!taskStatus, this.pendingTasks.pendingTasksId, taskName).subscribe(data => {
-
+      this.message1 = "E-mail has been sent succesfully ";
+      this.action = "";
       this.dataIsLoaded = true;
       this.fetchPendingTasksService.getPendingTasksById(this.portingRequestId).subscribe(pendingTasks => {
         this.pendingTasks = pendingTasks[0];
@@ -131,7 +144,13 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
           this.emailService.sendEmail(this.email).subscribe();
         });
       })
-      window.alert("E - mail Sent.");
+      // window.alert("E - mail Sent.");
+      this.snackBar.open(this.message1,this.action, {
+        duration: 4000,
+        
+        verticalPosition: 'top'
+        
+      });
     }
     );
   }
@@ -140,6 +159,8 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
   sendAReminder(): void {
     this.email.to = this.toText;
     this.email.subject = this.subjectReminderText;
+    this.message1 = "E-mail has been sent succesfully ";
+    this.action = "";
     this.email.body = this.introReminderText + this.userName + ",\n" + this.bodyReminderText;
     for (let task of this.pendingTasks.taskList) {
       if (task.status == true)
@@ -153,7 +174,13 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
       this.email.to = data;
 
       this.emailService.sendEmail(this.email).subscribe();
-      window.alert("E - mail Sent.");
+      // window.alert("E - mail Sent.");
+      this.snackBar.open(this.message1,this.action, {
+        duration: 4000,
+        
+        verticalPosition: 'top'
+        
+      });
     });
   }
 
@@ -161,7 +188,8 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
     this.emailService.getEmailId(this.userName).subscribe(data => {
 
       this.email.to = data;
-
+      this.message1 = "E-mail has been sent succesfully ";
+      this.action = "";
       this.email.subject = "Your porting request is cleared.";
       this.email.body = "Hi " + this.userName + ",\n";
       if(this.pendingTasks.taskList.length == 0)
@@ -173,7 +201,13 @@ export class DisplayAllPortingRequestsComponent implements OnInit {
       this.email.body = this.email.body + this.salutationtText;
 
       this.emailService.sendEmail(this.email).subscribe();
-      window.alert("E - mail Sent.");
+      // window.alert("E - mail Sent.");
+      this.snackBar.open(this.message1,this.action, {
+        duration: 4000,
+        
+        verticalPosition: 'top'
+        
+      });
     });
     this.showAcceptRequestButton.emit(this.portingRequestId);
   }

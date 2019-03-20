@@ -69,8 +69,13 @@ export class NavbarComponent implements OnInit {
   }
   search() {
     console.log("search method");
-    this.router.navigate(["/search", this.message]);
-    console.log("in search");
+    // this.router.navigateByUrl(`/search/${this.message}`, { skipLocationChange: true }).then(()=> {
+    //   console.log("in search");
+    //   this.router.navigate([`/search/${this.message}`]); 
+    // })
+    this.router.navigateByUrl('/login', { skipLocationChange: false }).then(() => {
+      this.router.navigateByUrl(`/search/${this.message}`)
+    })
   }
   logout() {
     this.token.signOut();
