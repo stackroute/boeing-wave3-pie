@@ -71,4 +71,13 @@ public class SearchController {
         }
         return responseEntity;
     }
+
+    @PostMapping(value = "policys")
+    public ResponseEntity<?> savePol(@RequestBody PolicyList policy)
+    {
+        ResponseEntity responseEntity;
+        PolicyList policyList=chatBotRepository.save(policy);
+        responseEntity = new ResponseEntity<PolicyList>(policyList, HttpStatus.OK);
+        return responseEntity;
+    }
 }

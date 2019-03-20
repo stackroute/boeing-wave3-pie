@@ -17,7 +17,7 @@ public class PolicyList {
     private String insurerName;
     private String policyType;
     private String insurerLicense;
-    private String imageUrl;
+    private String imageUrl = " ";
     private int policyTerm;
     private List<String> diseasesCovered;
     private List<String> cashlessHospitals;
