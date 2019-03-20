@@ -1,4 +1,5 @@
- 
+<div *ngIf = info.token>
+
  <div class="xyz">  <input type="text" placeholder="Insured Name" style="font-size:15px;"  value="{{insuredName}}" required/><br><br>
  <label style="margin-left: 5%;">Existing policy name:</label><br>
 <select placeholder="Existing Policy Name" style="font-size:15px;" [(ngModel)]="insurerProd"(change) = "reach(insurerProd)"> 
@@ -33,4 +34,4 @@
 </div>
 
 
- 
+ </div>

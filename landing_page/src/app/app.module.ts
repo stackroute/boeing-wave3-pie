@@ -99,6 +99,7 @@ import { AddNewTaskComponent } from './components/add-new-task/add-new-task.comp
 import { TermsAndConditionsComponent } from './components/terms-and-conditions/terms-and-conditions.component';
 import { GuestUserComponent } from './components/guest-user/guest-user.component';
 import { DeletepopupComponent } from './components/deletepopup/deletepopup.component';
+import { PortingHistoryComponent } from './components/porting-history/porting-history.component';
 
 
 const routes: Routes = [];
@@ -156,7 +157,8 @@ const routes: Routes = [];
     AddNewTaskComponent,
     TermsAndConditionsComponent,
     GuestUserComponent,
-    DeletepopupComponent
+    DeletepopupComponent,
+    PortingHistoryComponent
   ],
   entryComponents: [CalculatorComponent,ReviewComponent,DialogbotComponent,DeletepopupComponent,TermsAndConditionsComponent],
   

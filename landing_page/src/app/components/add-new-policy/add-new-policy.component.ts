@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router,ActivatedRoute} from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
+import { TokenStorageService } from './../companyauth/token-storage.service';
 
 
 
@@ -13,11 +14,12 @@ styleUrls: ['./add-new-policy.component.css']
 })
 export class AddNewPolicyComponent implements OnInit {
  formSubmitAttempt :any;
+ info:any;
 firstForm;
 secondForm;
 thirdForm;
 
-constructor(private formBuilder:FormBuilder,private router:Router,private service:InsurerPolicyService) {
+constructor(private formBuilder:FormBuilder,private router:Router,private service:InsurerPolicyService,private token: TokenStorageService) {
 
 }
 isFieldInvalid(field: string) {
@@ -28,6 +30,11 @@ isFieldInvalid(field: string) {
 }
 
 ngOnInit() {
+  this.info = {
+    token: this.token.getToken(),
+    username: this.token.getUsername(),
+    authorities: this.token.getAuthorities()
+  };
 this.firstForm = this.formBuilder.group({
 insurerName: ["", Validators.required],
 insurerLicense:["", Validators.required],

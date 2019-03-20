@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { RequestService } from './../../service/request.service';
 import { MatDialog } from '@angular/material';
+import { TokenStorageService } from './../companyauth/token-storage.service';
+
 
 
 @Component({
@@ -12,7 +14,7 @@ import { MatDialog } from '@angular/material';
  styleUrls: ['./get-company-policy.component.css']
 })
 export class GetCompanyPolicyComponent implements OnInit {
-
+info:any;
  public requests;
  public newInsurer;
  public newPolicyName;
@@ -30,8 +32,13 @@ public portingRequest = {
    insurerProduct: this.oldpolicyname
 }
 
-constructor(public _route: ActivatedRoute, private router: Router, public insurerPolicyService: InsurerPolicyService, private requestService: RequestService,public dialog: MatDialog) { }
+constructor(public _route: ActivatedRoute, private router: Router, public insurerPolicyService: InsurerPolicyService, private requestService: RequestService,public dialog: MatDialog,private token: TokenStorageService) { }
 ngOnInit() {
+  this.info = {
+    token: this.token.getToken(),
+    username: this.token.getUsername(),
+    authorities: this.token.getAuthorities()
+  };
 this.insurerLicense = this._route.snapshot.paramMap.get('insurerLicense');
   console.log('In delete component : ' + this.insurerLicense);
 this.requests = this.insurerPolicyService.getPolicies(this.insurerLicense).subscribe(

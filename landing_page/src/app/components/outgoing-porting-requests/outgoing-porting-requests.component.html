@@ -103,6 +103,7 @@
 
 
 
+<div *ngIf = info.token>
 
 <table mat-table [dataSource]="requests" matSort>
   <ng-container matColumnDef="requestID">
@@ -139,3 +140,4 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table> 
+</div>

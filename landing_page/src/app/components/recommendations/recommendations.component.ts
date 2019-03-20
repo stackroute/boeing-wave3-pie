@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { TermsAndConditionsComponent } from '../terms-and-conditions/terms-and-conditions.component';
 import { MatDialog } from '@angular/material';
+import { TokenStorageService } from './../companyauth/token-storage.service';
+
 
 @Component({
   selector: 'app-recommendations',
@@ -11,10 +13,16 @@ import { MatDialog } from '@angular/material';
 })
 export class RecommendationsComponent implements OnInit {
   userName: any;
-
+   info:any;
   public recommendations;
-  constructor(public route: ActivatedRoute, private router: Router, public userService: UserDashboardService, private dialog: MatDialog) { }
+  constructor(public route: ActivatedRoute, private router: Router, public userService: UserDashboardService, private dialog: MatDialog,private token: TokenStorageService) { }
   ngOnInit() {
+
+    this.info = {
+      token: this.token.getToken(),
+      username: this.token.getUsername(),
+      authorities: this.token.getAuthorities()
+    };
     this.userName = this.route.snapshot.paramMap.get('username');
     console.log('recommendations : ' + this.userName);
     

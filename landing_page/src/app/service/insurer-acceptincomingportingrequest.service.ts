@@ -16,6 +16,7 @@ currentMessage = this.messageSource.asObservable();
   }
 
   baseUrl = 'http://13.126.73.190:8092/porting/api/v1/';
+  
   changeMessage(message: string) {
       this.trackName = message;
       console.log('In accepting Incoming PR service');
@@ -23,7 +24,7 @@ currentMessage = this.messageSource.asObservable();
     }
   public getSearch(request) {
       return this.http.put( this.baseUrl + 'acceptincomingportingrequest', request );
-      console.log('In accepting Incoming PR service');
+      
   }
   show() {
       this.visible = true;
@@ -31,4 +32,9 @@ currentMessage = this.messageSource.asObservable();
   hide() {
       this.visible =false;
   }
+
+public portingHistory(insurerName) {
+  console.log('in porting history');
+  return this.http.get(this.baseUrl + 'requests/' + insurerName);
+}
 }

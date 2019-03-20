@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { PolicyService } from './../../service/policy.service';
 import { UserService } from './../../service/user.service';
 import { UserDashboardService } from './../../service/user-dashboard.service';
+import { TokenStorageService } from './../companyauth/token-storage.service';
+
 
 @Component({
   selector: 'app-porting-request',
@@ -32,6 +34,7 @@ export class PortingRequestComponent implements OnInit {
   flag=false;
   flag1=false;
   newpolicies: any;
+  info:any;
   portingForm = {
     insuredName: this.insuredName,
     insurerProduct: this.insurerProd,
@@ -44,15 +47,21 @@ export class PortingRequestComponent implements OnInit {
     newSumInsured: this.newMaxSumInsured,
     reasonForPortability: this.reason,
     familyMembers: this.familyMem,
-    exclusionPeriod: this.exclusion
+    exclusionPeriod: this.exclusion,
   }
   // policies=[
   //   {value: 'cancer', viewValue: 'CancerPolicy1'},
   //   {value: 'AIDS', viewValue: 'AIDSPolicy'}
   // ];
-  constructor(private formBuilder: FormBuilder, private requestService: RequestService,private router: Router, private policyService: PolicyService, private userService: UserDashboardService) { }
+  constructor(private formBuilder: FormBuilder, private requestService: RequestService,private router: Router, private policyService: PolicyService, private userService: UserDashboardService,private token: TokenStorageService) { }
  
   ngOnInit() {
+
+    this.info = {
+      token: this.token.getToken(),
+      username: this.token.getUsername(),
+      authorities: this.token.getAuthorities()
+    };
      this.insuredName = window.localStorage.getItem("insuredname"); 
     //  console.log("inside ngOninit");
     this.policies = this.userService.getPolicies(this.insuredName).subscribe(data =>

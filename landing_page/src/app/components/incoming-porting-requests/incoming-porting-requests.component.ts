@@ -3,6 +3,7 @@ import { InsurerAcceptincomingportingrequestService } from './../../service/insu
 import { InsurerIncomingportingrequestService } from './../../service/InsurerIncomingportingrequestService';
 import { InsurerOutgoingportingrequestService } from './../../service/insurer-outgoingportingrequest.service';
 import { ActivatedRoute } from '@angular/router';
+import { TokenStorageService } from './../companyauth/token-storage.service';
 
 import { MatDialog, MatTableDataSource } from '@angular/material';
 import { ReviewComponent } from '../review/review.component';
@@ -19,6 +20,8 @@ import { InsurerRejectincomingportingrequestService } from './../../service/Insu
 })
 export class IncomingPortingRequestsComponent implements OnInit {
   insurerLicense: any;
+  info: any;
+
   requests: any;
   displayedColumns: string[] = ['requestID', 'userName', 'oldInsurerName','modifyStatusButton'];
   dataSource = new MatTableDataSource<Request[]>();
@@ -28,9 +31,14 @@ export class IncomingPortingRequestsComponent implements OnInit {
   constructor(private route:ActivatedRoute, private incoming: InsurerIncomingportingrequestService,
     private portrequest: InsurerAcceptincomingportingrequestService, 
     private portrequest1: InsurerRejectincomingportingrequestService, 
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,private token: TokenStorageService) { }
 
   ngOnInit() {
+    this.info = {
+      token: this.token.getToken(),
+      username: this.token.getUsername(),
+      authorities: this.token.getAuthorities()
+    };
     console.log("inside Incoming");
     this.insurerLicense = this.route.snapshot.paramMap.get('insurerLicense');
     console.log(this.insurerLicense);

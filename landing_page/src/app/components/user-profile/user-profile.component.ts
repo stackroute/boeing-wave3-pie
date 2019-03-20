@@ -2,6 +2,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UserDashboardService } from './../../service/user-dashboard.service';
 import { FormBuilder } from '@angular/forms';
+import { TokenStorageService } from './../companyauth/token-storage.service';
+
 
 @Component({
   selector: 'app-user-profile',
@@ -12,10 +14,17 @@ export class UserProfileComponent implements OnInit {
   public username;
   public profile:any;
   profileForm: any;
+  info:any;
   
-  constructor(private formBuilder: FormBuilder,private route: ActivatedRoute, private userService: UserDashboardService) { }
+  constructor(private formBuilder: FormBuilder,private route: ActivatedRoute, private userService: UserDashboardService,private token: TokenStorageService) { }
  
  ngOnInit() {
+
+  this.info = {
+    token: this.token.getToken(),
+    username: this.token.getUsername(),
+    authorities: this.token.getAuthorities()
+  };
  this.profileForm=this.formBuilder.group({
 
  })

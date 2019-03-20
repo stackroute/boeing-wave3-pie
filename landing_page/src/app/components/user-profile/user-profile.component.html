@@ -43,8 +43,8 @@
           </mat-card-footer> -->
         
     <!-- </mat-card-content> -->
-    
-    <div class="xyz">
+    <div *ngIf = info.token>
+      <div class="xyz">
       <br><br>
     <label style="margin-left: 5%;">Insured Name :</label><br>
       <input type="text" placeholder="Insured Name" style="font-size:15px;"  value="{{profile.username}}" required/><br><br>
@@ -57,6 +57,7 @@
       <label style="margin-left: 5%;">Existing Diseases :</label><br>
       <input type="text" placeholder="Insured Name" style="font-size:15px;"  value="{{profile.existingDisease}}" required/>
       <a [routerLink]="['/updateProfile', profile.username]" class="btn btn-primary" style ="margin-right: 5%;margin-left: 40%; margin-bottom: 2%; font-size: 15px;">Update</a>
+    </div>
     </div>
      <!-- <select placeholder="Existing Policy Name" style="font-size:15px;" [(ngModel)]="insurerProd"(change) = "reach(insurerProd)"> 
          <option *ngFor="let policyy of policies" value="{{policyy.policyName}}">{{policyy.policyName}}</option>

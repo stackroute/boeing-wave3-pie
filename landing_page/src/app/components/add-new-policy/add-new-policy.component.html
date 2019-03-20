@@ -58,7 +58,8 @@
 <!-- <app-insurer-dashboard></app-insurer-dashboard> -->
 <!-- <br/>
 <br/> -->
-<div class="xyz">
+
+<div class="xyz" *ngIf = info.token>
 <mat-tab-group style = "margin-left: 18%;" mat-align-tabs="center">
   <mat-tab label="Outline">
             <form [formGroup]="firstForm">

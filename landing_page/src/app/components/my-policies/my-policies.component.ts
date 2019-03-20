@@ -2,6 +2,8 @@ import { UserDashboardService } from './../../service/user-dashboard.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { TokenStorageService } from './../companyauth/token-storage.service';
+
 @Component({
   selector: 'app-my-policies',
   templateUrl: './my-policies.component.html',
@@ -12,8 +14,14 @@ export class MyPoliciesComponent implements OnInit {
 public policies;
 username: any;
 firstForm: FormGroup;
-constructor(public _route: ActivatedRoute, private router: Router, public userService: UserDashboardService, private formBuilder: FormBuilder) { }
+info:any;
+constructor(public _route: ActivatedRoute, private router: Router, public userService: UserDashboardService, private formBuilder: FormBuilder,private token: TokenStorageService) { }
 ngOnInit() {
+  this.info = {
+    token: this.token.getToken(),
+    username: this.token.getUsername(),
+    authorities: this.token.getAuthorities()
+  };
   this.firstForm = this.formBuilder.group({
     username: ['', Validators.required],
   });

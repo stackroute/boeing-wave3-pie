@@ -6,6 +6,8 @@ import {MatDialog, MatDialogConfig, MatTableDataSource} from '@angular/material'
 import { AllPortingRequestsComponent } from '../all-porting-requests/all-porting-requests.component';
 import { ReviewComponent } from '../review/review.component';
 import { DisplayAllPortingRequestsComponent } from '../display-all-porting-requests/display-all-porting-requests.component';
+import { TokenStorageService } from './../companyauth/token-storage.service';
+
 @Component({
   selector: 'app-outgoing-porting-requests',
   templateUrl: './outgoing-porting-requests.component.html',
@@ -17,15 +19,21 @@ export class OutgoingPortingRequestsComponent implements OnInit {
   dialogReference: any;
   insurerLicense: any;
   requests: any;
+  info: any;
   displayedColumns: string[] = ['requestID', 'userName', 'oldInsurerName','modifyStatusButton'];
   dataSource = new MatTableDataSource<Request[]>();
   currentCompanyName: string;
   raiseGrievanceButtonIsClicked: boolean;
   idForGrievances: number;
   grievancesComponent = AllPortingRequestsComponent;
-  constructor(private route: ActivatedRoute, private incoming: InsurerOutgoingportingrequestService, private portrequest: InsurerAcceptoutgoingportingrequestService, private dialog: MatDialog) { }
+  constructor(private route: ActivatedRoute, private incoming: InsurerOutgoingportingrequestService, private portrequest: InsurerAcceptoutgoingportingrequestService, private dialog: MatDialog,private token: TokenStorageService) { }
 
   ngOnInit() {
+    this.info = {
+      token: this.token.getToken(),
+      username: this.token.getUsername(),
+      authorities: this.token.getAuthorities()
+    };
     this.showAcceptRequestButton = false;
     this.raiseGrievanceButtonIsClicked = false;
     console.log("inside outgoing");

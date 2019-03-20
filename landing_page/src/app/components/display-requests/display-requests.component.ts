@@ -1,6 +1,8 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from './../../service/request.service';
+import { TokenStorageService } from './../companyauth/token-storage.service';
+
 
 @Component({
   selector: 'app-display-requests',
@@ -10,8 +12,15 @@ import { RequestService } from './../../service/request.service';
 export class DisplayRequestsComponent implements OnInit {
   public requests;
   username;
- constructor(public _route: ActivatedRoute, private router: Router, public requestService: RequestService) { }
+  info: any;
+ constructor(public _route: ActivatedRoute, private router: Router, public requestService: RequestService,private token: TokenStorageService
+  ) { }
  ngOnInit() {
+  this.info = {
+    token: this.token.getToken(),
+    username: this.token.getUsername(),
+    authorities: this.token.getAuthorities()
+  };
   this.username = this._route.snapshot.paramMap.get('username');
     console.log('In delete component : ' + this.username);
   this.requests = this.requestService.getRequests(this.username).subscribe(

@@ -71,7 +71,6 @@ export class NavbarComponent implements OnInit {
     console.log("search method");
     this.router.navigate(["/search", this.message]);
     console.log("in search");
-    window.location.reload();
   }
   logout() {
     this.token.signOut();

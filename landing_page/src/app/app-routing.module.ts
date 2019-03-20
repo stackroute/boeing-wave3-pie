@@ -1,3 +1,4 @@
+import { PortingHistoryComponent } from './components/porting-history/porting-history.component';
 import { PolicybuymailComponent } from './components/policybuymail/policybuymail.component';
 import { FamilyMembersComponent } from './components/family-members/family-members.component';
 import { BuyPolicyComponent } from './components/buy-policy/buy-policy.component';
@@ -74,7 +75,8 @@ const routes: Routes = [
    {path: 'buyPolicy',component: BuyPolicyComponent},
    {path: 'familyMembers/:username',component: FamilyMembersComponent},
    {path: 'showChatResults',component:ShowChatResultsComponent},
-   {path: 'policyDetails/:insurerName/:policyName',component: PolicyDetailsComponent}
+   {path: 'policyDetails/:insurerName/:policyName',component: PolicyDetailsComponent},
+   {path: 'requests/:insurerName', component: PortingHistoryComponent}
 ];
 
 @NgModule({
