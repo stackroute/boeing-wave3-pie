@@ -14,7 +14,7 @@ export class Message {
 })
 export class ChatService {
   variable: any;
-  public baseUrl = "http://13.126.73.190:8092/chatbot/";
+  public baseUrl = "http://13.126.73.190:8092/chatbot/ChatBotService";
   readonly token = environment.dialogflow.angularBot;
   readonly client = new ApiAiClient({ accessToken: this.token });
   conversation = new BehaviorSubject<Message[]>([]);
