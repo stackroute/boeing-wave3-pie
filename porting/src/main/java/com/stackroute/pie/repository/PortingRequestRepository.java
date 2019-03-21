@@ -2,6 +2,7 @@ package com.stackroute.pie.repository;
 
 import com.stackroute.pie.domain.PortingRequest;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
@@ -21,4 +22,7 @@ public interface PortingRequestRepository extends MongoRepository<PortingRequest
     Optional<List<PortingRequest>> findByNewInsurerName(String newInsurerName);
     Optional<PortingRequest> findByInsuredNameAndCreateDate (String insuredName,Date createDate);
     void deleteByInsuredNameAndCreateDate(String insuredName,Date createDate);
+
+    @Query
+    PortingRequest findTopByOrderByPortingRequestIdDesc();
 }
