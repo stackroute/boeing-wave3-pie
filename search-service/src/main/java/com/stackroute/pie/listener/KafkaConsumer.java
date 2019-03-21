@@ -55,7 +55,7 @@ public class KafkaConsumer {
                 chatPolicy.setMinAge(p.getMinAge());
                 chatPolicy.setMaxSumInsured(p.getMaxSumInsured());
                 chatPolicy.setMinSumInsured(p.getMinSumInsured());
-                chatPolicy.setImageUrl(p.getImageUrl());
+//                chatPolicy.setImageUrl(p.getImageUrl());
                 chatBotRepository.save(chatPolicy);
             }
 
