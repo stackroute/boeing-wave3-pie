@@ -65,7 +65,6 @@ export class GuestUserComponent implements OnInit {
         this.snackBar.open(this.message1,this.action, {
           duration: 4000,
           
-          horizontalPosition: 'end'
 
           
         });

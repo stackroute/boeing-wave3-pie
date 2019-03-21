@@ -24,9 +24,12 @@
 </div>
 <input type="text" placeholder="Reason for portability" style="font-size:15px;" [(ngModel)] = "reason" required/>
  <input type="text" placeholder="No of family members" style="font-size:15px;"[(ngModel)] = "familyMem" required/>
- <label style="margin-left: 5%; font-size:15px;">Is PED exclusion period longer than the existing policy period?(true/false)</label>
- <input type="text" style="font-size:15px;" [(ngModel)] = "exclusion" required/><br><br>
- 
+ <label style="margin-left: 5%; font-size:15px;">Is PED exclusion period longer than the existing policy period?</label><br>
+ <!-- <input type="text" style="font-size:15px;" [(ngModel)] = "exclusion" required/><br><br> -->
+ <input type="radio" style="margin-left: 5%;font-size:15px;" value="true" name="exclusion" [(ngModel)]="exclusion" required > 
+ <label style="margin-left: 5%;font-size:15px;">True</label> <br>
+ <input type="radio" style="margin-left: 5%;font-size:15px;" value="false" name="exclusion" [(ngModel)]="exclusion" required > 
+ <label style="margin-left: 5%;font-size:15px;">False</label> 
  <div style = "margin-left: 50%; margin-bottom:20%;">
      <button class="btn btn-success btn-outline-rounded" style="font-size:15px;" (click)="submitForm(insuredName,insurerProd,anusha.insurerName,anusha.maxSumInsured,addon,anusha.policyId,newInsurerProd,policy1.insurerName,policy1.maxSumInsured,reason,familyMem,exclusion)"> Submit <span style="margin-left:10px;"></span></button>
  </div>
